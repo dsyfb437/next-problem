@@ -1,0 +1,22 @@
+[
+  {
+    "id": "m1_001",
+    "subject": "高等数学",
+    "chapter": "极限与连续",
+    "knowledge_tags": ["极限计算"],
+    "difficulty": 0.6,
+    "question_text": "$$\\lim_{x \\to 0} \\frac{\\sin 2x}{x}$$",
+    "answer": "2",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "m1_002",
+    "subject": "高等数学",
+    "chapter": "导数与微分",
+    "knowledge_tags": ["复合函数求导"],
+    "difficulty": 0.5,
+    "question_text": "$$y = \\ln(1+x^2), \\frac{dy}{dx} = ?$$",
+    "answer": "\\frac{2x}{1+x^2}",
+    "answer_type": "formula"
+  }
+]

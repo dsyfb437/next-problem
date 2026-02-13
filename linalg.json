@@ -1,0 +1,22 @@
+[
+  {
+    "id": "la_001",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "knowledge_tags": ["逆矩阵"],
+    "difficulty": 0.7,
+    "question_text": "设 $A, B$ 均为 $n$ 阶可逆矩阵，则 $(AB)^{-1} = ?$ ",
+    "answer": "B^{-1}A^{-1}",
+    "answer_type": "formula"
+  },
+  {
+    "id": "la_002",
+    "subject": "线性代数",
+    "chapter": "向量组",
+    "knowledge_tags": ["线性相关"],
+    "difficulty": 0.65,
+    "question_text": "若向量组 $(\\alpha_1, \\alpha_2, \\alpha_3)$ 线性相关，则它们的秩满足？",
+    "answer": "r < 3",
+    "answer_type": "string"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "pr_001",
+    "subject": "概率论",
+    "chapter": "随机变量",
+    "knowledge_tags": ["正态分布"],
+    "difficulty": 0.55,
+    "question_text": "设 $X \\sim N(\\mu, \\sigma^2)$ ，则 $\\frac{X-\\mu}{\\sigma}$ 服从什么分布？",
+    "answer": "N(0,1)",
+    "answer_type": "string"
+  }
+]

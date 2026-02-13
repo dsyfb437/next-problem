@@ -1,0 +1,116 @@
+{
+  "user_id": "user_1770977016.135578",
+  "knowledge_state": {
+    "极限计算": 0.9543275632490013,
+    "复合函数求导": 0.3428571012583452,
+    "线性相关": 0.34157168566286744,
+    "逆矩阵": 0.34157168566286744,
+    "正态分布": 0.9543275632490013
+  },
+  "answered_questions": [
+    "la_002",
+    "la_001",
+    "pr_001"
+  ],
+  "correct_in_round": [
+    "pr_001"
+  ],
+  "history": [
+    {
+      "qid": "m1_001",
+      "user_answer": "2",
+      "correct": true,
+      "timestamp": "2026-02-13T18:03:39.376699"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:03:46.787239"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:03:50.416410"
+    },
+    {
+      "qid": "m1_001",
+      "user_answer": "2",
+      "correct": true,
+      "timestamp": "2026-02-13T18:03:52.676747"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:03:56.813955"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:11:05.322833"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:11:08.167546"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:11:10.011752"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2",
+      "correct": false,
+      "timestamp": "2026-02-13T18:11:11.805458"
+    },
+    {
+      "qid": "la_002",
+      "user_answer": "r<3",
+      "correct": false,
+      "timestamp": "2026-02-13T18:11:22.047489"
+    },
+    {
+      "qid": "la_001",
+      "user_answer": "B^-1A^-1",
+      "correct": false,
+      "timestamp": "2026-02-13T18:11:29.416700"
+    },
+    {
+      "qid": "pr_001",
+      "user_answer": "N(0,1)",
+      "correct": true,
+      "timestamp": "2026-02-13T19:29:03.126216"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2x",
+      "correct": false,
+      "timestamp": "2026-02-13T19:29:15.958465"
+    },
+    {
+      "qid": "pr_001",
+      "user_answer": "N(0,1)",
+      "correct": true,
+      "timestamp": "2026-02-13T19:29:29.123190"
+    },
+    {
+      "qid": "la_001",
+      "user_answer": "",
+      "correct": false,
+      "timestamp": "2026-02-13T19:30:15.977430"
+    },
+    {
+      "qid": "la_002",
+      "user_answer": "",
+      "correct": false,
+      "timestamp": "2026-02-13T19:30:17.781865"
+    }
+  ]
+}
