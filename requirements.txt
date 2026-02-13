@@ -1,0 +1,12 @@
+# Core dependencies
+flask>=3.0.0
+gunicorn>=21.2.0
+
+# Math
+sympy>=1.12
+
+# Database
+psycopg2-binary>=2.9.9
+
+# Environment variables
+python-dotenv>=1.0.0

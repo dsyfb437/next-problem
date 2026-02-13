@@ -1,0 +1,23 @@
+{
+  "user_id": "user_1770993810.991846",
+  "knowledge_state": {
+    "极限计算": 0.7609756097560976,
+    "复合函数求导": 0.3355932203389831
+  },
+  "answered_questions": [],
+  "correct_in_round": [],
+  "history": [
+    {
+      "qid": "m1_001",
+      "user_answer": "2",
+      "correct": true,
+      "timestamp": "2026-02-13T22:43:53.197053"
+    },
+    {
+      "qid": "m1_002",
+      "user_answer": "2x/(1+x^2)",
+      "correct": false,
+      "timestamp": "2026-02-13T22:44:03.331826"
+    }
+  ]
+}

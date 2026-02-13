@@ -20,3 +20,13 @@ build/
 .DS_Store
 Thumbs.db
 main.py:Zone.Identifier
+
+# Environment variables
+.env
+.env.local
+
+# Data files (optional - uncomment if you want to ignore user data)
+# data/
+# *.db
+# *.db-shm
+# *.db-wal
