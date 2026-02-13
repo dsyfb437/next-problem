@@ -19,14 +19,20 @@ build/
 # OS
 .DS_Store
 Thumbs.db
-main.py:Zone.Identifier
+*:Zone.Identifier
 
 # Environment variables
 .env
 .env.local
 
-# Data files (optional - uncomment if you want to ignore user data)
-# data/
-# *.db
-# *.db-shm
-# *.db-wal
+# Data files (SQLite - development only, production uses PostgreSQL)
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# Old files (not needed for deployment)
+main.py
+
+# Claude Code
+.claude/
