@@ -87,6 +87,7 @@ class SimpleBKTEngine:
         return min(new_p, 0.99)
 
 # ========== 2. 题库加载 ==========
+'''
 def load_questions_from_json(file_path: str) -> List[Dict]:
     with open(file_path, 'r', encoding='utf-8') as f:
         questions = json.load(f)
@@ -94,7 +95,7 @@ def load_questions_from_json(file_path: str) -> List[Dict]:
     return questions
 
 QUESTIONS = load_questions_from_json('questions.json')
-
+'''
 # ========== 3. 推荐逻辑 ==========
 def recommend_question(user: BKTUser, all_questions: List[Dict], available_qids: set = None) -> Dict:
     """
@@ -188,6 +189,7 @@ def check_answer(question: Dict, user_answer: str) -> bool:
         return user_answer == correct_answer
 
 # ========== 5. 主交互循环 ==========
+'''
 def main_simulation():
     print("\n===== 智能刷题系统（命令行交互版）=====")
     engine = SimpleBKTEngine()
@@ -249,3 +251,4 @@ def main_simulation():
     print("当前知识掌握状态：")
     for kc, p in sorted(user.knowledge_state.items(), key=lambda x: x[1]):
         print(f"  {kc}: {p:.3f}")
+'''

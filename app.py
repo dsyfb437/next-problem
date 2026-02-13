@@ -2,7 +2,7 @@ from flask import Flask, request, render_template_string, session, redirect, url
 import json
 import os
 from datetime import datetime
-from bkt_core import BKTUser, SimpleBKTEngine, recommend_question, check_answer, QUESTIONS
+from bkt_core import BKTUser, SimpleBKTEngine, recommend_question, check_answer
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'  # 必须设置，用于 session 和 flash
