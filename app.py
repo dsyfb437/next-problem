@@ -10,10 +10,13 @@ Features:
 
 import json
 import os
+import subprocess
 from datetime import datetime
 from typing import Dict, List
+import hmac
+import hashlib
 
-from flask import Flask, request, render_template_string, session, redirect, url_for, flash
+from flask import Flask, request, render_template_string, session, redirect, url_for, flash, Response
 from dotenv import load_dotenv
 
 from bkt_core import BKTUser, SimpleBKTEngine, recommend_question, check_answer
@@ -26,6 +29,7 @@ app = Flask(__name__)
 
 # Configuration from environment
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+deploy_key = os.environ.get('DEPLOY_KEY', '')
 
 # Global state
 engine = SimpleBKTEngine()
@@ -309,6 +313,54 @@ def restart():
     user.save_to_file()
     flash("已重置题目进度，你可以重新挑战所有题目，已掌握的知识点仍然保留。", "correct")
     return redirect(url_for('index'))
+
+
+@app.route('/git_pull')
+def git_pull():
+    """
+    Hidden deployment route to trigger git pull.
+
+    Security: Requires DEPLOY_KEY in query parameter.
+    Use: /git_pull?key=<DEPLOY_KEY>
+
+    Returns:
+        JSON response with status and output
+    """
+    provided_key = request.args.get('key', '')
+
+    if not deploy_key:
+        return Response('{"status": "error", "message": "DEPLOY_KEY not configured"}',
+                   mimetype='application/json', status=500)
+
+    if not hmac.compare_digest(provided_key, deploy_key):
+        return Response('{"status": "error", "message": "Invalid deploy key"}',
+                   mimetype='application/json', status=403)
+
+    try:
+        result = subprocess.run(
+            ['git', 'pull'],
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+
+        if result.returncode == 0:
+            return Response(
+                f'{{"status": "success", "message": "Git pull completed", "output": {json.dumps(result.stdout)}}}',
+                mimetype='application/json'
+            )
+        else:
+            return Response(
+                f'{{"status": "error", "message": "Git pull failed", "output": {json.dumps(result.stderr)}}}',
+                mimetype='application/json',
+                status=500
+            )
+    except subprocess.TimeoutExpired:
+        return Response('{"status": "error", "message": "Operation timed out"}',
+                   mimetype='application/json', status=500)
+    except Exception as e:
+        return Response(f'{{"status": "error", "message": "{str(e)}"}}',
+                   mimetype='application/json', status=500)
 
 
 if __name__ == '__main__':

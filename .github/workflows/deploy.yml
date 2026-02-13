@@ -1,0 +1,17 @@
+name: Deploy to PythonAnywhere
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deployment
+        run: |
+          # Deploy to PythonAnywhere via git_pull route
+          curl -X POST "https://your-app.pythonanywhere.com/git_pull?key=${{ secrets.DEPLOY_KEY }}"
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
