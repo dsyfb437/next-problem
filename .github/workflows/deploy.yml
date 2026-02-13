@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: Trigger deployment
         run: |
-          # Deploy to PythonAnywhere via git_pull route
-          curl -X POST "https://your-app.pythonanywhere.com/git_pull?key=${{ secrets.DEPLOY_KEY }}"
+          curl -X GET "https://dsyfb437.pythonanywhere.com/git_pull?key=$DEPLOY_KEY"
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
