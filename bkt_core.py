@@ -210,13 +210,24 @@ def latex_to_sympy(latex_str: str) -> str:
 
     s = latex_str.strip()
 
+    # Fix common escape issues from Python string handling
+    # \f -> \\f (form feed), \t -> \\t (tab), etc.
+    # This fixes issues where \frac becomes \x0crac
+    fix_map = {
+        '\f': '\\f',  # form feed
+        '\t': '\\t',  # tab
+        '\r': '\\r',  # carriage return
+        '\n': '\\n',  # newline
+    }
+    for old, new in fix_map.items():
+        s = s.replace(old, new)
+
     # Remove common LaTeX commands that MathLive might include
     s = re.sub(r'\\mathrm\{([^}]*)\}', r'\1', s)
     s = re.sub(r'\\text\{([^}]*)\}', r'\1', s)
 
     # Handle fractions: \frac{num}{den} -> (num)/(den)
-    while r'\frac' in s:
-        s = re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}', r'((\1)/(\2))', s)
+    s = re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}', r'((\1)/(\2))', s)
 
     # Handle square roots: \sqrt{x} -> sqrt(x), \sqrt{2} -> sqrt(2)
     s = re.sub(r'\\sqrt\{([^{}]*)\}', r'sqrt(\1)', s)
@@ -234,10 +245,10 @@ def latex_to_sympy(latex_str: str) -> str:
 
     # Handle Greek letters
     greek_map = {
-        r'\\alpha': 'alpha', r'\\beta': 'beta', r'\\gamma': 'gamma',
-        r'\\delta': 'delta', r'\\epsilon': 'epsilon', r'\\theta': 'theta',
-        r'\\lambda': 'lambda', r'\\mu': 'mu', r'\\pi': 'pi', r'\\sigma': 'sigma',
-        r'\\tau': 'tau', r'\\phi': 'phi', r'\\omega': 'omega'
+        '\\alpha': 'alpha', '\\beta': 'beta', '\\gamma': 'gamma',
+        '\\delta': 'delta', '\\epsilon': 'epsilon', '\\theta': 'theta',
+        '\\lambda': 'lambda', '\\mu': 'mu', '\\pi': 'pi', '\\sigma': 'sigma',
+        '\\tau': 'tau', '\\phi': 'phi', '\\omega': 'omega'
     }
     for greek, sympy_name in greek_map.items():
         s = s.replace(greek, sympy_name)
@@ -245,7 +256,7 @@ def latex_to_sympy(latex_str: str) -> str:
     # Handle functions: \sin, \cos, etc.
     functions = ['sin', 'cos', 'tan', 'log', 'ln', 'exp', 'sqrt', 'abs', 'max', 'min']
     for func in functions:
-        s = s.replace(f'\\{func}', func)
+        s = s.replace('\\' + func, func)
 
     # Handle exp separately (both \exp and e^)
     s = s.replace('\\exp', 'exp')
@@ -290,34 +301,43 @@ def check_answer(question: Dict, user_answer: str) -> bool:
             return False
 
     elif answer_type == 'formula':
+        # Debug: log user input
+        print(f"[DEBUG] correct_answer={repr(correct_answer)}")
+        print(f"[DEBUG] user_answer={repr(user_answer)}")
+
         # First try direct SymPy comparison (in case answer is already in SymPy format)
         try:
             expr_user = sympify(user_answer)
             expr_correct = sympify(correct_answer)
             if expr_user.equals(expr_correct):
+                print("[DEBUG] Direct SymPy match!")
                 return True
-        except (SympifyError, TypeError, AttributeError, Exception):
-            pass
+        except (SympifyError, TypeError, AttributeError, Exception) as e:
+            print(f"[DEBUG] Direct SymPy failed: {e}")
 
         # Try converting LaTeX to SymPy format
         try:
             user_sympy = latex_to_sympy(user_answer)
             correct_sympy = latex_to_sympy(correct_answer)
+            print(f"[DEBUG] user_sympy={user_sympy}")
+            print(f"[DEBUG] correct_sympy={correct_sympy}")
 
             expr_user = sympify(user_sympy)
             expr_correct = sympify(correct_sympy)
 
             # Check symbolic equality
             if expr_user.equals(expr_correct):
+                print("[DEBUG] LaTeX SymPy match!")
                 return True
 
             # Check if difference simplifies to zero
             diff = expr_user - expr_correct
             if simplify(diff) == 0:
+                print("[DEBUG] Simplified to zero!")
                 return True
 
         except (SympifyError, TypeError, AttributeError, Exception) as e:
-            pass
+            print(f"[DEBUG] LaTeX conversion failed: {e}")
 
         # Final fallback: normalized string comparison
         def normalize(s: str) -> str:

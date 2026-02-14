@@ -84,8 +84,7 @@ INDEX_HTML = '''
             integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk"
             crossorigin="anonymous"></script>
     <!-- MathLive for formula input -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathlive@0.99.2/dist/mathlive-static.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/mathlive@0.99.2/dist/mathlive.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathlive@0.100.0/dist/mathlive.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
                max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
@@ -101,16 +100,18 @@ INDEX_HTML = '''
                                border-radius: 4px; cursor: pointer; }
         button[type="submit"]:hover { background: #0056b3; }
         /* MathLive styling */
-        math-field {
+        math-field.math-field-input {
             font-size: 1.2rem;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
             background: white;
-            min-width: 200px;
+            min-width: 300px;
             margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
         }
-        math-field:focus-within {
+        math-field.math-field-input:focus-within {
             outline: 2px solid #007bff;
             border-color: #007bff;
         }
@@ -118,6 +119,10 @@ INDEX_HTML = '''
             font-size: 0.85rem;
             color: #6c757d;
             margin-top: 4px;
+        }
+        /* Virtual keyboard customization */
+        .ML__keyboard {
+            z-index: 1000 !important;
         }
     </style>
 </head>
@@ -151,11 +156,15 @@ INDEX_HTML = '''
             <form method="post" action="/answer" style="margin-top: 20px;" id="answerForm">
                 <input type="hidden" name="qid" value="{{ question.id }}">
                 {% if question.answer_type == 'formula' %}
-                    <!-- MathLive for formula input -->
-                    <math-field name="answer" virtual-keyboard-mode="auto"
-                               smart-fence="true" tex-all-commands="false"
-                               style="width: 70%;"></math-field>
-                    <p class="input-hint">💡 使用上方键盘输入数学公式，如分数请输入 \frac{1}{2}</p>
+                    <!-- MathLive formula input with preview -->
+                    <div style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; background: white;">
+                        <math-field id="formulaInput"
+                                   virtual-keyboard-mode="onfocus"
+                                   class="math-field-input"></math-field>
+                        <input type="hidden" name="answer" id="formulaAnswer">
+                        <p class="input-hint">预览：<span id="formulaPreview" style="display: inline-block; vertical-align: middle;"></span></p>
+                        <p class="input-hint">💡 点击输入框使用虚拟键盘，或直接输入 LaTeX 语法如 \frac{1}{2}, \sqrt{x}</p>
+                    </div>
                 {% else %}
                     <!-- Regular text input for numeric/string answers -->
                     <input type="text" name="answer" placeholder="输入你的答案"
@@ -204,16 +213,86 @@ INDEX_HTML = '''
 
     <p style="margin-top: 30px;"><a href="/reset">重置我的进度</a></p>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '\\(', right: '\\)', display: false},
-                    {left: '$', right: '$', display: false}
-                ],
-                throwOnError: false
-            });
-        });
+        // Wait for MathLive to load
+        function initMathLive() {
+            // Render KaTeX
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+
+            // Wait for math-field and set up preview
+            function setupMathField() {
+                const mf = document.getElementById('formulaInput');
+                const preview = document.getElementById('formulaPreview');
+                const hiddenInput = document.getElementById('formulaAnswer');
+
+                if (mf && preview && hiddenInput) {
+                    // Update preview and hidden input when input changes
+                    mf.addEventListener('input', function(evt) {
+                        const latex = mf.value;
+                        // Update hidden input for form submission
+                        hiddenInput.value = latex;
+                        // Update preview
+                        if (latex) {
+                            try {
+                                preview.innerHTML = '$$' + latex + '$$';
+                                renderMathInElement(preview, {
+                                    delimiters: [
+                                        {left: '$$', right: '$$', display: true}
+                                    ],
+                                    throwOnError: false
+                                });
+                            } catch(e) {
+                                preview.textContent = latex;
+                            }
+                        } else {
+                            preview.textContent = '(无)';
+                        }
+                    });
+
+                    // Initial preview
+                    const initialLatex = mf.value;
+                    hiddenInput.value = initialLatex;
+                    if (initialLatex) {
+                        preview.innerHTML = '$$' + initialLatex + '$$';
+                        renderMathInElement(preview, {
+                            delimiters: [{left: '$$', right: '$$', display: true}],
+                            throwOnError: false
+                        });
+                    }
+                    console.log('MathLive initialized successfully');
+                } else {
+                    setTimeout(setupMathField, 200);
+                }
+            }
+            setupMathField();
+
+            // Handle form submission - ensure hidden input has the value
+            const form = document.getElementById('answerForm');
+            if (form) {
+                form.addEventListener('submit', function() {
+                    const mf = document.getElementById('formulaInput');
+                    const hiddenInput = document.getElementById('formulaAnswer');
+                    if (mf && hiddenInput) {
+                        hiddenInput.value = mf.value;
+                        console.log('Submitting answer:', hiddenInput.value);
+                    }
+                });
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMathLive);
+        } else {
+            initMathLive();
+        }
     </script>
 </body>
 </html>
@@ -291,12 +370,17 @@ def answer():
     qid = request.form.get('qid', '')
     user_answer = request.form.get('answer', '').strip()
 
+    print(f"[DEBUG] qid={qid}, user_answer={repr(user_answer)}")
+
     question = next((q for q in questions if q.get('id') == qid), None)
     if not question:
         flash("题目不存在，请重试", "wrong")
         return redirect(url_for('index'))
 
+    print(f"[DEBUG] question_answer={repr(question.get('answer'))}, type={question.get('answer_type')}")
+
     is_correct = check_answer(question, user_answer)
+    print(f"[DEBUG] is_correct={is_correct}")
 
     if is_correct:
         flash("回答正确！", "correct")
