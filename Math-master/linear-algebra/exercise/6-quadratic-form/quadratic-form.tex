@@ -1,0 +1,398 @@
+\documentclass[UTF8, 12pt]{ctexart}
+% UTF8编码，ctexart现实中文
+\usepackage{color}
+% 使用颜色
+\usepackage{geometry}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+% 设置四级目录与标题
+\geometry{papersize={21cm,29.7cm}}
+% 默认大小为A4
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+% 默认页边距为1英尺与1.25英尺
+\usepackage{indentfirst}
+\setlength{\parindent}{2.45em}
+% 首行缩进2个中文字符
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.5}
+% 1.5倍行距
+\usepackage{amssymb}
+% 因为所以
+\usepackage{amsmath}
+% 数学公式
+\usepackage[colorlinks,linkcolor=black,urlcolor=blue]{hyperref}
+% 超链接
+\author{Didnelpsun}
+\title{二次型}
+\date{}
+\begin{document}
+\maketitle
+\pagestyle{empty}
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1}
+\section{二次型}
+
+即最基本的将二次型式子变为矩阵形式。
+
+\subsection{配方法}
+
+\subsection{矩阵乘法}
+
+由于二次型是$X^TAX$的形式，所以最后的左右两边都存在所有的$x_i$，所以可以依次把$x_i$缺的项进行补齐$x_n$与其他所有$x_i$乘积的和的形式。
+
+\textbf{例题：}将二次型$f(x_1,x_2,x_3)=2x_1^2+2x_2^2+2x_3^2-2x_1x_2-2x_2x_3+2x_1x_3$化为矩阵。
+
+解：$f(x_1,x_2,x_3)=2x_1^2+2x_2^2+2x_3^2-2x_1x_2-2x_2x_3+2x_1x_3=2x_1^2-2x_1x_2+2x_1x_3+2x_2^2-2x_2x_3+2x_3^2=2x_1^2-x_1x_2+x_1x_3+2x_2^2-x_1x_2-x_2x_3+2x_3^2+x_1x_3-x_2x_3=x_1(2x_1-x_2+x_3)+x_2(-x_1+2x_2-x_3)+x_3(x_1-x_2+2x_3)$
+
+$=\left[x_1,x_2,x_3\right]\left[\begin{array}{c}
+    2x_1-x_2+x_3 \\
+    -x_1+2x_2-x_3 \\\
+    x_1-x_2+2x_3
+\end{array}\right]=[x_1,x_2,x_3]\left[\begin{array}{ccc}
+    2 & -1 & 1\\
+    -1 & 2 & -1\\
+    1 & -1 & 2
+\end{array}\right]\left[\begin{array}{c}
+    x_1 \\
+    x_2 \\
+    x_3
+\end{array}\right]$。
+
+即$A=\left[\begin{array}{ccc}
+    2 & -1 & 1\\
+    -1 & 2 & -1\\
+    1 & -1 & 2
+\end{array}\right]$。
+
+\section{标准形}
+
+即将二次型式子变为平方形式，再变量更换，变成矩阵形式。
+
+\subsection{初等变换法}
+
+$f(x)=X^TAX$，线性变换$X=CY$，$C^TAC=\Lambda$，又$C$可逆，$\therefore C=P_1P_2\cdots P_s$，$EP_1P_2\cdots P_s=C$，$\therefore(P_1P_2\cdots P_s)^TAP_1P_2\cdots P_3=\Lambda$，
+
+\begin{enumerate}
+    \item 对$A,E$做同样的初等列变换。
+    \item 对$A$做相应的初等行变换。（交换$i,j$列就要交换$i,j$行）。一套行列变换后$\Lambda$为对称矩阵。
+    \item $A$化成对角矩阵时，$E$化成的就是$C$。
+\end{enumerate}
+
+$\left(\begin{array}{c}
+    A \\
+    E
+\end{array}\right)\rightarrow\left(\begin{array}{c}
+    \Lambda \\
+    C
+\end{array}\right)$，对整个列变换，只对$A$行变换。
+
+$\left(\begin{array}{c}
+    A \\
+    E
+\end{array}\right)=\left(\begin{array}{ccc}
+    1 & 1 & 1 \\
+    1 & 2 & 2 \\
+    1 & 2 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{array}\right)=\left(\begin{array}{ccc}
+    1 & 0 & 1 \\
+    1 & 1 & 2 \\
+    1 & 1 & 1 \\
+    1 & -1 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1
+\end{array}\right)=\left(\begin{array}{ccc}
+    1 & 0 & 1 \\
+    0 & 1 & 1 \\
+    1 & 1 & 1 \\
+    1 & -1 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1
+\end{array}\right)=\\\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 1 \\
+    1 & 1 & 0 \\
+    1 & -1 & -1 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1
+\end{array}\right)=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 1 \\
+    0 & 1 & 0 \\
+    1 & -1 & -1 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{array}\right)=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 1 & -1 \\
+    1 & -1 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1 \\
+    1 & -1 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)$
+
+$\therefore\Lambda=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+\end{array}\right)$，$C=\left(\begin{array}{ccc}
+    1 & -1 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)$
+
+\subsection{可逆线性变换法}
+
+即配方法，求可逆线性变换。
+
+\begin{enumerate}
+    \item 如果二次型有平方项，则首先从$x_1$开始往后不断配方，让最后的式子全部以平方加和的形式，从而不会有混合项。
+    \item 如果二次型没有平方项，则首先令$x_1=y_1+y_2$，$x_2=y_1-y_2$，$x_i=y_i$等然后带入$f(x)$强行出现平方项，然后配方，成功后再用$z_i$替换。
+    \item 如果总的完全平方项数小于变量个数，则令多余的$x_i$为$y_i$，系数为0。
+\end{enumerate}
+
+\subsubsection{平方项}
+
+即依次对存在$x_i$的式子进行整合配方。从$x_1$开始，后面含$x_1$的都提到一起配方，然后依次按这个方法进行配方。
+
+\textbf{例题：}将$f(x_1,x_2,x_3)=x_1^2+2x_1x_2+2x_1x_3-x_2^2-2x_2x_3-x_3^2$化为标准形并求出作的可逆线性变换。
+
+解：首先对$x_1$进行配方，因为有$x_1$因子的式子有$x_1^2+2x_1x_2+2x_1x_3$。
+
+所以将$x_1,x_2,x_3$全部配在一起：$(x_1+x_2+x_3)^2=x_1^2+x_2^2+x_3^2+2x_1x_2+2x_1x_3+2x_2x_3$。
+
+所以$f(x)=(x_1+x_2+x_3)^2-2x_2^2-4x_2x_3-2x_3^2$，然后继续配$x_2$。
+
+因为还有$-2x_2^2-4x_2x_3$，所以配成$-2(x_2+x_3)^2$，正好全部配完了。
+
+$\therefore f(x)=(x_1+x_2+x_3)^2-2(x_2+x_3)^2$。
+
+令$y_1=x_1+x_2+x_3$，$y_2=x_2+x_3$，补$y_3=x_3$，$\therefore f=y_1^2-2y_2^2$。
+
+$(y_1,y_2,y_3)^T=\left(\begin{array}{ccc}
+    1 & 1 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+\end{array}\right)(x_1,x_2,x_3)^T$，此时是$y=Dx$，但是我们要求的是$x=Cy$，所以$C=D^{-1}$，所以$D^{-1}$才是作出的可逆线性变换。
+
+所以得到的线性变换为$\left(\begin{array}{ccc}
+    1 & -1 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)$。
+
+这样方法还要重新求逆，比较麻烦。实际上我们要求的是$x=Cy$，即用$y$来表示$x$，从而直接将$y$来表示$x$就可以了。
+
+首先$y_3=x_3$，所以$x_2=y_2-x_3=y_2-y_3$，$x_1=y_1-x_2-x_3=y_1-y_2+y_3-y_3=y_1-y_2$，综上$x_1=y_1-y_2$，$x_2=y_2-y_3$，$x_3=y_3$，也得到同样结果。
+
+\subsubsection{无平方项}
+
+\textbf{例题：}将二次型$f(x_1,x_2,x_3)=x_1x_2+x_1x_3-x_2x_3$化为规范形，并求所用的可逆线性变换。
+
+解：因为二次型中没有平方项式子，而如果进行配方一定会出现平方，就会产生冲突，所以希望把$x$代换称有平方的式子。
+
+令$x_1=y_1+y_2$，$x_2=y_1-y_2$，$x_3=y_3$，代入二次型中。
+
+$f=y_1^2-y_2^2+y_1y_3+y_2y_3-y_1y_3-+y_2y_3=y_1^2-y_2^2+2y_2y_3=y_1^2-y_2^2+2y_2y_3$。
+
+此时由没有平方项就变成了有平方项，所以就能进行配方。
+
+$=y_1^2-(y_2-y_3)^2+y_3^2$，继续之前的步骤，进行换元：
+
+令$z_1=y_1$，$z_2=y_2-y_3$，$z_3=y_3$，$f=z_1^2-z_2^2+z_3^2$得到标准形。
+
+对于$x$与$y$：$(x_1,x_2,x_3)^T=\left(\begin{array}{ccc}
+    1 & 1 & 0 \\
+    1 & -1 & 0 \\
+    0 & 0 & 1
+\end{array}\right)(y_1,y_2,y_3)^T$。$y$作为过渡变量。
+
+将$y$转换为$z$：$(z_1,z_2,z_3)^T=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)(y_1,y_2,y_3)^T$，我们需要$x=Cz$。
+
+$(x_1,x_2,x_3)^T=\left(\begin{array}{ccc}
+    1 & 1 & 0 \\
+    1 & -1 & 0 \\
+    0 & 0 & 1
+\end{array}\right)\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)^{-1}(z_1,z_2,z_3)^T$，从而得到$C=\left(\begin{array}{ccc}
+    1 & 1 & 1 \\
+    1 & -1 & -1 \\
+    0 & 0 & 1
+\end{array}\right)$。
+
+\subsection{正交变换法}
+
+即求正交变换。
+
+\textbf{例题：}将二次型$f(x_1,x_2,x_3)=2x_1^2+5x_2^2+5x_3^2+4x_1x_2-4x_1x_3-8x_2x_3$使用正交变换法化为标准形，并求所作的正交变换。
+
+已知将二次型通过矩阵表示：$=(x_1,x_2,x_3)\left(\begin{array}{ccc}
+    2 & 2 & -2 \\
+    2 & 5 & -4 \\
+    -2 & -4 & 5
+\end{array}\right)(x_1,x_2,x_3)^T$。\medskip
+
+这个矩阵跟第五章相似的实对称矩阵相似对角化的例题的矩阵一样。
+
+所以直接结果：$\lambda_1=\lambda_2=1$，$\lambda_3=10$，$\eta_1'=\dfrac{\sqrt{5}}{5}(-2,1,0)^T$，$\eta_2'=\dfrac{\sqrt{5}}{15}(2,4,5)^T$，$\eta_3'=\dfrac{1}{3}(1,2,-2)^T$。
+
+第五步：$f(x)=g(y)=y^T\Lambda y=(y_1,y_2,y_3)\left(\begin{array}{ccc}
+    1 \\
+     & 1 \\
+     & & 10
+\end{array}\right)(y_1,y_2,y_3)^T=y_1^2+y_2^2+10y_3^2$
+
+\section{规范形}
+
+由于只有少部分二次型能转换为规范形，所以基本上都是选择题考察。
+
+而且因为规范形的系数必然是0或1或-1，所以不需要求，直接使用惯性定理即可求出。
+
+\subsection{惯性定理}
+
+多用于规范形的判断。
+
+\textbf{例题：}二次型$f(x_1,x_2,x_3)=x_1^2+4x_2^2+4x_3^2-4x_1x_2+4x_1x_3-8x_2x_3$的规范形为()。
+
+$A.f=z_1^2\qquad B.f=z_1^2-z_2^2\qquad C.f=z_1^2+z_2^2+z_3^2\qquad D.f=z_1^2+z_2^2-z_3^2$
+
+解：
+
+已知$f$的二次型矩阵表示$A=\left[\begin{array}{ccc}
+    1 & -1 & 2 \\
+    -2 & 4 & -4 \\
+    2 & -4 & 4
+\end{array}\right]$，根据特征方程$\vert\lambda E-A\vert=\lambda^2(\lambda-9)=0$，$\lambda_1=9$，$\lambda_2=\lambda_3=0$，所以根据特征值符号，正惯性系数$p=1$，负惯性系数$q=0$，所以选择$A$。
+
+\section{合同}
+
+\subsection{合同判断}
+
+合同基于二次型，所以只有对称矩阵才能讨论是否合同。
+
+二次型的合同只有两种判断方式：
+
+\begin{enumerate}
+    \item 秩相同，正（负）惯性系数相同。
+    \item 正负惯性系数都相同。
+\end{enumerate}
+
+\textbf{例题：}设$A=\left[\begin{array}{ccc}
+    1 & 2 & 0 \\
+    2 & 1 & 0 \\
+    0 & 0 & 1
+\end{array}\right]$，与$A$合同的是()。
+
+$A.\left[\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{array}\right]$\;$B.\left[\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+\end{array}\right]$\;$C.\left[\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & -1
+\end{array}\right]$\;$D.\left[\begin{array}{ccc}
+    -1 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & -1
+\end{array}\right]$ \medskip
+
+解：从四个选项，由于是常量矩阵，所以由对角线元素的正负号可以得出这四个的惯性系数分别为$(3,0)$、$(2,1)$、$(1,2)$、$(0,3)$（前面为正惯性系数，后面为负惯性系数）。
+
+且每个选项的秩都是3。
+
+\subsubsection{配方法}
+
+即将二次型配方为标准型，然后求该矩阵的秩和惯性系数。
+
+解：经过配方$f=(x_1+2x_2)^2-3x_2^2+x_3^2$，由于有三个平方项，所以矩阵秩为3，正惯性系数为2，与$B$相同。
+
+\subsubsection{特征值法}
+
+即根据特征方程进行正交变换得到正负惯性系数。
+
+解：求$A$的特征值，得到$\lambda_1=1$、$\lambda_2=3$、$\lambda_3=-1$，所以正交变换后标准形为$y_1^2+3y_2^2-y_3^2$，惯性系数与$B$相同。
+
+\subsection{可逆矩阵}
+
+已知$A\simeq\Lambda$，则$C^TAC=\Lambda$。即$f=x^TAx=y^T\Lambda y$，得到$x=Cy$。
+
+\textbf{例题：}已知$A=\left[\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & -4 & 0 \\
+    0 & 0 & \dfrac{1}{9}
+\end{array}\right]$合同于$\Lambda=\left[\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+\end{array}\right]$，求$C^TAC=\Lambda$中的$C$。
+
+解：已知$A$，则可得二次型$f=x^TAx=[x_1,x_2,x_3]A[x_1,x_2,x_3]^T=x_1^2-4x_2^2+\dfrac{1}{9}x_3^2$，规范化让这个二次型与$\Lambda$转换的二次型相等，由于正负惯性系数相同，平方必然是正数，所以符号对齐，令$x_1^2=y_1^2$、$4x_2^2=y_3^2$、$\dfrac{1}{9}x_3^2=y_2^2$。
+
+解得$x_1=y_1$，$x_2=\dfrac{1}{2}y_3$，$x_3=3y_2$，即$\left[\begin{array}{c}
+    x_1 \\
+    x_2 \\
+    x_3
+\end{array}\right]=\left[\begin{array}{ccc}
+    1 \\
+    & & \dfrac{1}{2} \\
+    & 3
+\end{array}\right]\left[\begin{array}{c}
+    y_1 \\
+    y_2 \\
+    y_3
+\end{array}\right]$。
+
+所以$x=Cy$，解得$C=\left[\begin{array}{ccc}
+    1 \\
+    & & \dfrac{1}{2} \\
+    & 3
+\end{array}\right]$，此时$f=x^TAx=y^TC^TACy=y^T\Lambda y$。
+
+\section{正定二次型}
+
+\subsection{具体型}
+
+\begin{enumerate}
+    \item 顺序主子式全部大于0。
+    \item 特征值全部大于0。
+    \item 配方化为全平方和的标准型，正惯性指数$p=n$（未知数个数）。
+    \item 矩阵乘法配方为完全平方和，内积$D^TD$不等于0。
+\end{enumerate}
+
+\subsection{抽象型}
+
+\section{二次型最值}
+
+若$A$的特征值大小排序$\lambda_1\leqslant\lambda_2\leqslant\cdots\leqslant\lambda_n$，则：
+
+\begin{itemize}
+    \item $\lambda_1x^Tx\leqslant x^TAx\leqslant\lambda_nx^Tx$。
+    \item 若$x^Tx=1$，则$f_{\min}=\lambda_1$，$f_{\max}=\lambda_n$。
+\end{itemize}
+
+\end{document}

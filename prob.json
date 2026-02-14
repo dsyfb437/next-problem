@@ -1,12 +1,829 @@
 [
   {
-    "id": "pr_001",
+    "id": "p001",
+    "subject": "概率论",
+    "chapter": "随机变量及其分布",
+    "knowledge_tags": [
+      "正态分布"
+    ],
+    "difficulty": 0.6,
+    "question_text": "若 $X \\sim N(0,1)$，求 $P(X > 0)$",
+    "answer": "0.5",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "p002",
+    "subject": "概率论",
+    "chapter": "随机变量及其分布",
+    "knowledge_tags": [
+      "期望方差"
+    ],
+    "difficulty": 0.5,
+    "question_text": "若 $X \\sim B(n, p)$，求 $E(X)$",
+    "answer": "np",
+    "answer_type": "formula"
+  },
+  {
+    "id": "p003",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "knowledge_tags": [
+      "期望计算"
+    ],
+    "difficulty": 0.5,
+    "question_text": "设随机变量 $X$ 服从参数为 $\\lambda$ 的泊松分布，求 $E(X)$",
+    "answer": "\\lambda",
+    "answer_type": "formula"
+  },
+  {
+    "id": "p004",
     "subject": "概率论",
     "chapter": "随机变量",
-    "knowledge_tags": ["正态分布"],
+    "knowledge_tags": [
+      "正态分布"
+    ],
     "difficulty": 0.55,
     "question_text": "设 $X \\sim N(\\mu, \\sigma^2)$ ，则 $\\frac{X-\\mu}{\\sigma}$ 服从什么分布？",
     "answer": "N(0,1)",
     "answer_type": "string"
+  },
+  {
+    "id": "p005",
+    "subject": "概率论",
+    "chapter": "随机变量及其分布",
+    "knowledge_tags": [
+      "二项分布"
+    ],
+    "difficulty": 0.5,
+    "question_text": "若 $X\\sim B(5, 0.5)$，求 $P(X=2)$",
+    "answer": "0.3125",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "e0001",
+    "subject": "概率论",
+    "chapter": "随机事件与概率",
+    "question_text": "$ABCDEF$六个人排队，要求$AB$必须在一起，问有多少种排法。",
+    "answer": "使用乘法：$A_2^2\\cdot A_5^5=120$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机事件与概率"
+    ],
+    "difficulty": 0.5,
+    "solution": "排法就是排列的问题。首先$AB$在一起，要么是$AB$要么是$BA$，也是一种排列，有$A_2^2$种。\n\n然后将$AB$看作一个整体与$CDEF$进行排列，一共五个元素，进行全排列：$A_5^5$。\n\n因为是按步骤来的，所以使用乘法：$A_2^2\\cdot A_5^5=120$。"
+  },
+  {
+    "id": "e0002",
+    "subject": "概率论",
+    "chapter": "随机事件与概率",
+    "question_text": "要对6个唱歌和4个舞蹈节目进行排列，要求两个舞蹈节目不能相邻，求多少种排法。",
+    "answer": "乘法：$A_6^6\\cdot A_7^4$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机事件与概率"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于是对舞蹈进行限制，所以对唱歌的序列没有特别的限制，第一步先对唱歌进行全排列$A_6^6$。\n\n第二步对舞蹈进行排列，由于舞蹈之间不能相邻，所以舞蹈节目必然是在两个唱歌节目之间进行插孔排序的，而唱歌6个节目一共7个空，所以排列$A_7^4$。\n\n由于是步骤，所以乘法：$A_6^6\\cdot A_7^4$。"
+  },
+  {
+    "id": "e0003",
+    "subject": "概率论",
+    "chapter": "随机事件与概率",
+    "question_text": "将8个完全相同的球放入三个不同的盒子，要求每个盒子至少有一个球，求一共有多少种放法。",
+    "answer": "=21$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机事件与概率"
+    ],
+    "difficulty": 0.5,
+    "solution": "相当于在七个空插入两个板。即$C_7^2=21$。"
+  },
+  {
+    "id": "e0004",
+    "subject": "概率论",
+    "chapter": "随机事件与概率",
+    "question_text": "已知事件$A$和$B$相互独立，$P(A)=a$，$P(B)=b$，如果事件$C$必然导致$AB$同时发生，则求$ABC$都不发生的概率。",
+    "answer": "=P(",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机事件与概率"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先必须理解题目的意思，并将其抽象为具体的计算式子。\n\n$ABC$都不发生就是$A$不发生且$B$不发生且$C$不发生，用式子表达就是$\\overline{A}\\overline{B}\\overline{C}$。\n\n然后是分析事件$C$必然导致$AB$同时发生，$AB$同时发生就是$AB$，即$AB$比$C$的范围大，$C\\subset AB$，$\\overline{AB}\\subset\\overline{C}$，$\\therefore\\overline{ABC}=\\overline{AB}\\cap\\overline{C}=\\overline{AB}$。\n\n又事件$AB$相互独立。$P(\\overline{AB})=P(\\overline{A})P(\\overline{B})=(1-a)(1-b)$。"
+  },
+  {
+    "id": "e0005",
+    "subject": "概率论",
+    "chapter": "随机事件与概率",
+    "question_text": "设袋中黑白球各一个，有放回取球，每次取一个，直到两种颜色的球都取到为止。求取球次数恰为3的概率。 %",
+    "answer": "概率为$\\dfrac{2}{8}=\\dfrac{1}{4}$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机事件与概率"
+    ],
+    "difficulty": 0.5,
+    "solution": "若是看到题目中的为止，很容易想到后面的几何概率分布。但是这与几何分布不同，因为几何分布要求的停止条件是同一个事件的前几次的失败和最后一次的成功，而这个题目要求是取到黑并且取到白，而不是取到黑或取到白这两个事件，如求取到黑时取求次数为3的概率，则是几何分布。\n\n% 每次可能取到黑白两种，取三次，则事件总数为$2^3=8$。而取到第三次才取到黑白两色的，则有黑黑白、白白黑两种可能性，所以概率为$\\dfrac{2}{8}=\\dfrac{1}{4}$。"
+  },
+  {
+    "id": "e0006",
+    "subject": "概率论",
+    "chapter": "随机事件与概率",
+    "question_text": "射手对同一目标独立地进行4次射击。若至少命中一次的概率为$\\\\dfrac{15}{16}$，则求该射手对同一目标独立地进行4次射击中至少没命中一次的概率。",
+    "answer": "到每次命中概率$p=\\dfrac{1}{2}$。\n\n求该射手对同一目标独立地进行4次射击中至少没命中一次的概率，则其对立事件为每次命中，其概率为$\\left(\\dfrac{1}{2}\\right)^4",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机事件与概率"
+    ],
+    "difficulty": 0.5,
+    "solution": "这个题目其实就是四重伯努利试验，彼此之间的概率都是独立的。令每一次命中的概率为$p$，则该次未命中的概率为$1-p$。\n\n若至少命中一次的概率为$\\dfrac{15}{16}$，则其对立事件全部不命中的概率为$1-\\dfrac{15}{16}=\\dfrac{1}{16}$，则$(1-p)^4=\\dfrac{1}{16}$，则得到每次命中概率$p=\\dfrac{1}{2}$。\n\n求该射手对同一目标独立地进行4次射击中至少没命中一次的概率，则其对立事件为每次命中，其概率为$\\left(\\dfrac{1}{2}\\right)^4=\\dfrac{1}{16}$，则至少没命中一次的概率为$1-\\dfrac{1}{16}=\\dfrac{15}{16}$。\n\n\\end{document}"
+  },
+  {
+    "id": "e0007",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "已知总体$X$的期望为$EX=0$，方差$DX=\\\\sigma^2$。从总体抽取容量为$n$的简单随机样本，其均值和方差分别为$\\\\overline{X}$，$S^2$。记$S_k^2=\\\\dfrac{n}{k}\\\\overline{X}^2+\\\\dfrac{1}{k}S^2$（$k=1,2,3,4$），则()。 $A.E(S_1^2)=\\\\sigma^2$\\\\qquad$B.E(S_2^2)=\\\\sigma^2$ $C.E(S_3^2)=\\\\sigma^2$\\\\qquad$D.E(S_4^2)=\\\\sigma^2$",
+    "answer": "=E",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$E(S_k^2)=E\\left(\\dfrac{n}{k}\\overline{X}^2+\\dfrac{1}{k}S^2\\right)=\\dfrac{n}{k}E\\overline{X}^2+\\dfrac{1}{k}E(S^2)=\\dfrac{n}{k}((E\\overline{X})^2+D\\overline{X})+\\dfrac{1}{k}E(S^2)=\\dfrac{n}{k}\\left(0+\\dfrac{\\sigma^2}{n}\\right)+\\dfrac{1}{k}\\sigma^2=\\dfrac{2\\sigma^2}{k}$，$\\therefore k=2$。"
+  },
+  {
+    "id": "e0008",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_i$为来自总体$E(\\\\lambda)$（$\\\\lambda>0$）的简单随机样本，记统计量$T=\\\\dfrac{1}{n}\\\\sum\\\\limits_{i=1}^nX_i^2$，求$ET$。",
+    "answer": "=E",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$ET=E\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i^2=\\dfrac{1}{n}\\sum\\limits_{i=1}^nEX_i^2=\\dfrac{1}{n}\\sum\\limits_{i=1}^n(DX_i+E^2X_i)=\\dfrac{1}{n}\\sum\\limits_{i=1}^n\\left(\\dfrac{1}{\\lambda^2}+\\dfrac{1}{\\lambda^2}\\right)\\\\=\\dfrac{1}{n}\\cdot\\dfrac{2n}{\\lambda^2}=\\dfrac{2}{\\lambda^2}$。"
+  },
+  {
+    "id": "e0009",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_i$为来自总体$X$的简单随机样本，而$X\\\\sim B\\\\left(1,\\\\dfrac{1}{2}\\\\right)$。记$\\\\overline{X}=\\\\dfrac{1}{n}\\\\sum\\\\limits_{i=1}^nX_i$，求$P\\\\left\\\\{\\\\overline{X}=\\\\dfrac{k}{n}\\\\right\\\\}$。（$0\\\\leqslant k\\\\leqslant n$）",
+    "answer": "=1",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because X\\sim B\\left(1,\\dfrac{1}{2}\\right)$，$\\therefore\\sum\\limits_{i=1}^nX_i\\sim B\\left(n,\\dfrac{1}{2}\\right)$。\n\n$P\\left\\{\\overline{X}=\\dfrac{k}{n}\\right\\}=P\\left\\{\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i=\\dfrac{k}{n}\\right\\}=P\\left\\{\\sum\\limits_{i=1}^nX_i=k\\right\\}=C_n^k\\left(\\dfrac{1}{2}\\right)^k\\left(\\dfrac{1}{2}\\right)^{n-k}\\\\=C_n^k\\cdot\\left(\\dfrac{1}{2}\\right)^n$。"
+  },
+  {
+    "id": "e0010",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_1,X_2,X_3,X_4$是来自正态总体$N(0,4)$的简单随机样本，记$X=a(X_1-2X_2)^2+b(3X_3-4X_4)^2$。求$X$服从$\\\\chi^2$分布下的参数与自由度。",
+    "answer": "$a=\\dfrac{1}{20}$，$b=\\dfrac{1}{100}$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "若$X_1,X_2,X_3,X_4$同一个正态分布，所以$EX_1=EX_2=EX_3=EX_4=0$，$DX_1=DX_2=DX_3=DX_4=4$。\n\n$E(X_1-2X_2)=EX_1-2EX_2=0$，$D(X_1-2X_2)=DX_1-4DX_2=20$。\n\n$\\therefore X_1-2X_2\\sim N(0,20)$，同理$3X_3-4X_4\\sim N(0,100)$。\n\n对其标准化：$\\dfrac{X_1-2X_2-0}{\\sqrt{20}}\\sim N(0,1)$，$\\dfrac{3X_3-4X_4-0}{\\sqrt{100}}\\sim N(0,1)$。\n\n若要让$X$满足$\\chi^2$分布，则要将$a(X_1-2X_2)^2+b(3X_3-4X_4)^2$两项标准化。\n\n$\\therefore\\dfrac{(X_1-2X_2)^2}{20}+\\dfrac{(3X_3-4X_4)^2}{100}\\sim\\chi^2(2)$，所以$a=\\dfrac{1}{20}$，$b=\\dfrac{1}{100}$。"
+  },
+  {
+    "id": "e0011",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_1,X_2,\\\\cdots,X_8$是来自正态总体$N(0,3^2)$的简单随机样本，则统计量$Y=\\\\dfrac{X_1+X_2+X_3+X_4}{\\\\sqrt{X_5^2+X_6^2+X_7^2+X_8^2}}$服从什么分布？",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because X_1,\\cdots,X_8\\sim N(0,9)$，$\\therefore X_1+X_2+X_3+X_4\\sim N(0,36)$。\n\n$\\therefore\\dfrac{X_1+X_2+X_3+X_4-0}{6}\\sim N(0,1)$。\n\n$\\dfrac{X_5^2+X_6^2+X_7^2+X_8^2}{9}=\\left(\\dfrac{X_5-0}{3}\\right)^2+\\left(\\dfrac{X_6-0}{3}\\right)^2+\\left(\\dfrac{X_7-0}{3}\\right)^2+\\left(\\dfrac{X_8-0}{3}\\right)^2$\\\\$\\sim\\chi^2(4)$\n\n$\\therefore\\dfrac{\\dfrac{X_1+X_2+X_3+X_4-0}{6}}{\\sqrt{\\dfrac{X_5^2+X_6^2+X_7^2+X_8^2}{9}/4}}=\\dfrac{X_1+X_2+X_3+X_4}{\\sqrt{X_5^2+X_6^2+X_7^2+X_8^2}}\\sim t(4)$。"
+  },
+  {
+    "id": "e0012",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_1,X_2,\\\\cdots,X_15$是来自正态总体$N(0,3^2)$的简单随机样本，则统计量$Y=\\\\dfrac{X_1^2+X_2^2+\\\\cdots+X_{10}^2}{2X_{11}^2+X_{12}^2+\\\\cdots+X_{15}^2}$服从什么分布？",
+    "answer": "=Y",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because\\dfrac{X_i-0}{3}\\sim N(0,1)$，$\\left(\\dfrac{X_i-0}{3}\\right)^2=\\dfrac{x_i^2}{9}\\sim\\chi^2(1)$。\n\n$\\therefore\\dfrac{X_1^2+X_2^2+\\cdots+X_{10}^2}{9}\\sim\\chi^2(10)$，$\\dfrac{X_{11}^2+X_{12}^2+\\cdots+X_{15}^2}{9}\\sim\\chi^2(5)$。\n\n$\\therefore\\dfrac{\\dfrac{X_1^2+X_2^2+\\cdots+X_{10}^2}{9}/10}{\\dfrac{X_{11}^2+X_{12}^2+\\cdots+X_{15}^2}{9}/5}=\\dfrac{X_1^2+X_2^2+\\cdots+X_{10}^2}{2X_{11}^2+X_{12}^2+\\cdots+X_{15}^2}=Y\\sim F(10,5)$。"
+  },
+  {
+    "id": "e0013",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "已知$(X,Y)$的概率分布函数为$f(x,y)=\\\\dfrac{1}{2\\\\pi}e^{-\\\\frac{1}{2}(x^2+y^2-2y+1)}$，$x,y\\\\in R$，求$\\\\dfrac{X^2}{(Y-1)^2}$的分布。",
+    "answer": "根据二维正态分布的形式，得到$(X,Y)\\sim(0,1;1,1;0)$。\n\n即$X\\sim\\varPhi(x)$，$Y-1\\sim\\varPhi(x)$，$\\therefore X^2\\sim\\ch",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$f(x,y)=\\dfrac{1}{2\\pi}e^{-\\frac{1}{2}(x^2+y^2-2y+1)}=\\dfrac{1}{2\\pi}e^{-\\frac{1}{2}(x^2+(y-1)^2)}$，所以根据二维正态分布的形式，得到$(X,Y)\\sim(0,1;1,1;0)$。\n\n即$X\\sim\\varPhi(x)$，$Y-1\\sim\\varPhi(x)$，$\\therefore X^2\\sim\\chi^2(1)$，$(Y-1)^2\\sim\\chi^2(1)$，$\\therefore\\dfrac{X^2}{(Y-1)^2}\\sim F(1,1)$。"
+  },
+  {
+    "id": "e0014",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设随机变量$X\\\\sim t(n)$，$Y\\\\sim F(1,n)$，常数$C$使得$P\\\\{X>C\\\\}=0.6$，求$P\\\\{Y>C^2\\\\}$。",
+    "answer": "=F(1",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$X\\sim t(n)$，则$X=\\dfrac{X_1}{\\sqrt{Y_1/n}}\\sim t(n)$，其中$X_1\\sim N(0,1)$，$Y_1\\sim\\chi^2(n)$。\n\n$\\therefore X^2=\\dfrac{X_1^2}{Y_1/n}=\\dfrac{X_1^2/1}{Y_1/n}\\sim\\dfrac{\\chi^2(1)/1}{\\chi^2(n)/n}=F(1,n)$。\n\n又$P\\{Y>C^2\\}=1-P\\{Y\\leqslant C^2\\}$。$P\\{X^2>C^2\\}=1-P\\{X^2\\leqslant C^2\\}$。\n\n又$P\\{X^2\\leqslant C^2\\}=P\\{-C\\leqslant X\\leqslant C\\}$，根据偶函数性质$=0.2$。\n\n$\\therefore P\\{X^2>C^2\\}=0.8$。"
+  },
+  {
+    "id": "e0015",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_i$为来自区间$[-a,a]$上均匀分布的总体$X$的简单随机样本，求$a$的矩估计量。",
+    "answer": "$EX$不含有$a$，使用二阶矩$EX^2=DX+E^2X=\\dfrac{a^2}{3}=\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i^2$。\n\n解得$a=\\sqrt{\\dfr",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先矩估计就是$E(X^k)=\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i^k$。\n\n又对于均匀分布$X_i\\sim U(-a,a)$，$EX=\\dfrac{a+b}{2}=0$，$DX=\\dfrac{(b-a)^2}{12}=\\dfrac{a^2}{3}$。\n\n所以$EX$不含有$a$，使用二阶矩$EX^2=DX+E^2X=\\dfrac{a^2}{3}=\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i^2$。\n\n解得$a=\\sqrt{\\dfrac{3}{n}\\sum\\limits_{i=1}^nX_i^2}$。"
+  },
+  {
+    "id": "e0016",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设总体$X$的概率分布为：\\\\medskip \\\\begin{tabular}{c|cccc} \\\\hline $X$ & 0 & 1 & 2 & 3 \\\\\\\\ \\\\hline $P$ & $\\\\theta^2$ & $2\\\\theta(1-\\\\theta)$ & $\\\\theta^2$ & $1-2\\\\theta$ \\\\\\\\ \\\\hline \\\\end{tabular} \\\\medskip 其中$\\\\theta\\\\int\\\\left(0,\\\\dfrac{1}{2}\\\\right)$为未知参数，从总体$X$中抽取容量为8的一组样本，其样本值为3，1，3，0，3，1，2，3。求$\\\\theta$的最大似然估计值。",
+    "answer": "到$\\hat{\\theta}=\\dfrac{7-\\sqrt{13}}{12}$。\n\n\\subsubsection{连续型}",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "根据样本值，可以得出：\\medskip\n\n\\begin{tabular}{c|cccc}\n    \\hline\n    $X$ & 0 & 1 & 2 & 3 \\\\ \\hline\n    次数 & 1 & 2 & 1 & 4 \\\\ \\hline\n\\end{tabular} \\medskip\n\n将所有的概率相乘：$L(\\theta)l=(1-2\\theta)^4[2\\theta(1-\\theta)]^2\\cdot\\theta^2\\cdot\\theta^2=4\\theta^6(1-\\theta)^2(1-2\\theta)^4$。\n\n对其求对数：$\\ln L(\\theta)=\\ln4+6\\ln\\theta+2\\ln(1-\\theta)+4\\ln(1-2\\theta)$。\n\n对其求导：$\\dfrac{\\textrm{d}\\ln L(\\theta)}{\\textrm{d}\\theta}=\\dfrac{6}{\\theta}-\\dfrac{2}{1-\\theta}-\\dfrac{8}{1-2\\theta}=0$。解得$\\theta=\\dfrac{7\\pm\\sqrt{13}}{12}$。\n\n$0<\\theta<\\dfrac{1}{2}$，舍去正值，得到$\\hat{\\theta}=\\dfrac{7-\\sqrt{13}}{12}$。\n\n\\subsubsection{连续型}"
+  },
+  {
+    "id": "e0017",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设随机变量$X$在区间$[0,\\\\theta]$上服从均匀分布，$X_1,X_2,\\\\cdots,X_n$是来自$X$的简单随机样本，求$\\\\theta$的最大似然估计量$\\\\hat{\\\\theta}$",
+    "answer": "要求$\\theta>\\max x_i$）",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$X\\sim U(0,\\theta)$，$f(x)=\\left\\{\\begin{array}{ll}\n    \\dfrac{1}{\\theta}, & 0<x<\\theta \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$，$L(\\theta)=\\left\\{\\begin{array}{ll}\n    \\dfrac{1}{\\theta^n}, & 0<x_i<\\theta \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$。\n\n求$\\hat{\\theta}$即求$L(\\theta)$的最大值，$\\theta$的最小值。又必然$0<x_i<\\theta$。\n\n所以$\\hat{\\theta}=\\max x_i$，即$\\theta$的最大似然估计为$\\max\\limits_{1\\leqslant i\\leqslant n}X_i$。\n\n（取最大值而不是最小值是因为为保证所有$x_i$都在定义域上，$0<x_i<\\theta$，所以要求$\\theta>\\max x_i$）"
+  },
+  {
+    "id": "e0018",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_1,X_2,\\\\cdots X_n$是来自总体$X$的简单随机样本，$X$的概率密度函数$f(x)=\\\\dfrac{1}{2\\\\lambda}e^{-\\\\frac{\\\\vert x\\\\vert}{\\\\lambda}}$，$x\\\\in R$，$\\\\lambda>0$，求$\\\\lambda$的最大似然估计量$\\\\hat{\\\\lambda}$。",
+    "answer": "$\\lambda=\\dfrac{1}{n}\\sum\\limits_{i=1}^n\\vert x_i\\vert$。\n\n即$\\hat{\\lambda}=\\dfrac{1}{n}\\sum\\limits_{i",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because f(x)=\\dfrac{1}{2\\lambda}e^{-\\frac{\\vert x\\vert}{\\lambda}}$，$\\therefore L(\\lambda)=\\prod\\limits_{i=1}^n\\dfrac{1}{2\\lambda}e^{-\\frac{\\vert x\\vert}{\\lambda}}=\\left(\\dfrac{1}{2\\lambda}\\right)^ne^{-\\frac{1}{\\lambda}\\sum\\limits_{i=1}^n\\vert x_i\\vert}$。\n\n$\\ln L(\\lambda)=-n\\ln2-n\\ln\\lambda-\\dfrac{1}{\\lambda}\\sum\\limits_{i=1}^n\\vert x_i\\vert$，$\\dfrac{\\textrm{d}\\ln L(\\lambda)}{\\textrm{d}\\lambda}=-\\dfrac{n}{\\lambda}+\\dfrac{1}{\\lambda^2}\\sum\\limits_{i=1}^n\\vert x_i\\vert$。\n\n令$\\dfrac{\\textrm{d}\\ln L(\\lambda)}{\\textrm{d}\\lambda}=0$，则$\\dfrac{n}{\\lambda}=\\dfrac{1}{\\lambda^2}\\sum\\limits_{i=1}^n\\vert x_i\\vert$，解得$\\lambda=\\dfrac{1}{n}\\sum\\limits_{i=1}^n\\vert x_i\\vert$。\n\n即$\\hat{\\lambda}=\\dfrac{1}{n}\\sum\\limits_{i=1}^n\\vert X_i\\vert$。"
+  },
+  {
+    "id": "e0019",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "一批零件的长度服从正态分布$N(\\\\mu,\\\\sigma^2)$，其中$\\\\mu,\\\\sigma^2$均未知。现从中随机抽取16个零件，测得样本均值$\\\\overline{x}=20cm$，样本标准差为$s=1cm$，求$\\\\mu$的置信水平为0.90的置信区间。",
+    "answer": "置信空间为$\\left(20-\\dfrac{1}{4}t_{0.05}(15),20+\\dfrac{1}{4}t_{0.05}(15)\\right)$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\sigma$未知，所以使用$s$来求置信空间。\n\n置信空间为$(\\overline{X}-t_\\frac{\\alpha}{2}(n-1)\\dfrac{S}{\\sqrt{n}},\\overline{X}+t_\\frac{\\alpha}{2}(n-1)\\dfrac{S}{\\sqrt{n}})$。\n\n已知$\\overline{x}=20$，$s=1$，$n=16$，$\\alpha=1-0.90=0.1$。\n\n所以置信空间为$\\left(20-\\dfrac{1}{4}t_{0.05}(15),20+\\dfrac{1}{4}t_{0.05}(15)\\right)$。"
+  },
+  {
+    "id": "e0020",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设某群人的年龄$X\\\\sim N(\\\\mu,\\\\sigma^2)$，随机了解到五个人的年龄：39，54，61，72，59，求均值$\\\\mu$的置信度为$0.95$的置信区间。",
+    "answer": "代入得到$(42.13,71,87)$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$\\sigma$未知，所以使用样本方差，$\\dfrac{\\overline{X}-\\mu}{S/\\sqrt{n}}\\sim t(n-1)$。\n\n其中置信区间为$\\left(\\overline{X}-\\dfrac{S}{\\sqrt{n}}t_{0.025}(n-1),\\overline{X}+\\dfrac{S}{\\sqrt{n}}t_{0.025}(n-1)\\right)$。\n\n又$\\overline{x}=\\dfrac{1}{5}(39+54+61+72+59)=57$，$S=\\sqrt{\\dfrac{1}{n-1}\\sum\\limits_{i=1}^5(x_i-\\overline{x})}=12$。\n\n其中$t_{0.025}(n-1)=t_{0.025}(4)=2.7764$，所以代入得到$(42.13,71,87)$。"
+  },
+  {
+    "id": "e0021",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设考试成绩服从正态分布，随机抽取36位考生成绩，平均分为66.5分，标准差为15分。在显著性水平0.05下是否可以认为这次考试的平均水平为70分。",
+    "answer": "接受原假设。\n\n即可以认为平均水平为70分。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先提出假设$H_0:\\mu=70$，$H_1:\\mu\\neq70$。\n\n将$X$使用样本标准差进行标准化：$T=\\dfrac{\\overline{X}-\\mu}{S/\\sqrt{n}}\\sim t(n-1)$。\n\n给定显著性水平$0.05$，写出拒绝域$T<-t_{\\frac{\\alpha}{2}}(n-1)$或$T>t_{\\frac{\\alpha}{2}}(n-1)$。\n\n代入计算统计量，$\\vert T\\vert=\\left\\vert\\dfrac{\\overline{X}-\\mu}{S/\\sqrt{n}}\\right\\vert=\\left\\vert\\dfrac{66.5-70}{15/6}\\right\\vert=1.4$。\n\n又$t_{\\frac{\\alpha}{2}}(n-1)=t_{0.05}(35)=2.0301>1.4$不在拒绝域内，所以接受原假设。\n\n即可以认为平均水平为70分。"
+  },
+  {
+    "id": "e0022",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "设$X_1,X_2,\\\\cdots,X_{36}$是取自正态总体$N(\\\\mu,0.04)$的简单随机样本，其中$\\\\mu$为未知参数，即$\\\\overline{X}=\\\\dfrac{1}{36}\\\\sum\\\\limits_{i=1}^{36}X_i$，若对于检验问题$H_0:\\\\mu\\\\leqslant0.5$，$H_1:\\\\mu>0.5$在显著性水平$\\\\alpha=0.05$，取得检验拒绝域$D=\\\\{(x_1,x_2,\\\\cdots,x_{36}):\\\\overline{x}>C\\\\}$，求$C$。",
+    "answer": "=N",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "当$H_0$成立，则$X\\sim N(0.5,0.04)$，$\\overline{X}\\sim N(0.5,0.04\\div36)=N\\left(\\dfrac{1}{2},\\dfrac{1}{900}\\right)$。\n\n$\\alpha=0.05=P\\{$拒绝$H_0|H_0$成立$\\}=P\\{\\overline{X}>C\\}=1-P\\{\\overline{X}\\leqslant C\\}=1-\\varPhi((C-0.5)\\times30)=1-\\varPhi(30C-15)$。\n\n$\\therefore\\varPhi(30C-15)=0.95=\\varPhi(1.645)$，即$30C-15=1.645$，$C=0.5548$。"
+  },
+  {
+    "id": "e0023",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "已知某机器生产出来的零件长度$X$（单位：$cm$）服从正态分布$N(\\\\mu,\\\\delta^2)$，现从中随意抽取容量为16的一个样本，测得样本均值$\\\\overline{x}=10$，样本方差$s^2=0.16$，$t_{0.025}(15)=2.132$。 (1)求总体均值$\\\\mu$置信水平为0.95的置信区间。 (2)在显著性水平$0.05$下检验假设$H_0:\\\\mu=9.7$，$H_1:\\\\mu\\\\neq9.7$。 (1)",
+    "answer": "假设$H_0$拒绝。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "根据公式直接解出置信空间$(10-0.1t_{0.025}(15),10+0.1t_{0.025}(15))=(9.7868,10.2132)$。\n\n(2)解：根据假设$H_0$，得到拒绝域$(-\\infty,9.4868]\\cup[9.9132,+\\infty)$。\n\n又$\\overline{X}=10$在拒绝域$[9.9132,+\\infty)$上，所以假设$H_0$拒绝。"
+  },
+  {
+    "id": "e0024",
+    "subject": "概率论",
+    "chapter": "数理统计",
+    "question_text": "假定$X$是连续型随机变量，$U$是对$X$的一次观测值，关于其概率密度$f(x)$有如下假设： $H_0:f(x)=\\\\left\\\\{\\\\begin{array}{ll} \\\\dfrac{1}{2}, & 0\\\\leqslant x\\\\leqslant2 \\\\\\\\ 0, & \\\\text{其他} \\\\end{array}\\\\right.$，$H_1:f(x)=\\\\left\\\\{\\\\begin{array}{ll} \\\\dfrac{x}{2}, & 0\\\\leqslant x\\\\leqslant2 \\\\\\\\ 0, & \\\\text{其他} \\\\end{array}\\\\right.$。 检验规则：当事件$V=\\\\left\\\\{U>\\\\dfrac{3}{2}\\\\right\\\\}$出现时，否定假设$H_0$，接受$H_1$，求犯第一类错误概率和第二类错误概率$\\\\alpha\\\\beta$。",
+    "answer": "=P",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数理统计"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\alpha=P\\left\\{U>\\dfrac{3}{2}\\bigg|H_0\\right\\}=\\displaystyle{\\int_\\frac{3}{2}^2\\dfrac{1}{2}\\,\\textrm{d}x=\\dfrac{1}{4}}$。\n\n$\\beta=P\\left\\{U\\leqslant\\dfrac{3}{2}\\bigg|H_1\\right\\}=\\displaystyle{\\int_0^{\\frac{3}{2}}\\dfrac{x}{2}\\,\\textrm{d}x=\\dfrac{9}{16}}$。\n\n\\end{document}"
+  },
+  {
+    "id": "e0025",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "设随机变量$X$的分布函数$F(x)$，判断$F(ax)$、$F(x^2+1)$、$F(x^3-1)$、$F(\\\\vert X\\\\vert)$是否可以做出分布函数。",
+    "answer": "=a",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "逐个分析$F(g(x))$中的$g(x)$走向。\n\n$\\lim\\limits_{x\\to+\\infty}F(ax)=a\\lim\\limits_{x\\to+\\infty}F(x)=a$，不满足。\n\n由于$x^2+1$在$x\\to-\\infty$的趋向为$+\\infty$而不是$-\\infty$，$\\lim\\limits_{x\\to-\\infty}F(x^2+1)=\\lim\\limits_{x\\to+\\infty}F(x^2+1)=\\lim\\limits_{x\\to-\\infty}F(x)=1\\neq0$，不满足。\n\n$F(x^3-1)$满足分布函数的四个条件，$g(x)=x^3-1$在两边趋向与原函数一致。\n\n$F(\\vert x\\vert)$的$g(x)=\\vert x\\vert$在$x\\to-\\infty$的趋向为$+\\infty$而不是$-\\infty$，不满足$\\lim\\limits_{x\\to-\\infty}F(x)=0$，不满足。"
+  },
+  {
+    "id": "e0026",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$X$的概率密度函数$f(x)$满足$f(1+x)=f(1-x)$，且$\\\\int_1^2f(x)\\\\,\\\\textrm{d}x=0.3$，则求分布函数$F(0)$的值。",
+    "answer": "$\\int_1^2f(x)\\,\\textrm{d}x=\\int_0^1f(x)\\,\\textrm{d}x=0.3$。\n\n$F(0)=\\int_{-\\infty}^0f(x)\\,\\textrm{d}x=",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$f(1+x)=f(1-x)$，所以$f(x)$关于$x=1$对称。所以$\\int_1^{+\\infty}f(x)\\,\\textrm{d}x=\\int_1^{-\\infty}f(x)\\,\\textrm{d}x=\\dfrac{1}{2}$。\n\n所以$\\int_1^2f(x)\\,\\textrm{d}x=\\int_0^1f(x)\\,\\textrm{d}x=0.3$。\n\n$F(0)=\\int_{-\\infty}^0f(x)\\,\\textrm{d}x=1-\\int_0^{+\\infty}f(x)\\,\\textrm{d}x=1-\\int_1^{+\\infty}f(x)\\,\\textrm{d}x-\\int_0^1f(x)\\,\\textrm{d}x=0.2$。"
+  },
+  {
+    "id": "e0027",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$X$的概率密度函数$f(x)$，判断$f(2x)$、$f(2-x)$是否可以作出概率密度函数。",
+    "answer": "=-",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\int_{-\\infty}^{+\\infty}f(2x)\\,\\textrm{d}x=\\dfrac{1}{2}\\int_{-\\infty}^{+\\infty}f(2x)\\,\\textrm{d}(2x)=\\dfrac{1}{2}\\neq1$，不满足。\n\n$\\int_{-\\infty}^{+\\infty}f(2-x)\\,\\textrm{d}x=-\\int_{-\\infty}^{+\\infty}f(2-x)\\,\\textrm{d}(2-x)$，令$2-x=t$，则$x\\to-\\infty$时$t\\to+\\infty$，$x\\to+\\infty$时$t\\to-\\infty$，$=-\\int_{+\\infty}^{-\\infty}f(t)\\,\\textrm{d}t=\\int_{-\\infty}^{+\\infty}f(t)\\,\\textrm{d}t=1$。"
+  },
+  {
+    "id": "e0028",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$X$的分布函数和概率密度函数为$F(x)$，$f(x)$，求$-X$的分布函数和概率密度。",
+    "answer": "=P",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$F(x)=P\\{X\\leqslant x\\}$，则$F'(-x)=\\{-X\\leqslant x\\}$，即$F'(-x)=P\\{X\\geqslant-x\\}=1-P\\{X\\leqslant-x\\}=1-F(-x)$。\n\n对$F'(-x)$进行求导：$[1-F(-x)]'=f(-x)$。"
+  },
+  {
+    "id": "e0029",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$X$的概率密度为$f(x)$，求随机变量$2X+3$的概率密度函数。",
+    "answer": "其概率密度为$f_Y(x)=(\\int_{-\\infty}^{\\frac{x-3}{2}}f(x)\\,\\textrm{d}x)'=\\dfrac{1}{2}f\\left(\\dfrac{x-3}{2}\\r",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "设$Y=2X+3$，所以$Y$的分布函数$F_Y(y)$为$F_Y(x)=P\\{Y\\leqslant x\\}=P\\{2X+3\\leqslant x\\}=P\\left\\{X\\leqslant\\dfrac{x-3}{2}\\right\\}=\\int_{-\\infty}^{\\frac{t-3}{2}}f(x)\\,\\textrm{d}x$。\n\n所以其概率密度为$f_Y(x)=(\\int_{-\\infty}^{\\frac{x-3}{2}}f(x)\\,\\textrm{d}x)'=\\dfrac{1}{2}f\\left(\\dfrac{x-3}{2}\\right)$。"
+  },
+  {
+    "id": "e0030",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知随机变量$X$的概率密度为$f(x)=\\\\left\\\\{\\\\begin{array}{ll} 2x, & 0<x<1 \\\\\\\\ 0, \\\\text{其他} \\\\end{array}\\\\right.$，$Y$表示对$X$进行3次独立重复试验中出现事件$\\\\left\\\\{X\\\\leqslant\\\\dfrac{1}{2}\\\\right\\\\}$，求$P\\\\{Y=2\\\\}$。\\\\medskip",
+    "answer": "$Y\\sim B(3,p)$。\n\n只用求出这个$p$即$\\left\\{X\\leqslant\\dfrac{1}{2}\\right\\}$的概率就可以了。又已知$f(x)$。\n\n$\\therefore p=",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知对$X$进行独立重复试验，表示这个进行的是伯努利试验，从而$Y\\sim B(n,p)$。又是3次，所以$Y\\sim B(3,p)$。\n\n只用求出这个$p$即$\\left\\{X\\leqslant\\dfrac{1}{2}\\right\\}$的概率就可以了。又已知$f(x)$。\n\n$\\therefore p=\\left\\{X\\leqslant\\dfrac{1}{2}\\right\\}=\\int_0^\\frac{1}{2}2x\\,\\textrm{d}x=\\dfrac{1}{4}$。$\\therefore P\\{Y=2\\}=B\\left(3,\\dfrac{1}{4}\\right)=\\dfrac{9}{64}$。\n\n\\subsubsection{泊松分布}\n\n$P\\{X=k\\}=\\dfrac{\\lambda^k}{k!}e^{-\\lambda}$（$k=0,1,\\cdots,n$，$\\lambda>0$），$X\\sim P(\\lambda)$。"
+  },
+  {
+    "id": "e0031",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "设一本书的各页印刷错误的个数$X$服从泊松分布。已知只有一个和只有两个印刷错误的页数相同，则随机抽查的4页中无印刷错误的概率$p$为？",
+    "answer": "随机抽4页都无错误的概率为$[P\\{X=0\\}]^4=e^{-8}$。\n\n\\subsubsection{几何分布}\n\n$P\\{X=k\\}=(1-p)^{k-1}p$（$k=0,1,\\cdots,n$，",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because P\\{X=1\\}=P\\{X=2\\}$，$\\therefore\\dfrac{\\lambda^1}{1!}e^{-\\lambda}=\\dfrac{\\lambda^2}{2!}e^{-\\lambda}$，$\\lambda=2$。\n\n由于随机抽四页类似于伯努利试验是相互独立的，所以随机抽4页都无错误的概率为$[P\\{X=0\\}]^4=e^{-8}$。\n\n\\subsubsection{几何分布}\n\n$P\\{X=k\\}=(1-p)^{k-1}p$（$k=0,1,\\cdots,n$，$0<p<1$），$X\\sim G(p)$。"
+  },
+  {
+    "id": "e0032",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "袋中有8个球，其中3个白球5个黑球，现在任意从中取出4个球，若四个球中有2个黑球和2个白球则试验停止，否则将其放回袋中重新抽取直到满足条件，用$X$表示试验次数，则求$P\\\\{X=k\\\\}$。",
+    "answer": "=k",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "由题目的停止，则说明这个题目的概率是服从几何分布的，最重要的就是求出单次满足事件概率$p$。\n\n根据组合和乘法原理，$p=\\dfrac{C_3^2C_5^2}{C_8^4}=\\dfrac{3}{7}$。\n\n则$P\\{X=k\\}=\\left(\\dfrac{4}{7}\\right)^{k-1}\\cdot\\dfrac{3}{7}$。"
+  },
+  {
+    "id": "e0033",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知随机变量$X$的概率密度为$f(x)=\\\\left\\\\{\\\\begin{array}{ll} 2^{-x}\\\\ln2, & x>0 \\\\\\\\ 0, \\\\text{其他} \\\\end{array}\\\\right.$，对$X$进行独立重复观测，直到第2个大于3的观测值出现时停止，记$Y$为观测次数，求$Y$的概率分布。",
+    "answer": "还要乘$(k-1)$。\n\n$\\therefore P\\{Y=k\\}=(k-1)\\left(\\dfrac{1}{8}\\right)^2\\cdot\\left(\\dfrac{7}{8}\\right)^{k-",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "由题目直到就停止，知道$Y\\sim G(p)$。\n\n又$p=P\\{X\\geqslant3\\}=\\int_3^{+\\infty}2^{-x}\\ln2\\,\\textrm{d}x=\\dfrac{1}{8}$\n\n这是对几何分布的变形，首先进行$k$次试验，第$k$次成功，所以要乘$p$，而因为是第2个成功，所以前面的$k-1$次中有$k-2$次失败和一次成功，所以一共$p^2(1-k)^{k-2}$。因为前面的成功的一次在$k-1$中任意一个地方就可以了，所以一共有$k-1$中可能性，要考虑到排列，所以还要乘$(k-1)$。\n\n$\\therefore P\\{Y=k\\}=(k-1)\\left(\\dfrac{1}{8}\\right)^2\\cdot\\left(\\dfrac{7}{8}\\right)^{k-2}$。\n\n\\subsubsection{均匀分布}\n\n$f(x)=\\left\\{\\begin{array}{ll}\n    \\dfrac{1}{b-a}, & a<x<b \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$，$F(x)=\\left\\{\\begin{array}{ll}\n    0, & x<a \\\\\n    \\dfrac{x-a}{b-a}, & a\\leqslant x<b \\\\\n    1, & x\\geqslant b\n\\end{array}\\right.$，$X\\sim U(a,b)$。"
+  },
+  {
+    "id": "e0034",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知随机变量$X\\\\sim U(a,b)$（$a>0$）且$P\\\\{0<X<3\\\\}=\\\\dfrac{1}{4}$，$P\\\\{X>4\\\\}=\\\\dfrac{1}{2}$，求$X$的概率密度以及$P\\\\{1<X<5\\\\}$。",
+    "answer": "必然在右边。\n\n$\\therefore P\\{a<X<3\\}=\\dfrac{1}{4}$，$P\\{<3X<4\\}=1-\\dfrac{1}{4}-\\dfrac{1}{2}=\\dfrac{1}{4}$，$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because P\\{X>4\\}=\\dfrac{1}{2}$，4在其区间中点上，$\\dfrac{a+b}{2}=4$。\n\n$\\because P\\{0<X<3\\}=\\dfrac{1}{4}$，$3$若在$a$左边则概率为0，所以必然在右边。\n\n$\\therefore P\\{a<X<3\\}=\\dfrac{1}{4}$，$P\\{<3X<4\\}=1-\\dfrac{1}{4}-\\dfrac{1}{2}=\\dfrac{1}{4}$，$\\dfrac{4-3}{b-a}=\\dfrac{1}{4}$。\n\n解得$a=2$，$b=6$，$X\\sim U(2,6)=f(x)=\\left\\{\\begin{array}{ll}\n    \\dfrac{1}{4}, & 2<x<6 \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$。\n\n$P\\{1<X<5\\}=\\dfrac{5-2}{6-2}=\\dfrac{3}{4}$。"
+  },
+  {
+    "id": "e0035",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知随机变量$X$在区间$[0,1]$上服从均匀分布，在$X=x$（$0<x<1$）的条件下随机变量$Y$在区间$[0,x]$上服从均匀分布。 (1)$(X,Y)$的概率密度。",
+    "answer": "$P\\{X+Y>1\\}=\\iint\\limits_D\\dfrac{1}{x}\\textrm{d}\\sigma$，$D=x+y>1\\cap0<y<x<1$。$\\iint\\limits_D\\dfrac{1",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$X$在区间$[0,1]$上服从均匀分布，则$X\\sim f_X(x)=\\left\\{\\begin{array}{ll}\n    1, & 0\\leqslant x\\leqslant1 \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$。\n\n$Y$在$X=x$下均匀分布，则$f_{Y|X}(y|x)=\\left\\{\\begin{array}{ll}\n    \\dfrac{1}{x}, & 0<y<x<1 \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$。\n\n$(X,Y)$联合概率=条件概率×边缘概率。\n\n即$f(x,y)=f_{Y|X}(y|x)f_X(x)=\\left\\{\\begin{array}{ll}\n    \\dfrac{1}{x}, & 0<y<x<1 \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$。\n\n(2)$Y$的概率密度。\n\n解：首先求$Y$的边缘概率密度，就需要积$X$。然后求$y$的区间，$XY$的联合区间是横坐标$[0,1]$到纵坐标$[0,1]$的下三角形，则$y\\in[0,1]$。\n\n然后求$Y$就在联合概率密度所规定的区间中画一条$y=y_0$的线，从左先交到的是$y=x$，所以下限就是$y$，后交的是$x=1$，所以上限为1。最后将$y$的联合分布函数放在中间，得到$f_Y(y)=\\left\\{\\begin{array}{ll}\n    \\displaystyle{\\int_y^1\\dfrac{1}{x}\\textrm{d}x}=-\\ln y, & 0<y<x<1 \\\\\n    0, & \\text{其他}\n\\end{array}\\right.$。\n\n(3)概率$P\\{X+Y>1\\}$。\n\n解：求$P\\{X+Y>1\\}$就是求一个区间的概率值，即$P\\{(X,Y)\\in G\\}=\\iint\\limits_Gf(x,y)\\,\\textrm{d}x\\textrm{d}y$。\n\n\\begin{multicols}{2}\n    \n    \\begin{tikzpicture}[scale=2]\n        \\draw[-latex](-0.25,0) -- (1.25,0) node[below]{$x$};\n        \\draw["
+  },
+  {
+    "id": "e0036",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知随机变量$X\\\\sim E(1)$，$a$为常数且大于0，求$P\\\\{X\\\\leqslant a+1|X>a\\\\}$。",
+    "answer": "=1-",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$P\\{X\\leqslant a+1|X>a\\}=\\dfrac{P\\{a<X\\leqslant a+1\\}}{P\\{X>a\\}}=\\dfrac{\\int_a^{a+1}e^{-x}\\,\\textrm{d}x}{\\int_a^{+\\infty}e^{-x}\\,\\textrm{d}x}=1-\\dfrac{1}{e}$。\n\n也可以根据指数分布的无记忆性：$P\\{X\\leqslant a+1|X>a\\}=1-P\\{X>a+1|X>a\\}=1-P\\{X>1\\}=P\\{X\\leqslant1\\}=F(1)=1-\\dfrac{1}{e}$。"
+  },
+  {
+    "id": "e0037",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$X$服从参数为1的指数分布，求$P\\\\{3>X>2|X>1\\\\}$。 已知$F(X<x)=1-e^{-\\\\lambda x}$，则$F(X>x)=e^{-\\\\lambda x}$。且$2<X<3\\\\cap 1<X=2<X<3$。 则$P\\\\{3>X>2|X>1\\\\}=\\\\dfrac{P\\\\{3>X>2\\\\}}{P\\\\{X>1\\\\}}=\\\\dfrac{P\\\\{X>2\\\\}-P\\\\{X>3\\\\}}{P\\\\{X>1\\\\}}=\\\\dfrac{e^{-2}-e^{-3}}{e^{-1}}=e^{-1}-e^{-2}$。 \\\\subsubsection{正态分布} $f(x)=\\\\dfrac{1}{\\\\sqrt{2\\\\pi}\\\\sigma}e^{-\\\\frac{(x-\\\\mu)^2}{2\\\\sigma^2}}$（$-\\\\infty<x<+\\\\infty$，$-\\\\infty<\\\\mu<+\\\\infty$，$\\\\sigma>0$），$X\\\\sim N(\\\\mu,\\\\sigma^2)$。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0038",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知随机变量$X\\\\sim N(0,1)$，对给定的$\\\\alpha$（$0<\\\\alpha>1$），数$\\\\mu_\\\\alpha$满足$P\\\\{X>\\\\mu_\\\\alpha\\\\}=\\\\alpha$，若$P\\\\{\\\\vert X\\\\vert<x\\\\}=\\\\alpha$，求$x$。",
+    "answer": "两边的面积各为$\\dfrac{1-\\alpha}{2}$，$P\\{X<x\\}=P\\{X>x\\}=\\dfrac{1-\\alpha}{2}$。\n\n$\\because$面积为$\\alpha$的下标为$\\al",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$P\\{X>\\mu_\\alpha\\}=\\alpha$即表示$\\mu_\\alpha$为标准正态分布的上$\\alpha$分位点。\n\n又$P\\{\\vert X\\vert<x\\}=\\alpha$，即$-x<X<x$的面积为$\\alpha$，所以两边的面积各为$\\dfrac{1-\\alpha}{2}$，$P\\{X<x\\}=P\\{X>x\\}=\\dfrac{1-\\alpha}{2}$。\n\n$\\because$面积为$\\alpha$的下标为$\\alpha$，$\\therefore$面积为$\\dfrac{1-\\alpha}{2}$的下标为$\\dfrac{1-\\alpha}{2}$，$x=\\mu_\\frac{1-\\alpha}{2}$。"
+  },
+  {
+    "id": "e0039",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$X$服从$U(0,2)$，求随机变量$Y=X^2$在$(0,4)$内的概率分布密度$f_Y(y)$。",
+    "answer": "$f(x)=\\dfrac{1}{2}$。\n\n则概率分布函数就是概率密度的积分，此时已经将$Y$变为了关于$X$的积分，$=\\int_{-\\sqrt{y}}^{\\sqrt{y}}f(x)\\,\\textr",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "求概率分布密度函数，可以求出其积分概率分布函数，$F_Y(y)=P\\{Y\\leqslant y\\}=P\\{X^2\\leqslant y\\}=P\\{-\\sqrt{y}\\leqslant X\\leqslant\\sqrt{y}\\}$，又$X\\sim U(0,2)$，所以$f(x)=\\dfrac{1}{2}$。\n\n则概率分布函数就是概率密度的积分，此时已经将$Y$变为了关于$X$的积分，$=\\int_{-\\sqrt{y}}^{\\sqrt{y}}f(x)\\,\\textrm{d}x=$$\\displaystyle{2\\int_0^{\\sqrt{y}}\\dfrac{1}{2}\\,\\textrm{d}x}=\\dfrac{\\sqrt{y}}{2}$。即$F_Y(y)=\\dfrac{\\sqrt{y}}{2}$。\n\n则$f_Y(y)=F'_Y(y)=\\dfrac{1}{4\\sqrt{y}}$。"
+  },
+  {
+    "id": "e0040",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知二维随机变量$(X_1,X_2)$的概率密度函数$f_1(x_1,x_2)$，求$Y_1=2X_1$，$Y_2=\\\\dfrac{1}{3}X_2$的联合概率密度$f_2(y_1,y_2)$。",
+    "answer": "$f_2(y_1,y_2)=\\dfrac{3}{2}f_1(\\dfrac{y_1}{2},3y_2)$。\n\n\\paragraph{联合概率函数} \\leavevmode \\medskip\n\n已知联合概",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "概率形式：设$F_2(y_1,y_2)=P\\{Y_1\\leqslant y_1,Y_2\\leqslant y_2\\}=P\\{2X_1\\leqslant y_1,\\dfrac{1}{3}X_2\\leqslant y_2\\}=P\\{X_1\\leqslant\\dfrac{y_1}{2},X_2\\leqslant3y_2\\}=F_1(\\dfrac{y_1}{2},3y_2)$。所以$f_2(y_1,y_2)=\\dfrac{3}{2}f_1(\\dfrac{y_1}{2},3y_2)$。\n\n积分形式：已知$\\int_{-\\infty}^{+\\infty}\\textrm{d}x_1\\int_{-\\infty}^{+\\infty}f(x_1,x_2)\\,\\textrm{d}x_2=1$，将$x_1=\\dfrac{y_1}{2}$，$x_2=3y_2$代入$\\int_{-\\infty}^{+\\infty}\\textrm{d}(\\dfrac{y_1}{2})\\int_{-\\infty}^{+\\infty}f(\\dfrac{y_1}{2},3y_2)\\,\\textrm{d}(3y_2)=1$，$\\dfrac{3}{2}\\int_{-\\infty}^{+\\infty}\\textrm{d}y_1\\int_{-\\infty}^{+\\infty}f(\\dfrac{y_1}{2},3y_2)\\,\\textrm{d}y_2=1$，所以$f_2(y_1,y_2)=\\dfrac{3}{2}f_1(\\dfrac{y_1}{2},3y_2)$。\n\n\\paragraph{联合概率函数} \\leavevmode \\medskip\n\n已知联合概率密度，可以求概率函数，通过二重积分的方式，图像面积即是概率。"
+  },
+  {
+    "id": "e0041",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "已知概率密度为$f(x,y)=\\\\left\\\\{\\\\begin{array}{ll} 6, & 0<x^2<y<x<1 \\\\\\\\ 0, & \\\\text{其他} \\\\end{array}\\\\right.$，\\\\\\\\求$P\\\\left\\\\{X>\\\\dfrac{1}{2}\\\\right\\\\}$，$P\\\\left\\\\{Y<\\\\dfrac{1}{2}\\\\right\\\\}$。",
+    "answer": "=3]",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "\\begin{minipage}{0.45\\linewidth}\n    \\begin{tikzpicture}[scale=3]\n        \\begin{scope}\n            \\clip(0.5,0)rectangle(1,1);\n            \\draw[black, thick, smooth, domain=0:1,fill=gray!20] plot (\\x, {\\x*\\x});\n        \\end{scope}\n        \\draw[black, thick, smooth, domain=0:1] plot (\\x, {\\x*\\x});\n        \\draw[black, thick, smooth, domain=0:1] plot (\\x, {\\x});\n        \\draw[black, thick](1/2,1) -- (1/2,0) node[below]{$\\frac{1}{2}$};\n        \\draw[-latex](0,0) -- (1.25,0) node[below]{$x$};\n        \\draw[-latex](0,-0.25) -- (0,1.25) node[above]{$y$};\n        \\filldraw[black] (0,0) node[below]{$O$};\n        \\draw[black, thick](1,1) -- (0,1) node[left]{$1$};\n        \\draw[black, thick](1,1) -- (1,0) node[below]{$1$};\n        \\filldraw[black] (0.25,0.75) node{$y=x$};\n        \\filldraw[black] (0.75,0.25) node{$y=x^2$};\n    \\end{tikzpicture}\n\\end{minipage}\n\\hfill\n\\begin{minipage}{0.45\\linewidth}\n    \\begin{tikzpicture}[scale=3]\n        \\begin{scope}\n            \\clip(0,0)rectangle(1,0.5);\n"
+  },
+  {
+    "id": "e0042",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "如果二维随机变量$(X,Y)$的分布函数为$F(x,y)=\\\\\\\\\\\\left\\\\{\\\\begin{array}{ll} 1-e^{-\\\\lambda_1x}-e^{-\\\\lambda_2y}+e^{-\\\\lambda_1x-\\\\lambda_2y-\\\\lambda12\\\\max\\\\{x,y\\\\}}, & \\\\lambda_1,\\\\lambda_2,\\\\lambda_{12}>0,x>0,y>0 \\\\\\\\ 0, & \\\\text{其他} \\\\end{array}\\\\right.$，\\\\\\\\求$XY$各自的边缘分布函数。",
+    "answer": "=x",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\lim\\limits_{x\\to+\\infty}\\max\\{x,y\\}=x=+\\infty$，$\\lim\\limits_{y\\to+\\infty}\\max\\{x,y\\}=y=+\\infty$。\n\n$F_X(x)=F(x,+\\infty)=1-e^{-\\lambda_1x}-0+0=1-e^{-\\lambda_1x}$，$x>0$，当其他时$=0$。\n\n$F_Y(y)=F(+\\infty,y)=1-0-e^{-\\lambda_2y}+0=1-e^{-\\lambda_2x}$，$y>0$，当其他时$=0$。\n\n\\paragraph{边缘概率密度} \\leavevmode \\medskip\n\n往往是已知联合概率密度$f(x,y)$求边缘概率密度$f_X(x)$、$f_Y(y)$，需要将联合概率密度对另一个变量进行上下限无穷的一重积分，如果$xy$有上下限的定义域则需要画出图像取交集。\n\n确定上下限时要注意，如果求$x$的边缘分布对$y$积分，表示$x$不动，求$y$的范围，求$y$的则反之。"
+  },
+  {
+    "id": "e0043",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "求$f(x,y)=\\\\left\\\\{\\\\begin{array}{ll} \\\\dfrac{5}{4}(x^2+y), & 0<y<1-x^2 \\\\\\\\ 0, \\\\text{其他} \\\\end{array}\\\\right.$的边缘概率密度。 \\\\begin{minipage}{0.5\\\\linewidth} 如果求$x$的边缘概率密度，则$y$的取值范围为最底部的0到函数$1-x^2$。如果求$y$的边缘密度，则发现$D$为对称函数，所以可以拆为左右两个部分，$x$的范围是$0$到函数$\\\\sqrt{1-y}$。 \\\\end{minipage} \\\\hfill \\\\begin{minipage}{0.4\\\\linewidth} \\\\begin{tikzpicture}[scale=2] \\\\draw[black, thick, smooth, domain=-1:1,fill=gray!20] plot (\\\\x, {-\\\\x*\\\\x+1}); \\\\draw[-latex](-1.25,0) -- (1.25,0) node[below]{$x$}; \\\\draw[-latex](0,-0.25) -- (0,1.25) node[above]{$y$}; \\\\filldraw[black] (0,0) node[below]{$O$}; \\\\draw[black](1,-0.15) node{$1$}; \\\\draw[black](-1,-0.15) node{$-1$}; \\\\draw[black](0,1.15) node{$1$}; \\\\draw[black, thick, smooth, domain=-1.1:1.1] plot (\\\\x, {-\\\\x*\\\\x+1}); \\\\draw[black](0.2,0.5) node{$D$}; \\\\end{tikzpicture} \\\\end{minipage} $f_X(x)=\\\\dfrac{5}{4}\\\\int_0^{1-x^2}x^2+y\\\\,\\\\textrm{d}y=\\\\dfrac{5}{4}\\\\left(x^2y+\\\\dfrac{y^2}{2}\\\\right)\\\\bigg\\\\vert_0^{1-x^2}=-\\\\dfrac{5}{8}x^4+\\\\dfrac{5}{8}$。 $f_Y(y)=2\\\\dfrac{5}{4}\\\\int_0^{\\\\sqrt{1-y}}x^2+y\\\\,\\\\textrm{d}x=\\\\dfrac{5}{2}\\\\left(\\\\dfrac{x^3}{3}+yx\\\\right)\\\\bigg\\\\vert_0^{\\\\sqrt{1-y}}=\\\\dfrac{5}{6}(1-y)\\\\sqrt{1-y}+\\\\dfrac{5}{2}y\\\\sqrt{1-y}$。 \\\\subsubsection{二维均匀分布} \\\\subsubsection{二维正态分布} 概率密度为： {\\\\fontsize{8.2pt}{10pt}$f(x,y)=\\\\dfrac{1}{2\\\\pi\\\\sigma_1\\\\sigma_2\\\\sqrt{1-\\\\rho^2}}\\\\exp\\\\left\\\\{-\\\\dfrac{1}{2(1-\\\\rho^2)}\\\\left[\\\\left(\\\\dfrac{x-\\\\mu_1}{\\\\sigma_1}\\\\right)^2-2\\\\rho\\\\left(\\\\dfrac{x-\\\\mu_1}{\\\\sigma_1}\\\\right)\\\\left(\\\\dfrac{y-\\\\mu_2}{\\\\sigma_2}\\\\right)+\\\\left(\\\\dfrac{y-\\\\mu_2}{\\\\sigma_2}\\\\right)^2\\\\right]\\\\right\\\\}$} 其中$\\\\mu_1,\\\\mu_2\\\\in R$，$\\\\sigma_1,\\\\sigma_2>0$，$-1<\\\\rho<1$。 \\\\paragraph{正态分布性质} \\\\leavevmode \\\\medskip",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0044",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "$(X,Y)\\\\sim N(\\\\mu_1,\\\\mu_2;\\\\sigma_1^2,\\\\sigma_2^2;0)$，分布函数为$F(x,y)$，已知$F(\\\\mu_1,y)=\\\\dfrac{1}{4}$，求$y$。",
+    "answer": "=0$时",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "当$\\rho=0$时，$F(X,Y)=\\dfrac{1}{2\\pi\\sigma_1\\sigma_2}e^{-\\frac{1}{2}\\left[\\left(\\frac{x-\\mu_1}{\\sigma_1}\\right)^2+\\left(\\frac{y-\\mu_2}{\\sigma_2}\\right)^2\\right]}\\\\=F_X(x)F_Y(y)$，即$XY$相互独立。\n\n$X\\sim N(\\mu_1,\\sigma_1)$，$Y\\sim N(\\mu_2,\\sigma_2)$，$F_X(\\mu_1)=P\\{X\\leqslant\\mu_1\\}=\\dfrac{1}{2}$。\n\n$F(\\mu_1,y)=F_X(\\mu_1)F_Y(y)=\\dfrac{1}{2}F_Y(y)=\\dfrac{1}{4}$，则$F_Y(y)=\\dfrac{1}{2}$，即根据性质$y=\\mu_2$。\n\n\\paragraph{标准正态化} \\leavevmode \\medskip\n\n$F(x)=P\\{X\\leqslant x\\}=P\\left\\{\\dfrac{X-\\mu}{\\sigma}\\leqslant\\dfrac{x-\\mu}{\\sigma}\\right\\}=\\varPhi\\left(\\dfrac{x-\\mu}{\\sigma}\\right)$。\n\n即将$XY$的相关系数消去。"
+  },
+  {
+    "id": "e0045",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "设随机变量$(X,Y)$的分布函数为$\\\\varPhi(2x+1)\\\\cdot\\\\varPhi(2y-1)$，其中$\\\\varPhi(x)$为标准正态分布函数，求$(X,Y)$的分布函数。",
+    "answer": "根据标准化公式：$\\varPhi(2x+1)\\cdot\\varPhi(2y-1)=\\varPhi\\left(\\dfrac{x+\\dfrac{1}{2}}{\\dfrac{1}{2}}\\right)\\va",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "由分布函数为$\\varPhi(2x+1)\\varPhi(2y-1)$是$X$的分布函数和$Y$的分布函数的乘积，所以可知$XY$相互独立。\n\n所以根据标准化公式：$\\varPhi(2x+1)\\cdot\\varPhi(2y-1)=\\varPhi\\left(\\dfrac{x+\\dfrac{1}{2}}{\\dfrac{1}{2}}\\right)\\varPhi\\left(\\dfrac{y-\\dfrac{1}{2}}{\\dfrac{1}{2}}\\right)$。\n\n$\\therefore(X,Y)\\sim N\\left(-\\dfrac{1}{2},\\dfrac{1}{2};\\dfrac{1}{4},\\dfrac{1}{4};0\\right)$。"
+  },
+  {
+    "id": "e0046",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "随机变量$(X,Y)$的概率密度函数$f(x,y)=\\\\left\\\\{\\\\begin{array}{ll} e^{-y}, & 0<x<y \\\\\\\\ 0, \\\\text{其他} \\\\end{array}\\\\right.$，求$P\\\\{X+Y\\\\leqslant1\\\\}$。",
+    "answer": "$P\\{X+Y\\leqslant1\\}=\\iint\\limits_De^{-y}\\,\\textrm{d}x\\textrm{d}y=\\int_0^{\\frac{1}{2}}\\textrm{d}x\\int",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "根据$X+Y\\leqslant1$和$0<x<y$划分区域：\n\n\\begin{multicols}{2}\n    \n    \\begin{tikzpicture}[scale=2]\n        \\draw[-latex](-0.25,0) -- (1.25,0) node[below]{$x$};\n        \\draw[-latex](0,-0.25) -- (0,1.25) node[above]{$y$};\n        \\filldraw[black] (0,0) node[below]{$O$};\n        \\draw[black](1,-0.15) node{$1$};\n        \\draw[black](1,0) -- (0,1) node[left]{$1$};\n        \\draw[black](0,0) -- (1,1);\n        \\draw[black, densely dashed](0.5,0.5) -- (0.5,0) node[below]{$\\dfrac{1}{2}$};\n        \\filldraw [fill=gray!20] (0.5,0.5) -- (0,1) -- (0,0) -- (0.5,0.5);\n        \\draw[black](0.2,0.5) node{$D$};\n    \\end{tikzpicture}\n\n    其中积分区域$D$如图所示，所以$P\\{X+Y\\leqslant1\\}=\\iint\\limits_De^{-y}\\,\\textrm{d}x\\textrm{d}y=\\int_0^{\\frac{1}{2}}\\textrm{d}x\\int_x^{1-x}e^{-y}\\,\\textrm{d}y=\\int_0^{\\frac{1}{2}}(e^{-x}-e^{x-1})\\textrm{d}x=1+e^{-1}-2e^{-\\frac{1}{2}}$。\n\n\\end{multicols}\n\n\\paragraph{差的分布} \\leavevmode \\medskip"
+  },
+  {
+    "id": "e0047",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "设$X\\\\sim N(\\\\mu,\\\\sigma_1^2)$，$Y\\\\sim N(2\\\\mu,\\\\sigma_2^2)$，$XY$相互独立，已知$P\\\\{X-Y\\\\geqslant1\\\\}=\\\\dfrac{1}{2}$，求$\\\\mu$。",
+    "answer": "=-1$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "若$X\\sim N(\\mu,\\sigma_1^2)$，$Y\\sim N(2\\mu,\\sigma_2^2)$，则$X-Y\\sim(-\\mu,\\sigma_1^2-\\sigma_2^2)$。则$X-Y$的均值为$-\\mu$，即其图像的对称轴为$-\\mu$。\n\n又$P\\{X-Y\\geqslant1\\}=\\dfrac{1}{2}$，则$X-Y$在$1$这里均分，则对称轴为$1$，即$\\mu=-1$。\n\n\\subsubsection{混合型}\n\n使用全概率公式根据离散变量进行概率拆分。"
+  },
+  {
+    "id": "e0048",
+    "subject": "概率论",
+    "chapter": "随机变量与分布",
+    "question_text": "设随机变量$X_1$和$X_2$相互独立，已知$X_1\\\\sim B\\\\left(1,\\\\dfrac{3}{4}\\\\right)$，$X_2$的分布函数为$F(x)$，求$Y=X_1+X_2$的分布函数$F_Y(y)$。",
+    "answer": "=0",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "随机变量与分布"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$X_1\\sim B\\left(1,\\dfrac{3}{4}\\right)$，$X_2$的分布函数为$F(x)$，则$Y$为混合型。\n\n则$P\\{X_1=0\\}=C_1^0\\dfrac{3}{4}^0\\dfrac{1}{4}^1=\\dfrac{1}{4}$，$P\\{X_1=1\\}=C_1^1\\dfrac{3}{4}^1\\dfrac{1}{4}^0=\\dfrac{3}{4}$。\n\n$F_Y(y)=P\\{X_1+X_2\\leqslant y\\}=P\\{X_1+X_2\\leqslant y|X_1=0\\}P\\{X_1=0\\}+P\\{X_1+X_2\\leqslant y|X_1=1\\}P\\{X_1=1\\}=P\\{X_2\\leqslant y|X_1=0\\}P\\{X_1=0\\}+P\\{1+X_2\\leqslant y|X_1=1\\}P\\{X_1=1\\}$，由相互独立性$=\\dfrac{1}{4}\\cdot P\\{X_2\\leqslant y\\}+\\dfrac{3}{4}\\cdot P\\{X_2\\leqslant y-1\\}$。\n\n根据分布函数定义，则$F_Y(y)=\\dfrac{1}{4}\\cdot F(y)+\\dfrac{3}{4}\\cdot F(y-1)$。\n\n\\end{document}"
+  },
+  {
+    "id": "e0049",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "设随机变量$X$的分布律为$P\\\\{X=k\\\\}=\\\\dfrac{1}{2^kk!(\\\\sqrt{e}-1)}$，$k=1,2,\\\\cdots$，求$EX$。",
+    "answer": "就需要按照离散随机变量的期望定义来计算。注意虽然$f(x)$对于$x$是变化了，但是对应的概率是不变的。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "查看分布律中含有$k!$的形式，所以可以考虑转换为泊松分布。泊松分布的标准形式是$\\dfrac{\\lambda^k}{k!}e^{-\\lambda}$。\n\n$P\\{X=k\\}=\\dfrac{1}{2^kk!(\\sqrt{e}-1)}=\\dfrac{\\sqrt{e}}{\\sqrt{e}-1}\\dfrac{\\left(\\frac{1}{2}\\right)^k}{k!}e^{-\\frac{1}{2}}$，$X\\sim\\dfrac{\\sqrt{e}}{\\sqrt{e}-1}P\\left(\\dfrac{1}{2}\\right)$。\n\n$\\therefore EX=\\dfrac{\\sqrt{e}}{2\\sqrt{e}-2}$。\n\n\\paragraph{定义} \\leavevmode \\medskip\n\n对于已知$E(X)$和$X$的分布，要求$E(f(x))$的值，此时很难拟合到已知分布律，所以就需要按照离散随机变量的期望定义来计算。注意虽然$f(x)$对于$x$是变化了，但是对应的概率是不变的。"
+  },
+  {
+    "id": "e0050",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "已知$X\\\\sim P(\\\\lambda)$，求$E(X)E\\\\left(\\\\dfrac{1}{1+X}\\\\right)$。",
+    "answer": "就要用到期望的定义。\n\n$E(X)E\\left(\\dfrac{1}{1+X}\\right)=\\lambda\\cdot\\sum\\limits_{k=0}^\\infty\\dfrac{1}{1+k}\\dfr",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$X\\sim P(\\lambda)$，则$E(X)=\\lambda$。而$E\\left(\\dfrac{1}{1+X}\\right)$无法通过拟合求出，所以就要用到期望的定义。\n\n$E(X)E\\left(\\dfrac{1}{1+X}\\right)=\\lambda\\cdot\\sum\\limits_{k=0}^\\infty\\dfrac{1}{1+k}\\dfrac{\\lambda^k}{k!}e^{-\\lambda}=\\lambda\\cdot\\sum\\limits_{k=0}^\\infty\\dfrac{\\lambda^k}{(k+1)!}e^{-\\lambda}=\\sum\\limits_{k=0}^\\infty\\dfrac{\\lambda^{k+1}}{(k+1)!}e^{-\\lambda}\\\\=\\sum\\limits_{i=1}^\\infty\\dfrac{\\lambda^i}{i!}e^{-\\lambda}=\\sum\\limits_{i=0}^\\infty\\dfrac{\\lambda^i}{i!}e^{-\\lambda}-\\dfrac{\\lambda^0}{0!}e^{-\\lambda}=1-e^{-\\lambda}$。（$\\sum\\limits_{i=0}^\\infty\\dfrac{\\lambda^i}{i!}e^{-\\lambda}$为概率和等于1）\n\n\\subsubsection{连续型随机变量}\n\n基本上都是以$\\int_{-\\infty}^{+\\infty}f(x)x\\,\\textrm{d}x$的变式进行计算。\n\n\\paragraph{概率密度} \\leavevmode \\medskip\n\n给出$X$概率密度。"
+  },
+  {
+    "id": "e0051",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "连续型随机变量$X$的概率密度为$f(x)=\\\\dfrac{1}{\\\\pi(1+x^2)}$（$-\\\\infty<x<+\\\\infty$），求$EX$。",
+    "answer": "不存在。\n\n\\paragraph{概率密度函数} \\leavevmode \\medskip\n\n给出$X$概率密度与$X$的相关函数。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "$EX=\\int_{-\\infty}^{+\\infty}xf(x)\\,\\textrm{d}x=\\int_{-\\infty}^{+\\infty}x\\dfrac{1}{\\pi(1+x^2)}\\textrm{d}x=\\dfrac{1}{2\\pi}\\int_{-\\infty}^{+\\infty}\\dfrac{\\textrm{d}(1+x^2)}{1+x^2}=\\dfrac{1}{2pi}\\ln(^1+x^2)|_{-\\infty}^{+\\infty}$。发散，所以不存在。\n\n\\paragraph{概率密度函数} \\leavevmode \\medskip\n\n给出$X$概率密度与$X$的相关函数。"
+  },
+  {
+    "id": "e0052",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "连续型随机变量$X$的概率密度为$f(x)=\\\\dfrac{1}{\\\\pi(1+x^2)}$（$-\\\\infty<x<+\\\\infty$），求$E(\\\\min\\\\{\\\\vert X\\\\vert,1\\\\})$。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "$E(\\min\\{\\vert X\\vert,1\\})=\\displaystyle{\\int_{-\\infty}^{+\\infty}}\\min\\{\\vert x\\vert,1\\}\\dfrac{1}{\\pi(1+x^2)}\\textrm{d}x=\\dfrac{2}{\\pi}\\int_0^{+\\infty}\\min\\{x,1\\}$\\\\$\\dfrac{1}{1+x^2}\\textrm{d}x=\\dfrac{2}{\\pi}\\displaystyle{\\int_0^1}x\\dfrac{1}{1+x^2}\\textrm{d}x+\\dfrac{2}{\\pi}\\int_1^{+\\infty}1\\cdot\\dfrac{1}{1+x^2}\\textrm{d}x=\\dfrac{1}{\\pi}\\ln(1+x^2)|_0^1+\\dfrac{2}{\\pi}\\arctan x|_1^{+\\infty}$\\\\$=\\dfrac{1}{\\pi}\\ln2+\\dfrac{1}{2}$。\n\n\\paragraph{分布函数} \\leavevmode \\medskip\n\n给出$X$分布与$X$的相关函数。"
+  },
+  {
+    "id": "e0053",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "随机变量$X\\\\sim N(0,1)$，求$E[(X-2)^2e^{2X}]$。",
+    "answer": "=e",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "$E[(X-2)^2e^{2X}]=\\int_{-\\infty}^{+\\infty}(x-2)^2e^{2x}\\dfrac{1}{\\sqrt{2\\pi}}e^{-\\frac{x^2}{2}}\\,\\textrm{d}x\\\\=e^2\\int_{-\\infty}^{+\\infty}(x-2)^2\\dfrac{1}{\\sqrt{2\\pi}}e^{-\\frac{(x-2)^2}{2}}\\,\\textrm{d}x=e^2\\int_{-\\infty}^{+\\infty}t^2\\dfrac{1}{\\sqrt{2\\pi}}e^{-\\frac{t^2}{2}}\\,\\textrm{d}t=e^2E(t^2)=e^2[DX+(EX)^2]=e^2(1+0^2)=e^2$。\n\n\\subsubsection{抽象概率密度}\n\n主要是判断概率密度函数和期望之间的关系。期望的积分形式中的上下限与期望值无关，即如果改变期望的积分上下限那么其期望值是不确定的，只有概率密度变化才能算出具体的值。"
+  },
+  {
+    "id": "e0054",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "设随机变量$X$的概率密度函数为$f(x)$，$E(X)=a$，判断$\\\\int_{-\\\\infty}^{+\\\\infty}xf(x+a)\\\\,\\\\textrm{d}x=0$，$\\\\int_{-\\\\infty}^axf(x)\\\\,\\\\textrm{d}x=\\\\dfrac{1}{2}$。",
+    "answer": "不成立。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$E(X)=a$，则$\\int_{-\\infty}^{+\\infty}xf(x)\\,\\textrm{d}x=a$。\n\n对于$\\int_{-\\infty}^{+\\infty}xf(x+a)\\,\\textrm{d}x=0$，令$x+a=t$，$x=t-a$，所以代入$\\int_{-\\infty}^{+\\infty}(t-a)f(t)\\,\\textrm{d}(t-a)=\\int_{-\\infty}^{+\\infty}tf(t)\\,\\textrm{d}t-a\\int_{-\\infty}^{+\\infty}f(t)\\,\\textrm{d}t=a-a=0$，所以成立。\n\n对于$\\int_{-\\infty}^axf(x)\\,\\textrm{d}x=\\dfrac{1}{2}$，其上下限变化，相当于积分值面积的底长是不确定的，$a$表示的是平均面积，这根底长的一半无关，所以不成立。"
+  },
+  {
+    "id": "e0055",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "相互独立的随机变量$X_1,X_2,\\\\cdots,X_n$具有相同的方差$\\\\sigma^2>0$，设$\\\\overline{X}=\\\\dfrac{1}{n}\\\\sum\\\\limits_{i=1}^nX_i$，求$D(X_1-\\\\overline{X})$。",
+    "answer": "=D",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "由题已知$DX_i=\\sigma_2$。\n\n$D(X_1-\\overline{X})=D\\left(X_1-\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i\\right)=D\\left(\\dfrac{n-1}{n}X_1-\\dfrac{1}{n}\\sum\\limits_{i=2}^nX_i\\right)=\\left(\\dfrac{n-1}{n}\\right)^2\\\\DX_1+\\dfrac{1}{n^2}\\sum\\limits_{i=2}^nDX_i=\\dfrac{n^2-2n+1}{n^2}\\sigma^2+\\dfrac{n-1}{n^2}\\sigma^2=\\dfrac{n-1}{n}\\sigma^2$。\n\n\\subsubsection{期望关系}"
+  },
+  {
+    "id": "e0056",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "已知随机变量$X_1$，$X_2$相互独立，且都服从正态分布$N(\\\\mu,\\\\sigma^2)$（$\\\\sigma>0$），求$D(X_1X_2)$。",
+    "answer": "=EX_2",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "$X_1$，$X_2$服从$N(\\mu,\\sigma^2)$，则$EX_1=EX_2=\\mu$。\n\n$D(X_1X_2)=E[(X_1X_2)^2]-[E(X_1X_2)]^2=E(X_1^2X_2^2)-(EX_1EX_2)^2$。\n\n若$X_1$，$X_2$相互独立则$X_1^2$，$X_2^2$相互独立，则$=EX_1^2EX_2^2-\\mu^4$。\n\n又$EX_1^2=EX_2^2=DX_1+(EX_1)^2=DX_2+(EX_2)^2=\\sigma^2+\\mu^2$。\n\n$(\\sigma^2+\\mu^2)^2-\\mu^4=\\sigma^4+2\\sigma^2\\mu^2$。\n\n\\subsection{切比雪夫不等式}\n\n$P\\{\\vert X-EX\\vert\\leqslant\\epsilon\\}\\leqslant\\dfrac{DX}{\\epsilon^2}$或$P\\{\\vert X-EX\\vert<\\epsilon\\}\\geqslant1-\\dfrac{DX}{\\epsilon^2}$。"
+  },
+  {
+    "id": "e0057",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "已知$XY$的相关系数$\\\\rho_{XY}\\\\neq0$，设$Z=aX+b$，$ab$为常数，则求出$\\\\rho_{XY}=\\\\rho_{YZ}$成立的充要条件。",
+    "answer": "相等的条件是$\\dfrac{a}{\\vert a\\vert}=1$，即$a>0$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$Cov(Y,Z)=Cov(Y,aX+b)=aCov(Y,X)=aCov(X,Y)$，$DZ=D(aX+b)=a^2Dx$。\n\n$\\rho_{YZ}=\\dfrac{Cov(Y,Z)}{\\sqrt{DY}\\sqrt{DZ}}=\\dfrac{aCov(X,Y)}{\\sqrt{DY}\\sqrt{a^2DX}}=\\dfrac{a}{\\vert a\\vert}\\rho_{XY}$，所以相等的条件是$\\dfrac{a}{\\vert a\\vert}=1$，即$a>0$。"
+  },
+  {
+    "id": "e0058",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "设随机变量$X_1,X_2,\\\\cdots,X_n$独立同分布，且方差$\\\\sigma^2>0$，$Y_1=\\\\sum\\\\limits_{i=2}^nX_i$和$Y_2=\\\\sum\\\\limits_{j=1}^{n-1}X_j$，求$Y_1$和$Y_n$的协方差$Cov(Y_1,Y_n)$。",
+    "answer": "=2",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because Y_1=\\sum\\limits_{i=2}^nX_i$，$Y_2=\\sum\\limits_{j=1}^{n-1}X_j$，$DX_i=\\sigma^2$。"
+  },
+  {
+    "id": "e0059",
+    "subject": "概率论",
+    "chapter": "数字特征",
+    "question_text": "已知随机变量$XY$，$EX=EY=2$、$DX=1$、$DY=4$，$\\\\rho_{XY}=0.5$，估计概率$P\\\\{\\\\vert X-Y\\\\vert\\\\geqslant6\\\\}$。",
+    "answer": "$P\\{\\vert X-Y\\vert\\geqslant6\\}=P\\{\\vert Z-0\\vert\\geqslant6\\}\\leqslant\\dfrac{DZ}{\\epsilon^2}=\\dfrac{3",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "数字特征"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$\\rho_{XY}=0.5=\\dfrac{Cov(X,Y)}{\\sqrt{DX}\\sqrt{DY}}=\\dfrac{Cov(X,Y)}{2}$，$Cov(X,Y)=1=E(XY)-EXEY$，$E(XY)=5$。\n\n令$X-Y=Z$，$EZ=EX-EY=0$，$DZ=DX+DY-2Cov(X,Y)=1+4-2=3$。\n\n取$\\epsilon=6$，由切比雪夫不等式得$P\\{\\vert X-Y\\vert\\geqslant6\\}=P\\{\\vert Z-0\\vert\\geqslant6\\}\\leqslant\\dfrac{DZ}{\\epsilon^2}=\\dfrac{3}{6^2}=\\dfrac{1}{12}$。\n\n\\end{document}"
   }
 ]

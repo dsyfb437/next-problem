@@ -1,0 +1,176 @@
+\documentclass[UTF8, 12pt]{ctexart}
+% UTF8编码，ctexart现实中文
+\usepackage{color}
+% 使用颜色
+\usepackage{geometry}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+% 设置四级目录与标题
+\geometry{papersize={21cm,29.7cm}}
+% 默认大小为A4
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+% 默认页边距为1英尺与1.25英尺
+\usepackage{indentfirst}
+\setlength{\parindent}{2.45em}
+% 首行缩进2个中文字符
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.5}
+% 1.5倍行距
+\usepackage{amssymb}
+% 因为所以
+\usepackage{amsmath}
+% 数学公式
+\usepackage[colorlinks,linkcolor=black,urlcolor=blue]{hyperref}
+% 超链接
+\author{Didnelpsun}
+\title{线性方程组}
+\date{}
+\begin{document}
+\maketitle
+\pagestyle{empty}
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1}
+\section{基础解系}
+
+\subsection{方程求通解}
+
+\subsection{通解求通解}
+
+题目给出$\xi_i$是$Ax=0$的基础解系，然后判断这几个基础解系的变式是否还能称为基础解系，判断条件就是对这些基础解析进行初等运算（往往是加减），如果最后能凑成0则代表其线性相关，所以不能成为基础解系，否则可以。
+
+如$\xi_1+\xi_2$、$\xi_2+x_3$、$\xi_3+\xi_1$可以成为，因为$(\xi_1+\xi_2)-(\xi_2+x_3)+(\xi_3+\xi_1)=2\xi_1\neq0$，$\xi_1-\xi_2$、$\xi_2-x_3$、$\xi_3-\xi_1$不能成为，因为$(\xi_1-\xi_2)+(\xi_2-x_3)+(\xi_3-\xi_1)=0$。
+
+\subsection{特解求通解}
+
+\subsection{通解判断特解}
+
+已知特解为方程的一个解，知道通解，所以特解可以由通解线性表出，所以将通解和特解组成增广矩阵进行初等变换（如果是判断多个向量，则可以一起组成），通解矩阵的秩和增广矩阵的秩相同则代表可以线性表出，否则不能。
+
+\subsection{特解判断特解}
+
+已知特解，对特解进行初等变换，然后判断这个式子是否还是原方程的特解，可以直接将新式子代入原方程求得结果。
+
+\textbf{例题：}已知$\alpha_1$、$\alpha_2$是非齐次线性方程组$Ax=b$的两个不同解，则判断$3\alpha_1-2\alpha_2$是否为原方程的特解。
+
+解：已知$\alpha_1$、$\alpha_2$是非齐次线性方程组$Ax=b$的两个不同解，即$A\alpha_1=b$，$A\alpha_2=b$。
+
+代入$Ax=b$：$A(3\alpha_1-2\alpha_2)=3A\alpha_1-2A\alpha_2=3b-2b=b$，所以成立。
+
+% \subsection{线性表出}
+
+\section{反求参数}
+
+基本上都是给出方程组有无穷多解：
+
+\begin{itemize}
+    \item 齐次方程组：系数矩阵是降秩的；行列式值为0。
+    \item 非齐次方程组：系数矩阵与增广矩阵秩相同且降秩。
+\end{itemize}
+
+\textbf{例题：}已知齐次线性方程组$\left\{\begin{array}{l}
+    ax_1-3x_2+3x_3=0 \\
+    x_1+(a+2)x_2+3x_3=0 \\
+    2x_1+x_2-x_3=0
+\end{array}\right.$有无穷多解，求参数$a$。
+
+解：使用矩阵比较麻烦，三阶的系数矩阵可以使用行列式。
+
+$\vert A\vert=\left\vert\begin{array}{ccc}
+    a & -3 & 3 \\
+    1 & a+2 & 3 \\
+    2 & 1 & -1 \\
+\end{array}\right\vert=\left\vert\begin{array}{ccc}
+    a & 0 & 3 \\
+    1 & a+5 & 3 \\
+    2 & 0 & -1 \\
+\end{array}\right\vert=(a+5)(a+6)=0$。
+
+解得$a=-5$或$a=-6$。
+
+\section{抽象线性方程}
+
+求$Ax=B$的解：
+
+\begin{enumerate}
+    \item 求$A$的秩。
+    \item 求$Ax=0$的基础解系。
+    \item 求$Ax=\beta$的一个特解。
+\end{enumerate}
+
+\subsection{余子式}
+
+\textbf{例题：}设$A$为三阶方阵，$A=(a_{ij})_{3\times3}$，且$a_{ij}=A_{ij}$（$i,j=1,2,3$），其中$A_{ij}$为$a_{ij}$的代数余子式，$a_{33}\neq0$，$b=(a_{13},a_{23},a_{33})^T$，求非齐次线性方程组$Ax=b$的解。
+
+解：由于是抽象线性方程，所以必须要充分利用方程和矩阵的性质。题目中给出的主要是代数余子式，由行列式的一行或一列的元素乘上对应的代数余子式可得行列式值的性质：
+
+$b$为第三列元素，乘上对应的代数余子式得行列式值：$b(A_{13},A_{23},A_{33})=a_{13}A_{13}+a_{23}A_{23}=a_{13}^2+a_{23}^2+a_{33}^2\geqslant0$。
+
+又$a_{33}\neq0$，$\therefore b(A_{13},A_{23},A_{33})=\vert A\vert>0$，$r(A)=3$，$Ax=b$解唯一$x=A^{-1}b$。
+
+根据逆矩阵公式$x=A^{-1}b=\dfrac{A^*b}{\vert A\vert}$，且代数余子式乘上非对应元素值都为0。
+
+$=\dfrac{1}{\vert A\vert}\left[\begin{array}{ccc}
+    A_{11} & A_{21} & A_{31} \\
+    A_{12} & A_{22} & A_{32} \\
+    A_{13} & A_{23} & A_{33} 
+\end{array}\right]\left[\begin{array}{c}
+    a_{13} \\
+    a_{23} \\
+    a_{33}
+\end{array}\right]=\dfrac{1}{\vert A\vert}\left[\begin{array}{c}
+    0 \\
+    0 \\
+    \vert A\vert
+\end{array}\right]=\left[\begin{array}{c}
+    0 \\
+    0 \\
+    1
+\end{array}\right]$。
+
+\subsection{解的方程}
+
+\textbf{例题：}已知四阶方阵$A=(\alpha_1,\alpha_2,\alpha_3,\alpha_4)$，$\alpha_1,\alpha_2,\alpha_3,\alpha_4$为四维列向量，且$\alpha_2,\alpha_3,\alpha_4$线性无关，若$\alpha_1=2\alpha_2-\alpha_3$，$\beta=\alpha_1+\alpha_2+\alpha_3+\alpha_4$，求$Ax=\beta$的通解。
+
+解：由于$\alpha_2,\alpha_3,\alpha_4$线性无关，$r(A)\geqslant3$，由$\alpha_1=2\alpha_2-\alpha_3$，$r(A)\leqslant3$，所以$r(A)=3$。$s=n-r=4-3=1$，所以解向量为一个。
+
+且$\alpha_1=2\alpha_2-\alpha_3$，整理得$\alpha_1-2\alpha_2+\alpha_3+0\alpha_4=0$，即$[\alpha_1,\alpha_2,\alpha_3,\alpha_4][1,-2,1,0]^T\\=0$，即$[1,-2,1,0]^T$为$Ax=0$的一个通解。
+
+$\beta=\alpha_1+\alpha_2+\alpha_3+\alpha_4$，即$\beta=[\alpha_1,\alpha_2,\alpha_3,\alpha_4][1,1,1,1]^T$，即$[1,1,1,1]^T$为$Ax=\beta$的一个特解。
+
+所以基础解系为$k[1,-2,1,0]^T+[1,1,1,1]$。
+
+\textbf{例题：}已知$4\times3$矩阵$A=(\alpha_1,\alpha_2,\alpha_3)$，非齐次线性方程组$Ax=\beta$的通解为$(1,2,-1)^T+k(1,-2,3)^T$，$k$为任意常数，令$B=(\alpha_1,\alpha_2,\alpha_3,\beta+\alpha_3)$，求方程组$By=\alpha_1-\alpha_2$的通解。
+
+解：首先求对应$A$和$B$的秩。由于$A$的通解的自由变量为一个，即$r(A)=3-1=2$。
+
+由于$Ax=\beta$的通解为$(1,2,-1)^T+k(1,-2,3)^T$，所以根据解的结构，前面为$Ax=0$的通解，后面为$Ax=\beta$的一个特解。
+
+即$\alpha_1+2\alpha_2-\alpha_3=\beta$，$\alpha_1-2\alpha_2+3\alpha_3=0$。
+
+然后求$B=(\alpha_1,\alpha_2,\alpha_3,\alpha_1+2\alpha_2)$，通过线性变换可得$B=(\alpha_1,\alpha_2,\alpha_3,0)$，即$r(B)=r(A)=2$。$s=n-r=2$，即$By=\alpha_1-\alpha_2$有两个自由变量。
+
+由于$A$的一个通解为$(1,-2,3)^T$，即$\alpha_1-2\alpha_2+3\alpha_3=0$，$B$的前三行跟$A$一样，所以令最后一行为0，即得到一个通解$(1,-2,3,0)^T$。
+
+然后根据$B=(\alpha_1,\alpha_2,\alpha_3,\alpha_1+2\alpha_2)$，令最后一行不为0，即计算得到另一个通解$(-1,-2,0,1)^T$。
+
+由于$\alpha_1-\alpha_2$很简单就能看出特解为$(1,-1,0,0)^T$。
+
+所以最后通解为$k_1(1,-2,3,0)^T+k_2(-1,-2,0,1)^T+(1,-1,0,0)^T$（$k_1k_2$为任意常数）。
+
+\section{公共解}
+
+\subsection{联立系数矩阵}
+
+如果给出系数矩阵，则即联立两个系数矩阵即得到公共解。
+
+\subsection{基础解系参数计算}
+
+如果只给出了基础解系，则令他们相等，并求出参数。
+
+\section{同解}
+
+\end{document}

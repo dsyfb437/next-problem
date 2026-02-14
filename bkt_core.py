@@ -277,16 +277,32 @@ def check_answer(question: Dict, user_answer: str) -> bool:
     """
     Check if user answer is correct.
 
-    Supports numeric comparison, formula equivalence (using SymPy), and exact string match.
-    For formula type, accepts LaTeX input from MathLive and converts to SymPy for comparison.
+    Supports:
+    - Multiple choice: compares option index
+    - Numeric comparison
+    - Formula equivalence (using SymPy)
+    - Exact string match
 
     Args:
         question: Question dictionary with answer info
-        user_answer: User's answer string (may be LaTeX for formula type)
+        user_answer: User's answer string (may be LaTeX for formula type, or option index for multiple choice)
 
     Returns:
         True if answer is correct, False otherwise
     """
+    # Check for multiple choice questions first
+    question_type = question.get('type', 'fill_in')
+
+    if question_type == 'multiple_choice':
+        # Multiple choice: compare option indices
+        try:
+            user_option = int(user_answer)
+            correct_option = question.get('correct_option', -1)
+            return user_option == correct_option
+        except (ValueError, TypeError):
+            return False
+
+    # Original logic for fill-in questions
     answer_type = question.get('answer_type', 'string')
     correct_answer = question.get('answer', '').strip()
     user_answer = user_answer.strip()

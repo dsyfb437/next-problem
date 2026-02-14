@@ -155,7 +155,21 @@ INDEX_HTML = '''
 
             <form method="post" action="/answer" style="margin-top: 20px;" id="answerForm">
                 <input type="hidden" name="qid" value="{{ question.id }}">
-                {% if question.answer_type == 'formula' %}
+                {% if question.type == 'multiple_choice' %}
+                    <!-- Multiple choice input -->
+                    <div style="margin: 15px 0;">
+                        {% for option in question.options %}
+                        <label style="display: block; padding: 10px 15px; margin: 8px 0;
+                                     border: 1px solid #ddd; border-radius: 6px; cursor: pointer;
+                                     transition: all 0.2s; background: white;"
+                               onmouseover="this.style.borderColor='#007bff';this.style.background='#f0f7ff';"
+                               onmouseout="this.style.borderColor='#ddd';this.style.background='white';">
+                            <input type="radio" name="answer" value="{{ loop.index0 }}" style="margin-right: 10px;">
+                            <span style="vertical-align: middle;">{{ option | safe }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                {% elif question.answer_type == 'formula' %}
                     <!-- MathLive formula input with preview -->
                     <div style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; background: white;">
                         <math-field id="formulaInput"
@@ -163,7 +177,7 @@ INDEX_HTML = '''
                                    class="math-field-input"></math-field>
                         <input type="hidden" name="answer" id="formulaAnswer">
                         <p class="input-hint">预览：<span id="formulaPreview" style="display: inline-block; vertical-align: middle;"></span></p>
-                        <p class="input-hint">💡 点击输入框使用虚拟键盘，或直接输入 LaTeX 语法如 \frac{1}{2}, \sqrt{x}</p>
+                        <p class="input-hint">💡 点击输入框使用虚拟键盘，或直接输入 LaTeX 语法如 \\frac{1}{2}, \\sqrt{x}</p>
                     </div>
                 {% else %}
                     <!-- Regular text input for numeric/string answers -->
@@ -335,6 +349,25 @@ def index():
     current_qids = {q['id'] for q in questions}
     available_qids = current_qids - user.answered_questions
     question = recommend_question(user, questions, available_qids)
+
+    # Shuffle options for multiple choice questions
+    if question and question.get('type') == 'multiple_choice':
+        import random
+        options = question.get('options', [])
+        correct_idx = question.get('correct_option', 0)
+        # Create list of (index, option) pairs
+        indexed_options = list(enumerate(options))
+        # Shuffle
+        random.shuffle(indexed_options)
+        # Find new correct index
+        new_correct = None
+        shuffled_options = []
+        for new_idx, (old_idx, opt) in enumerate(indexed_options):
+            shuffled_options.append(opt)
+            if old_idx == correct_idx:
+                new_correct = new_idx
+        question['options'] = shuffled_options
+        question['correct_option'] = new_correct
 
     subject_answered = user.answered_questions & current_qids
     total_answered = len(subject_answered)
