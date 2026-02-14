@@ -1,0 +1,2061 @@
+﻿ID,学科,章节,知识点,题目(LaTeX),提取的答案,解答(前200字)
+e0001,概率论,随机事件与概率,随机事件与概率,$ABCDEF$六个人排队，要求$AB$必须在一起，问有多少种排法。,使用乘法：$A_2^2\cdot A_5^5=120$。,"排法就是排列的问题。首先$AB$在一起，要么是$AB$要么是$BA$，也是一种排列，有$A_2^2$种。
+
+然后将$AB$看作一个整体与$CDEF$进行排列，一共五个元素，进行全排列：$A_5^5$。
+
+因为是按步骤来的，所以使用乘法：$A_2^2\cdot A_5^5=120$。"
+e0002,概率论,随机事件与概率,随机事件与概率,要对6个唱歌和4个舞蹈节目进行排列，要求两个舞蹈节目不能相邻，求多少种排法。,25200,"由于是对舞蹈进行限制，所以对唱歌的序列没有特别的限制，第一步先对唱歌进行全排列$A_6^6$。
+
+第二步对舞蹈进行排列，由于舞蹈之间不能相邻，所以舞蹈节目必然是在两个唱歌节目之间进行插孔排序的，而唱歌6个节目一共7个空，所以排列$A_7^4$。
+
+由于是步骤，所以乘法：$A_6^6\cdot A_7^4$。"
+e0003,概率论,随机事件与概率,随机事件与概率,将8个完全相同的球放入三个不同的盒子，要求每个盒子至少有一个球，求一共有多少种放法。,=21$,相当于在七个空插入两个板。即$C_7^2=21$。
+e0004,概率论,随机事件与概率,随机事件与概率,已知事件$A$和$B$相互独立，$P(A)=a$，$P(B)=b$，如果事件$C$必然导致$AB$同时发生，则求$ABC$都不发生的概率。,=P(,"首先必须理解题目的意思，并将其抽象为具体的计算式子。
+
+$ABC$都不发生就是$A$不发生且$B$不发生且$C$不发生，用式子表达就是$\overline{A}\overline{B}\overline{C}$。
+
+然后是分析事件$C$必然导致$AB$同时发生，$AB$同时发生就是$AB$，即$AB$比$C$的范围大，$C\subset AB$，$\overline{AB}\subset\over"
+e0005,概率论,随机事件与概率,随机事件与概率,设袋中黑白球各一个，有放回取球，每次取一个，直到两种颜色的球都取到为止。求取球次数恰为3的概率。 %,概率为$\dfrac{2}{8}=\dfrac{1}{4}$。,"若是看到题目中的为止，很容易想到后面的几何概率分布。但是这与几何分布不同，因为几何分布要求的停止条件是同一个事件的前几次的失败和最后一次的成功，而这个题目要求是取到黑并且取到白，而不是取到黑或取到白这两个事件，如求取到黑时取求次数为3的概率，则是几何分布。
+
+% 每次可能取到黑白两种，取三次，则事件总数为$2^3=8$。而取到第三次才取到黑白两色的，则有黑黑白、白白黑两种可能性，所以概率为$\df"
+e0006,概率论,随机事件与概率,随机事件与概率,射手对同一目标独立地进行4次射击。若至少命中一次的概率为$\\dfrac{15}{16}$，则求该射手对同一目标独立地进行4次射击中至少没命中一次的概率。,"到每次命中概率$p=\dfrac{1}{2}$。
+
+求该射手对同一目标独立地进行4次射击中至少没命中一次的概率，则其对立事件为每次命中，其概率为$\left(\dfrac{1}{2}\right)^4","这个题目其实就是四重伯努利试验，彼此之间的概率都是独立的。令每一次命中的概率为$p$，则该次未命中的概率为$1-p$。
+
+若至少命中一次的概率为$\dfrac{15}{16}$，则其对立事件全部不命中的概率为$1-\dfrac{15}{16}=\dfrac{1}{16}$，则$(1-p)^4=\dfrac{1}{16}$，则得到每次命中概率$p=\dfrac{1}{2}$。
+
+求该射手对同一目标独"
+e0007,概率论,数理统计,数理统计,"已知总体$X$的期望为$EX=0$，方差$DX=\\sigma^2$。从总体抽取容量为$n$的简单随机样本，其均值和方差分别为$\\overline{X}$，$S^2$。记$S_k^2=\\dfrac{n}{k}\\overline{X}^2+\\dfrac{1}{k}S^2$（$k=1,2,3,4$），则()。 $A.E(S_1^2)=\\sigma^2$\\qquad$B.E(S_2^2)=\\sigma^2$ $C.E(S_3^2)=\\sigma^2$\\qquad$D.E(S_4^2)=\\sigma^2$",=E,$E(S_k^2)=E\left(\dfrac{n}{k}\overline{X}^2+\dfrac{1}{k}S^2\right)=\dfrac{n}{k}E\overline{X}^2+\dfrac{1}{k}E(S^2)=\dfrac{n}{k}((E\overline{X})^2+D\overline{X})+\dfrac{1}{k}E(S^2)=\dfrac{n}{k}\left(0+\
+e0008,概率论,数理统计,数理统计,设$X_i$为来自总体$E(\\lambda)$（$\\lambda>0$）的简单随机样本，记统计量$T=\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i^2$，求$ET$。,=E,$ET=E\dfrac{1}{n}\sum\limits_{i=1}^nX_i^2=\dfrac{1}{n}\sum\limits_{i=1}^nEX_i^2=\dfrac{1}{n}\sum\limits_{i=1}^n(DX_i+E^2X_i)=\dfrac{1}{n}\sum\limits_{i=1}^n\left(\dfrac{1}{\lambda^2}+\dfrac{1}{\lambda
+e0009,概率论,数理统计,数理统计,"设$X_i$为来自总体$X$的简单随机样本，而$X\\sim B\\left(1,\\dfrac{1}{2}\\right)$。记$\\overline{X}=\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i$，求$P\\left\\{\\overline{X}=\\dfrac{k}{n}\\right\\}$。（$0\\leqslant k\\leqslant n$）",=1,"$\because X\sim B\left(1,\dfrac{1}{2}\right)$，$\therefore\sum\limits_{i=1}^nX_i\sim B\left(n,\dfrac{1}{2}\right)$。
+
+$P\left\{\overline{X}=\dfrac{k}{n}\right\}=P\left\{\dfrac{1}{n}\sum\limits_{i=1}^nX_"
+e0010,概率论,数理统计,数理统计,"设$X_1,X_2,X_3,X_4$是来自正态总体$N(0,4)$的简单随机样本，记$X=a(X_1-2X_2)^2+b(3X_3-4X_4)^2$。求$X$服从$\\chi^2$分布下的参数与自由度。",$a=\dfrac{1}{20}$，$b=\dfrac{1}{100}$。,"若$X_1,X_2,X_3,X_4$同一个正态分布，所以$EX_1=EX_2=EX_3=EX_4=0$，$DX_1=DX_2=DX_3=DX_4=4$。
+
+$E(X_1-2X_2)=EX_1-2EX_2=0$，$D(X_1-2X_2)=DX_1-4DX_2=20$。
+
+$\therefore X_1-2X_2\sim N(0,20)$，同理$3X_3-4X_4\sim N(0,100)$。
+
+对其"
+e0011,概率论,数理统计,数理统计,"设$X_1,X_2,\\cdots,X_8$是来自正态总体$N(0,3^2)$的简单随机样本，则统计量$Y=\\dfrac{X_1+X_2+X_3+X_4}{\\sqrt{X_5^2+X_6^2+X_7^2+X_8^2}}$服从什么分布？",,"$\because X_1,\cdots,X_8\sim N(0,9)$，$\therefore X_1+X_2+X_3+X_4\sim N(0,36)$。
+
+$\therefore\dfrac{X_1+X_2+X_3+X_4-0}{6}\sim N(0,1)$。
+
+$\dfrac{X_5^2+X_6^2+X_7^2+X_8^2}{9}=\left(\dfrac{X_5-0}{3}\right)^"
+e0012,概率论,数理统计,数理统计,"设$X_1,X_2,\\cdots,X_15$是来自正态总体$N(0,3^2)$的简单随机样本，则统计量$Y=\\dfrac{X_1^2+X_2^2+\\cdots+X_{10}^2}{2X_{11}^2+X_{12}^2+\\cdots+X_{15}^2}$服从什么分布？",=Y,"$\because\dfrac{X_i-0}{3}\sim N(0,1)$，$\left(\dfrac{X_i-0}{3}\right)^2=\dfrac{x_i^2}{9}\sim\chi^2(1)$。
+
+$\therefore\dfrac{X_1^2+X_2^2+\cdots+X_{10}^2}{9}\sim\chi^2(10)$，$\dfrac{X_{11}^2+X_{12}^2+\cdot"
+e0013,概率论,数理统计,数理统计,"已知$(X,Y)$的概率分布函数为$f(x,y)=\\dfrac{1}{2\\pi}e^{-\\frac{1}{2}(x^2+y^2-2y+1)}$，$x,y\\in R$，求$\\dfrac{X^2}{(Y-1)^2}$的分布。","根据二维正态分布的形式，得到$(X,Y)\sim(0,1;1,1;0)$。
+
+即$X\sim\varPhi(x)$，$Y-1\sim\varPhi(x)$，$\therefore X^2\sim\ch","$f(x,y)=\dfrac{1}{2\pi}e^{-\frac{1}{2}(x^2+y^2-2y+1)}=\dfrac{1}{2\pi}e^{-\frac{1}{2}(x^2+(y-1)^2)}$，所以根据二维正态分布的形式，得到$(X,Y)\sim(0,1;1,1;0)$。
+
+即$X\sim\varPhi(x)$，$Y-1\sim\varPhi(x)$，$\therefore X^2\sim\"
+e0014,概率论,数理统计,数理统计,"设随机变量$X\\sim t(n)$，$Y\\sim F(1,n)$，常数$C$使得$P\\{X>C\\}=0.6$，求$P\\{Y>C^2\\}$。",=F(1,"$X\sim t(n)$，则$X=\dfrac{X_1}{\sqrt{Y_1/n}}\sim t(n)$，其中$X_1\sim N(0,1)$，$Y_1\sim\chi^2(n)$。
+
+$\therefore X^2=\dfrac{X_1^2}{Y_1/n}=\dfrac{X_1^2/1}{Y_1/n}\sim\dfrac{\chi^2(1)/1}{\chi^2(n)/n}=F(1,n)$。
+
+又"
+e0015,概率论,数理统计,数理统计,"设$X_i$为来自区间$[-a,a]$上均匀分布的总体$X$的简单随机样本，求$a$的矩估计量。","$EX$不含有$a$，使用二阶矩$EX^2=DX+E^2X=\dfrac{a^2}{3}=\dfrac{1}{n}\sum\limits_{i=1}^nX_i^2$。
+
+解得$a=\sqrt{\dfr","首先矩估计就是$E(X^k)=\dfrac{1}{n}\sum\limits_{i=1}^nX_i^k$。
+
+又对于均匀分布$X_i\sim U(-a,a)$，$EX=\dfrac{a+b}{2}=0$，$DX=\dfrac{(b-a)^2}{12}=\dfrac{a^2}{3}$。
+
+所以$EX$不含有$a$，使用二阶矩$EX^2=DX+E^2X=\dfrac{a^2}{3}=\dfrac{1}"
+e0016,概率论,数理统计,数理统计,"设总体$X$的概率分布为：\\medskip \\begin{tabular}{c|cccc} \\hline $X$ & 0 & 1 & 2 & 3 \\\\ \\hline $P$ & $\\theta^2$ & $2\\theta(1-\\theta)$ & $\\theta^2$ & $1-2\\theta$ \\\\ \\hline \\end{tabular} \\medskip 其中$\\theta\\int\\left(0,\\dfrac{1}{2}\\right)$为未知参数，从总体$X$中抽取容量为8的一组样本，其样本值为3，1，3，0，3，1，2，3。求$\\theta$的最大似然估计值。","到$\hat{\theta}=\dfrac{7-\sqrt{13}}{12}$。
+
+\subsubsection{连续型}","根据样本值，可以得出：\medskip
+
+\begin{tabular}{c|cccc}
+    \hline
+    $X$ & 0 & 1 & 2 & 3 \\ \hline
+    次数 & 1 & 2 & 1 & 4 \\ \hline
+\end{tabular} \medskip
+
+将所有的概率相乘：$L(\theta)l=(1-2\theta)^4[2\theta(1-\theta)]"
+e0017,概率论,数理统计,数理统计,"设随机变量$X$在区间$[0,\\theta]$上服从均匀分布，$X_1,X_2,\\cdots,X_n$是来自$X$的简单随机样本，求$\\theta$的最大似然估计量$\\hat{\\theta}$",要求$\theta>\max x_i$）,"$X\sim U(0,\theta)$，$f(x)=\left\{\begin{array}{ll}
+    \dfrac{1}{\theta}, & 0<x<\theta \\
+    0, & \text{其他}
+\end{array}\right.$，$L(\theta)=\left\{\begin{array}{ll}
+    \dfrac{1}{\theta^n}, & 0<x_i<\t"
+e0018,概率论,数理统计,数理统计,"设$X_1,X_2,\\cdots X_n$是来自总体$X$的简单随机样本，$X$的概率密度函数$f(x)=\\dfrac{1}{2\\lambda}e^{-\\frac{\\vert x\\vert}{\\lambda}}$，$x\\in R$，$\\lambda>0$，求$\\lambda$的最大似然估计量$\\hat{\\lambda}$。","$\lambda=\dfrac{1}{n}\sum\limits_{i=1}^n\vert x_i\vert$。
+
+即$\hat{\lambda}=\dfrac{1}{n}\sum\limits_{i",$\because f(x)=\dfrac{1}{2\lambda}e^{-\frac{\vert x\vert}{\lambda}}$，$\therefore L(\lambda)=\prod\limits_{i=1}^n\dfrac{1}{2\lambda}e^{-\frac{\vert x\vert}{\lambda}}=\left(\dfrac{1}{2\lambda}\right)^ne
+e0019,概率论,数理统计,数理统计,"一批零件的长度服从正态分布$N(\\mu,\\sigma^2)$，其中$\\mu,\\sigma^2$均未知。现从中随机抽取16个零件，测得样本均值$\\overline{x}=20cm$，样本标准差为$s=1cm$，求$\\mu$的置信水平为0.90的置信区间。","置信空间为$\left(20-\dfrac{1}{4}t_{0.05}(15),20+\dfrac{1}{4}t_{0.05}(15)\right)$。","$\sigma$未知，所以使用$s$来求置信空间。
+
+置信空间为$(\overline{X}-t_\frac{\alpha}{2}(n-1)\dfrac{S}{\sqrt{n}},\overline{X}+t_\frac{\alpha}{2}(n-1)\dfrac{S}{\sqrt{n}})$。
+
+已知$\overline{x}=20$，$s=1$，$n=16$，$\alpha=1-0.90=0."
+e0020,概率论,数理统计,数理统计,"设某群人的年龄$X\\sim N(\\mu,\\sigma^2)$，随机了解到五个人的年龄：39，54，61，72，59，求均值$\\mu$的置信度为$0.95$的置信区间。","代入得到$(42.13,71,87)$。","由于$\sigma$未知，所以使用样本方差，$\dfrac{\overline{X}-\mu}{S/\sqrt{n}}\sim t(n-1)$。
+
+其中置信区间为$\left(\overline{X}-\dfrac{S}{\sqrt{n}}t_{0.025}(n-1),\overline{X}+\dfrac{S}{\sqrt{n}}t_{0.025}(n-1)\right)$。
+
+又$\overl"
+e0021,概率论,数理统计,数理统计,设考试成绩服从正态分布，随机抽取36位考生成绩，平均分为66.5分，标准差为15分。在显著性水平0.05下是否可以认为这次考试的平均水平为70分。,"接受原假设。
+
+即可以认为平均水平为70分。","首先提出假设$H_0:\mu=70$，$H_1:\mu\neq70$。
+
+将$X$使用样本标准差进行标准化：$T=\dfrac{\overline{X}-\mu}{S/\sqrt{n}}\sim t(n-1)$。
+
+给定显著性水平$0.05$，写出拒绝域$T<-t_{\frac{\alpha}{2}}(n-1)$或$T>t_{\frac{\alpha}{2}}(n-1)$。
+
+代入计算统计量，$\"
+e0022,概率论,数理统计,数理统计,"设$X_1,X_2,\\cdots,X_{36}$是取自正态总体$N(\\mu,0.04)$的简单随机样本，其中$\\mu$为未知参数，即$\\overline{X}=\\dfrac{1}{36}\\sum\\limits_{i=1}^{36}X_i$，若对于检验问题$H_0:\\mu\\leqslant0.5$，$H_1:\\mu>0.5$在显著性水平$\\alpha=0.05$，取得检验拒绝域$D=\\{(x_1,x_2,\\cdots,x_{36}):\\overline{x}>C\\}$，求$C$。",=N,"当$H_0$成立，则$X\sim N(0.5,0.04)$，$\overline{X}\sim N(0.5,0.04\div36)=N\left(\dfrac{1}{2},\dfrac{1}{900}\right)$。
+
+$\alpha=0.05=P\{$拒绝$H_0|H_0$成立$\}=P\{\overline{X}>C\}=1-P\{\overline{X}\leqslant C\}=1-\v"
+e0023,概率论,数理统计,数理统计,"已知某机器生产出来的零件长度$X$（单位：$cm$）服从正态分布$N(\\mu,\\delta^2)$，现从中随意抽取容量为16的一个样本，测得样本均值$\\overline{x}=10$，样本方差$s^2=0.16$，$t_{0.025}(15)=2.132$。 (1)求总体均值$\\mu$置信水平为0.95的置信区间。 (2)在显著性水平$0.05$下检验假设$H_0:\\mu=9.7$，$H_1:\\mu\\neq9.7$。 (1)",假设$H_0$拒绝。,"根据公式直接解出置信空间$(10-0.1t_{0.025}(15),10+0.1t_{0.025}(15))=(9.7868,10.2132)$。
+
+(2)解：根据假设$H_0$，得到拒绝域$(-\infty,9.4868]\cup[9.9132,+\infty)$。
+
+又$\overline{X}=10$在拒绝域$[9.9132,+\infty)$上，所以假设$H_0$拒绝。"
+e0024,概率论,数理统计,数理统计,"假定$X$是连续型随机变量，$U$是对$X$的一次观测值，关于其概率密度$f(x)$有如下假设： $H_0:f(x)=\\left\\{\\begin{array}{ll} \\dfrac{1}{2}, & 0\\leqslant x\\leqslant2 \\\\ 0, & \\text{其他} \\end{array}\\right.$，$H_1:f(x)=\\left\\{\\begin{array}{ll} \\dfrac{x}{2}, & 0\\leqslant x\\leqslant2 \\\\ 0, & \\text{其他} \\end{array}\\right.$。 检验规则：当事件$V=\\left\\{U>\\dfrac{3}{2}\\right\\}$出现时，否定假设$H_0$，接受$H_1$，求犯第一类错误概率和第二类错误概率$\\alpha\\beta$。",=P,"$\alpha=P\left\{U>\dfrac{3}{2}\bigg|H_0\right\}=\displaystyle{\int_\frac{3}{2}^2\dfrac{1}{2}\,\textrm{d}x=\dfrac{1}{4}}$。
+
+$\beta=P\left\{U\leqslant\dfrac{3}{2}\bigg|H_1\right\}=\displaystyle{\int_0^{"
+e0025,概率论,随机变量与分布,随机变量与分布,设随机变量$X$的分布函数$F(x)$，判断$F(ax)$、$F(x^2+1)$、$F(x^3-1)$、$F(\\vert X\\vert)$是否可以做出分布函数。,=a,"逐个分析$F(g(x))$中的$g(x)$走向。
+
+$\lim\limits_{x\to+\infty}F(ax)=a\lim\limits_{x\to+\infty}F(x)=a$，不满足。
+
+由于$x^2+1$在$x\to-\infty$的趋向为$+\infty$而不是$-\infty$，$\lim\limits_{x\to-\infty}F(x^2+1)=\lim\limits_{x\to+"
+e0026,概率论,随机变量与分布,随机变量与分布,"随机变量$X$的概率密度函数$f(x)$满足$f(1+x)=f(1-x)$，且$\\int_1^2f(x)\\,\\textrm{d}x=0.3$，则求分布函数$F(0)$的值。","$\int_1^2f(x)\,\textrm{d}x=\int_0^1f(x)\,\textrm{d}x=0.3$。
+
+$F(0)=\int_{-\infty}^0f(x)\,\textrm{d}x=","已知$f(1+x)=f(1-x)$，所以$f(x)$关于$x=1$对称。所以$\int_1^{+\infty}f(x)\,\textrm{d}x=\int_1^{-\infty}f(x)\,\textrm{d}x=\dfrac{1}{2}$。
+
+所以$\int_1^2f(x)\,\textrm{d}x=\int_0^1f(x)\,\textrm{d}x=0.3$。
+
+$F(0)=\int_{-\i"
+e0027,概率论,随机变量与分布,随机变量与分布,随机变量$X$的概率密度函数$f(x)$，判断$f(2x)$、$f(2-x)$是否可以作出概率密度函数。,=-,"$\int_{-\infty}^{+\infty}f(2x)\,\textrm{d}x=\dfrac{1}{2}\int_{-\infty}^{+\infty}f(2x)\,\textrm{d}(2x)=\dfrac{1}{2}\neq1$，不满足。
+
+$\int_{-\infty}^{+\infty}f(2-x)\,\textrm{d}x=-\int_{-\infty}^{+\infty}f(2"
+e0028,概率论,随机变量与分布,随机变量与分布,随机变量$X$的分布函数和概率密度函数为$F(x)$，$f(x)$，求$-X$的分布函数和概率密度。,=P,"已知$F(x)=P\{X\leqslant x\}$，则$F'(-x)=\{-X\leqslant x\}$，即$F'(-x)=P\{X\geqslant-x\}=1-P\{X\leqslant-x\}=1-F(-x)$。
+
+对$F'(-x)$进行求导：$[1-F(-x)]'=f(-x)$。"
+e0029,概率论,随机变量与分布,随机变量与分布,随机变量$X$的概率密度为$f(x)$，求随机变量$2X+3$的概率密度函数。,"其概率密度为$f_Y(x)=(\int_{-\infty}^{\frac{x-3}{2}}f(x)\,\textrm{d}x)'=\dfrac{1}{2}f\left(\dfrac{x-3}{2}\r","设$Y=2X+3$，所以$Y$的分布函数$F_Y(y)$为$F_Y(x)=P\{Y\leqslant x\}=P\{2X+3\leqslant x\}=P\left\{X\leqslant\dfrac{x-3}{2}\right\}=\int_{-\infty}^{\frac{t-3}{2}}f(x)\,\textrm{d}x$。
+
+所以其概率密度为$f_Y(x)=(\int_{-\infty}^"
+e0030,概率论,随机变量与分布,随机变量与分布,"已知随机变量$X$的概率密度为$f(x)=\\left\\{\\begin{array}{ll} 2x, & 0<x<1 \\\\ 0, \\text{其他} \\end{array}\\right.$，$Y$表示对$X$进行3次独立重复试验中出现事件$\\left\\{X\\leqslant\\dfrac{1}{2}\\right\\}$，求$P\\{Y=2\\}$。\\medskip","$Y\sim B(3,p)$。
+
+只用求出这个$p$即$\left\{X\leqslant\dfrac{1}{2}\right\}$的概率就可以了。又已知$f(x)$。
+
+$\therefore p=","已知对$X$进行独立重复试验，表示这个进行的是伯努利试验，从而$Y\sim B(n,p)$。又是3次，所以$Y\sim B(3,p)$。
+
+只用求出这个$p$即$\left\{X\leqslant\dfrac{1}{2}\right\}$的概率就可以了。又已知$f(x)$。
+
+$\therefore p=\left\{X\leqslant\dfrac{1}{2}\right\}=\int_0^\f"
+e0031,概率论,随机变量与分布,随机变量与分布,设一本书的各页印刷错误的个数$X$服从泊松分布。已知只有一个和只有两个印刷错误的页数相同，则随机抽查的4页中无印刷错误的概率$p$为？,"随机抽4页都无错误的概率为$[P\{X=0\}]^4=e^{-8}$。
+
+\subsubsection{几何分布}
+
+$P\{X=k\}=(1-p)^{k-1}p$（$k=0,1,\cdots,n$，","$\because P\{X=1\}=P\{X=2\}$，$\therefore\dfrac{\lambda^1}{1!}e^{-\lambda}=\dfrac{\lambda^2}{2!}e^{-\lambda}$，$\lambda=2$。
+
+由于随机抽四页类似于伯努利试验是相互独立的，所以随机抽4页都无错误的概率为$[P\{X=0\}]^4=e^{-8}$。
+
+\subsubsection{几"
+e0032,概率论,随机变量与分布,随机变量与分布,袋中有8个球，其中3个白球5个黑球，现在任意从中取出4个球，若四个球中有2个黑球和2个白球则试验停止，否则将其放回袋中重新抽取直到满足条件，用$X$表示试验次数，则求$P\\{X=k\\}$。,=k,"由题目的停止，则说明这个题目的概率是服从几何分布的，最重要的就是求出单次满足事件概率$p$。
+
+根据组合和乘法原理，$p=\dfrac{C_3^2C_5^2}{C_8^4}=\dfrac{3}{7}$。
+
+则$P\{X=k\}=\left(\dfrac{4}{7}\right)^{k-1}\cdot\dfrac{3}{7}$。"
+e0033,概率论,随机变量与分布,随机变量与分布,"已知随机变量$X$的概率密度为$f(x)=\\left\\{\\begin{array}{ll} 2^{-x}\\ln2, & x>0 \\\\ 0, \\text{其他} \\end{array}\\right.$，对$X$进行独立重复观测，直到第2个大于3的观测值出现时停止，记$Y$为观测次数，求$Y$的概率分布。","还要乘$(k-1)$。
+
+$\therefore P\{Y=k\}=(k-1)\left(\dfrac{1}{8}\right)^2\cdot\left(\dfrac{7}{8}\right)^{k-","由题目直到就停止，知道$Y\sim G(p)$。
+
+又$p=P\{X\geqslant3\}=\int_3^{+\infty}2^{-x}\ln2\,\textrm{d}x=\dfrac{1}{8}$
+
+这是对几何分布的变形，首先进行$k$次试验，第$k$次成功，所以要乘$p$，而因为是第2个成功，所以前面的$k-1$次中有$k-2$次失败和一次成功，所以一共$p^2(1-k)^{k-2}$。因为"
+e0034,概率论,随机变量与分布,随机变量与分布,"已知随机变量$X\\sim U(a,b)$（$a>0$）且$P\\{0<X<3\\}=\\dfrac{1}{4}$，$P\\{X>4\\}=\\dfrac{1}{2}$，求$X$的概率密度以及$P\\{1<X<5\\}$。","必然在右边。
+
+$\therefore P\{a<X<3\}=\dfrac{1}{4}$，$P\{<3X<4\}=1-\dfrac{1}{4}-\dfrac{1}{2}=\dfrac{1}{4}$，$","$\because P\{X>4\}=\dfrac{1}{2}$，4在其区间中点上，$\dfrac{a+b}{2}=4$。
+
+$\because P\{0<X<3\}=\dfrac{1}{4}$，$3$若在$a$左边则概率为0，所以必然在右边。
+
+$\therefore P\{a<X<3\}=\dfrac{1}{4}$，$P\{<3X<4\}=1-\dfrac{1}{4}-\dfrac{1}{2}"
+e0035,概率论,随机变量与分布,随机变量与分布,"已知随机变量$X$在区间$[0,1]$上服从均匀分布，在$X=x$（$0<x<1$）的条件下随机变量$Y$在区间$[0,x]$上服从均匀分布。 (1)$(X,Y)$的概率密度。",$P\{X+Y>1\}=\iint\limits_D\dfrac{1}{x}\textrm{d}\sigma$，$D=x+y>1\cap0<y<x<1$。$\iint\limits_D\dfrac{1,"$X$在区间$[0,1]$上服从均匀分布，则$X\sim f_X(x)=\left\{\begin{array}{ll}
+    1, & 0\leqslant x\leqslant1 \\
+    0, & \text{其他}
+\end{array}\right.$。
+
+$Y$在$X=x$下均匀分布，则$f_{Y|X}(y|x)=\left\{\begin{array}{ll}
+    \dfr"
+e0036,概率论,随机变量与分布,随机变量与分布,已知随机变量$X\\sim E(1)$，$a$为常数且大于0，求$P\\{X\\leqslant a+1|X>a\\}$。,=1-,"$P\{X\leqslant a+1|X>a\}=\dfrac{P\{a<X\leqslant a+1\}}{P\{X>a\}}=\dfrac{\int_a^{a+1}e^{-x}\,\textrm{d}x}{\int_a^{+\infty}e^{-x}\,\textrm{d}x}=1-\dfrac{1}{e}$。
+
+也可以根据指数分布的无记忆性：$P\{X\leqslant a+1|X>a\}="
+e0037,概率论,随机变量与分布,随机变量与分布,"随机变量$X$服从参数为1的指数分布，求$P\\{3>X>2|X>1\\}$。 已知$F(X<x)=1-e^{-\\lambda x}$，则$F(X>x)=e^{-\\lambda x}$。且$2<X<3\\cap 1<X=2<X<3$。 则$P\\{3>X>2|X>1\\}=\\dfrac{P\\{3>X>2\\}}{P\\{X>1\\}}=\\dfrac{P\\{X>2\\}-P\\{X>3\\}}{P\\{X>1\\}}=\\dfrac{e^{-2}-e^{-3}}{e^{-1}}=e^{-1}-e^{-2}$。 \\subsubsection{正态分布} $f(x)=\\dfrac{1}{\\sqrt{2\\pi}\\sigma}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$（$-\\infty<x<+\\infty$，$-\\infty<\\mu<+\\infty$，$\\sigma>0$），$X\\sim N(\\mu,\\sigma^2)$。",,
+e0038,概率论,随机变量与分布,随机变量与分布,"已知随机变量$X\\sim N(0,1)$，对给定的$\\alpha$（$0<\\alpha>1$），数$\\mu_\\alpha$满足$P\\{X>\\mu_\\alpha\\}=\\alpha$，若$P\\{\\vert X\\vert<x\\}=\\alpha$，求$x$。","两边的面积各为$\dfrac{1-\alpha}{2}$，$P\{X<x\}=P\{X>x\}=\dfrac{1-\alpha}{2}$。
+
+$\because$面积为$\alpha$的下标为$\al","$P\{X>\mu_\alpha\}=\alpha$即表示$\mu_\alpha$为标准正态分布的上$\alpha$分位点。
+
+又$P\{\vert X\vert<x\}=\alpha$，即$-x<X<x$的面积为$\alpha$，所以两边的面积各为$\dfrac{1-\alpha}{2}$，$P\{X<x\}=P\{X>x\}=\dfrac{1-\alpha}{2}$。
+
+$\because$面"
+e0039,概率论,随机变量与分布,随机变量与分布,"随机变量$X$服从$U(0,2)$，求随机变量$Y=X^2$在$(0,4)$内的概率分布密度$f_Y(y)$。","$f(x)=\dfrac{1}{2}$。
+
+则概率分布函数就是概率密度的积分，此时已经将$Y$变为了关于$X$的积分，$=\int_{-\sqrt{y}}^{\sqrt{y}}f(x)\,\textr","求概率分布密度函数，可以求出其积分概率分布函数，$F_Y(y)=P\{Y\leqslant y\}=P\{X^2\leqslant y\}=P\{-\sqrt{y}\leqslant X\leqslant\sqrt{y}\}$，又$X\sim U(0,2)$，所以$f(x)=\dfrac{1}{2}$。
+
+则概率分布函数就是概率密度的积分，此时已经将$Y$变为了关于$X$的积分，$=\int_{-"
+e0040,概率论,随机变量与分布,随机变量与分布,"已知二维随机变量$(X_1,X_2)$的概率密度函数$f_1(x_1,x_2)$，求$Y_1=2X_1$，$Y_2=\\dfrac{1}{3}X_2$的联合概率密度$f_2(y_1,y_2)$。","$f_2(y_1,y_2)=\dfrac{3}{2}f_1(\dfrac{y_1}{2},3y_2)$。
+
+\paragraph{联合概率函数} \leavevmode \medskip
+
+已知联合概","概率形式：设$F_2(y_1,y_2)=P\{Y_1\leqslant y_1,Y_2\leqslant y_2\}=P\{2X_1\leqslant y_1,\dfrac{1}{3}X_2\leqslant y_2\}=P\{X_1\leqslant\dfrac{y_1}{2},X_2\leqslant3y_2\}=F_1(\dfrac{y_1}{2},3y_2)$。所以$f_2(y_1,y_2"
+e0041,概率论,随机变量与分布,随机变量与分布,"已知概率密度为$f(x,y)=\\left\\{\\begin{array}{ll} 6, & 0<x^2<y<x<1 \\\\ 0, & \\text{其他} \\end{array}\\right.$，\\\\求$P\\left\\{X>\\dfrac{1}{2}\\right\\}$，$P\\left\\{Y<\\dfrac{1}{2}\\right\\}$。",=3],"\begin{minipage}{0.45\linewidth}
+    \begin{tikzpicture}[scale=3]
+        \begin{scope}
+            \clip(0.5,0)rectangle(1,1);
+            \draw[black, thick, smooth, domain=0:1,fill=gray!20] plot (\"
+e0042,概率论,随机变量与分布,随机变量与分布,"如果二维随机变量$(X,Y)$的分布函数为$F(x,y)=\\\\\\left\\{\\begin{array}{ll} 1-e^{-\\lambda_1x}-e^{-\\lambda_2y}+e^{-\\lambda_1x-\\lambda_2y-\\lambda12\\max\\{x,y\\}}, & \\lambda_1,\\lambda_2,\\lambda_{12}>0,x>0,y>0 \\\\ 0, & \\text{其他} \\end{array}\\right.$，\\\\求$XY$各自的边缘分布函数。",=x,"$\lim\limits_{x\to+\infty}\max\{x,y\}=x=+\infty$，$\lim\limits_{y\to+\infty}\max\{x,y\}=y=+\infty$。
+
+$F_X(x)=F(x,+\infty)=1-e^{-\lambda_1x}-0+0=1-e^{-\lambda_1x}$，$x>0$，当其他时$=0$。
+
+$F_Y(y)=F(+\infty,y)="
+e0043,概率论,随机变量与分布,随机变量与分布,"求$f(x,y)=\\left\\{\\begin{array}{ll} \\dfrac{5}{4}(x^2+y), & 0<y<1-x^2 \\\\ 0, \\text{其他} \\end{array}\\right.$的边缘概率密度。 \\begin{minipage}{0.5\\linewidth} 如果求$x$的边缘概率密度，则$y$的取值范围为最底部的0到函数$1-x^2$。如果求$y$的边缘密度，则发现$D$为对称函数，所以可以拆为左右两个部分，$x$的范围是$0$到函数$\\sqrt{1-y}$。 \\end{minipage} \\hfill \\begin{minipage}{0.4\\linewidth} \\begin{tikzpicture}[scale=2] \\draw[black, thick, smooth, domain=-1:1,fill=gray!20] plot (\\x, {-\\x*\\x+1}); \\draw[-latex](-1.25,0) -- (1.25,0) node[below]{$x$}; \\draw[-latex](0,-0.25) -- (0,1.25) node[above]{$y$}; \\filldraw[black] (0,0) node[below]{$O$}; \\draw[black](1,-0.15) node{$1$}; \\draw[black](-1,-0.15) node{$-1$}; \\draw[black](0,1.15) node{$1$}; \\draw[black, thick, smooth, domain=-1.1:1.1] plot (\\x, {-\\x*\\x+1}); \\draw[black](0.2,0.5) node{$D$}; \\end{tikzpicture} \\end{minipage} $f_X(x)=\\dfrac{5}{4}\\int_0^{1-x^2}x^2+y\\,\\textrm{d}y=\\dfrac{5}{4}\\left(x^2y+\\dfrac{y^2}{2}\\right)\\bigg\\vert_0^{1-x^2}=-\\dfrac{5}{8}x^4+\\dfrac{5}{8}$。 $f_Y(y)=2\\dfrac{5}{4}\\int_0^{\\sqrt{1-y}}x^2+y\\,\\textrm{d}x=\\dfrac{5}{2}\\left(\\dfrac{x^3}{3}+yx\\right)\\bigg\\vert_0^{\\sqrt{1-y}}=\\dfrac{5}{6}(1-y)\\sqrt{1-y}+\\dfrac{5}{2}y\\sqrt{1-y}$。 \\subsubsection{二维均匀分布} \\subsubsection{二维正态分布} 概率密度为： {\\fontsize{8.2pt}{10pt}$f(x,y)=\\dfrac{1}{2\\pi\\sigma_1\\sigma_2\\sqrt{1-\\rho^2}}\\exp\\left\\{-\\dfrac{1}{2(1-\\rho^2)}\\left[\\left(\\dfrac{x-\\mu_1}{\\sigma_1}\\right)^2-2\\rho\\left(\\dfrac{x-\\mu_1}{\\sigma_1}\\right)\\left(\\dfrac{y-\\mu_2}{\\sigma_2}\\right)+\\left(\\dfrac{y-\\mu_2}{\\sigma_2}\\right)^2\\right]\\right\\}$} 其中$\\mu_1,\\mu_2\\in R$，$\\sigma_1,\\sigma_2>0$，$-1<\\rho<1$。 \\paragraph{正态分布性质} \\leavevmode \\medskip",,
+e0044,概率论,随机变量与分布,随机变量与分布,"$(X,Y)\\sim N(\\mu_1,\\mu_2;\\sigma_1^2,\\sigma_2^2;0)$，分布函数为$F(x,y)$，已知$F(\\mu_1,y)=\\dfrac{1}{4}$，求$y$。",=0$时,"当$\rho=0$时，$F(X,Y)=\dfrac{1}{2\pi\sigma_1\sigma_2}e^{-\frac{1}{2}\left[\left(\frac{x-\mu_1}{\sigma_1}\right)^2+\left(\frac{y-\mu_2}{\sigma_2}\right)^2\right]}\\=F_X(x)F_Y(y)$，即$XY$相互独立。
+
+$X\sim N(\mu_"
+e0045,概率论,随机变量与分布,随机变量与分布,"设随机变量$(X,Y)$的分布函数为$\\varPhi(2x+1)\\cdot\\varPhi(2y-1)$，其中$\\varPhi(x)$为标准正态分布函数，求$(X,Y)$的分布函数。",根据标准化公式：$\varPhi(2x+1)\cdot\varPhi(2y-1)=\varPhi\left(\dfrac{x+\dfrac{1}{2}}{\dfrac{1}{2}}\right)\va,"由分布函数为$\varPhi(2x+1)\varPhi(2y-1)$是$X$的分布函数和$Y$的分布函数的乘积，所以可知$XY$相互独立。
+
+所以根据标准化公式：$\varPhi(2x+1)\cdot\varPhi(2y-1)=\varPhi\left(\dfrac{x+\dfrac{1}{2}}{\dfrac{1}{2}}\right)\varPhi\left(\dfrac{y-\dfrac{1"
+e0046,概率论,随机变量与分布,随机变量与分布,"随机变量$(X,Y)$的概率密度函数$f(x,y)=\\left\\{\\begin{array}{ll} e^{-y}, & 0<x<y \\\\ 0, \\text{其他} \\end{array}\\right.$，求$P\\{X+Y\\leqslant1\\}$。","$P\{X+Y\leqslant1\}=\iint\limits_De^{-y}\,\textrm{d}x\textrm{d}y=\int_0^{\frac{1}{2}}\textrm{d}x\int","根据$X+Y\leqslant1$和$0<x<y$划分区域：
+
+\begin{multicols}{2}
+    
+    \begin{tikzpicture}[scale=2]
+        \draw[-latex](-0.25,0) -- (1.25,0) node[below]{$x$};
+        \draw[-latex](0,-0.25) -- (0,1.25) node["
+e0047,概率论,随机变量与分布,随机变量与分布,"设$X\\sim N(\\mu,\\sigma_1^2)$，$Y\\sim N(2\\mu,\\sigma_2^2)$，$XY$相互独立，已知$P\\{X-Y\\geqslant1\\}=\\dfrac{1}{2}$，求$\\mu$。",=-1$,"若$X\sim N(\mu,\sigma_1^2)$，$Y\sim N(2\mu,\sigma_2^2)$，则$X-Y\sim(-\mu,\sigma_1^2-\sigma_2^2)$。则$X-Y$的均值为$-\mu$，即其图像的对称轴为$-\mu$。
+
+又$P\{X-Y\geqslant1\}=\dfrac{1}{2}$，则$X-Y$在$1$这里均分，则对称轴为$1$，即$\mu=-1$。
+
+\"
+e0048,概率论,随机变量与分布,随机变量与分布,"设随机变量$X_1$和$X_2$相互独立，已知$X_1\\sim B\\left(1,\\dfrac{3}{4}\\right)$，$X_2$的分布函数为$F(x)$，求$Y=X_1+X_2$的分布函数$F_Y(y)$。",=0,"已知$X_1\sim B\left(1,\dfrac{3}{4}\right)$，$X_2$的分布函数为$F(x)$，则$Y$为混合型。
+
+则$P\{X_1=0\}=C_1^0\dfrac{3}{4}^0\dfrac{1}{4}^1=\dfrac{1}{4}$，$P\{X_1=1\}=C_1^1\dfrac{3}{4}^1\dfrac{1}{4}^0=\dfrac{3}{4}$。
+
+$F_Y(y)"
+e0049,概率论,数字特征,数字特征,"设随机变量$X$的分布律为$P\\{X=k\\}=\\dfrac{1}{2^kk!(\\sqrt{e}-1)}$，$k=1,2,\\cdots$，求$EX$。",就需要按照离散随机变量的期望定义来计算。注意虽然$f(x)$对于$x$是变化了，但是对应的概率是不变的。,"查看分布律中含有$k!$的形式，所以可以考虑转换为泊松分布。泊松分布的标准形式是$\dfrac{\lambda^k}{k!}e^{-\lambda}$。
+
+$P\{X=k\}=\dfrac{1}{2^kk!(\sqrt{e}-1)}=\dfrac{\sqrt{e}}{\sqrt{e}-1}\dfrac{\left(\frac{1}{2}\right)^k}{k!}e^{-\frac{1}{2}}$"
+e0050,概率论,数字特征,数字特征,已知$X\\sim P(\\lambda)$，求$E(X)E\\left(\\dfrac{1}{1+X}\\right)$。,"就要用到期望的定义。
+
+$E(X)E\left(\dfrac{1}{1+X}\right)=\lambda\cdot\sum\limits_{k=0}^\infty\dfrac{1}{1+k}\dfr","已知$X\sim P(\lambda)$，则$E(X)=\lambda$。而$E\left(\dfrac{1}{1+X}\right)$无法通过拟合求出，所以就要用到期望的定义。
+
+$E(X)E\left(\dfrac{1}{1+X}\right)=\lambda\cdot\sum\limits_{k=0}^\infty\dfrac{1}{1+k}\dfrac{\lambda^k}{k!}e^{-"
+e0051,概率论,数字特征,数字特征,连续型随机变量$X$的概率密度为$f(x)=\\dfrac{1}{\\pi(1+x^2)}$（$-\\infty<x<+\\infty$），求$EX$。,"不存在。
+
+\paragraph{概率密度函数} \leavevmode \medskip
+
+给出$X$概率密度与$X$的相关函数。","$EX=\int_{-\infty}^{+\infty}xf(x)\,\textrm{d}x=\int_{-\infty}^{+\infty}x\dfrac{1}{\pi(1+x^2)}\textrm{d}x=\dfrac{1}{2\pi}\int_{-\infty}^{+\infty}\dfrac{\textrm{d}(1+x^2)}{1+x^2}=\dfrac{1}{2pi}\ln(^1+x^"
+e0052,概率论,数字特征,数字特征,"连续型随机变量$X$的概率密度为$f(x)=\\dfrac{1}{\\pi(1+x^2)}$（$-\\infty<x<+\\infty$），求$E(\\min\\{\\vert X\\vert,1\\})$。",,"$E(\min\{\vert X\vert,1\})=\displaystyle{\int_{-\infty}^{+\infty}}\min\{\vert x\vert,1\}\dfrac{1}{\pi(1+x^2)}\textrm{d}x=\dfrac{2}{\pi}\int_0^{+\infty}\min\{x,1\}$\\$\dfrac{1}{1+x^2}\textrm{d}x=\dfrac"
+e0053,概率论,数字特征,数字特征,"随机变量$X\\sim N(0,1)$，求$E[(X-2)^2e^{2X}]$。",=e,"$E[(X-2)^2e^{2X}]=\int_{-\infty}^{+\infty}(x-2)^2e^{2x}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\,\textrm{d}x\\=e^2\int_{-\infty}^{+\infty}(x-2)^2\dfrac{1}{\sqrt{2\pi}}e^{-\frac{(x-2)^2}{2}}\,\textrm{d"
+e0054,概率论,数字特征,数字特征,"设随机变量$X$的概率密度函数为$f(x)$，$E(X)=a$，判断$\\int_{-\\infty}^{+\\infty}xf(x+a)\\,\\textrm{d}x=0$，$\\int_{-\\infty}^axf(x)\\,\\textrm{d}x=\\dfrac{1}{2}$。",不成立。,"由于$E(X)=a$，则$\int_{-\infty}^{+\infty}xf(x)\,\textrm{d}x=a$。
+
+对于$\int_{-\infty}^{+\infty}xf(x+a)\,\textrm{d}x=0$，令$x+a=t$，$x=t-a$，所以代入$\int_{-\infty}^{+\infty}(t-a)f(t)\,\textrm{d}(t-a)=\int_{-\infty}^"
+e0055,概率论,数字特征,数字特征,"相互独立的随机变量$X_1,X_2,\\cdots,X_n$具有相同的方差$\\sigma^2>0$，设$\\overline{X}=\\dfrac{1}{n}\\sum\\limits_{i=1}^nX_i$，求$D(X_1-\\overline{X})$。",=D,"由题已知$DX_i=\sigma_2$。
+
+$D(X_1-\overline{X})=D\left(X_1-\dfrac{1}{n}\sum\limits_{i=1}^nX_i\right)=D\left(\dfrac{n-1}{n}X_1-\dfrac{1}{n}\sum\limits_{i=2}^nX_i\right)=\left(\dfrac{n-1}{n}\right)^2\\DX_1+\"
+e0056,概率论,数字特征,数字特征,"已知随机变量$X_1$，$X_2$相互独立，且都服从正态分布$N(\\mu,\\sigma^2)$（$\\sigma>0$），求$D(X_1X_2)$。",=EX_2,"$X_1$，$X_2$服从$N(\mu,\sigma^2)$，则$EX_1=EX_2=\mu$。
+
+$D(X_1X_2)=E[(X_1X_2)^2]-[E(X_1X_2)]^2=E(X_1^2X_2^2)-(EX_1EX_2)^2$。
+
+若$X_1$，$X_2$相互独立则$X_1^2$，$X_2^2$相互独立，则$=EX_1^2EX_2^2-\mu^4$。
+
+又$EX_1^2=EX_2^2=DX_"
+e0057,概率论,数字特征,数字特征,已知$XY$的相关系数$\\rho_{XY}\\neq0$，设$Z=aX+b$，$ab$为常数，则求出$\\rho_{XY}=\\rho_{YZ}$成立的充要条件。,相等的条件是$\dfrac{a}{\vert a\vert}=1$，即$a>0$。,"由于$Cov(Y,Z)=Cov(Y,aX+b)=aCov(Y,X)=aCov(X,Y)$，$DZ=D(aX+b)=a^2Dx$。
+
+$\rho_{YZ}=\dfrac{Cov(Y,Z)}{\sqrt{DY}\sqrt{DZ}}=\dfrac{aCov(X,Y)}{\sqrt{DY}\sqrt{a^2DX}}=\dfrac{a}{\vert a\vert}\rho_{XY}$，所以相等的条件是$\d"
+e0058,概率论,数字特征,数字特征,"设随机变量$X_1,X_2,\\cdots,X_n$独立同分布，且方差$\\sigma^2>0$，$Y_1=\\sum\\limits_{i=2}^nX_i$和$Y_2=\\sum\\limits_{j=1}^{n-1}X_j$，求$Y_1$和$Y_n$的协方差$Cov(Y_1,Y_n)$。",=2,$\because Y_1=\sum\limits_{i=2}^nX_i$，$Y_2=\sum\limits_{j=1}^{n-1}X_j$，$DX_i=\sigma^2$。
+e0059,概率论,数字特征,数字特征,已知随机变量$XY$，$EX=EY=2$、$DX=1$、$DY=4$，$\\rho_{XY}=0.5$，估计概率$P\\{\\vert X-Y\\vert\\geqslant6\\}$。,$P\{\vert X-Y\vert\geqslant6\}=P\{\vert Z-0\vert\geqslant6\}\leqslant\dfrac{DZ}{\epsilon^2}=\dfrac{3,"已知$\rho_{XY}=0.5=\dfrac{Cov(X,Y)}{\sqrt{DX}\sqrt{DY}}=\dfrac{Cov(X,Y)}{2}$，$Cov(X,Y)=1=E(XY)-EXEY$，$E(XY)=5$。
+
+令$X-Y=Z$，$EZ=EX-EY=0$，$DZ=DX+DY-2Cov(X,Y)=1+4-2=3$。
+
+取$\epsilon=6$，由切比雪夫不等式得$P\{\vert X-Y"
+e0060,高等数学,向量与空间解析几何,向量与空间解析几何,"计算向量场$u(x,y,z)=xy^2i+ye^xj+x\\ln(1+z^2)k$在点$P(1,1,0)$的散度和旋度。","$u(x,y,z)=(P,Q,R)$，$P=xy^2$，$Q=ye^x$，$R=x\ln(1+z^2)$。
+
+$\dfrac{\partial P}{\partial x}=y^2$，$\dfrac{","所以$u(x,y,z)=(P,Q,R)$，$P=xy^2$，$Q=ye^x$，$R=x\ln(1+z^2)$。
+
+$\dfrac{\partial P}{\partial x}=y^2$，$\dfrac{\partial Q}{\partial y}=e^x$，$\dfrac{\partial R}{\partial z}=\dfrac{2zx}{1+z^2}$。
+
+代入$P(1,1,0)$，得到"
+e0061,高等数学,函数,函数,汽车以20m/s的速度行驶，刹车后匀减速行驶了50m停止，求刹车加速度。,"此时$\dfrac{\textrm{d}s}{\textrm{d}t}=0$，得到$t=-\dfrac{20}{k}$。
+
+代入$s$：$50=\dfrac{1}{2}k\left(-\dfrac{2","已知题目含有两个变量：距离和时间，设距离为$s$，时间为$t$。
+
+因为汽车首先按20m/s匀速运动，所以$\dfrac{\textrm{d}s}{\textrm{d}t}\bigg\vert_{t=0}=20$，最开始距离为0，所以$s\vert_{t=0}=0$。
+
+又因为是匀减速的，所以速度形如：$v=\dfrac{s}{t}=kt+b$，从而令二阶导数下$\dfrac{\textrm{d}"
+e0062,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{x\\ln x\\ln\\ln x}}$。 \\medskip,,$=\displaystyle{\int\dfrac{\textrm{d}(\ln x)}{\ln x\ln\ln x}}=\displaystyle{\int\dfrac{\textrm{d}(\ln\ln x)}{\ln\ln x}}=\ln\vert\ln\ln x\vert+C$。\medskip
+e0063,高等数学,函数,函数,"求$\\displaystyle{\\int\\dfrac{10^{2\\arccos x}}{\\sqrt{1-x^2}}\\,\\textrm{d}x}$。",=-,"$=-\displaystyle{\int10^{2\arccos x}\,\textrm{d}(\arccos x)}=-\dfrac{1}{2}\displaystyle{\int10^{2\arccos x}\,\textrm{d}(2\arccos x)}$
+
+$=-\dfrac{10^{2\arccos x}}{2\ln10}+C$。
+
+\paragraph{积化和差} \leavevm"
+e0064,高等数学,函数,函数,"求$\\displaystyle{\\int\\sin2x\\cos3x\\,\\textrm{d}x}$。",=-,"$=\displaystyle{\int\cos3x\sin2x\,\textrm{d}x=\dfrac{1}{2}\int(\sin5x-\sin x)\,\textrm{d}x}$
+
+$=\dfrac{1}{2}\int\sin5x\,\textrm{d}x-\dfrac{1}{2}\int\sin x\,\textrm{d}x=-\dfrac{1}{10}\cos5x+\dfrac{1}{2"
+e0065,高等数学,函数,函数,"求$\\int\\sin x\\sin2x\\sin3x\\,\\textrm{d}x$。",=-,"这时候需要利用积化和差。
+
+$=\displaystyle{\int\dfrac{1}{2}(\cos x-\cos3x)\sin3x\,\textrm{d}x=\dfrac{1}{2}\int\cos x\sin3x\,\textrm{d}x-\dfrac{1}{2}\int\cos3x\sin3x\,\textrm{d}x}$
+
+$=\dfrac{1}{4}\int(\sin2x+\sin4x"
+e0066,高等数学,函数,函数,"$\\displaystyle{\\int\\tan^3x\\sec x\\,\\textrm{d}x}$。",,"$=\displaystyle{\int(\sec^2x-1)}\tan x\sec x\,\textrm{d}x=\displaystyle{\int(\sec^2x-1)}\,\textrm{d}(\sec x)$
+
+$=\dfrac{1}{3}\sec^3x-\sec x+C$。
+
+有时需要利用到有理积分的高阶多项式分配与低阶多项式因式分解。"
+e0067,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{(2+\\cos x)\\sin x}}$。\\medskip,"分子分母都乘上$\sin x$。
+
+$=\displaystyle{\int\dfrac{\textrm{d}(\cos x)}{(2+\cos x)(\cos^2x-1)}}$，令$\cos x=u","将所有的$\sin x$都变成$\cos x$。所以分子分母都乘上$\sin x$。
+
+$=\displaystyle{\int\dfrac{\textrm{d}(\cos x)}{(2+\cos x)(\cos^2x-1)}}$，令$\cos x=u$：$=\displaystyle{\int\dfrac{\textrm{d}u}{(2+u)(u^2-1)}}$。
+
+利用低阶多项式因式分解：$="
+e0068,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\sqrt{1+\\cos x}}{\\sin x}\\textrm{d}x}$。,当$\cos\dfrac{x}{2}>0$时乘积正负号不变，$=\ln\left(\left\vert\csc\dfrac{x}{2}\right\vert-\left\vert\cot\dfrac{,"看到根号就会很自然想到使用有理换元的方式，令$\sqrt{1+\cos x}=u$，从而$\sin x=\sqrt{2u^2-u^4}$，原式$=\displaystyle{\int\dfrac{u}{\sqrt{2u^2-u^4}}\textrm{d}u}$，这时会发现根本解不出来。
+
+这里自然会想到把根号去掉，那么还有什么方法？将$1+\cos x$变为一个平方的形式，可以使用二倍角公式$1+"
+e0069,高等数学,函数,函数,"求$\\int(\\arcsin x)^2\\,\\textrm{d}x$。","对其求导，放在上面：\medskip
+
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    $t^2$ & $2t$ & $2$ & $0$ \\ \hline
+   ","令$\arcsin x=t$，$\therefore x=\sin t$，$\textrm{d}x=\cos t\,\textrm{d}t$。
+
+$=\int t^2\cos t\,\textrm{d}t$。除了换元法还需要使用分部积分法，可以直接进行分部积分也可以使用下面讲到的分部积分拓展公式的表格法来计算，$\cos t$更难求导，所以对其积分，放在下面，$t^2$容易求导，所以对其求导，放在"
+e0070,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{x^2\\sqrt{x^2-1}}}$。\\medskip,"先进行倒代换：\medskip
+
+$=-\displaystyle{\int\dfrac{u\,\textrm{d}u}{\sqrt{1-u^2}}}=\sqrt{1-u^2}+C=\dfrac{\s","因为所有的变量都在分母，所以先进行倒代换：\medskip
+
+$=-\displaystyle{\int\dfrac{u\,\textrm{d}u}{\sqrt{1-u^2}}}=\sqrt{1-u^2}+C=\dfrac{\sqrt{x^2-1}}{x}+C$。
+
+\paragraph{有理换元} \leavevmode \medskip
+
+书上这个类型属于有理函数部分，我这里移动到第一类换元中"
+e0071,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{1+\\sqrt[3]{x+1}}}$。,=u,"令$u=\sqrt[3]{x+1}$，从而$x=u^3-1$，$\textrm{d}x=3u^2\,\textrm{d}u$。
+
+$=\displaystyle{\int\dfrac{3u^2}{1+u}\textrm{d}u=\int\dfrac{3u^2+3u-3u-3+3}{1+u}\textrm{d}u=\int\left(3u-3+\dfrac{3}{1+u}\right)\textrm"
+e0072,高等数学,函数,函数,求$\\displaystyle{\\int\\sqrt{\\dfrac{1-x}{1+x}}\\dfrac{\\textrm{d}x}{x}}$。\\medskip,=(A-B-C)u,"令$u=\sqrt{\dfrac{1-x}{1+x}}$，$x=\dfrac{1-u^2}{1+u^2}$。
+
+$\therefore\textrm{d}x=\textrm{d}\left(\dfrac{1-u^2}{1+u^2}\right)=\dfrac{-2u(1+u^2)-2u(1-u^2)}{(1+u^2)^2}$
+
+$=\displaystyle{\int u\cdot\dfrac{1"
+e0073,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{\\sqrt[3]{(x+1)^2(x-1)^4}}}$。,有时可以使用分部积分法：\medskip,"由最开始分析的，有理换元需要让换元里的式子是一个一阶的，而现在里面最高四阶，所以必须想办法把这个式子转换为一阶的，这个也是本题目的难点。由于是三次根，所以可以尝试将里面的$(x+1)^2(x-1)^4$都提出三次方：
+
+$=\displaystyle{\int\dfrac{1}{x^2-1}\sqrt[3]{\dfrac{x+1}{x-1}}\textrm{d}x}$，令$\sqrt[3]{\df"
+e0074,高等数学,函数,函数,求$\\displaystyle{\\int\\sqrt{\\dfrac{a+x}{a-x}}\\textrm{d}x}$。\\medskip,"$x=a\dfrac{u^2-1}{u^2+1}$，$\textrm{d}x=4a\dfrac{u\,\textrm{d}u}{(u^2+1)^2}$。
+
+$=\displaystyle{4a\int","令$\sqrt{\dfrac{a+x}{a-x}}=u$，解得$x=a\dfrac{u^2-1}{u^2+1}$，$\textrm{d}x=4a\dfrac{u\,\textrm{d}u}{(u^2+1)^2}$。
+
+$=\displaystyle{4a\int\dfrac{u^2\,\textrm{d}u}{(u^2+1)^2}=-2a\int u\,\textrm{d}\left(\dfrac"
+e0075,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{xe^x}{\\sqrt{1+e^x}}\\textrm{d}x}$。,"先尝试换元：$\int xe^x(1+e^x)^{-\frac{1}{2}}\,\textrm{d}x=2\int x\,\textrm{d}(\sqrt{1+e^x})=2x\sqrt{1+e^x}","若首先进行换元积分法，令$\sqrt{1+e^x}=t$，则$I=2\int\ln(t^2-1)\,\textrm{d}t$。
+
+所以先尝试换元：$\int xe^x(1+e^x)^{-\frac{1}{2}}\,\textrm{d}x=2\int x\,\textrm{d}(\sqrt{1+e^x})=2x\sqrt{1+e^x}-2\int\sqrt{1+e^x}\,\textrm{d}x$，"
+e0076,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{3+\\cos x}}$。,"要保证原函数的单调性，所以要有一个规定的范围来使原函数保证单调。
+
+\paragraph{\texorpdfstring{$\sqrt{a^2-x^2}$：$x=a\sin t(a\cos t)$}\","令$u=\tan\dfrac{x}{2}$，从而$\cos x=\dfrac{1-u^2}{1+u^2}$：
+
+$=\displaystyle{\int\dfrac{1}{3+\dfrac{1-u^2}{1+u^2}}\cdot\dfrac{2}{1+u^2}\textrm{d}u=\dfrac{1}{2+u^2}\textrm{d}u=\dfrac{1}{\sqrt{2}}\arctan\dfr"
+e0077,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{1+\\sqrt{1-x^2}}}$。\\medskip,"不用讨论正负号。
+
+$=\displaystyle{\int\dfrac{\cos t}{1+\cos t}\textrm{d}t=\int\dfrac{2\cos^2\dfrac{t}{2}-1}{","令$x=\sin t$（$t\in\left(-\dfrac{\pi}{2},\dfrac{\pi}{2}\right)$），所以$\sqrt{1-x^2}=\cos t$，$\textrm{d}x=\cos t\,\textrm{d}t$，$t=\arcsin x$。
+
+因为式子$\dfrac{1}{1+\sqrt{1-x^2}}>0$，单调递减，所以不用讨论正负号。
+
+$=\displayst"
+e0078,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{x^3+1}{(x^2+1)^2}\\textrm{d}x}$。\\medskip,"从而得到主空间：$t\in\left(-\dfrac{\pi}{2},\dfrac{\pi}{2}\right)$。\medskip","虽然本题目看着可以从分母解开平方，然后低阶分配，但是这分母是平方的式子很难分配，所以需要使用换元法。
+
+令$x=\tan t$，$t\in\left(-\dfrac{\pi}{2},\dfrac{\pi}{2}\right)$，$x^2+1=\sec^2t$，$\textrm{d}x=\sec^2t\,\textrm{d}t$。
+
+因为$(x^2+1)^2>0$，虽然$x^3+1$可能为负可能为正"
+e0079,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\sqrt{x^2-9}}{x}\\textrm{d}x}$。,"
+
+当$x>3$时，$\sec t>1$，即$t\in\left(0,\dfrac{\pi}{2}\right)$。
+
+$=\displaystyle{\int3\tan^2t\,\textrm{d}","令$x=3\sec t$。$\therefore\sqrt{x^2-9}=3\tan t$，$\textrm{d}x=3\sec t\tan t\,\textrm{d}t$。\medskip
+
+因为式子$\dfrac{\sqrt{x^2-9}}{x}$的分子必然为为正，而对于分子在0两边的单调性不同，所以需要对$x$进行正负区分，又$x\in(-\infty,-3]\cup[3,+\infty)$"
+e0080,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{\\textrm{d}x}{x+\\sqrt{1-x^2}}}$。\\medskip,"$I_1=\dfrac{1}{2}(\arcsin x+\ln\vert x+\sqrt{1-x^2}\vert)+C$。
+
+同理$t\in(-\dfrac{\pi}{2},-\dfrac{\pi}{","令$x=\sin t$，所以$\sqrt{1-x^2}=\cos t$，$\textrm{d}x=\cos t\,\textrm{d}t$。
+
+$\because x+\sqrt{1-x^2}$可能为正可能为负，正负时单调性不同，所以令$ x+\sqrt{1-x^2}=0$，即$\sin t=-\dfrac{\sqrt{2}}{2}$，从而$t\in(-\dfrac{\pi}{2},-\dfrac"
+e0081,高等数学,函数,函数,"求$\\int x^2\\arctan x\\,\\textrm{d}x$。","应该优先消去幂函数部分，从而降低幂次。
+
+如$\int x^a\sin x\,\textrm{d}x$，$\int x^a\cos x\,\textrm{d}x$。","$=\dfrac{1}{3}\int\arctan x\,\textrm{d}(x^3)=\dfrac{1}{3}x^3\arctan x-\dfrac{1}{3}\int x^3\,\textrm{d}(\arctan x)$
+
+$=\dfrac{1}{3}x^3\arctan x-\dfrac{1}{3}\displaystyle{\int\dfrac{x^3}{1+x^2}\textrm{d"
+e0082,高等数学,函数,函数,"求$\\int x\\tan^2x\\,\\textrm{d}x$。","需要多次积分，然后利用等式求出目标值。即三角函数和指数函数，这两种积分形式不变，指数函数一次积分保持不变，而三角函数两次积分保持不变。
+
+也称为积分再现、循环积分法。
+
+如：$\int e^x\sin","$=\int x(\sec^2-1)\,\textrm{d}x=\int x\,\textrm{d}(\tan x)-\dfrac{x^2}{2}=x\tan x+\ln\vert\cos x\vert-\dfrac{x^2}{2}+C$。
+
+\subsubsection{多次分部}
+
+对于一部分通过微分形式不会发生变化的函数，所以需要多次积分，然后利用等式求出目标值。即三角函数和指数函数，这两种"
+e0083,高等数学,函数,函数,"求$\\int e^x\\sin^2x\\,\\textrm{d}x$。","分部积分法找到对应的规律，表格上求导，下积分：\medskip
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    符号 & + & - & + & $\cd","$=\sin^2x\cdot e^x-\int e^x\,\textrm{d}(\sin^2x)=\sin^2x\cdot e^x-\int e^x\cdot\sin 2x\,\textrm{d}x$
+
+$=\sin^2x\cdot e^x-\int\sin2x\,\textrm{d}(e^x)=\sin^2x\cdot e^x-\sin2x\cdot e^x+\int e^x\,\textrm{"
+e0084,高等数学,函数,函数,"求$\\int(x^3+2x+6)e^{2x}\\,\\textrm{d}x$。",=x,"如果要一般求，则需要拆分：
+
+$\int(x^3+2x+6)e^{2x}\,\textrm{d}x=\int x^3e^{2x}\,\textrm{d}x+2\int xe^{2x}\,\textrm{d}x+6\int e^2x\,\textrm{d}x$。
+
+而如果使用分部积分的推广公式，令$u=x^3+2x+6$，$v=e^{2x}$。\medskip
+
+\begin{tabular}{|c"
+e0085,高等数学,函数,函数,"求$\\int x^2\\ln x\\,\\textrm{d}x$。\\medskip",,"\begin{tabular}{|c|c|}
+    \hline
+    $\ln x$ & $\dfrac{1}{x}$ \\ \hline
+    $x^2$ & $\dfrac{1}{3}x^3$ \\
+    \hline
+\end{tabular} \medskip
+
+$\therefore=\dfrac{1}{3}x^3\ln x-\displaystyle{\int\dfrac{1"
+e0086,高等数学,函数,函数,"求$\\int e^{\\sqrt[3]{x}}\\,\\textrm{d}x$。",=u$,"令$\sqrt[3]{x}=u$，从而$x=u^3$，$\textrm{d}x=3u^2\,\textrm{d}u$。
+
+$=3\int e^uu^2\,\textrm{d}u=3\int u^2\,\textrm{d}(e^u)=3u^2e^u-3\int e^u\,\textrm{d}(u^2)=3u^2e^u-6\int e^uu\,\textrm{d}u$
+
+$=3u^2e^u-6\int"
+e0087,高等数学,函数,函数,"求$\\int e^{\\sqrt{3x+9}}\\,\\textrm{d}x$。",=u$,"令$\sqrt{3x+9}=u$，从而$x=\dfrac{1}{3}(u^2-9)$，$\textrm{d}x=\dfrac{2}{3}u\,\textrm{d}u$：
+
+$=\displaystyle{\dfrac{2}{3}\int ue^u\,\textrm{d}u=\dfrac{2}{3}\int u\,\textrm{d}(e^u)=\dfrac{2}{3}ue^u-\int\dfrac"
+e0088,高等数学,函数,函数,"$\\displaystyle{\\int\\dfrac{x^3}{x^2+9}\\,\\textrm{d}x}$。 \\medskip","具体的分解基本原理：
+
+\begin{enumerate}","$=\displaystyle{\int\dfrac{x^3+9x-9x}{x^2+9}\,\textrm{d}x=\int\dfrac{x^3+9x}{x^2+9}\,\textrm{d}x-\int\dfrac{9x}{x^2+9}\,\textrm{d}x}$ \medskip
+
+$\displaystyle{=\int x\,\textrm{d}x-\dfrac{9}{2}\int\dfr"
+e0089,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{x^2+1}{(x+1)^2(x-1)}\\textrm{d}x}$。\\medskip,"$\dfrac{x^2+1}{(x+1)^2(x-1)}=\dfrac{1}{2(x+1)}-\dfrac{1}{(x+1)^2}+\dfrac{1}{2(x-1)}$。
+
+$\therefore=\","令$\dfrac{A}{x+1}+\dfrac{B}{(x+1)^2}+\dfrac{C}{x-1}=\dfrac{x^2+1}{(x+1)^2(x-1)}$。 \medskip
+
+通分：$=A(x+1)(x-1)+B(x-1)+C(x+1)^2$
+
+$=A(x^2-1)+B(x-1)+C(x^2+2x+1)$
+
+$=(A+C)x^2+(B+2C)x+(C-A-B)=x^2+1$。
+
+从而$A+C"
+e0090,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{x-1}{x^2+2x+3}\\textrm{d}x}$。,"
+
+$=\displaystyle{\dfrac{1}{2}\int\dfrac{2x+2}{x^2+2x+3}\textrm{d}x-2\int\dfrac{1}{x^2+2x+3}\textrm{","因为$x^2+2x+3$不能因式分解，所以考虑将分子按照分母形式进行分配。优先对高阶的$x$进行分配。
+
+首先因为分子最高阶为$x$只比分母最高阶$x^2$低一阶，所以考虑将$x-1$分配到微分号内。
+
+$\because\textrm{d}(x^2+2x+3)=2x+2$，而现在是$x-1$，所以：
+
+$=\displaystyle{\dfrac{1}{2}\int\dfrac{2x+2}{x^"
+e0091,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{x^5+x^4-8}{x^3-x}\\textrm{d}x}$。,=x,"$=\displaystyle{\int\dfrac{x^5-x^3+x^4-x^2+x^3-x+x^2+x-8}{x^3-x}\textrm{d}x}$
+
+$=\int x^2\,\textrm{d}x+\int x\,\textrm{d}x+\int\textrm{d}x+\displaystyle{\int\dfrac{x^x+x-8}{x^3-x}\textrm{d}x}=\dfrac{x"
+e0092,高等数学,函数,函数,求$\\displaystyle{\\int\\dfrac{-x^2-2}{(x^2+x+1)^2}\\textrm{d}x}$。,"
+
+$=\displaystyle{\int\dfrac{x-1}{(x^2+x+1)^2}\textrm{d}x-\int\dfrac{1}{x^2+x+1}\textrm{d}x}$
+
+$=\di","首先根据因式分解：$\dfrac{-x^2-2}{(x^2+x+1)^2}=\dfrac{Ax+B}{x^2+x+1}+\dfrac{Cx+D}{(x^2+x+1)^2}$。
+
+$\therefore Ax^3+(A+B)x^2+(A+B+C)x+(B+D)=-x^2-2$。
+
+解得：$A=0$，$B=D=-1$，$C=1$。
+
+$=\displaystyle{\int\dfrac{x-1}{(x"
+e0093,高等数学,函数,函数,"已知$\\int f'(x^3)\\,\\textrm{d}x=x^3+C$，求$f(x)$表达式。",$f(x)=\dfrac{9}{5}x^\frac{5}{3}+C$。,"两边求导：$f'(x^3)=3x^2$，令$x^3=t$，则$x=t^\frac{1}{3}$，即$f'(t)=3t^\frac{2}{3}$。
+
+所以$f(x)=\dfrac{9}{5}x^\frac{5}{3}+C$。"
+e0094,高等数学,函数,函数,"求$\\displaystyle{\\int_0^2\\dfrac{x\\,\\textrm{d}x}{(x^2-2x+2)^2}}$。\\medskip","令$x-1=\tan u$，即$x=\tan u+1$，$\textrm{d}x=\sec^2u\,\textrm{d}u$，$(x^2-2x+2)^2=\sec^4u$。当$x=0$，$u=-\df","从题目来看都需要使用换元积分法，因为分母比较复杂。一种思路直接令$x^2-2x+2=u$，但是这样$\textrm{d}x$就解不出来。所以尝试将分母配方：$x^2-2x+2=(x-1)^2+1$，看到$x^2+1$的形式就想到了$\tan^2u+1=\sec^2u$，所以令$x-1=\tan u$，即$x=\tan u+1$，$\textrm{d}x=\sec^2u\,\textrm{d}u$，"
+e0095,高等数学,函数,函数,"求$\\int_0^\\frac{\\pi}{2}e^{2x}\\cos x\\,\\textrm{d}x$。",=u$,"令$e^{2x}=u$，$\cos x=v$，$\therefore$根据积分推广公式：\medskip
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    $e^{2x}$ & $2e^{2x}$ & $4e^{2x}$ \\ \hline
+    $\cos x$ & $\sin x$ & $-\cos x$ \\
+    \hline
+\end{tabular}"
+e0096,高等数学,函数,函数,"计算$\\int_0^1\\sqrt{2x-x^2}\\,\\textrm{d}x$。",结果等于$\dfrac{1}{4}\pi$。,"首先看到这个题目可能会使用换元积分法，但是尝试$t=\sqrt{2x-x^2}$，则$x$无法用$t$表示。
+
+对$\sqrt{2x-x^2}$进行变形，$=\sqrt{1-(x-1)^2}$，令$x-1=t$，则$=\int_0^1\sqrt{1-t^2}\,\textrm{d}t$，根据定积分的几何意义，这是一个单位圆的四分之一，所以结果等于$\dfrac{1}{4}\pi$。"
+e0097,高等数学,函数,函数,求$\\lim\\limits_{n\\to\\infty}\\left(\\dfrac{1}{n+1}+\\dfrac{1}{n+2}\\cdots+\\dfrac{1}{n+n}\\right)$。,"对$\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\dfrac{1}{n+i}$通过定积分定义进行计算。
+
+$\lim\limits_{n\to\infty}\","即求$\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\dfrac{1}{n+i}$。如果我们要传统求的话一般使用夹逼准则，找到放缩的两个函数。
+
+所以找到两个：$\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\dfrac{1}{n+n}<\lim\limits_{n\to\infty}\sum\limits_{i=1}"
+e0098,高等数学,函数,函数,求$\\lim\\limits_{n\\to\\infty}\\left(\\dfrac{n+1}{n^2+1}+\\dfrac{n+2}{n^2+4}+\\cdots+\\dfrac{n+n}{n^2+n^2}\\right)$。,=1,即求$\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\dfrac{n+i}{n^2+i^2}=\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\dfrac{n^2+ni}{n^2+i^2}\cdot\dfrac{1}{n}=\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\dfrac
+e0099,高等数学,函数,函数,求$\\displaystyle{\\int_0^\\frac{\\pi}{2}\\dfrac{\\sin x}{\\sin x+\\cos x}\\textrm{d}x}$。,,"$=\displaystyle{\int_0^\frac{\pi}{2}\dfrac{\sin(\dfrac{\pi}{2}-x)}{\sin(\dfrac{\pi}{2}-x)+\cos(\dfrac{\pi}{2}-x)}\textrm{d}x=\int_0^\frac{\pi}{2}\dfrac{\cos x}{\cos x+\sin x}\textrm{d}x}$
+
+又$\displays"
+e0100,高等数学,函数,函数,求$\\displaystyle{\\int_0^\\pi}\\dfrac{x\\sin x}{1+\\cos^2x}\\textrm{d}x$。,=-,"首先看题目，貌似分部积分无法进行，因为式子结构不是两个部分，换元法一般的也换不了，
+
+根据区间再现公式，令$x=\pi-t$，则$=-\displaystyle{\int_\pi^0\dfrac{(\pi-t)\sin(\pi-t)}{1+\cos^2(\pi-t)}\textrm{d}t}=$\\$\displaystyle{\int_0^\pi\dfrac{(\pi-t)\sin t}{1+\"
+e0101,高等数学,函数,函数,"设$f(x)=x^2-x\\int_0^2f(x)\\,\\textrm{d}x+2\\int_0^1f(x)\\,\\textrm{d}x$，求$f(x)$。","等式就可以回代到两个参数的定积分中。
+
+$\int_0^2(x^2-ax+2b)\,\textrm{d}x=a$，$\int_0^1(x^2-ax+2b)\,\textrm{d}x=b$。
+
+$\le","令$\int_0^2f(x)\,\textrm{d}x=a$，$\int_0^1f(x)\,\textrm{d}x=b$。
+
+则等式变为$f(x)=x^2-ax+2b$，所以等式就可以回代到两个参数的定积分中。
+
+$\int_0^2(x^2-ax+2b)\,\textrm{d}x=a$，$\int_0^1(x^2-ax+2b)\,\textrm{d}x=b$。
+
+$\left[\dfrac{x^3"
+e0102,高等数学,函数,函数,"$f(x)$为连续函数，$\\int_0^\\frac{\\pi}{2}f(x\\cos x)\\cos x\\,\\textrm{d}x=A$，求$\\int_0^\\frac{\\pi}{2}f(x\\cos x)x\\sin x\\,\\textrm{d}x$。",=F(x,"$\int_0^\frac{\pi}{2}f(x\cos x)\cos x\,\textrm{d}x-\int_0^\frac{\pi}{2}f(x\cos x)x\sin x\,\textrm{d}x=\int_0^\frac{\pi}{2}f(x\cos x)(\cos x\,\textrm{d}x+x\,\textrm{d}\cos x)=\int_0^\frac{\pi}{2}f(x\co"
+e0103,高等数学,函数,函数,判断$\\displaystyle{\\int_0^\\frac{\\pi}{4}\\dfrac{\\tan x}{x}\\textrm{d}x<1}$。,"其定积分也小于0。
+
+\subsubsection{划分区域}
+
+如果要比较积分大小，要么在同一个区间内比较，如果这个区间内两个积分有时大有时小就划分区域，让区域上的积分能明确大小。","将常数项变为定积分：$=\displaystyle{\int_0^\frac{\pi}{4}\left(\dfrac{\tan x}{x}-\dfrac{4}{\pi}\right)\textrm{d}x}$。
+
+令$\varphi(x)=\dfrac{\tan x}{x}-\dfrac{4}{\pi}$，其中$x\in\left(0,\dfrac{\pi}{4}\right)$，且$\varph"
+e0104,高等数学,函数,函数,"设函数$f(x)$在$[0,3]$上连续，在$(0,3)$内有二阶导数，且$2f(0)=\\int_0^2f(x)\\,\\textrm{d}x=f(2)+f(3)$。 证明：（1）存在$\\eta\\in(0,2)$，使得$f(\\eta)=f(0)$；（2）存在$\\xi\\in(0,3)$，使得$f''(\\xi)=0$。 证明： （1）中值定理基本上是对普通函数的差式进行运算，所以令$F(x)=f_0^xf(t)\\,\\textrm{d}t$（$0\\leqslant x\\leqslant2$），所以$\\int_0^2f(x)\\,\\textrm{d}x=F(2)-F(0)$。 由拉格朗日中值定理，存在$\\eta\\in(0,2)$，使得$F(2)-F(0)=F'(\\eta)(2-0)=2f(\\eta)$，即$\\int_0^2f(x)\\,\\textrm{d}x=2f(\\eta)$。 题目条件可知$f(\\eta)=f(0)$。 （2）还剩下等式右边的条件没有使用，且数字为2和3。如何使用？ 由函数导数$f''(\\xi)$为0很显然知道要使用罗尔定理，但是这是二阶导数，就要求得到$f'(0)=f'(3)$两端相等的条件。 请注意这里是存在$\\xi\\in(0,3)$使得条件成立，则相等的两端不一定就等于0和3，在区间范围$(0,3)$内都成立。 往往第二问的条件基于第一问的结论，看到第一问，出现了两端相等且区域$\\eta$为$(0,3)$子区间，两端相等所以得到这里有一个值的$f'(?)=0$。 此时我们必须找到另一个$f'(?)=0$也成立，此时就能看到最开始剩下的条件$f(2)+f(3)=2f(0)$，这个区域正好是$(0,2)$与$(0,3)$的差集。 我们需要根据这个条件知道存在一个点让$f'(?)=0$成立。即根据罗尔定理，让存在一个点使得$f(?)=f(0)$。根据右边的条件可以使用介值定理。 按这个思路倒退得到证明过程。 由于$f(x)$在$[0,3]$上连续则$[2,3]$上连续，则其必然存在最大值$M$和最小值$m$，使得$m\\leqslant f(2)\\leqslant M$，$m\\leqslant f(3)\\leqslant M$，所以$m\\leqslant\\dfrac{f(2)+f(3)}{2}\\leqslant M$。 由介值定理可知存在$\\tau\\in[2,3]$，使得$f(\\tau)=\\dfrac{f(2)+f(3)}{2}=f(0)$。所以此时找到这个点。 由（1）$f(0)=f(\\eta)=f(\\tau)$，其中$0<\\eta<2\\leqslant\\tau\\leqslant3$。 根据罗尔定理，必然存在$\\xi_1\\in(0,\\eta)$，$\\xi_2\\in(\\eta,\\tau)$，使得$f'(\\xi_1)=f'(\\xi_2)=0$，再根据罗尔定理存在$\\xi\\in(\\epsilon_1,\\epsilon_2)\\subset(0,3)$使得$f''(\\xi)=0$。",,
+e0105,高等数学,函数,函数,"求$\\dfrac{\\textrm{d}}{\\textrm{d}x}[\\int_0^xtf(x^2-t^2)\\,\\textrm{d}t]$。","原式$=\dfrac{1}{2}\dfrac{\textrm{d}}{\textrm{d}x}[\int_0^{x^2}f(u)\,\textrm{d}u]=xf(x^2)$。","按照公式，$f(t)$里面应该只有积分变量$t$，但是此时存在求导变量$x$，所以必须将$x$移出积分函数中。
+
+使用换元法令$x^2-t^2=u$，即$-2t\textrm{d}t=\textrm{d}u$，当$t=0$，$u=x^2$，当$t=x$，$u=0$。
+
+所以原式$=\dfrac{1}{2}\dfrac{\textrm{d}}{\textrm{d}x}[\int_0^{x^2}f(u"
+e0106,高等数学,函数,函数,"求$f(x)=\\int_x^{x+2\\pi}e^{\\sin t}\\sin t\\,\\textrm{d}t$是否为常量，并判断其正负性。","$f(x)$为周期函数，周期为$\sin x$的周期$2\pi$。
+
+$\therefore f(x)=\int_0^{2\pi}e^{\sin t}\sin t\,\textrm{d}t=\int_","由于$\sin x$为周期函数，$e^x$为单调函数，所以$f(x)$为周期函数，周期为$\sin x$的周期$2\pi$。
+
+$\therefore f(x)=\int_0^{2\pi}e^{\sin t}\sin t\,\textrm{d}t=\int_0^{2\pi}e^{\sin t}\cos^2t\,\textrm{d}t\geqslant0$。"
+e0107,高等数学,函数,函数,"若$f(x)$连续，$f(0)=0$，$f'(0)=\\pi$，求$\\lim\\limits_{x\\to0}\\dfrac{\\int_0^xf(t)\\,\\textrm{d}t}{x^2}$。",,$=\lim\limits_{x\to0}\dfrac{f(x)}{2x}=\dfrac{1}{2}\lim\limits_{x\to0}\dfrac{f(x)-f(0)}{x-0}=\dfrac{1}{2}f'(0)=\dfrac{\pi}{2}$。
+e0108,高等数学,函数,函数,"若$f(x)$连续，$F(x)=\\int_0^x(x-t)f(t)\\,\\textrm{d}t$，求$F''(x)$。",=x,"因为$x$与$t$混合在一起很麻烦，$x$为上限是常数，$t$为积分变量。
+
+$F(x)=\int_0^xxf(t)\,\textrm{d}t-\int_0^xtf(t)\,\textrm{d}t=x\int_0^xf(t)\,\textrm{d}t-\int_0^xtf(t)\,\textrm{d}t$
+
+$\therefore F'(x)=\int_0^xf(t)\,\textrm{d}t+x"
+e0109,高等数学,函数,函数,"设$f(x)$是定义于$x\\geqslant1$的正值连续函数，则求其相关函数$F(x)=\\displaystyle{\\int_1^x\\left[\\left(\\dfrac{2}{x}+\\ln x\\right)-\\left(\\dfrac{2}{t}+\\ln t\\right)\\right]f(t)\\,\\textrm{d}t}$（$x\\geqslant1$）的极小值点。\\medskip",极小值为$2$。,"按照一般函数一样求极值就是求导，注意的是$t$和$x$含义不同，若对$t$求导，则$x$作为积分上限是看作常数的，所以可以提出去：
+
+$F(x)=\left(\dfrac{2}{x}+\ln x\right)\displaystyle{\int_1^xf(t)\,\textrm{d}t-\int_1^x\left(\dfrac{2}{t}+\ln t\right)f(t)\,\textrm{d}t"
+e0110,高等数学,函数,函数,"设$f(x)=\\left\\{\\begin{array}{ll} x^2, & x\\in[0,1) \\\\ x, & x\\in[1,2] \\end{array}\\right.$，求$\\varPhi(x)=\\int_0^xf(t)\\,\\textrm{d}t$在$[0,2]$上的表达式，并讨论$\\varPhi(x)$在$(0,2)$内的连续性。","也连续，从而$\varPhi(x)$在$(0,2)$上连续。
+
+\subsection{无穷小比较}
+
+当对变限积分进行无穷小进行比较时有这样的结论：
+
+\textcolor{aqua}{","当$x\in[0,1)$时，$\varPhi(x)=\int_0^xt^2\,\textrm{d}t=\dfrac{x^3}{3}$，注意的是$x\in[1,2]$时，$\varPhi(x)=\int_0^1f(t)\,\textrm{d}t+\int_1^xf(t)\,\textrm{d}t=\int_0^1t^2\,\textrm{d}t+\int_1^xt\,\textrm{d}t=\lef"
+e0111,高等数学,函数,函数,"当$x\\to0^+$时，哪个无穷小量阶数最高()。 $A.\\int_0^x(e^{t^2}-1)\\,\\textrm{d}t$ $B.\\int_0^x\\ln(1+\\sqrt{t^3})\\,\\textrm{d}t$ $C.\\int_0^{\\sin x}\\sin t^2\\,\\textrm{d}t$ $D.\\int_0^{1-\\cos x}\\sqrt{\\sin^3t}\\,\\textrm{d}t$",$D$。,根据结论，$A$阶数为$1(2+1)=3$，$B$阶数为$1\times\left(1+\dfrac{3}{2}\right)=\dfrac{5}{2}$，$C$的阶数为$1(2+1)=3$，$D$的上限为$1-\cos x\sim\dfrac{x^2}{2}$，阶数为$2\times\left(1+\dfrac{3}{2}\right)=5$。所以$D$。
+e0112,高等数学,函数,函数,求$\\displaystyle{\\int_0^{+\\infty}\\dfrac{\\textrm{d}x}{(1+x)(1+x^2)}}$。\\medskip,"尝试使用换元积分法，令$x=\tan u$，$1+x^2=\sec^2u$，$\textrm{d}x=\sec^2u\,\textrm{d}u$。
+
+当$x=0$，$\tan u=0$，$u=0$，当","这是无穷区间的反常积分，看到一个$1+x^2$因式，所以尝试使用换元积分法，令$x=\tan u$，$1+x^2=\sec^2u$，$\textrm{d}x=\sec^2u\,\textrm{d}u$。
+
+当$x=0$，$\tan u=0$，$u=0$，当$x=+\infty$，$u=+\dfrac{\pi}{2}$。
+
+$\therefore=\displaystyle{\int_0^\frac"
+e0113,高等数学,函数,函数,求$\\displaystyle{\\int_0^{+\\infty}\\dfrac{xe^{-x}}{(1+e^{-x})^2}\\textrm{d}x}$。,,"看到本题中没有可以换元的元素，尝试使用分部积分将分母移到积分变量中。
+
+$=\displaystyle{\int_0^{+\infty}x\textrm{d}\left(\dfrac{1}{1+e^{-x}}\right)}=\left[\dfrac{x}{1+e^{-x}}\right]_0^{+\infty}-\int_0^{+\infty}\dfrac{\textrm{d}x}{1+e^{-"
+e0114,高等数学,函数,函数,已知$\\displaystyle{\\int_1^{+\\infty}\\left[\\dfrac{2x^2+bx+a}{x(2x+a)}-1\\right]}$，求参数。,"不能求出收敛的参数。
+
+\subsubsection{递推公式}","首先将式子化简$=\displaystyle{\int_1^{+\infty}\dfrac{(b-a)x+a}{x(2x+a)}\textrm{d}x=\int_1^{+\infty}\dfrac{b-a}{2x+a}+\dfrac{a}{x(2x+a)}\textrm{d}x}$。
+
+此时可以知道后面的$\dfrac{a}{x(2x)+a}\to\dfrac{1}{2x^2}\to x^{-2}"
+e0115,高等数学,函数,函数,"利用递推公式计算反常积分$I_n=\\int_0^{+\\infty}x^ne^{-x}\\,\\textrm{d}x$（$n\\in N$）。","尝试使用分部积分来计算看看：
+
+$I_n=-\int_0^{+\infty}x^n\,\textrm{d}(e^{-x})=[-x^ne^{-x}]_0^{+\infty}+\int_0^{+\inf","看到这个公式，虽然不知道如何利用递推公式得到这个反常积分的值，但是看到这个式子是由两个部分的乘积构成，所以尝试使用分部积分来计算看看：
+
+$I_n=-\int_0^{+\infty}x^n\,\textrm{d}(e^{-x})=[-x^ne^{-x}]_0^{+\infty}+\int_0^{+\infty}nx^{n-1}e^{-x}\,\textrm{d}x=-\lim\limits_{x\"
+e0116,高等数学,函数,函数,判断$\\displaystyle{\\int_0^{+\\infty}\\dfrac{1}{\\sqrt{x+x^3}}}$的敛散性。,"$x^{-\frac{1}{2}}$更高阶（无穷小的比较是看哪个更快接近0或更慢远离0，具体的方法是取趋向于0的极限然后看值来判断）。
+
+$\therefore x\to+\infty$时，$\dfr",对于$x^{-\frac{1}{2}}$和$x^{-\frac{3}{2}}$，当$x\to+\infty$时，两者都趋向于0，而$x^{-\frac{3}{2}}$更快，所以更高阶，当$x\to0$时，两者都趋向于$+\infty$，而$x^{-\frac{3}{2}}$更快，所以$x^{-\frac{1}{2}}$更高阶（无穷小的比较是看哪个更快接近0或更慢远离0，具体的方法是取趋向于0的极限
+e0117,高等数学,函数,函数,判断$\\displaystyle{\\int_1^{+\\infty}\\dfrac{1}{x\\sqrt{x^2-1}}\\textrm{d}x}$的敛散性。,判断很简单。,"首先判断区域和瑕点，有$x\to+\infty$和$x\to1^+$，所以拆分两个区域$\int_1^2f(x)\,\textrm{d}x$、$\int_2^{+\infty}f(x)\,\textrm{d}x$。
+
+对于$x\to+\infty$，无穷区域所以$-1$不影响敛散性，直接去掉，$\dfrac{1}{x\sqrt{x^2-1}}\sim\dfrac{1}{x^2}$，该部分区域收敛。"
+e0118,高等数学,函数,函数,判断$\\displaystyle{\\int_{-\\infty}^{+\\infty}\\dfrac{1}{x^2}e^{\\frac{1}{x}}\\textrm{d}x}$的敛散性。,"需要关注$x\to+\infty$、$x\to-\infty$、$x\to0$。
+
+$x\to+\infty$时，$\sim\dfrac{1}{x^2}$，收敛。
+
+$x\to-\infty$时，$\","根据式子和积分上下限，所以需要关注$x\to+\infty$、$x\to-\infty$、$x\to0$。
+
+$x\to+\infty$时，$\sim\dfrac{1}{x^2}$，收敛。
+
+$x\to-\infty$时，$\sim\dfrac{1}{x^2}$，收敛。
+
+$x\to0^+$时，对于$\dfrac{1}{x^2}\sim+\infty$，$e^{\frac{1}{x}}\sim+\"
+e0119,高等数学,函数,函数,判断$\\displaystyle{\\int_0^{+\\infty}\\dfrac{\\ln(1+x)}{x^{\\frac{3}{2}}}\\textrm{d}x}$的敛散性。,,"当$x\to+\infty$时，$\sim\dfrac{\ln x}{x^{\frac{3}{2}}}\sim\dfrac{1}{x^{\frac{3}{2}}}$，收敛。
+
+当$x\to0^+$时，$\sim\dfrac{x}{x^{\frac{3}{2}}}\sim\dfrac{1}{x^{\frac{1}{2}}}$，收敛。
+
+积分收敛。"
+e0120,高等数学,函数,函数,判断$\\displaystyle{\\int_0^{+\\infty}\\dfrac{\\sqrt{\\ln x}}{x\\sqrt{x}-1}\\textrm{d}x}$的敛散性。,=0$,"当$x\to+\infty$时，$\sim\dfrac{\ln^\frac{1}{2}x}{x^\frac{3}{2}}\sim\dfrac{1}{x^{\frac{3}{2}}}$，收敛。
+
+当$x\to0^+$时，$\sim-\ln^\frac{1}{2}x$，收敛。
+
+当$x\to1$时，$\sim\dfrac{(x-1)^{\frac{1}{2}}}{(1+x-1)^\frac{3}{2}"
+e0121,高等数学,函数,函数,"已知$\\alpha,\\beta>0$，判断反常积分$\\displaystyle{\\int_1^{+\\infty}\\dfrac{\\left(\\arctan\\dfrac{1}{x}\\right)^a}{\\left[\\ln\\left(1+\\dfrac{1}{x}\\right)\\right]^{2\\beta}}\\textrm{d}x}$的敛散性。 %",,"积分存在唯一奇点$+\infty$，当$x\to+\infty$时，$\arctan\dfrac{1}{x}\sim\dfrac{1}{x}$，$\ln\left(1+\dfrac{1}{x}\right)\sim\dfrac{1}{x}$。
+
+% $\dfrac{\left(\arctan\dfrac{1}{x}\right)^a}{\left[\ln\left(1+\dfrac{1}{x}\r"
+e0122,高等数学,函数,函数,求曲线$y^2=x$与$y=x^2$所围成面积。,=[,"首先确定$x$的范围，是$x\in[0,1]$。
+
+第二步确立微元，即切割的微小元素，是$\textrm{d}S=[\sqrt{x}-x^2]\textrm{d}x$（也可以对$y$积分：$S=\int_0^1(\sqrt{y}-y^2)\,\textrm{d}y$）。
+
+最后一步对其积分：$S=\int_0^1(\sqrt{x}-x^2)\,\textrm{d}x=\dfrac{2}{3}-\d"
+e0123,高等数学,函数,函数,求曲线$y^2=2x$与$y=x-4$围成面积。,"$S=\displaystyle{\int_{-2}^4\left[(y+4)-\dfrac{y^2}{2}\right]\textrm{d}y}$。
+
+\paragraph{参数方程} \leave","首先确定范围，将$y=x-4$代入$y^2=2x$，从而得到$x\in[0,8]$，$y\in[-2,4]$。
+
+若是对$x$确立微元，则对于不同的区间，面积有不同的表达式：
+
+$S=\int_0^22\sqrt{2x}\,\textrm{d}x+\int_2^8(\sqrt{2x}-x+4)\,\textrm{d}x$。
+
+这显然很麻烦，然而如果对$y$确立微元，那么$y^2=2x$在$y\in"
+e0124,高等数学,函数,函数,求摆线一拱$\\left\\{\\begin{array}{l} x=a(t-\\sin t) \\\\ y=a(1-\\cos t) \\end{array} \\right.$$(0\\leqslant t\\leqslant 2\\pi)$与$x$轴所围成的面积。\\medskip,"使用参数方程代入，并改变上下限$S$：
+
+$=\int_0^{2\pi}a(1-\cos t)\,\textrm{d}[a(t-\sin t)]=\int_0^{2\pi}a^2(1-\cos t)^","首先计算范围，代入$2\pi$，得到$x\in[0,2a\pi]$。
+
+然后是找微元，这里是对$x$确立：$\textrm{d}S=y(x)\,\textrm{d}x$。
+
+从而$S=\int_0^{2a\pi}y(x)\,\textrm{d}x$。
+
+因为无法计算对于$x$的表达式，所以使用参数方程代入，并改变上下限$S$：
+
+$=\int_0^{2\pi}a(1-\cos t)\,\textr"
+e0125,高等数学,函数,函数,求心形线$\\rho=a(1+\\cos\\theta)(a>0)$所围成面积。,"$\textrm{d}\theta=2\textrm{d}t$，同时上下限缩小一半：$=8a^2\int_0^{\frac{\pi}{2}}\cos^4t\,\textrm{d}t$
+
+根据华理士公式","极角发生变化时，可以计算到心形线必然会穿过$(2a,0),(0,a),(0,0)$这三个点，而$\cos x$是一个偶函数，所以心形线图形是上下对称的。如果要求心形线的面积，可以只用求上半部分就可以了。
+
+所以可以根据公式$S=2\dfrac{1}{2}\int_0^\pi a^2(1+\cos\theta)^2\,\textrm{d}\theta$。
+
+$=a^2\displaystyle{\i"
+e0126,高等数学,函数,函数,计算由椭圆$\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$所围成的图形绕$x$轴旋转一周而成的体积。,"旋转体体积就是两倍的第一象限的旋转体积，直接计算第一象限部分就可以了。
+
+$V_x=2\pi\displaystyle{\int_0^ab^2\left(1-\dfrac{x^2}{a^2}\righ","由式子得到$y^2=b^2\left(1-\dfrac{x^2}{b^2}\right)$。
+
+所以旋转体体积就是两倍的第一象限的旋转体积，直接计算第一象限部分就可以了。
+
+$V_x=2\pi\displaystyle{\int_0^ab^2\left(1-\dfrac{x^2}{a^2}\right)\,\textrm{d}x}=2\pi b^2\left(a-\dfrac{a}{3}\righ"
+e0127,高等数学,函数,函数,计算摆线$\\left\\{\\begin{array}{l} x=a(t-\\sin t) \\\\ y=a(1-\\cos t) \\end{array} \\right.$$(0\\leqslant t\\leqslant 2\\pi)$与$x$轴，$y$轴所旋转得到的体积。,"$\textrm{d}\theta=2\textrm{d}t$，同时上下限缩小一半：
+
+$=16a^3\pi\int_0^\pi\sin^6u\,\textrm{d}u=32a^3\pi\int_0^","$\because t\in[0,2\pi]$，$\therefore x\in[0,2a\pi]$。
+
+$V_x=\pi\int_0^{2a\pi}y^2\,\textrm{d}x$
+
+代入参数方程并改变上下限：
+
+$=\pi\int_0^{2\pi}a^2(1-\cos t)^2\,\textrm{d}[a(t-\sin t)]=a^3\pi\int_0^{2\pi}(1-\cos t)^3\"
+e0128,高等数学,函数,函数,计算由$\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}+\\dfrac{z^2}{c^2}=1$所围成的椭球体的体积。,"$V=\dfrac{4}{3}\pi abc$。
+
+\subsubsection{平均值}","已知$\dfrac{y^2}{b^2}+\dfrac{z^2}{c^2}=1-\dfrac{x^2}{a^2}$.
+
+$S(x)=\pi bc\left(1-\dfrac{x^2}{a^2}\right)$
+
+$V=2\int_0^a\pi bc\left(1-\dfrac{x^2}{a^2}\right)\,\textrm{d}x$。
+
+解得$V=\dfrac{4}{3}\pi abc$。
+
+\"
+e0129,高等数学,函数,函数,"求函数$y=\\dfrac{x^2}{\\sqrt{1-x^2}}$在区间$\\left[\\dfrac{1}{2},\\dfrac{\\sqrt{3}}{2}\\right]$上的平均值。",,$\bar{y}=\dfrac{1}{\dfrac{\sqrt{3}}{2}-\dfrac{1}{2}}\displaystyle{\int_\frac{1}{2}^\frac{\sqrt{3}}{2}\dfrac{x^2}{\sqrt{1-x^2}}\textrm{d}x}$，令$x=\sin t$：$=\dfrac{2}{\sqrt{3}-1}\displaystyle{\int_\frac{
+e0130,高等数学,函数,函数,设曲线$L$的方程为$y=\\dfrac{1}{4}x^2-\\dfrac{1}{2}\\ln x$，$1\\leqslant x\\leqslant e$，$D$是由曲线$L$，直线$x=1$，$x=e$及$x$轴围成的平面图形，求$D$的形心横坐标。,,"代入$\overline{x}=\dfrac{\int_a^bxf(x)\,\textrm{d}x}{\int_a^bf(x)\,\textrm{d}x}=\dfrac{\int_1^ex\left(\dfrac{1}{4}x^2-\dfrac{1}{2}\ln x\right)\,\textrm{d}x}{\int_1^e\left(\dfrac{1}{4}x^2-\dfrac{1}{2}\ln"
+e0131,高等数学,函数,函数,有一个半径为$4m$的半球形水池蓄满了水，现在要将水全部抽取到距水池原水面$6m$高的水箱中，求需要做多少功。（水的密度为$1000kg/m^3$，重力加速度$g=9.8m/s^2$）,"得到$w=\int_{-4}^0\rho g\pi(16-y^2)(6-y)\,\textrm{d}y$。
+
+\subsubsection{水压力}","令水池是竖直的，所以以$y$为积分的方向。
+
+根据原水平面为半径为4的圆的面积，得到$x^2+y^2=16$，解得$x^2=16-y^2$，$A(y)=\pi x^2=\pi(16-y^2)$。
+
+$\rho gA(y)\,\textrm{d}y=\rho g\pi(16-y^2)\,\textrm{d}y$
+
+要将水提到$6m$，即路径为$6-y$，所以$\rho g\pi(16-y^2)(6-"
+e0132,高等数学,函数,函数,"设$f''(u)$在区间$[0,2]$上连续，$f(2)=a$，$f'(2)=b$，$\\int_0^2f(u)\\,\\textrm{d}u=c$，求$\\int_0^1x^2f''(2x)\\,\\textrm{d}x$。","使用分部积分将$f''(2x)$换到$\textrm{d}x$中降低求导幂次。
+
+$\int_0^1x^2f''(2x)\,\textrm{d}x=\dfrac{1}{2}\int_0^1x^2\,\","已知条件是多个导数和一个积分的值，要将这些值换成目标积分的样式。所以要考虑换元积分或分部积分。
+
+这里目标积分的值是乘积形式且变量无法换元，且存在一个未知的$f''(2x)$，所以使用分部积分将$f''(2x)$换到$\textrm{d}x$中降低求导幂次。
+
+$\int_0^1x^2f''(2x)\,\textrm{d}x=\dfrac{1}{2}\int_0^1x^2\,\textrm{d}["
+e0133,高等数学,函数,函数,"设$f(x)$、$g(x)$在$[a,b]$上连续且$g(x)$不变号，证明至少存在一点$\\xi\\in[a,b]$使得$\\int_a^bf(x)g(x)\\,\\textrm{d}x=f(\\xi)\\int_a^bg(x)\\,\\textrm{d}x$。（推广中值定理） 若$g(x)\\equiv1$，则结论就是$\\int_a^bf(x)\\,\\textrm{d}x=f(\\xi)(b-a)$积分中值定理。 证明：若$g(x)\\equiv0$则等式显然成立。若$g(x)$不变号，则不妨设$g(x)>0$。 令$F(x)=\\int_a^xf(t)g(t)\\,\\textrm{d}t$，$G(x)=\\int_a^xg(t)\\,\\textrm{d}t$。 由柯西中值定理可得$\\dfrac{F(b)-F(a)}{G(b)-G(a)}=\\dfrac{F'(\\xi)}{G'(\\xi)}=\\dfrac{\\int_a^bf(x)g(x)\\,\\textrm{d}x}{\\int_a^bg(x)\\,\\textrm{d}x}=\\dfrac{f(\\xi)g(\\xi)}{g(\\xi)}$。 $\\therefore\\int_a^bf(x)g(x)\\,\\textrm{d}x=f(\\xi)\\int_a^bg(x)\\,\\textrm{d}x$，$\\xi\\in(a,b)\\subset[a,b]$。 同理$g(x)<0$也如此。 \\subsubsection{夹逼准则} 夹逼准则一般用于求数列极限，若极限号后面有积分号可以考虑使用夹逼准则。",,
+e0134,高等数学,函数,函数,"设$f(x)$在$[a,b]$上连续，且$f(x)>0$，证明$\\displaystyle{\\int_a^bf(x)\\,\\textrm{d}x\\int_a^b\\dfrac{1}{f(x)}\\textrm{d}x}\\geqslant(b-a)^2$。 证明：令$F(x)=\\displaystyle{\\int_a^xf(t)\\,\\textrm{d}t\\int_a^x\\dfrac{1}{f(t)}\\textrm{d}t-(x-a)^2}$。目标是证明$F(b)\\geqslant0$。 $F'(x)=f(x)\\cdot\\displaystyle{\\int_a^x\\dfrac{1}{f(t)}\\textrm{d}t+\\int_a^xf(t)\\,\\textrm{d}t\\dfrac{1}{f(x)}}-2(x-a)$ $=\\displaystyle{\\int_a^x\\dfrac{f(x)}{f(t)}\\textrm{d}t+\\int_a^x\\dfrac{f(t)}{f(x)}\\textrm{d}t-2(x-a)=\\int_a^x\\left[\\dfrac{f(x)}{f(t)}+\\dfrac{f(t)}{f(x)}\\right]\\textrm{d}t-2(x-a)}$ 又$\\dfrac{f(x)}{f(t)}+\\dfrac{f(t)}{f(x)}\\geqslant2\\sqrt{\\dfrac{f(x)}{f(t)}\\cdot\\dfrac{f(t)}{f(x)}}=2$。 $\\therefore\\geqslant\\int_a^x2\\,\\textrm{d}t-2(x-a)=2(x-a)-2(x-a)=0$。 从而$F'(x)\\geqslant0$，等于0不恒成立，所以$F(x)$在$[a,b]$上单调增，从而$F(b)>F(a)$，$\\displaystyle{\\int_a^xf(t)\\,\\textrm{d}t\\int_a^x\\dfrac{1}{f(t)}\\textrm{d}t-(x-a)^2}>0$。 所以$\\displaystyle{\\int_a^bf(x)\\,\\textrm{d}x\\int_a^b\\dfrac{1}{f(x)}\\textrm{d}x}\\geqslant(b-a)^2$",,
+e0135,高等数学,函数,函数,"设$f(x)$在$[0,1]$上连续递减，证明$0<\\lambda<1$时$\\int_0^\\lambda f(x)\\,\\textrm{d}x\\geqslant\\lambda\\int_0^1f(x)\\,\\textrm{d}x$。 证明：看到$\\lambda$和1，可以做出辅助函数$\\dfrac{\\int_0^xf(t)\\,\\textrm{d}t}{x}$，即要证明$F(\\lambda)\\geqslant F(1)$。 又$\\lambda<1$，所以只用证明$F(x)$在$[0,1]$上递减。 则$F'(x)=\\dfrac{f(x)x-\\int_0^xf(t)\\,\\textrm{d}t}{x^2}$，又根据积分中值定理$\\int_0^xf(t)\\,\\textrm{d}t=f(\\xi)(x-0)$，$\\xi\\in(0,x)$。 $\\therefore=\\dfrac{f(x)x-f(\\xi)x}{x^2}=\\dfrac{f(x)-f(\\xi)}{x}$，因为$f(x)$在$[0,1]$上递减，$\\xi<x$，$f(\\xi)>f(x)$。 所以$F'(x)<0$，所以$F(x)$单调递减，从而$F(\\lambda)\\geqslant F(1)$，所以得证。 \\subsubsection{拉格朗日中值定理} 多用于所给条件为“$f(x)$一阶可导”且某一端点值较简单甚至为0的题目。 一阶导数不代表导数连续，导数可能存在震荡间断点。",,
+e0136,高等数学,函数,函数,"设$f(x)$在$[0,1]$上具有一阶连续导数，且$f(0)=f(1)=0$，证明：$\\vert\\int_0^1f(x)\\,\\textrm{d}x\\vert\\leqslant\\dfrac{1}{4}\\max\\limits_{x\\in[0,1]}\\{\\vert f'(x)\\vert\\}$。 证明：在$[0,1]$中任意取一点$x$，进行两次拉格朗日中值定理。 $f(x)-f(0)=f'(\\xi_1)(x-0)$（$\\xi_1\\in(0,x)$），$f(x)=f'(\\xi_1)x$。 $f(1)-f(x)=f'(\\xi_2)(1-x)$（$\\xi_2\\in(x,1)$），$-f(x)=f'(\\xi_2)(1-x)$。 根据不等式性质：$\\vert\\int_0^1f(x)\\,\\textrm{d}x\\vert=\\vert\\int_0^xf(t)\\,\\textrm{d}t+\\int_x^1f(t)\\,\\textrm{d}t\\vert$ $\\leqslant\\vert\\int_0^xf(t)\\,\\textrm{d}t\\vert+\\vert\\int_x^1f(t)\\,\\textrm{d}t\\vert\\leqslant\\int_0^x\\vert f(t)\\vert\\,\\textrm{d}t+\\int_x^1\\vert f(t)\\vert\\,\\textrm{d}t$ $\\xi_1\\in(0,x)$上代入$f(x)=f'(\\xi_1)x$，$\\xi_2\\in(x,1)$上代入$-f(x)=f'(\\xi_2)(1-x)$。 $=\\int_0^x\\vert f'(\\xi_1)\\vert t\\,\\textrm{d}t+\\int_x^1\\vert f'(\\xi_2)\\vert(1-t)\\,\\textrm{d}t$，令$M=\\max\\limits_{x\\in[0,1]}\\{\\vert f'(x)\\vert\\}$。 $\\leqslant\\int_0^xMt\\,\\textrm{d}t+\\int_x^1M(1-t)\\,\\textrm{d}t=M\\left(\\int_0^xt\\,\\textrm{d}t+\\int_x^1(1-t)\\,\\textrm{d}t\\right)$ $=M\\left(\\dfrac{1}{2}x^2+\\dfrac{1}{2}(1-x)^2\\right)=M\\left(\\left(x-\\dfrac{1}{2}\\right)^2+\\dfrac{1}{4}\\right)$ 即$\\vert\\int_0^1f(x)\\,\\textrm{d}x\\vert\\leqslant M\\left(\\left(x-\\dfrac{1}{2}\\right)^2+\\dfrac{1}{4}\\right)$，$\\min\\left(M\\left(\\left(x-\\dfrac{1}{2}\\right)^2+\\dfrac{1}{4}\\right)\\right)=\\dfrac{1}{4}M$ $\\therefore\\vert\\int_0^1f(x)\\,\\textrm{d}x\\vert\\leqslant\\dfrac{1}{4}M=\\dfrac{1}{4}\\max\\limits_{x\\in[0,1]}\\{\\vert f'(x)\\vert\\}$ \\subsubsection{泰勒公式} 多用于所给条件为“$f(x)$二阶可导”且某一端点值较简单甚至为0的题目。",,
+e0137,高等数学,函数,函数,"设$f(x)$在$[0,2]$上二阶导数连续，且$f(1)=0$，当$x\\in[0,2]$时，记$M=\\max\\{\\vert f''(x)\\vert\\}$，证明$\\vert\\int_0^2f(x)\\,\\textrm{d}x\\vert\\leqslant\\dfrac{1}{3}M$。 \\end{document}",,
+e0138,高等数学,函数,函数,$f(x)=\\lim\\limits_{n\\to\\infty}\\dfrac{x+x^2e^{nx}}{1+e^{nx}}$，求函数连续区间。\\medskip,上下都除以$e^{nx}$，$f(x)=\lim\limits_{n\to\infty}\dfrac{x+x^2e^{nx}}{1+e^{nx}}=f(x)=\lim\limits_{n\to\inf,"注意到函数的形式为一个极限值，其极限趋向的变量为$n$（$n\to\infty$指$n\to+\infty$）。所以在该极限式子中将$x$当作类似$t$的常数。
+
+需要先求出极限形式的$f(x)$，而$x$变量的取值会影响到极限，且求的就是$x$的取值范围。所以将其分为三段：
+
+当$x<0$时，$nx\to-\infty$，$\therefore e^{nx}\to 0$，$x^2$在这个极限式子"
+e0139,高等数学,函数,函数,"$f(x)=\\left\\{\\begin{array}{lcl} 6, & & x\\leqslant 0 \\\\ \\dfrac{e^{ax^3}-1}{x-\\arcsin x}, & & x>0 \\end{array} \\right.$，$g(x)=\\left\\{\\begin{array}{lcl} \\dfrac{3\\sin(x-1)}{x-1}, & & x<1 \\\\ e^{bx}+1, & & x\\geqslant 1 \\end{array} \\right.$，\\smallskip \\\\ 若$f(x)+g(x)$在$R$上连续，则求$a,b$。","若是$f(x)$连续，则必然：\medskip
+
+$\lim\limits_{x\to 0^+}\dfrac{e^{ax^3}-1}{x-\arcsin x}=6$\medskip
+
+$\theref","已知$f(x)+g(x)$在$R$上连续，但是不能判断$f(x)$与$g(x)$的连续性。
+
+所以分开讨论。
+
+对于$f(x)$因为左侧为常数函数，所以若是$f(x)$连续，则必然：\medskip
+
+$\lim\limits_{x\to 0^+}\dfrac{e^{ax^3}-1}{x-\arcsin x}=6$\medskip
+
+$\therefore\lim\limits_{x\to 0^+"
+e0140,高等数学,函数,函数,设$f(x)=\\lim\\limits_{n\\to\\infty}\\dfrac{1+x}{1+x^{2n}}$，求其间断点并分析其类型。,"在此处简短，为跳跃间断点。
+
+\subsubsection{已知间断点求参数}
+
+这种题目已知间断点，而未知式子中的参数，只用将间断点代入式子并利用极限计算间断点的类型就可以了。","根据函数形式，我们需要首先回顾一下幂函数的性质，幂函数的变化趋势取决于底数。
+
+当$x=1$时，$x^n\equiv 1$，当$x\in(-\infty,-1)\cup(1,+\infty)$时，当$n\to\infty$时，$x^n\to\infty$，而$x\in(-1,1)$时，当$n\to\infty$时，$x^n\to 0$。
+
+$\therefore\lim\limits_{n\to\"
+e0141,高等数学,函数,函数,$f(x)=\\dfrac{e^x-b}{(x-a)(x-b)}$有无穷间断点$x=e$，可去间断点$x=1$，求$ab$的值。,"原函数必然有界。
+
+对于无限区间，导函数有界和原函数有界既非充分也非必要。如$f(x)=x$在$R$上无界，但是$f'(x)=1$有界；$f(x)=\sin x^2$在$R$上有界，而$f'(x)=2","已知有两个间断点$x=a,x=b$，其中无穷间断点指极限值为无穷的点，可去间断点表示极限值存在且两侧相等，但是与函数值不相等的点。
+
+已经给出两个间断点的值为$x=1$和$x=e$，所以$ab$必然对应其中一个，但是不清楚到底谁是谁。
+
+当$a=1,b=e$时，$f(x)=\dfrac{e^x-e}{(x-1)(x-e)}$。\medskip
+
+当$x\to 1$时，$\lim\limits_{x"
+e0142,高等数学,函数,函数,"$f(x)$、$g(x)$在$[a,b]$上连续，且$g(x)>0$，证明第二积分中值定理：存在一点$\\xi\\in[a,b]$，使得$\\int_a^bf(x)g(x)\\,\\textrm{d}=f(\\xi)\\int_a^bg(x)\\,\\textrm{d}x$。","就要对$f(x)$进行处理，这样移动$g(x)$时不等式不会变号，如果要移动$f(x)$则要讨论$f(x)$的正负性。
+
+由保号性，对其积分$\int_a^bg(x)\,\textrm{d}x>0$，","首先看式子形式，是积分形式，没有导数，所以不会是四大微分中值定理。
+
+首先将未知数提到一边：$f(\xi)=\dfrac{\int_a^bf(x)g(x)\,\textrm{d}x}{\int_a^bg(x)\,\textrm{d}x}$，这是一个数。
+
+又$f(x)$、$g(x)$在$[a,b]$上连续，由最值定理$m\leqslant f(x)\leqslant M$。
+
+由于已知$g(x)>"
+e0143,高等数学,函数,函数,"已知函数$f(x)$在$[0,1]$上连续，且$f(0)=0$，$f(1)=1$，证明$\\exists\\xi\\in(0,1)$使得$f(\\xi)=1-\\xi$。","$f(\xi)=1-\xi$。
+
+\subsubsection{罗尔定理}","构造辅助函数$F(x)=f(x)+x-1$。
+
+$F(0)=f(0)+0-1=-1<0$，$F(1)=f(1)+1-1=1>0$。
+
+根据零点定理$\exists\xi\in(0,1)$使得$F(\xi)=0$。
+
+即$\exists\xi\in(0,1)$使得$f(\xi)=1-\xi$。
+
+\subsubsection{罗尔定理}"
+e0144,高等数学,函数,函数,"设$f(x)$、$g(x)$在$[a,b]$上连续，证明$\\exists\\xi\\in(a,b)$，使得$g(\\xi)\\int_a^\\xi f(x)\\,\\textrm{d}x=f(\\xi)\\int_\\xi^bg(x)\\,\\textrm{d}x$。",存在$\xi$使得$F'(\xi)=0$，得证。,"由于不含导数，所以不使用微分中值定理。
+
+首先令$\xi=x$，移项$g(x)\int_a^xf(t)\,\textrm{d}t-f(x)\int_x^bg(t)\,\textrm{d}t=0$。
+
+令$F(x)=g(x)\int_a^xf(t)\,\textrm{d}t-f(x)\int_x^bg(t)\,\textrm{d}t$，验证是否满足零点定理。
+
+$F(a)=-f(a)\int_a^b"
+e0145,高等数学,函数,函数,"设$f(x)$在$[a,b]$上连续，在$(a,b)$内可导，$f(a)=b$，$f(b)=a$，$ab$同号，证明$\\exists\\xi\\in(a,b)$使得$f'(\\xi)=\\dfrac{-f(\\xi)}{\\xi}$。",$ab\neq0$，$\xi\neq0$，从而$f'(x)=\dfrac{-f(\xi)}{\xi}$。,"对$f'(x)+\dfrac{1}{x}f(x)=0$，即$g(x)=\dfrac{1}{x}$，$G(x)=\int\dfrac{1}{x}\textrm{d}x=\ln x$，辅助函数为$F(x)=e^{\ln x}f(x)=xf(x)$。
+
+又$f(a)=b$，$f(b)=a$，$F(a)=af(a)=ab$，$F(b)=bf(b)=ab$，所以$F(a)=F(b)$。根据罗尔定理$\exi"
+e0146,高等数学,函数,函数,"设函数$f(x)$、$g(x)$在$[a,b]$上二阶可导，且$g''(x)\\neq0$，$f(a)=f(b)=g(a)=g(b)=0$，证明： (1)在$(a,b)$内$g(x)\\neq0$。 (2)在$(a,b)$内至少有一点$\\xi$，使得$\\dfrac{f(\\xi)}{g(\\xi)}=\\dfrac{f''(\\xi)}{g''(x)}$。","根据罗尔定理$\exists\xi\in(a,b)$，使得$F'(\xi)=0$。
+
+即根据上面过程反推回去得证。
+
+\subsubsection{导数关系式}
+
+\paragraph{导数值为常量}","(1)为了简单使用反证法。
+
+假设$\exists c\in(a,b)$，使得$g(c)=0$。对两边区间使用罗尔定理：
+
+$\exists\xi_1\in(a,c)$使得$g'(\xi_1)=0$，$\exists\xi_2\in(a,c)$使得$g'(\xi_2)=0$。
+
+再次使用罗尔定理$\exists\xi\in(\xi_1,\xi_2)\in(a,b)$使得$g''(\xi)=0$，与"
+e0147,高等数学,函数,函数,"设$f(x)$在$[0,3]$上连续，$(0,3)$上可导，且$f(0)+f(1)+f(2)=3$，$f(3)=1$，证明存在$\\xi\\in(0,3)$，使得$f'(\\xi)=0$。","$f(c)=f(3)=1$，根据罗尔定理，$\xi\in(c,3)$上，得证。","对于一个导数$f'(\xi)=0$，只会想到罗尔定理和拉格朗日中值定理两种方式。由于这里没有差式，所以很可能是罗尔定理。所以必须找到$f(a)=f(b)$。
+
+由于题目只给出特定条件而没有给出$f(x)$的表达形式，所以无法使用求原函数的方式证明。$f(3)=1$是唯一已知固定常数值的，所以想在$(0,3)$上找到一点$c$，使得$f(c)=f(3)=1$。
+
+所以此时能用的条件就只有$f(0)+"
+e0148,高等数学,函数,函数,"$f(x)$在$[0,2]$上连续，在$(0,2)$内二阶可导，$f(0)=f(1)$，$f(2)=2\\int_1^{\\frac{3}{2}}f(x)\\,\\textrm{d}x$，证明$\\exists\\xi\\in(0,2)$使得$f''(\\xi)=0$。","根据罗尔定理$\exists\xi_1\in(\xi',2)$使得$f'(\xi_1)=0$。
+
+又$f(0)=f(1)$，$\therefore\exists\xi_2\in(0,1)$，罗尔定理$","遇到积分式子首先利用积分中值定理$f(2)=2\int_1^{\frac{3}{2}}f(x)\,\textrm{d}x=2f(\xi')(\dfrac{3}{2}-1)=f(\xi')$（$1<\xi'<\dfrac{3}{2}$）。
+
+所以根据罗尔定理$\exists\xi_1\in(\xi',2)$使得$f'(\xi_1)=0$。
+
+又$f(0)=f(1)$，$\therefore\exis"
+e0149,高等数学,函数,函数,"证明多项式$f(x)=x^3-3x+a$在$[0,1]$上不可能有两个零点。 证明：假设$f(x)=x^3-3x+a$在$[0,1]$有两个零点$x_1$和$x_2$，其中$x_1<x_2$。 因为$f(x)=x^3-3x+a$在$[0,1]$内连续，所以$f(x)=x^3-3x+a$在$[0,1]$内可导。 由罗尔定理得知$\\exists\\xi\\in(x_1,x_2)\\subset(0,1)$，使得$f'(\\xi)=0$，但是$f'(x)=3x^2-3$在$(0,1)$上不超过0，所以$\\xi$不存在，从而多项式$f(x)=x^3-3x+a$在$[0,1]$上不可能有两个零点。 \\paragraph{含参数式子} \\leavevmode \\medskip 若所求式子是一个含参数，那么其一定还有另一个式子约束参数，此时我们就需要构建一个新的式子来利用所给的条件，然后将新式子转换为旧式子。",,
+e0150,高等数学,函数,函数,"设$a_0+\\dfrac{a_1}{2}+\\cdots+\\dfrac{a_n}{n+1}=0$，证明多项式$f(x)=a_0+a_1x+\\cdots+a_nx^n$在$(0,1)$中至少有一个零点。 证明：因为所要证明零点，所以一定使用罗尔定理。所给出的约束参数式子$a_0+\\dfrac{a_1}{2}+\\cdots+\\dfrac{a_n}{n+1}=0$与所求$f(x)$之间存在一个关系。 设$F(x)=a_0x+a_1\\dfrac{x^2}{2}+\\cdots+a_n\\dfrac{x^{n+1}}{n+1}$，$F'(x)=a_0+a_1x+\\cdots+a_nx^n=f(x)$。 又$F(0)=0$,$F(1)=a_0+\\dfrac{a_1}{2}+\\cdots+\\dfrac{a_n}{n+1}=0$，又罗尔定理一定存在一个$\\xi\\in(0,1)$，使得$F'(\\xi)=f(\\xi)=0$。 从而$f(x)=a_0+a_1x+\\cdots+a_nx^n$在$(0,1)$中至少有一个零点。",,
+e0151,高等数学,函数,函数,"设$f(x)$在闭区间$[0,c]$上连续，其导数$f'(x)$在开区间$(0,c)$内存在且单调减少，又$f(0)=0$，证明$f(a+b)\\leqslant f(a)+f(b)$，$0\\leqslant a\\leqslant b\\leqslant a+b\\leqslant c$。","$f(a+b)\leqslant f(a)+f(b)$。
+
+\subsubsection{求原函数}
+
+这种题目就是证明某个式子成立，式子一边是常数一边是导数式子，要证明，就要将导数式子转换为原函数，","不存在两端点相等的条件，所以使用拉格朗日中值定理。
+
+因为所要证明的式子中含有$a$、$b$、$a+b$，$f(0)=0$，所以对这几个区间进行拉格朗日中值定理。
+
+证明式子中没有减的形式只有和的形式，所以需要对其转换。
+
+$f(a)-f(0)=f'(\xi_1)(a-0)$，$f(a+b)-f(b)=f'(\xi_2)(a+b-b)$。
+
+从而$f(a)=f'(\xi_1)a$，$f(a+b)-"
+e0152,高等数学,函数,函数,"设$f(x)$在$[0,1]$上连续且可导，证明存在一点$\\xi\\in(0,1)$，使得$f(1)=3\\xi^2f(\\xi)+\\xi^3f'(\\epsilon)$。 证明：由$3\\xi^2f(\\xi)+\\xi^3f'(\\epsilon)$，可推出原函数为$x^3f(x)$，令$F(x)=x^3f(x)$，则其在$(0,1)$也可导。 即使用拉格朗日中值定理，$F(1)-F(0)=F'(\\xi)$，$\\xi\\in(0,1)$。即$f(1)=3\\xi^2f(\\xi)+\\xi^3f'(\\epsilon)$。 \\subsubsection{对数函数特性} 对于对数函数，要记住其特定的性质：$\\log_n(\\dfrac{a}{b})=\\log_na-\\log_nb$。",,
+e0153,高等数学,函数,函数,"设$a>b>0$，证明：$\\dfrac{a-b}{a}<\\ln\\dfrac{a}{b}<\\dfrac{a-b}{b}$。 证明：因为$\\ln\\dfrac{a}{b}=\\ln a-\\ln b$，所以令$f(x)=\\ln x$。 所以根据拉格朗日中值定理：$\\ln a-\\ln b=f'(\\xi)(a-b)$（$\\xi\\in(b,a)$）。 又$f'(\\xi)=\\dfrac{1}{\\xi}$，所以$\\ln a-\\ln b=\\dfrac{a-b}{\\xi}$。 又$\\xi\\in(b,a)$，所以$\\dfrac{1}{\\xi}\\in(\\dfrac{1}{a},\\dfrac{1}{b})$。 所以$\\dfrac{a-b}{a}<\\dfrac{a-b}{\\xi}<\\dfrac{a-b}{b}$，从而$\\dfrac{a-b}{a}<\\ln\\dfrac{a}{b}<\\dfrac{a-b}{b}$，得证。 \\subsubsection{划分区间} 证明存在两个不同的点在同一个区间满足一个不等式。如果两个点彼此存在一定关系，如上面式子转换的例子$a+b$，$a$，$b$，那么我们可以使用转换，如果两个完全独立的变量，则这种方式没用，我们可以考虑划分区间，假定这两个点在不同的区间，中间以一个区间变量分隔，由于拉格朗日中值定理中两个变量只会出现一次，而间隔变量会出现多次，所以对其分别拉格朗日中值定理，就可以把两个变量换成以间隔变量表示的形式，将两个无关变量的式子变成一个变量的式子。",,
+e0154,高等数学,函数,函数,"设函数$f(x)$在$[0,1]$上连续，在$(0,1)$内可导，且$f(0)=0$，$f(1)=1$，证明存在不同的$\\xi_1$、$\\xi_2$，使得$\\dfrac{1}{f'(\\xi_1)}+\\dfrac{1}{f'(\\xi_2)}=2$。 证明：使用$\\xi$将$[0,1]$划分为$[0,\\xi]$和$[\\xi,1]$两个区间，假定$\\xi_1$、$\\xi_2$分别在这两个区间上。 分别对其进行拉格朗日：$f(\\xi)-f(0)=f'(\\xi_1)(\\xi-0)$，即$\\dfrac{1}{f'(\\xi_1)}=\\dfrac{\\xi}{f(\\xi)}$，$f(1)-f(\\xi)=f'(\\xi_2)(1-\\xi)$，即$\\dfrac{1}{f'(\\xi_2)}=\\dfrac{1-\\xi}{1-f(\\xi)}$。 即$\\dfrac{1}{f'(\\xi_1)}+\\dfrac{1}{f'(\\xi_2)}=\\dfrac{\\xi}{f(\\xi)}+\\dfrac{1-\\xi}{1-f(\\xi)}$，任取$f(\\xi)=\\dfrac{1}{2}$，原式等于2，得证。 \\subsubsection{查找特定值} 对于证明一种不等式，如果里面没有差式，也无法转换为差式（没有相同的$f(x)$），那么就可以考虑制造差式，对于$f(x)$一般选择更高阶的，$a$选择$x$，$b$要根据题目和不等式设置一个常数。 一般是0或1。可以先尝试1。 对于这种不等式子看上去一般不会想到拉格朗日中值定理。",,
+e0155,高等数学,函数,函数,"当$x>1$时，证明$e^x>ex$。 证明：题目中没有差式，所以需要选择一个函数作为基准函数，里面有一个指数函数和一个幂函数，所以选择$e^x$作为基准函数。 然后选择一个常数作为$b$值，可以先选一个1作为$b$值：$f(x)-f(1)=f'(\\xi)(x-1)$。 从而$e^x-e=e^\\xi(x-1)$，$\\xi\\in(1,x)$，所以$e^x-e>e(x-1)$，即$e^x>ex$，得证。 \\subsubsection{目标为常数} 使用拉格朗日中值定理的推论：$f(x)$在$I$上连续且可导，则$I$上$f(x)=C\\Leftrightarrow f'(x)\\equiv 0$。",,
+e0156,高等数学,函数,函数,证明$\\arctan e^x+\\arctan e^{-x}=\\dfrac{\\pi}{2}$。,证。,"令$F(x)=\arctan e^x+\arctan e^{-x}-\dfrac{\pi}{2}$。
+
+$F'(x)=\dfrac{e^x}{1+e^{2x}}+\dfrac{-e^{-x}}{1+e^{-2x}}=0$。
+
+根据拉格朗日中值定理，$F(x)\equiv C$。
+
+又$F(0)=\arctan 1+\arctan 1-\dfrac{\pi}{2}=0$，$C=0$，得证。"
+e0157,高等数学,函数,函数,"设$0<a<b$，函数$f(x)$在$[a,b]$上连续，在$(a,b)$内可导，证明存在一点$\\xi\\in(a,b)$使得$f(b)-f(a)=\\xi f'(\\xi)\\ln\\dfrac{b}{a}$。 证明：由对数函数的特性可以知道$\\dfrac{b}{a}=\\ln b-\\ln a$，所以可以令$F(x)=\\ln x$，所以$F'(x)=\\dfrac{1}{x}$。 $f(b)-f(a)=\\xi f'(\\xi)\\ln\\dfrac{b}{a}=\\dfrac{f(b)-f(a)}{\\ln b-\\ln a}=\\dfrac{f'(\\xi)}{\\dfrac{1}{\\xi}}\\dfrac{f(b)-f(a)}{F(b)-F(a)}=\\dfrac{f'(\\xi)}{F'(\\xi)}$。 根据柯西中值定理得证。",,
+e0158,高等数学,函数,函数,"$f(x)$在$[a,b]$上二阶可导，$f'(a)=f'(b)=0$，证明$\\exists\\xi\\in(a,b)$，使得$\\vert f''(\\xi)\\vert\\geqslant4\\dfrac{\\vert f(b)-f(a)\\vert}{(b-a)^2}$。","代入$x=\dfrac{a+b}{2}$：
+
+$f\left(\dfrac{a+b}{2}\right)=f(a)+\dfrac{f''(\xi_1')}{8}(b-a)^2$，$f\left(\df","由于$ab$两点信息一样多，所以对两点进行泰勒一阶展开：
+
+$f(x)=f(a)+\dfrac{f''(\xi_1)}{2!}(x-a)^2$，$f(x)=f(b)+\dfrac{f''(\xi_2)}{2!}(x-b)^2$。
+
+因为最后要证明的式子里面$ab$都要有，所以代入$x=\dfrac{a+b}{2}$：
+
+$f\left(\dfrac{a+b}{2}\right)=f(a)+\dfr"
+e0159,高等数学,函数,函数,"$f(x)$在$[a,b]$上连续，$(a,b)$内可导，且$f(a)=f(b)=1$，证明存在$\\xi,\\eta\\in(a,b)$使得$e^{\\eta-\\xi}[f(\\eta)+f'(\\eta)]=1$。","等式成立，得证。
+
+\subsubsection{一次拉格朗日一次柯西}","首先将$\xi$和$\eta$分开：$e^\eta[f(\eta)+f'(\eta)]=e^\xi$。根据拉格朗日中值定理$f'(\xi)=\dfrac{f(b)-f(a)}{b-a}$：
+
+对于右边$e^\xi=t'(\xi)$，$t(x)=\int e^x\,\textrm{d}x=e^x$，$\therefore e^\xi=\dfrac{e^b-e^a}{b-a}$。
+
+对于左边$e^\e"
+e0160,高等数学,函数,函数,"$f(x)$在$[a,b]$上连续，$(a,b)$内可导，且$f'(x)\\neq0$，证明存在$\\xi,\\eta\\in(a,b)$使得$\\dfrac{f'(\\xi)}{f'(\\eta)}=\\dfrac{e^b-e^a}{b-a}e^{-\\eta}$。",证。,"首先将$\xi$和$\eta$分开：$f'(\xi)=\dfrac{e^b-e^a}{b-a}\dfrac{e^{-\eta}}{f'(\eta)}$。
+
+对$f'(\xi)$使用拉格朗日，$=\dfrac{f(b)-f(a)}{b-a}$。对$\dfrac{e^{-\eta}}{f'(\eta)}$使用柯西，$=\dfrac{f(b)-f(a)}{e^b-e^a}$。
+
+左右相等，得证。"
+e0161,高等数学,函数,函数,求$y=x+\\vert\\sin 2x\\vert$的单调区间。,"函数在区间上单调递减。
+
+从而函数在$\left[\dfrac{k\pi}{2},\dfrac{k\pi}{2}+\dfrac{\pi}{3}\right]$时单调增加，在$\left[\dfrac{","因为函数的定义域为$R$。
+
+又$y=\left\{\begin{array}{lcl}
+    x+\sin 2x, & & n\pi\leqslant x\leqslant n\pi+\dfrac{\pi}{2} \\
+    x-\sin 2x, & &n\pi+\dfrac{\pi}{2}\leqslant x\leqslant (n+1)\pi
+\end{array}\right.$（$"
+e0162,高等数学,函数,函数,"决定曲线$y=ax^3+bx^2+cx+d$中参数，使得$x=-2$处曲线有水平切线，$(1,-10)$为拐点，且点$(-2,44)$在曲线上。","$y\vert_{x=-2}=-8a+4b-2c+d=44$。
+
+解得四个方程：$a=1$，$b=-3$，$c=-24$，$d=16$。","$y'=3ax^2+2bx+c$，$y''=6ax+2b$。
+
+因为$x=-2$处曲线有水平切线，即$y'\vert_{x=-2}=12a-4b+c=0$。
+
+$(1,-10)$为拐点，代入：$y''\vert_{x=1}=6a+2b=0$，$y\vert_{x=1}=a+b+c+d=-10$。
+
+又点$(-2,44)$在曲线上，所以$y\vert_{x=-2}=-8a+4b-2c+d=44$。
+"
+e0163,高等数学,函数,函数,$f(x)=\\ln\\vert(x-1)(x-2)\\cdots(x-n)\\vert$，则求$f'(x)=0$根的个数。,"$f'(x)=0$只有$n-1$个根。
+
+\paragraph{罗尔原话} \leavevmode \medskip
+
+罗尔原话算出来的是至多有多少个根。
+
+\begin{itemize}","$\because f'(x)=\dfrac{[(x-1)(x-2)\cdots(x-n)]'}{(x-1)(x-2)\cdots(x-n)}=0$。
+
+令$g(x)=(x-1)(x-2)\cdots(x-n)$，所以求$f'(x)=0$即求$g'(x)=0$。
+
+又$g(x)=0$时$x=1,2\cdots,n$，所以依次对$(1,2)$、$(2,3)$、$\cdots$、$(n-1,n)$使用"
+e0164,高等数学,函数,函数,证明方程$2^x-x^2=1$有且仅有3个实根。,"$(4,5)$内存在一个实根，从而一共与三个根。
+
+\paragraph{实系数奇次方程} \leavevmode \medskip
+
+实系数奇次方程至少有一个实根。即$x^{2n+1}+a_1x^{","令$f(x)=2^x-x^2-1$，则$f'(x)=\ln22^x-2x$，$f''(x)=(\ln2)^22^x-2$，$f'''(x)=(\ln2)^32^x\neq 0$。
+
+所以$f'''(x)=0$至多0个根。所以根据罗尔原话$f(x)=0$至多三个根。
+
+又观察法$f(0)=0$，$f(1)=0$得到两个实根。
+
+$f(4)=-1$，$f(5)=6$，所以$(4,5)$内存在一个实根，"
+e0165,高等数学,函数,函数,若$3a^2-5b<0$，则方程$x^5+2ax^3+3bx+4c=0$()。 $A.\\text{无实根}$\\qquad$B.\\text{有唯一实根}$\\qquad$C.\\text{有三个不同实根}$\\qquad$D.\\text{与五个不同实根}$,"可以在计算过程中不考虑参数，等到了最后的结果再讨论参数。
+
+当存在参数时要尽可能将参数在导数中消掉，如$e^x=kx$，$f(x)$不能是$e^x-kx$而应该是$\dfrac{e^x}{x}-k$。","令$f(x)=x^5+2ax^3+3bx+4c$，该实系数奇次方程至少有一个根。
+
+$f'(x)=5x^4+6ax^2+3b$，令$t=x^2$，$5t^2+6at+3b=0$。
+
+$\Delta=36a^2-4\cdot5\cdot3b=36a^2-60b=12(3a^2-5b)<0$。
+
+$\therefore f'(x)$无实根，所以$t=x^2$解不出来，所以$f'(x)\neq0$。
+
+"
+e0166,高等数学,函数,函数,"设常数$k>0$，函数$f(x)=\\ln x-\\dfrac{x}{e}+k$在$(0,+\\infty)$内的零点个数为()。 $A.3$\\qquad$B.2$\\qquad$C.1$\\qquad$D.0$","一共有两个根。
+
+\paragraph{函数导数含参} \leavevmode \medskip
+
+参数与自变量进行运算，从而求导后参数仍在式子中，计算时需要携带参数来思考。","$f'(x)=\dfrac{1}{x}-\dfrac{1}{e}$，令其为0，则$x=e$。
+
+$x\in(0,e)$，$f'(x)>0$，$f(x)\nearrow$，$x\in(e,+\infty)$，$f'(x)<0$，$f(x)\searrow$。
+
+又$f(e)=k>0$，$\lim\limits_{x\to0^+}f(x)=\lim\limits_{x\to0^+}(\ln x-\df"
+e0167,高等数学,函数,函数,求方程$k\\arctan x-x=0$的不同实根的个数，其中$k$为参数。,"一共有三个根。
+
+\end{document}","令$f(x)=k\arctan x-x$$，\because f(-x)=-f(x)$，所以$f(x)$是一个奇函数，所以可以只要考虑一边的情况。$x=0$是函数的一个根。
+
+$f'(x)=\dfrac{k}{1+x^2}-1=\dfrac{k-1-x^2}{1+x^2}$。
+
+若$k-1\leqslant0$即$k<1$则$f'(x)\leqslant0$，所以$f(x)$单调减少，从而只有一个"
+e0168,高等数学,函数,函数,"交换积分次序$\\int_0^1\\textrm{d}x\\int_0^{x^2}f(x,y)\\,\\textrm{d}y+\\int_1^3\\textrm{d}x\\int_0^{\\frac{1}{2}(3-x)}f(x,y)\\,\\textrm{d}y$。","转换为$\int_0^1\textrm{d}y\int_{\sqrt{y}}^{3-2y}f(x,y)\,\textrm{d}x$。
+
+\paragraph{极坐标系} \leavevmode \me","已知积分区域分为两个部分。将$X$型变为$Y$型。画出图形可以知道$y\in(0,1)$，$x$的上下限由$y=x^2$和$y=\dfrac{1}{2}(3-x)$转化为$\sqrt{y}$和$3-2y$。
+
+所以转换为$\int_0^1\textrm{d}y\int_{\sqrt{y}}^{3-2y}f(x,y)\,\textrm{d}x$。
+
+\paragraph{极坐标系} \leavevm"
+e0169,高等数学,函数,函数,"对$\\int_{-\\frac{\\pi}{4}}^{\\frac{\\pi}{2}}\\textrm{d}\\theta\\int_0^{2\\cos\\theta}f(r\\cos\\theta,r\\sin\\theta)r\\,\\textrm{d}r$交换积分次序。","下限为$\theta=-\arccos\dfrac{r}{2}$。
+
+综上交换积分次序结果为：
+
+$\int_0^{\sqrt{2}}r\,\textrm{d}r\int_{-\frac{\pi}{4","对于极坐标的积分次序交换需要利用直角坐标系来画图了解，特别是对于$r$的上下限。
+
+对$\theta=\dfrac{\pi}{2}$变为$y$轴，$\theta=-\dfrac{\pi}{4}$变为$y=-x$。
+
+对$r=2\cos\theta$变为$xy$的表达式，$r^2=2\cos\theta$，即$x^2+y^2=2x$，$(x-1)^2+y^2=1$。
+
+所以所得到的$\sigma$为"
+e0170,高等数学,函数,函数,"将$I=\\int_0^{\\frac{\\sqrt{2}}{2}R}e^{-y^2}\\textrm{d}y\\int_0^ye^{-x^2}\\,\\textrm{d}x+\\int_{\\frac{\\sqrt{2}}{2}R}^Re^{-y^2}\\,\\textrm{d}y\\int_0^{\\sqrt{R^2-y^2}}e^{-x^2}\\,\\textrm{d}x$转换为极坐标系并计算结果。","到$D=\left\{(x,y)\bigg|0\leqslant r\leqslant R,\dfrac{\pi}{4}\leqslant\theta\leqslant\dfrac{\pi}{2}\r","首先根据积分上下限得到积分区域$D=\left\{0\leqslant y\leqslant\dfrac{\sqrt{2}}{2}R,0\leqslant x\leqslant y\right\}\cup\left\{\dfrac{\sqrt{2}}{2}R\leqslant y\leqslant R,0\leqslant x\leqslant\sqrt{R^2-y^2}\right\}$，$D$"
+e0171,高等数学,函数,函数,"求$\\int_0^1\\textrm{d}y\\int_{\\arcsin y}^{\\pi-\\arcsin y}\\cos^2x\\,\\textrm{d}x$。",=y$,"首先直接对这个式子直接计算，$\cos^2x=\dfrac{1}{2}(1+\cos2x)$，原式$=\dfrac{1}{2}\int_0^1(\pi-2y-\arcsin y)\textrm{d}y$。根本无法解出。
+
+考虑交换积分次序，首先求$\sigma$，$y\in[0,1]$，$x\in[\arcsin y,\pi-\arcsin y]$，则$\sin x=y$，$y=\sin(\pi-"
+e0172,高等数学,函数,函数,求曲线$r^2=2ax^2\\cos2\\theta$（$a>0$）所围图形面积。,"$=4\int_0^{\frac{\pi}{4}}\textrm{d}\theta\int_0^{a\sqrt{2\cos2\theta}}r\,\textrm{d}r=4a^2\int_0^{\fr","即求$\iint\limits_D\textrm{d}x\textrm{d}y$。重点就是求$D$，已知$r$的表达式，要求$\theta$的取值范围。
+
+又$r^2>0$，$x^2>0$，$a>0$，所以$\cos2\theta\geqslant0$，$-\dfrac{\pi}{4}\leqslant\theta\leqslant\dfrac{\pi}{4}$，$\dfrac{3\pi}{4}\"
+e0173,高等数学,函数,函数,"设$D=\\{(x,y)|0\\leqslant x\\leqslant1,0\\leqslant y\\leqslant1\\}$，求$\\displaystyle{\\iint\\limits_D\\dfrac{\\textrm{d}x\\textrm{d}y}{\\sqrt{x^2+y^2}}}$。",$=2\int_0^{\frac{\pi}{4}}\textrm{d}\theta\int_0^{\frac{1}{\cos\theta}}\textrm{d}r=2\int_0^{\frac{\pi,"由$f(x,y)=\dfrac{1}{\sqrt{x^2+y^2}}$，知道可以使用极坐标系来表示，但是$D$是一个正方形，无法用圆来简单表示。
+
+又$D$可以从$y=x$切割为两个部分，所以令下三角形为$D_1$，$\displaystyle{\iint\limits_D\dfrac{\textrm{d}x\textrm{d}y}{\sqrt{x^2+y^2}}}=2\displaystyle{"
+e0174,高等数学,函数,函数,"设积分区域$D=\\{(x,y)\\vert x^2+y^2\\leqslant2x+2y\\}$，求$\\iint_D(x^2+xy+y^2)\\textrm{d}\\sigma$。","原式$=2\pi+6\pi=8\pi$。
+
+若积分区域$\sigma$关于$x=k_1$或$y=k_2$对称，则当$f(x,y)$含有$x-k_1$或$y-k_2$因式时重积分值为0。","$D$为$(x-1)^2+(y-1)^2\leqslant\sqrt{2}$，即圆心在$(1,1)$的圆，极坐标系无法表示，所以必须平移坐标轴。
+
+令$x-1=u$，$y-1=v$，$x=u+1$，$y=v+1$，此时$D'=\{(u,v)|u^2+v^2\leqslant2\}$。
+
+$\iint\limits_D(x^2+xy+y^2)\textrm{d}\sigma=\iint\limits"
+e0175,高等数学,函数,函数,"设$D:x^2+y^2\\leqslant2x+2y$，求$\\iint\\limits_Dxy\\,\\textrm{d}x\\textrm{d}y$。","直接把后面的全消掉，变为$\int_0^{2\pi}\textrm{d}\theta\int_0^{\sqrt{2}}r\,\textrm{d}r=2\pi$。
+
+\subsubsection{极限化","本题目使用直角坐标系和极坐标系都不好做。所以需要利用积分性质，对$D$进行平移等操作。
+
+利用平移，由于$D:(x-1)^2+(y-1)^2=2$，令$x=1+r\cos\theta$，$y=1+r\sin\theta$，则利用极坐标，$r\in[0,\sqrt{2}]$，$\theta\in[0,2\pi]$，$=\int_0^{2\pi}\textrm{d}\theta\int_0^{\sqr"
+e0176,高等数学,函数,函数,求$I=\\lim\\limits_{n\\to\\infty}\\sum\\limits_{i=1}^n\\sum\\limits_{j=1}^n\\dfrac{1}{\\left(1+\\dfrac{i}{n}\\right)(n^2+j^2)}$。,"$=\displaystyle{\int_0^1\dfrac{1}{1+x}\textrm{d}x\int_0^1\dfrac{1}{1+y^2}\textrm{d}y}$。
+
+$=\ln(1+x)\","首先提出$\dfrac{1}{n^2}$，正好在分母右边等式中$=\lim\limits_{n\to\infty}\sum\limits_{i=1}^n\sum\limits_{j=1}^n\dfrac{1}{\left(1+\dfrac{i}{n}\right)(1+\dfrac{j^2}{n^2})}\dfrac{1}{n^2}$。
+
+已完全化为$\dfrac{i}{n}$和$\dfrac{j"
+e0177,高等数学,函数,函数,求$\\lim\\limits_{t\\to0^+}\\dfrac{1}{t^6}\\int_0^t\\textrm{d}x\\int_x^t\\sin(xy)^2\\textrm{d}y$。,"令$xt=u$，$x=\dfrac{u}{t}$，$u\in(0,t^2)$，$=\lim\limits_{t\to0^+}\dfrac{\int_0^{t^2}\sin u^2\textrm{d}u","这个式子求极限必然使用洛必达法则，而$\int_0^t\textrm{d}x\int_x^t\sin(xy)^2\textrm{d}y$里面那层定积分的上下限不规整，所以更换积分次序变成$\int_0^t\textrm{d}y\int_0^x\sin(xy)^2\textrm{d}x$。
+
+对其求导$\int_0^t[\int_0^x\sin(xy)^2\textrm{d}x]\textrm{d}"
+e0178,高等数学,函数,函数,"设$D:\\dfrac{x^2}{a}+\\dfrac{y^2}{b}\\leqslant1$，求$\\iint\\limits_Dy^2\\,\\textrm{d}x\\textrm{d}y$。","$I=\iint\limits_{D'}(br\sin\theta)^2\vert J\vert\,\textrm{d}r\textrm{d}\theta=\int_0^{2\pi}\textrm{d","令$x=ar\cos\theta$，$y=br\sin\theta$，所以$D'$为$0\leqslant r\leqslant 1$，$0\leqslant\theta\leqslant2\pi$。
+
+变换雅可比行列式$J=\dfrac{\partial(x,y)}{\partial(r,\theta)}=\left\vert\begin{array}{cc}
+    \dfrac{\parti"
+e0179,高等数学,函数,函数,"设$f(x,y)$为连续函数，且$f(x,y)=\\dfrac{1}{\\pi}\\sqrt{x^2+y^2}\\iint\\limits_{x^2+y^2\\leqslant1}f(x,y)\\,\\textrm{d}\\sigma+y^2$，求$f(x,y)$。","其在区间上可积且是一个常数。
+
+令$\iint\limits_{x^2+y^2\leqslant1}f(x,y)\,\textrm{d}\sigma=A$。对$f(x,y)=\dfrac{A}{\pi","$\because f(x,y)$为连续函数，所以其在区间上可积且是一个常数。
+
+令$\iint\limits_{x^2+y^2\leqslant1}f(x,y)\,\textrm{d}\sigma=A$。对$f(x,y)=\dfrac{A}{\pi}\sqrt{x^2+y^2}+y^2$两边积分：
+
+$A=\dfrac{A}{\pi}\iint\limits_{x^2+y^2\leqslant1"
+e0180,高等数学,函数,函数,"设$g(x)$有连续的导数，且$g(0)=0$，$g'(0)=a\\neq0$，$f(x,y)$在$(0,0)$的某邻域内连续，求$\\lim\\limits_{r\\to0^+}\\dfrac{\\iint\\limits_{x^2+y^2\\leqslant r^2}f(x,y)\\,\\textrm{d}x\\textrm{d}y}{g(r^2)}$。","$\lim\limits_{r\to0^+}f(\xi,\eta)=f(0,0)$。
+
+$=\lim\limits_{r\to0^+}\dfrac{\pi r^2f(\xi,\eta)}{g(r^2)","已知对于这个积分式子中$f(x)$和$g(x)$都是未定式，不可能求出具体的值，所以不能再用二重积分直接计算。
+
+面对这种未定式我们希望把这个式子变成我们已知的式子，也应该与$r$相关。此时我们可以想到二重积分中值定理。
+
+根据二重积分中值定理$\iint\limits_{x^2+y^2\leqslant r^2}f(x,y)\,\textrm{d}x\textrm{d}y=\pi r^2f(\x"
+e0181,高等数学,函数,函数,"设积分区域$D_1=\\{(x,y)|x^2+y^2\\leqslant1\\}$、$D_2=\\{(x,y)|x^2+y^2\\leqslant2\\}$、$D_3=\\left\\{(x,y)|\\dfrac{1}{2}x^2+y^2\\leqslant1\\right\\}$、$D_4=\\left\\{(x,y)|x^2+\\dfrac{1}{2}y^2\\leqslant1\\right\\}$。\\\\记$I_i=\\iint\\limits_{D_i}\\left[1-\\left(x^2+\\dfrac{1}{2}y^2\\right)\\right]\\textrm{d}\\sigma$（$i=1,2,3,4$），求$\\max\\{I_1,I_2,I_3,I_4\\}$。",$I_4$最大。,"已知$D_1$、$D_2$分别为半径1和$\sqrt{2}$的圆，而$D_3$、$D_4$分别为横着和竖着的椭圆。可以画出图像。
+
+被积函数$f(x,y)=1-\left(x^2+\dfrac{1}{2}y^2\right)$为连续函数，只有在$D_4$上才能保证完全为正，以外的地方为负值。
+
+所以$D_1\subset D_4$，所以$I_1<D_4$。对于$D_2$更大，$D_4\subset"
+e0182,高等数学,函数,函数,"$f(x)$为恒大于0的连续函数，证明$\\displaystyle{\\int_a^bf(x)\\,\\textrm{d}x\\cdot\\int_a^b\\dfrac{1}{f(x)}\\textrm{d}x\\geqslant(b-a)^2}$。","设$D=\{(x,y)\vert a\leqslant x\leqslant b,a\leqslant y\leqslant b\}$。
+
+$I=\displaystyle{\int_a^bf(x)\","首先观察这个式子，右边是积分上下限的差的乘积，左边是两个积分的乘积，看上去貌似没什么关系，而且积分式子给出的是一个未定式$f(x)$，所以不能直接求左边值再比较大小，他们之间一定存在着某种关系。
+
+式子左边的两个函数互为倒数，所以应该要尝试将这两个式子乘在一起来利用基本不等式计算，即将一重积分乘积变为二重积分。
+
+对于一重积分而言只是一个自变量，对于二重积分而言就变成了两个自变量，需要令其中一个$"
+e0183,高等数学,函数,函数,"求$\\int_0^{+\\infty}e^{-x^2}\\,\\textrm{d}x$。","尝试将一重积分变成二重积分，即再乘一个以$y$为自变量的原式。
+
+设$I=\int_0^{+\infty}e^{-x^2}\,\textrm{d}x$，显然$I>0$，将$x$换成$y$：
+
+$I^2","对于这个一重积分首先看到$e^{x^2}$，肯定会想到将其幂次降低。使用分部积分法对$e^{e^2}$求导这个幂次不会降低，使用换元法$x=\sqrt{t}$会得到$\dfrac{1}{\sqrt{t}}$从而无法处理，所以这些都不能计算，那么该怎么办？
+
+看到$x^2$就能想到$x^2+y^2$的形式，这样就是一个极坐标系的二重积分，所以尝试将一重积分变成二重积分，即再乘一个以$y$为自变量的原"
+e0184,高等数学,函数,函数,求曲线$ay=x^2$与$x+y=2a$所围平面区域$D$的形心坐标。,=-,"根据表达式可知有两个交点$(-2a,4a)$、$(a,a)$，形心公式：
+
+$\overline{x}=\dfrac{\iint\limits_Dx\,\textrm{d}\sigma}{\iint\limits_D\textrm{d}\sigma}=\dfrac{\int_{-2a}^ax\,\textrm{d}x\int_{\frac{x^2}{a}}^{-x+2a}\textrm{d}y}{"
+e0185,高等数学,函数,函数,$I=\\displaystyle{\\oint\\limits_L\\dfrac{x\\textrm{d}y-y\\textrm{d}}{x^2+y^2}}$，$L$为不过原点的闭曲线。,对中间的环$D_1$使用格林公式：$\oint_{L+L_0^-}=\iint_{D_1}\left(\dfrac{\partial Q}{\partial x}-\dfrac{\partial P},$P=-\dfrac{y}{x^2+y^2}$，$Q=\dfrac{x}{x^2+y^2}$。$\dfrac{\partial Q}{\partial x}=\dfrac{y^2-x^2}{(x^2+y^2)^2}$，$\dfrac{\partial P}{\partial y}=\dfrac{y^2-x^2}{(x^2+y^2)^2}$，从而$\dfrac{\partial Q}{\partia
+e0186,高等数学,函数,函数,"计算曲线积分$\\oint\\limits_L\\dfrac{x\\textrm{d}y-y\\textrm{d}x}{4^x2+y^2}$，其中$L$是以点$(1,0)$为圆心，$R\\geqslant1$为半径的圆，取逆时针方向。","令其为$C^-$。
+
+又因为格林公式$\oint\limits_{L^++C^-}P\,\textrm{d}x+Q\,\textrm{d}y=\displaystyle{\iint\limits_D\","由于是逆时针在$L$上，所以是正向：$=\displaystyle{\oint\limits_{L^+}\left(\dfrac{-y}{4x^2+y^2}\textrm{d}x+\dfrac{x}{4x^2+y^2}\textrm{d}y\right)}$。
+
+又对于$L$所围成的圆面$D$，因为$4x^2+y^2\neq0$，所以$(0,0)$应该被挖去。
+
+因为逆时针的方向下挖去这个点做的运"
+e0187,高等数学,函数,函数,"设$f(x)=\\left\\{\\begin{array}{lcl} \\dfrac{\\ln(1+bx)}{x}, & & x\\neq 0 \\\\ -1, & & x=0 \\end{array} \\right.$，其中$b$为某常数，$f(x)$在定义域上处处可导，求$f'(x)$。","当$x=0$时$f(x)$也是连续的，而连续的定义就是两边极限相等，且两边极限等于该点函数值。\medskip
+
+$\lim\limits_{x\to 0}\dfrac{\ln(1+bx)}{x}=\","首先需要求出参数$b$，而定义域上可导则在分段点$x=0$处也必然可导。
+
+而可导必连续，所以当$x=0$时$f(x)$也是连续的，而连续的定义就是两边极限相等，且两边极限等于该点函数值。\medskip
+
+$\lim\limits_{x\to 0}\dfrac{\ln(1+bx)}{x}=\lim\limits_{x\to 0}\dfrac{bx}{x}=b=-1$。从而可以完善函数与定义域。\"
+e0188,高等数学,函数,函数,设函数$f(x)$在$x=0$处连续，且$\\lim\\limits_{x\\to0}\\dfrac{f(x^2)}{x^2}=1$，则判断$f(0)$的值与$f'(0)$的导数存在性。,$f'_+(0)=1$。,"$\because\lim\limits_{x\to0}\dfrac{f(x^2)}{x^2}=1$，$\lim\limits_{x\to0}x^2=0$，$\therefore\lim\limits_{x\to0}f(x^2)=0$，即$f(0)=0$。
+
+由$\lim\limits_{x\to0}\dfrac{f(x^2)}{x^2}=1$形式，所以$\lim\limits_{x\to0}\d"
+e0189,高等数学,函数,函数,"设$f(x)=\\left\\{\\begin{array}{lcl} x^2, & & x\\leqslant 0 \\\\ x^\\alpha\\sin\\dfrac{1}{x}, & & x>0 \\end{array} \\right.$，若$f'(x)$连续，则$\\alpha$应该满足？",=0$,"若导数连续，则两侧导数相等。
+
+$\lim\limits_{x\to 0^-}f'(x)=\lim\limits_{x\to 0^-}2x=0$。
+
+$\lim\limits_{x\to 0^+}f'(x)=\lim\limits_{x\to 0^+}\alpha x^{\alpha-1}\sin\dfrac{1}{x}-x^{\alpha-2}\cos\dfrac{1}{x}=\lim\limi"
+e0190,高等数学,函数,函数,求$f(x)=x^{\\sin x}(x>0)$的导数。,=x,"取对数：
+
+$\therefore\ln y=\sin x\ln x$
+
+求导：
+
+$\dfrac{y'}{y}=\cos\ln x+\dfrac{\sin x}{x}$
+
+$\therefore y'=x^{\sin x}\left(\cos\ln x+\dfrac{\sin x}{x}\right)$。
+
+取指数：
+
+$x^{\sin x}=e^{\sin x\cdot\ln x}$
+
+求导："
+e0191,高等数学,函数,函数,"设$f(x)=\\left\\{\\begin{array}{lcl} \\arctan x, & & x\\leqslant 1 \\\\","该点可导。\medskip
+
+$f(x)=\left\{\begin{array}{lcl}
+    \dfrac{1}{1+x^2}, & & x\leqslant 1 \\
+    xe^{x^2","\dfrac{1}{2}(e^{x^2-1}-x)+\dfrac{\pi}{4}, & & x>1
+\end{array}
+\right.$，求$f'(x)$。
+
+当$x\leqslant 1$时，$f'(x)=\dfrac{1}{1+x^2}$，当$x>1$时，$f'(x)=xe^{x^2-1}-\dfrac{1}{2}$。
+
+然后需要查看分段点两边的导数是否一样：$f'_-(1)=\dfrac"
+e0192,高等数学,函数,函数,"设函数$f(x)=\\left\\{\\begin{array}{ll} \\ln\\sqrt{x}, & x\\geqslant1\\\\ 2x-1, &x<1 \\end{array}\\right.$，$y=f[f(x)]$。 1）求$\\dfrac{\\textrm{d}y}{\\textrm{d}x}\\bigg\\vert_{x=e}$。 2）判断$\\dfrac{\\textrm{d}y}{\\textrm{d}x}$在$x=e^2$是否存在，若存在则求。","可以直接变形式子来求。
+
+$y'=f'[f(x)]\cdot f'(x)$。$f(e)=\ln\sqrt{e}=\dfrac{1}{2}$，$f'[f(e)]=f'\left(\dfrac{1}{2}","1）题目问法不同，则所指明的意思不同。第一问是直接让你求，表示这个导数是存在的，所以可以直接变形式子来求。
+
+$y'=f'[f(x)]\cdot f'(x)$。$f(e)=\ln\sqrt{e}=\dfrac{1}{2}$，$f'[f(e)]=f'\left(\dfrac{1}{2}\right)=(2x-1)'\vert_{x=\frac{1}{2}}=2$，$f'(e)=(\ln\sqrt{x"
+e0193,高等数学,函数,函数,"已知$f(x)$是周期为5的连续函数，它在$x=0$的某个邻域内满足关系式：$f(1+\\sin x)-3f(1-\\sin x)= 8x+o(x)$，且$f(x)$在$x=1$处可导，求曲线$y=f(x)$在点$(6,f(6))$处的切线方程。","曲线$y=f(x)$在$(6,f(6))$即$(6,0)$处的切线方程为$y-0=2(x-6)$即$2x-y-12=0$。
+
+\subsubsection{导数求极限}
+
+题目会给出对应的导数以及相关","因为这是个函数等式，而我们最后要求的是一个导数，所以先尝试对其直接求极限，令$x\to0$：
+
+$f(1)-3f(1)=0$，从而得到了一个函数值$f(1)=0$。
+
+然后再对这个式子思考，等式右边为$8x$，而除以$x$就变成了8，而再对其求极限，右边就彻底变成了一个常数8：
+
+$\lim\limits_{x\to 0}\dfrac{f(1+\sin x)-3f(1-\sin x)}{x}=8$"
+e0194,高等数学,函数,函数,设$f(x)$是以3为周期的可导函数，且是偶函数，$f'(-2)=-1$，求$\\lim\\limits_{h\\to 0}\\dfrac{h}{f(5-2\\sin h)-f(5)}$。\\medskip,"我们可以先求其倒数式子：\medskip
+
+$=\lim\limits_{h\to 0}\dfrac{f(5-2\sin h)-f(5)}{h}=\lim\limits_{h\to 0}\dfrac{","根据导数与函数的基本性质，原函数为偶函数，则其导函数为奇函数，所以$f'(5)=f'(2)=-f'(-2)=1$。
+
+然后需要转换目标的极限式子，因为目标式子倒过来的式子类似于导数定义的$f'(x)=\lim\limits_{\Delta x\to 0}\dfrac{f(x+\Delta x)-f(x)}{\Delta x}$结构。所以我们可以先求其倒数式子：\medskip
+
+$=\lim\li"
+e0195,高等数学,函数,函数,设$f(x)$在$x=0$处可导且$f(0)=1$，$f'(0)=3$，则数列极限$I=\\lim\\limits_{n\\to\\infty}\\left(f\\left(\\dfrac{1}{n}\\right)\\right)^{\\frac{\\frac{1}{n}}{1-\\cos\\frac{1}{n}}}$。\\medskip,=x$,"设$\dfrac{1}{n}=x$，则：
+
+$=\lim\limits_{x\to 0}(f(x))^{\frac{x}{1-\cos x}}=e^{\lim\limits_{x\to 0}\frac{x}{1-\cos x}\ln f(x)}=e^{2\lim\limits_{x\to 0}\frac{\ln f(x)}{x}}=e^{2\lim\limits_{x\to 0}\frac{f(x"
+e0196,高等数学,函数,函数,求$f(x)=x^2\\ln(1+x)$在$x=0$处的$n$阶导数（$n>2$）。 令$u=x^2$，$v=\\ln(1+x)$。$u'=2x$，$u''=2$，$u^{(k)}=0$（$k>2$），又在$x=0$。 所以$f^{(n)}(0)=C_n^2u^{(2)}(0)v^{(n-2)}(0)=2C_n^2v^{(n-2)}(0)$。 $v'=(x+1)^{-1}$，$v''=(-1)(x+1)^{-2}$，$v^{(n-2)}=\\dfrac{(-1)^{n-1}(n-3)!}{(x+1)^{n-2}}$。 $v^{(n-2)}(0)=(-1)^{n-1}(n-3)!$，$f^{(n)}(0)=\\dfrac{n(n-1)}{2!}2(-1)^{n-1}(n-3)!=\\dfrac{(-1)^{n+1}n!}{n-2}$。 \\subsubsection{归纳法},,
+e0197,高等数学,函数,函数,已知$f(x)=\\dfrac{x}{x^2-5x+6}$， 求$f^{(n)}(x)$。,"根据高阶导数性质$f^{(n)}(x)=\left(\dfrac{3}{x-3}\right)^{(n)}-\left(\dfrac{2}{x-2}\right)^{(n)}$。
+
+令$\psi(x)","首先式子为多项式形式，所以先因式分解。
+
+$f(x)=\dfrac{x}{(x-2)(x-3)}=\dfrac{3}{x-3}-\dfrac{2}{x-2}$。
+
+所以根据高阶导数性质$f^{(n)}(x)=\left(\dfrac{3}{x-3}\right)^{(n)}-\left(\dfrac{2}{x-2}\right)^{(n)}$。
+
+令$\psi(x)=\dfrac{1}{x-1}="
+e0198,高等数学,函数,函数,已知$f(x)=e^x\\sin x$， 求$f^{(n)}(x)$。,"题型是求$f(x)$在点$x_0$处的导数，该点的导数就是该函数的泰勒级数的系数。如果题目是直接求$f^{(n)}x$则用不了莱布尼茨公式。
+
+\subsubsection{高阶导数存在性}
+
+\su","令$f'(x)=e^x\sin x+e^x\cos x=e^x(\sin x+\cos x)=\sqrt{2}e^x\sin\left(x+\dfrac{\pi}{4}\right)$。
+
+所以这里就使用三角公式，从而$f^{(n)}(x)=(\sqrt{2})^ne^x\sin\left(x+n\cdot\dfrac{\pi}{4}\right)$。
+
+\subsubsection{莱布尼茨公式"
+e0199,高等数学,函数,函数,已知$f(x)=x^2(x+1)^2(x+2)^2\\cdots(x+n)^2$，求$f''(0)$。,"其反函数的一阶导数为$\dfrac{\textrm{d}x}{\textrm{d}y}$。
+
+当求反函数的高阶导数时需要将分子分母同时除以$\textrm{d}x$。","因为式子中带有未知数$n$，所以结果很可能会带有$n$。
+
+而这个式子项数为$n+1$项，所以求导结果必然很大，所以一定会消去一部分。
+
+又求导的自变量$x=0$，而0代入很多式子都会被消去，所以这就是个突破口。
+
+因为求导是求二阶导数，所以很可能这种求导是消去一部分而不是得到一个规律，因为阶数太低很难看出规律。
+
+首先对$f(x)$求一阶导数（需要记住乘积的导数为各项求导的和）：
+
+$f'(x)"
+e0200,高等数学,函数,函数,已知$y=x+e^x$，求其反函数的二阶导数。,二阶导数为$\dfrac{\textrm{d}^2x}{\textrm{d}y^2}=\dfrac{\textrm{d}\left(\dfrac{1}{1+e^{x}}\right)}{\textrm,"$y=x+e^x$的反函数的一阶导数为$\dfrac{\textrm{d}x}{\textrm{d}y}=\dfrac{1}{1+e^x}$。\medskip
+
+所以二阶导数为$\dfrac{\textrm{d}^2x}{\textrm{d}y^2}=\dfrac{\textrm{d}\left(\dfrac{1}{1+e^{x}}\right)}{\textrm{d}y}=\dfrac{\dfr"
+e0201,高等数学,函数,函数,已知$\\dfrac{\\textrm{d}x}{\\textrm{d}y}=\\dfrac{1}{y'}$，求$\\dfrac{\\textrm{d}^2x}{\\textrm{d}y^2}$和$\\dfrac{\\textrm{d}^3x}{\\textrm{d}y^3}$。,=-,"其实就是求$\dfrac{\textrm{d}^2x}{\textrm{d}y^2}$和$\dfrac{\textrm{d}^3x}{\textrm{d}y^3}$，$\dfrac{\textrm{d}x}{\textrm{d}y}=\dfrac{1}{y'}$这个条件只是让我们用$y'$来表示结果而已。
+
+$\dfrac{\textrm{d}^2x}{\textrm{d}y^2}=\dfrac{"
+e0202,高等数学,函数,函数,落在平静水面上的石头，产生同心波纹。若最外一圈波半径的增大速率总是6m/s，问在2s末扰动水面面积增大的速率为多少？,"其两端分别对$t$求导，得：
+
+$\dfrac{\textrm{d}S}{\textrm{d}t}=2\pi r\dfrac{\textrm{d}r}{\textrm{d}t}$。当$t=2$时，$r","首先根据题目最后的要求的是面积，所以肯定要设一个面积变量，随时间变动而改变，所以也一定会设一个时间变量，同时还给出一个条件是半径增大速度，所以也会有一个半径的变量。同时要求的是面积增大速率，正好跟另外两个变量相关，时间跟半径和面积都相关，所以时间就是中间变量。
+
+从而设最外一圈波的半径为$r=r(t)$，圆的面积$S=S(t)$。根据$S$和$r$的公式$S=\pi r^2$，因为求的是随时间变化"
+e0203,高等数学,函数,函数,已知$y=y(x)$由参数方程$\\left\\{\\begin{array}{lcl} x=\\dfrac{1}{2}\\ln(1+t^2) \\\\ y=\\arctan t \\end{array} \\right.$确定，求其一阶导数与二阶导数。,=-,"$\dfrac{\textrm{d}y}{\textrm{d}x}=\dfrac{\dfrac{\textrm{d}y}{\textrm{d}t}}{\dfrac{\textrm{d}x}{\textrm{d}t}}=\dfrac{\dfrac{1}{2}\cdot\dfrac{2t}{1+t^2}}{\dfrac{1}{1+t^2}}=\dfrac{1}{t}$。
+
+$\dfrac{\textr"
+e0204,高等数学,函数,函数,"已知$y=f(x)$的反函数为$x=\\varphi(y)$，且$f(x)=\\int_1^{2x}e^{t^2}\\,\\textrm{d}t+1$，求$\\varphi''(1)$。",=-,"由于反函数的性质，$\varphi'(y)=\dfrac{\textrm{d}x}{\textrm{d}y}=\dfrac{1}{f'(x)}$。
+
+$\varphi''(y)=\dfrac{\textrm{d}}{\textrm{d}x}\left[\dfrac{1}{f'(x)}\right]\cdot\dfrac{\textrm{d}x}{\textrm{d}y}=-\dfrac{f''(x"
+e0205,高等数学,函数,函数,证明当$x>0$时$\\ln\\left(1+\\dfrac{1}{x}\\right)<\\dfrac{1}{\\sqrt{x(x+1)}}$。 证明：令$F(x)=\\ln\\left(1+\\dfrac{1}{x}\\right)-\\dfrac{1}{\\sqrt{x(x+1)}}$。 即证明$\\sqrt{x(x+1)}\\ln\\left(1+\\dfrac{1}{x}\\right)<1$。 令$t=\\dfrac{1}{x}$，即证$\\ln(1+t)\\sqrt{\\dfrac{1}{t}\\left(\\dfrac{1}{t}+1\\right)}<1$，$\\ln(1+t)\\sqrt{1+t}<t$。 令$F(t)=t-\\ln(1+t)\\sqrt{1+t}$，证明$F(t)>0$。\\medskip 则$F'(t)=1-\\dfrac{\\sqrt{1+t}}{1+t}-\\dfrac{\\ln(1+t)}{2\\sqrt{1+t}}=1-\\dfrac{2+\\ln(1+t)}{2\\sqrt{1+t}}>0$。 $F(t)$递增，所以$F(t)>F(0)=0$。,,
+e0206,高等数学,函数,函数,设$0<a<b$，证明$\\ln\\dfrac{b}{a}>2\\dfrac{b-a}{a+b}$。 因为左边含有$\\dfrac{b}{a}$不好处理，所以右边分子分母同时除以$a$全部变成统一变量：$\\ln\\dfrac{b}{a}>2\\dfrac{\\dfrac{b}{a}-1}{1+\\dfrac{b}{a}}$。然后令$x=\\dfrac{b}{a}$，所以即需要证明$\\ln x>2\\dfrac{x-1}{1+x}$，$x>1$。 \\subsection{中值定理} 一般使用拉格朗日中值定理或泰勒公式，也可能用其他的中值定理。,,
+e0207,高等数学,函数,函数,"已知动点$P$在曲线$y=x^3$上运动，记坐标原点与点$P$之间的距离为$l$。若点$P$的横坐标对事件的变化率为常数$v_0$，则当$P$运动到点$(1,1)$时，求$l$对时间的变化率。","$\dfrac{\textrm{d}l}{\textrm{d}t}=\dfrac{1+3x^4}{\sqrt{1+x^4}}v_0$，代入$(1,1)$得到：$2\sqrt{2}v_0$。","求$l$对时间的变化率就是求$\dfrac{\textrm{d}l}{\textrm{d}t}$，即求$\dfrac{\textrm{d}l}{\textrm{d}x}\dfrac{\textrm{d}x}{\textrm{d}t}$，且已知$\dfrac{\textrm{d}x}{\textrm{d}t}=v_0$。
+
+又$l=\sqrt{x^2+y^2}=\sqrt{x^2+x^6}=x\sq"
+e0208,高等数学,函数,函数,求$y=\\sin x$在$x=\\dfrac{\\pi}{4}$对应的曲率,"$y=\sin x$在$x=\dfrac{\pi}{4}$的点$(\dfrac{\pi}{4},\dfrac{\sqrt{2}}{2})$的曲率为$\dfrac{2\sqrt{3}}{9}$。
+
+\s","$y'=\cos x$，$y'(\dfrac{\pi}{4})=\dfrac{\sqrt{2}}{2}$。
+
+$y''=-\sin x$，$y''(\dfrac{\pi}{4})=-\dfrac{\sqrt{2}}{2}$。
+
+$\therefore k=\dfrac{\dfrac{\sqrt{2}}{2}}{\dfrac{3}{2}\cdot\sqrt{\dfrac{3}{2}}}=\dfrac"
+e0209,高等数学,函数,函数,求$y=x^2-4x+11$曲率最大值所在的点。,"$y'=2x-4$，$y''=2$。
+
+曲率为$\dfrac{2}{[1+(2x-4)^2]^{\frac{3}{2}}}$。
+
+当$2x-4=0$时即在$(2,7)$时曲率最大为2。
+
+\end{d","简单得$y'=2x-4$，$y''=2$。
+
+曲率为$\dfrac{2}{[1+(2x-4)^2]^{\frac{3}{2}}}$。
+
+当$2x-4=0$时即在$(2,7)$时曲率最大为2。
+
+\end{document}"
+e0210,高等数学,无穷级数,无穷级数,判断$\\sum\\limits_{n=1}^\\infty\\dfrac{n!}{n^n}$。,"收敛。
+
+\subsubsection{根值判别法}
+
+适用于含有$a^n$，$n^n$的通项。
+
+$\lim\limits_{n\to\infty}\sqrt[n]{n}=1$。
+
+\subsubs",利用比值判别法，令$a_n=\dfrac{n!}{n^n}$，$\lim\limits_{n\to\infty}\dfrac{a_{n+1}}{a_n}=\lim\limits_{n\to\infty}\dfrac{(n+1)!}{(n+1)^{n+1}}\dfrac{n^n}{n!}=\lim\limits_{n\to\infty}\dfrac{n^n}{(n+1)^n}$，注意这里幂也为变量，
+e0211,高等数学,无穷级数,无穷级数,判断级数$\\sum\\limits_{n=2}^\\infty\\dfrac{1}{n\\ln n}$的敛散性。,"原级数发散。
+
+\subsection{交错级数}","因为$\dfrac{1}{n\ln n}<\dfrac{1}{n}$，调和级数发散，所以比较判别法找不到一个较好的辅助级数。同理根据级数形式比值和根值判别法都无法使用。
+
+令$f(x)=\dfrac{1}{x\ln x}$，$a_n=f(n)$，在$[2,+\infty)$上$\dfrac{1}{n\ln n}$单调减且非负。
+
+级数$\sum\limits_{n=2}^\infty\dfrac{"
+e0212,高等数学,无穷级数,无穷级数,求幂级数$\\sum\\limits_{n=1}^\\infty\\dfrac{e^n-(-1)^n}{n^2}x^n$的收敛半径。,"$R=\dfrac{1}{e}$。
+
+\subsubsection{缺项变换}
+
+若求$\sum\limits_{n=0}^\infty a_nx^{2n+1}$或$\sum\limits_{n=0}","比值法：
+
+$\lim\limits_{n\to\infty}\left\vert\dfrac{a_{n+1}}{a_n}\right\vert=\lim\limits_{n\to\infty}\dfrac{e^{n+1}-(-1)^{n+1}}{(n+1)^2}\dfrac{n^2}{e^n-(-1)^n}=\lim\limits_{n\to\infty}\dfrac{e+(\frac{-1}{"
+e0213,高等数学,无穷级数,无穷级数,求幂级数$\\sum\\limits_{n=1}^\\infty\\dfrac{n}{2^n+(-3)^n}x^{2n-1}$的收敛半径。,"幂级数的一半都没有了。
+
+$\sum\limits_{n=1}^\infty a_nx^{2n}=\sum\limits_{n=1}^\infty a_nx^{2n-1}=\sum\limits_{n",由于分母都是幂函数，所以使用根值法：$=\lim\limits_{n=1}^\infty\sqrt[n]{\vert a_n\vert}=\lim\limits_{n=1}^\infty\dfrac{\sqrt[n]{n}}{\sqrt[n]{3^n+(-2)^n}}\\=\lim\limits_{n=1}^\infty\dfrac{1}{\sqrt[n]{1+(-\frac{2}{3})^n}}
+e0214,高等数学,无穷级数,无穷级数,已知幂级数$\\sum\\limits_{n=0}^\\infty a_n(x+2)^n$在$x=0$处收敛，在$x=-4$处发散，求$\\sum\\limits_{n=0}^\\infty a_n(x-3)^n$的收敛域。,"到收敛域$(-4,0]$。
+
+对于$\sum\limits_{n=0}^\infty a_n(x-3)^n$的中心点为$x=3$，则根据相对位置收敛域为$(1,5]$。
+
+\subsubsection","根据阿贝尔定理，已知在$x=0$处收敛，且中心点在$x=-2$，则收敛区间为$(-4,0)$，在$x=-4$处发散，则$x<-4$，$x>0$处发散。
+
+然后确定两端端点敛散性，$x=0$处收敛则收敛域包括$x=0$，$x=-4$处发散则收敛域不包括$x=-4$，得到收敛域$(-4,0]$。
+
+对于$\sum\limits_{n=0}^\infty a_n(x-3)^n$的中心点为$x=3$，则根"
+e0215,高等数学,无穷级数,无穷级数,若级数$\\sum\\limits_{n=0}^\\infty a_n$条件收敛，求幂级数$\\sum\\limits_{n=0}^\\infty na_n(x-1)^n$的收敛区间。,"到以中心点$x=1$的收敛区间$(0,2)$。","已知$\sum\limits_{n=0}^\infty a_n$条件收敛，则对于幂级数$\sum\limits_{n=0}^\infty na_n(x-1)^n$而言在$x=2$处条件收敛，即得到以中心点$x=1$的收敛区间$(0,2)$。"
+e0216,高等数学,无穷级数,无穷级数,将函数$f(x)=\\dfrac{1}{x^2-3x-4}$展开为$x-1$的幂级数并指出收敛区间。,"其幂级数就是其加和，收敛区间为$(-2,4)\cap(-1,3)=(-1,3)$。
+
+\subsubsection{先导后积}","$\dfrac{1}{x^2-3x-4}=\dfrac{1}{5}\left(\dfrac{1}{x-4}-\dfrac{1}{x+1}\right)$。
+
+$\dfrac{1}{x-4}=\dfrac{1}{(x-1)-3}=-\dfrac{1}{3}\dfrac{1}{1-\frac{x-1}{3}}=-\dfrac{1}{3}\sum\limits_{n=0}^\infty\left(\df"
+e0217,高等数学,无穷级数,无穷级数,求函数$f(x)=\\arctan x$在$x=0$处的幂级数展开。,"收敛域其实为$[-1,1]$（可以不写）。","$f'(x)=(\arctan x)'=\dfrac{1}{1+x^2}=\dfrac{1}{1-(-x^2)}=\sum\limits_{n=0}^\infty(-1)^nx^{2n}$，$\vert-x^2\vert<1$。
+
+已经求得求导后的函数的幂级数展开，所以求原函数的幂级数展开只需要积分，利用先导后积公式：$f(x)=f(0)+\int_0^xf'(t)\,\textrm{d}t=\i"
+e0218,高等数学,无穷级数,无穷级数,求级数$\\sum\\limits_{n=1}^\\infty\\dfrac{x^n}{n}$的和函数。 %,"使用先导后积的方法。
+
+% 记$S(x)=\sum\limits_{n=1}^\infty\dfrac{x^n}{n}$，则$x^n=(x-0)^n$，取$x_0=0$。
+
+% $\therefore","已知$\sum\limits_{n=0}^\infty x^n=\dfrac{1}{1-x}$，而这里求和是$\dfrac{x^n}{n}$，所以需要对其进行转换。
+
+% 对$\dfrac{x^n}{n}$求导就得到了$x^{n-1}$消去了分母的$n$，所以使用先导后积的方法。
+
+% 记$S(x)=\sum\limits_{n=1}^\infty\dfrac{x^n}{n}$，则$x^n=(x-"
+e0219,高等数学,无穷级数,无穷级数,求级数$\\sum\\limits_{n=0}^\\infty\\dfrac{(-1)^n}{2n+1}x^{2n}$的和函数。,"$q=\dfrac{(-1)^{n+1}x^{2n+2}}{(-1)^nx^{2n}}=-x^2$。
+
+从而$=\displaystyle{\dfrac{1}{x}\int_0^x\dfrac{1}{","首先$\lim\limits_{n\to\infty}\left\vert\dfrac{a_{n+1}}{a_n}\right\vert=1$，$R=1$。
+
+当$x=\pm1$时，$x^2n=1$，所以原式$=\sum\limits_{n=0}^\infty\dfrac{(-1)^n}{2n+1}$，为交错级数，由莱布尼茨判别法可知极限为0且单调递减，从而该级数收敛。从而收敛域为$[-1,1]$"
+e0220,高等数学,无穷级数,无穷级数,求级数$\\sum\\limits_{n=1}^\\infty nx^n$的和函数。,=1,"记$S(x)=\sum\limits_{n=1}^\infty nx^n=x\sum\limits_{n=1}^\infty x^{n-1}=x(\int\sum\limits_{n=1}^\infty nx^{n-1}\,\textrm{d}x)'=x(\sum\limits_{n=1}^\infty x^n)'=x\left(\dfrac{x}{1-x}\right)'=\dfrac{x}{("
+e0221,高等数学,无穷级数,无穷级数,求级数$\\sum\\limits_{n=0}^\\infty(n+1)(n+3)x^n$的和函数。,拆开：$\sum\limits_{n=0}^\infty(n+1)(n+2)x^n+\sum\limits_{n=0}^\infty(n+1)x^n=\left(\sum\limits_{n=0}^\,$(n+1)(n+3)$的形式可以推出$(n+1)(n+2)$是求两次导的结果，而这里是$(n+1)(n+3)$，所以拆开：$\sum\limits_{n=0}^\infty(n+1)(n+2)x^n+\sum\limits_{n=0}^\infty(n+1)x^n=\left(\sum\limits_{n=0}^\infty x^{n+2}\right)''+\left(\sum\limits_
+e0222,高等数学,微分方程,微分方程,"求$y\\sin\\dfrac{x}{2}\\,\\textrm{d}x-\\cos\\dfrac{x}{2}\\,\\textrm{d}y=0$的通解。","$C$应该为任意常数。
+
+此时解为全部解，为通解加上$y=0$的奇解。
+
+\subsubsection{多项式换元法}
+
+$x$和$y$是以和差作为一个整体形式。","$\dfrac{\textrm{d}y}{\textrm{d}x}=y\tan\dfrac{x}{2}$，$\dfrac{\textrm{d}y}{y}=\tan\dfrac{x}{2}\,\textrm{d}x$，$\displaystyle{\int\dfrac{\textrm{d}y}{y}=2\int\tan\dfrac{x}{2}\,\textrm{d}\dfrac{x}{2}}$。
+
+"
+e0223,高等数学,微分方程,微分方程,"求微分方程$\\textrm{d}y=\\sin(x+y+100)\\,\\textrm{d}x$的通解。",=x+y+100$,"令$u=x+y+100$，$\dfrac{\textrm{d}u}{\textrm{d}x}=1+\dfrac{\textrm{d}y}{\textrm{d}x}$，$\dfrac{\textrm{d}y}{\textrm{d}x}=\sin(x+y+100)$，$\therefore\dfrac{\textrm{d}u}{\textrm{d}x}=1+\sin u$。
+
+$\dfrac{\tex"
+e0224,高等数学,微分方程,微分方程,"设$L$是一条平面曲线，其上任意一点$P(x,y)$（$x>0$）到坐标原点的距离恒等于该点处的切线在$y$轴上的截距，且$L$经过点$\\left(\\dfrac{1}{2},0\\right)$，求$L$的方程。",$y'=\dfrac{\textrm{d}y}{\textrm{d}x}=\dfrac{y-\sqrt{x^2+y^2}}{x}=\dfrac{y}{x}-\sqrt{1+\dfrac{y^2}{x^,"$(x,y)$到坐标原点的距离为$\sqrt{x^2+y^2}$。
+
+若$y=y(x)$，则切线为$Y-y=y'(X-x)$，令$X=0$，解得$Y=y-xy'$。
+
+$\therefore\sqrt{x^2+y^2}=y-xy'$，解得$y'=\dfrac{\textrm{d}y}{\textrm{d}x}=\dfrac{y-\sqrt{x^2+y^2}}{x}=\dfrac{y}{x}-\sq"
+e0225,高等数学,微分方程,微分方程,求微分方程$y'+1=e^{-y}\\sin x$的通解。,"必然需要对其转换，$e^yy'+e^y=\sin x$。
+
+$\therefore(e^y)'+e^y=\sin x$，令$e^y=u$，$u'+u=\sin x$，$P(x)=1$，$Q(x)=\s","已知对$e^{-y}\sin x$无法处理，所以必然需要对其转换，$e^yy'+e^y=\sin x$。
+
+$\therefore(e^y)'+e^y=\sin x$，令$e^y=u$，$u'+u=\sin x$，$P(x)=1$，$Q(x)=\sin x$。
+
+$e^y=u=e^{-\int\textrm{d}x}(\int e^{\int\textrm{d}x}\sin x\,\textrm{"
+e0226,高等数学,微分方程,微分方程,求$y'=\\dfrac{y^2-x}{2y(x+1)}$的通解。,"很容易想到把这个当作一个整体。
+
+$2y'y=\dfrac{y^2-x}{x+1}$，此时出现了$y^2$和$y^2$的导数，令$y^2=u$，$u'=\dfrac{u-x}{x+1}$。
+
+即$u'","这个式子首先分子分母等长，$xy$都合在一起，所以很难去分离出基本的微分方程。基本的微分方程式子为$y'+P(x)y=Q(x)$，对比可以看出里面$y^2$是不能化简的，所以很容易想到把这个当作一个整体。
+
+$2y'y=\dfrac{y^2-x}{x+1}$，此时出现了$y^2$和$y^2$的导数，令$y^2=u$，$u'=\dfrac{u-x}{x+1}$。
+
+即$u'-\dfrac{y}{x+"
+e0227,高等数学,微分方程,微分方程,求$y'=\\dfrac{y}{x+(y+1)^2}$的通解。（$y$不为常函数）,"上下颠倒：
+
+$\dfrac{\textrm{d}x}{\textrm{d}y}=\dfrac{x+(y+1)^2}{y}=\dfrac{x}{y}+y+\dfrac{1}{y}+2$。$x'-\df","由于$y'$对应的式子分母较复杂，而分子较简单，所以上下颠倒：
+
+$\dfrac{\textrm{d}x}{\textrm{d}y}=\dfrac{x+(y+1)^2}{y}=\dfrac{x}{y}+y+\dfrac{1}{y}+2$。$x'-\dfrac{1}{y}x=y+\dfrac{1}{y}+2$。
+
+根据公式：$x=e^{\int\frac{1}{y}\,\textrm{d}y}\le"
+e0228,高等数学,微分方程,微分方程,"求$y\\,\\textrm{d}x=(1+x\\ln y)x\\,\\textrm{d}y$（$y>0$）的通解。",=Q(x)x,"将导数放到一边：$\dfrac{\textrm{d}y}{\textrm{d}x}=\dfrac{y}{(1+x\ln y)x}$，这个算式无法处理。
+
+而颠倒$\dfrac{\textrm{d}x}{\textrm{d}y}=\dfrac{(1+x\ln y)x}{y}=\dfrac{1}{y}x+\dfrac{\ln y}{y}x^2$。
+
+凑伯努利方程：$x'+P(x)x=Q(x)x^n$："
+e0229,高等数学,微分方程,微分方程,求$y''=\\dfrac{2xy'}{1+x^2}$的通解。,=p$,"令$y'=p$，$p'=\dfrac{2xp}{1+x^2}$，$\dfrac{\textrm{d}p}{\textrm{d}x}=\dfrac{2xp}{1+x^2}$，$\dfrac{\textrm{d}p}{p}=\dfrac{2x}{1+x^2}$，$\displaystyle{\int\dfrac{\textrm{d}p}{p}=\int\dfrac{2x}{1+x^2}}$。
+
+$\l"
+e0230,高等数学,微分方程,微分方程,求$y''-4y'+4y=3xe^{2x}$的通解。,"$k=2$，设$y^*=e^{2x}(ax+b)x^2$。
+
+代回二阶方程，$a=\dfrac{1}{2}$，$b=0$。通解为$(C_1+C_2x)e^{2x}+\dfrac{1}{2}x^3e^{","变为常系数齐次线性微分方程：$y''-4y'+4y$。
+
+写出特征方程：$\lambda^2-4\lambda+4=0$，从而$(\lambda-2)^2=0$，$\lambda_1=\lambda_2=2$。
+
+从而$y$齐次方程的通解为$(C_1+C_2x)e^{2x}$。
+
+根据特解的设置方法，所以$k=2$，设$y^*=e^{2x}(ax+b)x^2$。
+
+代回二阶方程，$a=\dfrac"
+e0231,高等数学,微分方程,微分方程,微分方程$y''-4y'+3y=e^x\\cos x+xe^{3x}$的通解。,"设$P_m(x)=A$，$P_n(x)=B$。
+
+对$k$，自由项中$\alpha=\beta=1$，得到$1\pm i$。又$1\pm i\neq\lambda_1=1\neq\lambda_2=3","首先常系数齐次线性微分方程：$y''-4y'+3y=0$。
+
+特征方程为$\lambda^2-4\lambda+3=0$，解得特征值为$\lambda_1=1$，$\lambda_2=3$。
+
+所以该齐次方程的通解：$y=C_1e^x+C_2e^{3x}$。
+
+然后求特解，首先求后面$f_2(x)=xe^{3x}$的特解$y_2^*$。
+
+根据公式因为$\alpha$为单特征根，即$\aleph="
+e0232,高等数学,微分方程,微分方程,计算具有特解$y_1=e^{-x}$、$y_2=2xe^{-x}$、$y_3=3e^x$的三阶常系数齐次线性微分方程。,"微分方程为$y'''+y''-y'-y=0$。
+
+\subsubsection{非齐次微分方程}
+
+\paragraph{已知结构} \leavevmode \medskip
+
+如果给出一个微分方程的","由于是三阶，且不是一般的微分方程求特解而是逆问题，就使用特征方程解。
+
+因为有三个特解，根据解的形式，$r=-1,-1,1$，所以特征方程的形式为$(r+1)^2(r-1)=0$，即解出$r^3+r^2-r-1=0$，所以微分方程为$y'''+y''-y'-y=0$。
+
+\subsubsection{非齐次微分方程}
+
+\paragraph{已知结构} \leavevmode \medskip
+
+"
+e0233,高等数学,微分方程,微分方程,$y=\\dfrac{1}{2}e^{2x}+(x-\\dfrac{1}{3})e^3$为二阶常系数非齐次线性微分方程$y''+ay'+by=ce^x$的一个特解，求对应参数。,$a=-3$，$b=2$，$c=-1$。,"直接代入法：直接求导$y'=e^{2x}+e^x(x+\dfrac{2}{3})$，$y''=2e^{2x}+e^x(x+\dfrac{5}{3})$。
+
+直接代入，解得$a=-3$，$b=2$，$c=-1$。"
+e0234,高等数学,微分方程,微分方程,$y=e^{2x}+(x+1)e^x$为二阶常系数非齐次线性微分方程$y''+ay'+by=ce^x$的一个特解，求对应参数和通解。,"特征方程为$(r-1)(r-2)=0$，对应$y''-3y'+2y=0$。然后直接代入求出$c$。
+
+\paragraph{未知结构} \leavevmode \medskip","解结构法：由于是二阶非齐次方程，所以必然是两个通解加一个特解。
+
+展开解$y=e^{2x}+xe^x+e^x$。
+
+由于已知解，所以$r=1$、$r=2$，且非齐次为$ce^x$，所以$e^2x$为齐次方程的一个通解，非齐次方程的特解必然是在$xe^x$和$e^x$之中。
+
+由于$r=1$，$xe^x$和$e^x$的幂次都是$1$，而其中一个$r=1$，根据解的结构$Ae^{rx}x^k$，为单值"
+e0235,高等数学,微分方程,微分方程,已知二阶非齐次线性方程具有三个特解$y_1=x-(x^2+1)$、$y_2=3e^x-(x^2+1)$、$y_3=2x-e^x-(x^2+1)$，求$y(0)=y'(0)=0$的特解。,"$y_1-y_2$，$y_1-y_3$为其齐次方程的两个通解（线性无关）。
+
+通解为齐次方程通解加上非齐次一个特解：$y=C_1(y_1-y_2)+C_(y_1-y_3)+y_1$。
+
+然后代入，解出","非齐次，即$y''+py'+qy=f(x)$。由于是二阶所以有两个无关的特解。
+
+所以$y_1-y_2$，$y_1-y_3$为其齐次方程的两个通解（线性无关）。
+
+通解为齐次方程通解加上非齐次一个特解：$y=C_1(y_1-y_2)+C_(y_1-y_3)+y_1$。
+
+然后代入，解出$y=e^x-x^2-x-1$。"
+e0236,高等数学,微分方程,微分方程,求三阶常系数线性齐次微分方程$y'''-2y''+y'-2y=0$的通解。,通解为$C_1e^{2x}+C_2\cos x+C_3\sin x$。,得出特征方程$r^3-2r^2+r-2=0$，即$r^3-2r^2+r-2=0$，$(r-2)(r^2+1)=0$，解得$r=2$、$\pm i$，即得通解为$C_1e^{2x}+C_2\cos x+C_3\sin x$。
+e0237,高等数学,微分方程,微分方程,"设$y_1,y_2$为一阶非齐次线性微分方程$y'+p(x)y=q(x)$的两个特解，若常数$\\lambda,\\mu$使得$\\lambda y_1+\\mu y_2$是该方程的解，$\\lambda y_1-\\mu y_2$是该方程对应的齐次方程的解，则()。 $A.\\lambda=\\dfrac{1}{2},\\mu=\\dfrac{1}{2}$\\qquad$B.\\lambda=-\\dfrac{1}{2},\\mu=-\\dfrac{1}{2}$\\qquad$C.\\dfrac{2}{3},\\mu=\\dfrac{1}{3}$\\qquad$\\lambda=\\dfrac{2}{3},\\mu=\\dfrac{2}{3}$ \\subsection{不解微分方程，利用方程隐含信息} $F(y,y',y'',\\cdots,y^{(n)})=0$反映了",,
+e0238,高等数学,微分方程,微分方程,设$y=f(x)$是方程$y''-2y'+4y=0$的一个解，若$f(x_0)>0$，且$f'(x_0)=0$，则函数$f(x)$在点$x_0$()。 $A.$取得最大值\\qquad$B.$取得最小值\\qquad$C.$某个邻域内单调增加\\qquad$D.$某个邻域内单调减少,该点为极大值点。,"因为$y=f(x)$是方程$y''-2y'+4y=0$的一个解，所以直接代入$x_0$：$y''(x_0)-2y'(x_0)+4y(x_0)=0$。又$f'(x_0)=0$。
+
+$y''(x_0)=-4y(x_0)<0$，所以该点为极大值点。"
+e0239,高等数学,极限,极限,求$\\lim\\limits_{x\\to\\infty}\\left(\\dfrac{3+x}{6+x}\\right)^{\\frac{x-1}{2}}$。\\medskip,=e,$=\lim\limits_{x\to\infty}\left(1-\dfrac{3}{6+x}\right)^{\frac{6+x}{-3}\cdot\frac{-3}{6+x}\cdot\frac{x-1}{2}}=\lim\limits_{x\to\infty}e^{\frac{-3}{6+x}\cdot\frac{x-1}{2}}=\lim\limits_{x\to\infty}e^{-\
+e0240,高等数学,极限,极限,求$\\lim\\limits_{x\\to\\infty}\\left(\\dfrac{2x+3}{2x+1}\\right)^{x+1}$。\\medskip,=e$,"$=\lim\limits_{x\to\infty}\left(\dfrac{2x+3}{2x+1}\right)^x\cdot\dfrac{2x+3}{2x+1}=\lim\limits_{x\to\infty}\left(\dfrac{2x+3}{2x+1}\right)^x$\medskip
+
+$=\lim\limits_{x\to\infty}\left(\dfrac{1+\dfrac{3"
+e0241,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to 0}x\\left[\\dfrac{10}{x}\\right]$，其中$[\\cdot]$为取整符号。,"夹逼准则，中间$x\cdot\left[\dfrac{10}{x}\right]$极限也为10。\medskip
+
+当$x>0$时，$x\to 0^-$，同样也是夹逼准则得到极限为10。\medski","取整函数公式：$x-1<[x]\leqslant x$，所以$\dfrac{10}{x}-1<\left[\dfrac{10}{x}\right]\leqslant\dfrac{10}{x}$。
+
+当$x>0$时，$x\to 0^+$，两边都乘以10，$10-x<x\cdot\left[\dfrac{10}{x}\right]\leqslant x\cdots\dfrac{10}{x}=10$，而"
+e0242,高等数学,极限,极限,求极限$\\lim\\limits_{n\\to\\infty}n^2\\left(\\arctan\\dfrac{2}{n}-\\arctan\\dfrac{2}{n+1}\\right)$。\\medskip,=f,"因为式子不算非常复杂，其实也可以通过洛必达法则来完成，但是求导会很复杂。而$\arctan x$可以认定为$f(x)$。
+
+从而$\arctan\dfrac{2}{n}-\arctan\dfrac{2}{n+1}$为$f(\dfrac{2}{n})-f(\dfrac{2}{n+1})=f'(\xi)\left(\dfrac{2}{n}-\dfrac{2}{n+1}\right)$。
+
+其中$\df"
+e0243,高等数学,极限,极限,求$\\lim\\limits_{x\\to 1}\\dfrac{x^2-x+1}{(x-1)^2}$。 如果使用洛必达法则，则会得到结果为1，这是错误的，因为分子在$x\\to 1$时结果为常数1。正确的计算方式：,,$=\lim\limits_{x\to 1}\dfrac{1}{(x-1)^2}=\infty$。
+e0244,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to 0}\\dfrac{\\arcsin x-\\arctan x}{\\sin x-\\tan x}$。\\medskip 分析：该题目使用洛必达法则会比较麻烦且难以计算，所以先考虑是否能用泰勒展开。,=x-,"$x\to 0$，$\sin x=x-\dfrac{1}{6}x^3+o(x^3)$，$\tan x=x+\dfrac{1}{3}x^3+o(x^3)$，$\arcsin x=x+\dfrac{1}{6}x^3+o(x^3)$，$\arctan x=x-\dfrac{1}{3}x^3+o(x^3)$。
+
+$\therefore \sin x-\tan x=-\dfrac{1}{2}x^3+o(x^"
+e0245,高等数学,极限,极限,求$\\lim\\limits_{x\\to 0}\\dfrac{(e^{x^2}-1)(\\sqrt{1+x}-\\sqrt{1-x})}{[\\ln(1-x)+\\ln(1+x)]\\sin\\dfrac{x}{x+1}}$。 注意在积或商的时候不能把对应的部分替换为0，如分母部分的$[\\ln(1-x)+\\ln(1+x)]$就无法使用$\\ln(1+x)\\sim x$替换为$-x+x$，这样底就是0了，无法求得最后的极限。,,这时可以尝试变形，如对数函数相加等于对数函数内部式子相乘：$\ln(1-x)+\ln(1+x)=\ln(1-x^2)\sim-x^2$。
+e0246,高等数学,极限,极限,求$\\lim\\limits_{x\\to+\\infty}(x+\\sqrt{1+x^2})^{\\frac{1}{x}}$。,=e,"$\lim\limits_{x\to+\infty}(x+\sqrt{1+x^2})^{\frac{1}{x}}=e^{\lim\limits_{x\to+\infty}\frac{\ln(x+\sqrt{1+x^2})}{x}} \left(\ln(x+\sqrt{1+x^2})'=\dfrac{1}{\sqrt{1+x^2}}\right)$\medskip
+
+$=e^{\lim\limits"
+e0247,高等数学,极限,极限,"求$\\lim\\limits_{x\\to 0}\\left(\\dfrac{a^x+b^x+c^x}{3}\\right)^{\\frac{1}{x}}(a>0,b>0,c>0)$。\\medskip",=e,$=e^{\lim\limits_{x\to 0}\frac{\ln\left(\frac{a^x+b^x+c^x}{3}\right)}{x}}=e^{\lim\limits_{x\to 0}\frac{\ln(a^x+b^x+c^x)-\ln 3}{x}}=e^{\lim\limits_{x\to 0}\frac{a^x\ln a+b^x\ln b+c^x\ln c}{a^x+b^x+c^x}
+e0248,高等数学,极限,极限,求$\\lim\\limits_{n\\to\\infty}n\\left[\\left(1+\\dfrac{1}{n}\\right)^{\\frac{n}{2}}-\\sqrt{e}\\right]$。,$e^{\frac{n}{2}\ln(1+\frac{1}{n})}-\sqrt{e}=e^{\frac{1}{2}}\cdot\left(e^{\frac{n}{2}\ln(1+\frac{1}{n,"首先对于幂指函数需要取指数，所以$\left(1+\dfrac{1}{n}\right)^{\frac{n}{2}}=e^{\frac{n}{2}\ln(1+\frac{1}{n})}$。\medskip
+
+而后面的多一个$\sqrt{e}$导致整个式子变为一个复杂的式子，而与$e^x$相关的是$e^x-1\sim x$。
+
+所以$e^{\frac{n}{2}\ln(1+\frac{1}{n})}"
+e0249,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to 0}\\left(\\dfrac{1}{\\sin^2x}-\\dfrac{\\cos^2x}{x^2}\\right)$。\\medskip,,"$\lim\limits_{x\to 0}\left(\dfrac{1}{\sin^2x}-\dfrac{\cos^2x}{x^2}\right)=\lim\limits_{x\to 0}\dfrac{x^2-\sin^2x\cos^2x}{\sin^2x\cdot x^2} (\sin x\sim x)$ \medskip
+
+$=\lim\limits_{x\to 0}\dfrac{x^2-\s"
+e0250,高等数学,极限,极限,求$\\lim\\limits_{x\\to 4}\\dfrac{x^2-6x+8}{x^5-5x+4}$。,"到极限为$\lim\limits_{x\to 4}\dfrac{2x-6}{2x-5}=\lim\limits_{x\to 4}\dfrac{8-6}{8-5}$）
+
+\textcolor{orang","需要先提取公因子：$=\lim\limits_{x\to 4}\dfrac{(x-2)(x-4)}{(x-1)(x-4)}=\lim\limits_{x\to 4}\dfrac{x-2}{x-1}=\dfrac{2}{3}$。
+
+（当然可以使用洛必达法则得到极限为$\lim\limits_{x\to 4}\dfrac{2x-6}{2x-5}=\lim\limits_{x\to 4}\dfrac{8"
+e0251,高等数学,极限,极限,求$\\lim\\limits_{x\\to-\\infty}\\left[\\sqrt{4x^2+x}\\ln\\left(2+\\dfrac{1}{x}\\right)+2\\ln 2x\\right]$。\\medskip,"直接变成$-2\ln 2$就可以了。
+
+将$x$下翻变成分母为$\dfrac{1}{x}$，并令$t=\dfrac{1}{x}$。\medskip
+
+$=\lim\limits_{t\to 0^-}\","题目的形式为$\infty-\infty$，所以必须使用后面的倒代换转换为商的形式。\medskip
+
+$=\lim\limits_{x\to-\infty}-x\left[\sqrt{4+\dfrac{1}{x}}\ln\left(2+\dfrac{1}{x}\right)-2\ln 2\right]$。 \medskip
+
+这里就需要注意到因为$\sqrt{4x^2+x}$的限制导致这个式子必"
+e0252,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to-\\infty}x(\\sqrt{x^2+100}+x)$。,"有理化：
+
+$\lim\limits_{x\to-\infty}x(\sqrt{x^2+100}+x)=\lim\limits_{x\to-\infty}x\dfrac{x^2+100-x^2}{\s","首先定性分析：$\lim\limits_{x\to-\infty}x\cdot(\sqrt{x^2+100}+x)$。
+
+在$x\to-\infty$趋向时，$x$就趋向无穷大。
+
+而$\sqrt{x^2+100}$为一次，所以$\sqrt{x^2+100}+x$趋向0。
+
+又$\sqrt{x^2+100}$在$x\to-\infty$时本质为根号差，所以有理化：
+
+$\lim\limits_{x"
+e0253,高等数学,极限,极限,求$\\lim\\limits_{x\\to 0}\\dfrac{\\sqrt{1+\\tan x}-\\sqrt{1+\\sin x}}{x\\sqrt{1+\\sin^2x}-x}$。,就需要将其转换为和差形式，如三角函数中$x\pm n\pi$结果不变。,"$=\lim\limits_{x\to 0}\sqrt{1+\tan x}-\sqrt{1+\sin x}\cdot\lim\limits_{x\to 0}\dfrac{1}{x\sqrt{1+\sin^2x}-x}$\medskip
+
+$=\lim\limits_{x\to 0}\dfrac{\tan x-\sin x}{\sqrt{1+\tan x}+\sqrt{1+\sin x}}\cdot"
+e0254,高等数学,极限,极限,求极限$\\lim\\limits_{n\\to\\infty}\\sin^2(\\pi\\sqrt{n^2+n})$。,=1$,"由于$\sin(x+n\pi)=\pm\sin x$，而$\sin^2(x+n\pi)=\sin^2x$。
+
+原式$=\lim\limits_{n\to\infty}\sin^2[\pi(\sqrt{n^2+n}-n)]=\lim\limits_{n\to\infty}\sin^2\dfrac{n\pi}{\sqrt{n^2+n}+n}=\lim\limits_{n\to\infty}\\\sin"
+e0255,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to 1^-}\\ln x\\ln(1-x)$。,"$x\to 1$，$\ln x\sim x-1$：
+
+$\lim\limits_{x\to 1^-}\ln x\ln(1-x)=\lim\limits_{x\to 1^-}(x-1)\ln(1-x)\","当$x\to 1^-$时，$\ln x$趋向0，$\ln(1-x)$趋向$-\infty$。
+
+又$x\to 0$，$\ln(1+x)\sim x$，所以$x\to 1$，$\ln x\sim x-1$：
+
+$\lim\limits_{x\to 1^-}\ln x\ln(1-x)=\lim\limits_{x\to 1^-}(x-1)\ln(1-x)\xRightarrow{令t=1-x} =-\"
+e0256,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to 0}\\dfrac{e^{-\\frac{1}{x^2}}}{x^{100}}$ \\medskip,=0$,$\lim\limits_{x\to 0}\dfrac{e^{-\frac{1}{x^2}}}{x^{100}}=\lim\limits_{x\to 0}\dfrac{e^{-\frac{1}{x^2}}\cdot 2x^{-3}}{100x^{99}}=\lim\limits_{x\to 0}\dfrac{1}{50}\lim\limits_{x\to 0}\dfrac{e^{-\frac{1}
+e0257,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to+\\infty}[x^2(e^{\\frac{1}{x}}-1)-x]$。,"尝试使用倒数代换：\medskip
+
+$\lim\limits_{x\to+\infty}[x^2(e^{\frac{1}{x}}-1)-x]\xRightarrow{\text{令}x=\frac{","该式子含有分数，所以尝试使用倒数代换：\medskip
+
+$\lim\limits_{x\to+\infty}[x^2(e^{\frac{1}{x}}-1)-x]\xRightarrow{\text{令}x=\frac{1}{t}}\lim\limits_{t\to 0^+}\left(\dfrac{e^t-1}{t^2}-\dfrac{1}{t}\right)=\lim\limits_{t\to"
+e0258,高等数学,极限,极限,求$\\lim\\limits_{n\\to\\infty}\\dfrac{(n+1)(n+2)(n+3)\\cdots(n+6)}{6n^6}$。,,"需要将分子和分母都拆为6项：
+
+$=\dfrac{1}{6}\lim\limits_{n\to\infty}\dfrac{n+1}{n}\times\dfrac{n+2}{n}\times\cdots\dfrac{n+6}{n}=\dfrac{1}{6}\lim\limits_{n\to\infty}(1+\dfrac{1}{n})(1+\dfrac{2}{n})\cdots(1+\dfrac{6"
+e0259,高等数学,极限,极限,求极限$\\lim\\limits_{x\\to 0}\\left(\\dfrac{e^x+e^{2x}+\\cdots+e^{nx}}{n}\\right)^{\\frac{e}{x}}$。（$n\\in N^+$）,=e,"这里可以使用等价无穷小$e^x-1\sim x$。
+
+$\lim\limits_{x\to 0}\left(\dfrac{e^x+e^{2x}+\cdots+e^{nx}}{n}\right)^{\frac{e}{x}}=e^{\lim\limits_{x\to 0}\frac{e}{x}\ln\left(\frac{e^x+e^{2x}+\cdots+e^{nx}}{n}\right)}$
+
+$"
+e0260,高等数学,极限,极限,求$\\lim\\limits_{x\\to 0}\\dfrac{1-\\cos x\\sqrt{\\cos 2x}\\sqrt[3]{\\cos 3x}}{\\ln\\cos x}$\\medskip,=-1+,"可以使用$\cos x-1\sim\dfrac{x^2}{2}$。\medskip
+
+$\lim\limits_{x\to 0}\dfrac{1-\cos x\sqrt{\cos 2x}\sqrt[3]{\cos 3x}}{\ln\cos x}$
+
+$=\lim\limits_{x\to 0}\dfrac{1-\cos x+\cos x-\cos x\sqrt{\cos 2x}\sqrt[3]{\"
+e0261,高等数学,极限,极限,已知$\\lim\\limits_{x\\to 0}\\dfrac{\\ln(1-x)+xf(x)}{x^2}=0$，求$\\lim\\limits_{x\\to 0}\\dfrac{f(x)-1}{x}$。\\medskip,=t$,"令目标$\dfrac{f(x)-1}{x}=t$，$\therefore f(x)=tx+1$。\medskip
+
+$\lim\limits_{x\to 0}\dfrac{\ln(1-x)+xf(x)}{x^2}=\lim\limits_{x\to 0}\dfrac{\ln(1-x)+tx^2+x}{x^2} (\text{泰勒展开})$\medskip
+
+$=\lim\limits_{x\to "
+e0262,高等数学,极限,极限,已知$\\lim\\limits_{n\\to\\infty}(a_n+b_n)=1$，$\\lim\\limits_{n\\to\\infty}(a_n-b_n)=3$，求出$\\{a_n\\}$，$\\{b_n\\}$的极限值。,"$\{a_n\}$、$\{b_n\}$极限存在。
+
+$\lim\limits_{n\to\inf}a_n=\dfrac{1}{2}\times4=2$，$\lim\limits_{n\to\infty","设$u_n=a_n+b_n$，$v_n=a_n-b_n$，则$\lim\limits_{n\to\infty}u_n=1$，$\lim\limits_{n\to\infty}v_n=3$。
+
+根据极限运算规则，若$u_n$、$v_n$存在极限，则$u_n+v_n$、$u_n-v_n$也存在极限。
+
+且$\lim\limits_{n\to\infty}(u_n+v_n)=\lim\limits_{n"
+e0263,高等数学,极限,极限,如果$\\lim\\limits_{x\\to 0}\\dfrac{x-\\sin x+f(x)}{x^4}$存在，则$\\lim\\limits_{x\\to 0}\\dfrac{x^3}{f(x)}$为常数多少？,"需要变形：
+
+$\lim\limits_{x\to 0}\dfrac{x\sin x+f(x)}{x^4}=A$
+
+$\lim\limits_{x\to 0}\dfrac{x\sin x+f(x)\c","由$\lim\limits_{x\to 0}\dfrac{x\sin x+f(x)}{x^4}=A$，而目标是$x^3$，所以需要变形：
+
+$\lim\limits_{x\to 0}\dfrac{x\sin x+f(x)}{x^4}=A$
+
+$\lim\limits_{x\to 0}\dfrac{x\sin x+f(x)\cdot x}{x^4}=A\cdot\lim\limits_{x\to 0"
+e0264,高等数学,极限,极限,如果$\\lim\\limits_{x\\to 0}\\dfrac{x-\\sin x+f(x)}{x^4}$存在，则$\\lim\\limits_{x\\to 0}\\dfrac{x^3}{f(x)}$为常数多少？,"到：$f(x)=Ax^4+\alpha\cdot x^4-(x-\sin x)$。
+
+反代入：$\lim\limits_{x\to 0}\dfrac{f(x)}{x^3}=\lim\limits_{x","由$\lim\limits_{x\to 0}\dfrac{x\sin x+f(x)}{x^4}=A$脱帽：$\dfrac{x\sin x+f(x)}{x^4}=A+\alpha$。
+
+得到：$f(x)=Ax^4+\alpha\cdot x^4-(x-\sin x)$。
+
+反代入：$\lim\limits_{x\to 0}\dfrac{f(x)}{x^3}=\lim\limits_{x\to 0}\"
+e0265,高等数学,极限,极限,设$\\lim\\limits_{x\\to 0}\\dfrac{\\ln(1+x)-(ax+bx^2)}{x^2}=2$，求常数a，b。,=x-,"根据泰勒展开式：$x\to 0,\ln(1+x)=x-\dfrac{x^2}{x}+o(x^2)$，$x-\ln(1+x)\sim\dfrac{1}{2}x^2\sim 1-\cos x$。
+
+$\lim\limits_{x\to 0}\dfrac{\ln(1+x)-(ax+bx^2)}{x^2}=2$
+
+$=\lim\limits_{x\to 0}\dfrac{(1-a)x-\left(\dfr"
+e0266,高等数学,极限,极限,当$n\\to\\infty$时，$e-\\left(1+\\dfrac{1}{n}\\right)^n$与$An^{-p}$为等价无穷小，求$A$与$p$。,$e-e^{n\ln(1+\frac{1}{n})}$的极限应该也是积的形式，提出一个$e$：$e(1-e^{n\ln(1+\frac{1}{n})-1})=-e(e^{n\ln(1+\frac{1},$\left(1+\dfrac{1}{n}\right)^n$由于是一个幂函数，所以对其取对数简化，$e-\left(1+\dfrac{1}{n}\right)^n=e-e^{n\ln(1+\frac{1}{n})}$，又$An^{-p}$是以积的形式，所以$e-e^{n\ln(1+\frac{1}{n})}$的极限应该也是积的形式，提出一个$e$：$e(1-e^{n\ln(1+\frac{1}{
+e0267,高等数学,极限,极限,确定常数$a$和$b$，使得$f(x)=x-(a+b\\cos x)\\sin x$当$x\\to 0$时关于$x$的5阶等价无穷小。,"$1-a-b=0$，$\dfrac{a}{6}+\dfrac{2b}{3}=0$，$\dfrac{a}{120}+\dfrac{2b}{15}\neq0$。
+
+解得$a=\dfrac{4}{3}$，$","使用泰勒展开展开到五阶：
+
+$f(x)=x-(a+b\cos x)\sin x$
+
+$=x-a\left[x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}+o(x^5)\right]-\dfrac{b}{2}\left[2x-\dfrac{(2x)^3}{3!}+\dfrac{(2x)^5}{5!}+o(x^5)\right]$
+
+$=(1-a-b)x+\left(\dfrac{"
+e0268,高等数学,极限,极限,"设函数$f(x)=\\left\\{\\begin{array}{lcl} \\dfrac{\\sin x(b\\cos x-1)}{e^x+a}, & & x>0 \\\\ \\dfrac{\\sin x}{\\ln(1+3x)}, & & x<0 \\end{array} \\right.$在$x=0$处极限存在，则$a$，$b$分别为。",=0$存在,"首先根据极限在$x=0$存在，且极限的唯一性。分段函数在0两侧的极限值必然相等。
+
+$\because\lim\limits_{x\to 0^-}\dfrac{\sin x}{\ln(1+3x)}=\lim\limits_{x\to 0^-}\dfrac{\sin x}{3x}=\dfrac{1}{3}=\lim\limits_{x\to 0^+}\dfrac{\sin x(b\cos x-1)}"
+e0269,高等数学,极限,极限,设$a$为常数，$\\lim\\limits_{x\\to 0}\\left(\\dfrac{e^{\\frac{1}{x}}-\\pi}{e^{\\frac{2}{x}}+1}+a\\cdot\\arctan\\dfrac{1}{x}\\right)$存在，求出极限值。,$a=-1$，极限值为$-\dfrac{\pi}{2}$。,"因为求$x\to 0$，所以需要分两种情况讨论：
+
+\medskip
+
+$\lim\limits_{x\to 0^+}\left(\dfrac{e^{\frac{1}{x}}-\pi}{e^{\frac{2}{x}}+1}+a\cdot\arctan\dfrac{1}{x}\right)$
+
+$=\lim\limits_{x\to 0^+}\left(\dfrac{e^{\frac{1}{x}}-"
+e0270,高等数学,极限,极限,"讨论函数$f(x)=\\left\\{\\begin{array}{lcl} \\left[\\dfrac{(1+x)^{\\frac{1}{x}}}{e}\\right]^{\\frac{1}{x}},& & x>0 \\\\ e^{-\\frac{1}{2}}, & & x\\leqslant 0 \\end{array}\\right.$在$x=0$处的连续性。","$f(x)$在$x=0$处连续。
+
+\subsubsection{连续性求极限}","因为$\lim\limits_{x\to 0^+}f(x)=\lim\limits_{x\to 0^+}\left[\dfrac{(1+x)^{\frac{1}{x}}}{e}\right]^{\frac{1}{x}}=e^{\lim\limits_{x\to 0^+}\frac{1}{x}\ln[\frac{(1+x)^{\frac{1}{x}}}{e}]}$。
+
+又$\lim\limits_{"
+e0271,高等数学,极限,极限,函数在$f(x)$在$x=1$处连续，且$f(1)=1$，求$\\lim\\limits_{x\\to+\\infty}\\ln\\left[2+f\\left(x^{\\frac{1}{x}}\\right)\\right]$。,=1$,"根据题目，所求的$\lim\limits_{x\to+\infty}\ln\left[2+f\left(x^{\frac{1}{x}}\right)\right]$中，唯一未知的且会随着$x\to+\infty$而变换就是$f\left(x^{\frac{1}{x}}\right)$。如果我们可以求出这个值就可以了。
+
+而我们对于$f(x)$的具体的关系是未知的，只知道$f(1)=1$。那么先需要"
+e0272,高等数学,极限,极限,"数列$\\{a_n\\}$满足$a_0=0,a_1=1,2a_{n+1}=a_n+a_{n-1},n=1,2,\\cdots$。计算$\\lim\\limits_{n\\to\\infty}a_n$。","使用列项相消法的逆运算：
+
+$a_n=(a_n-a_{n-1})+(a_{n-1}-a_{n-2})+\cdots+(a_1-a_0)+a_0$\medskip
+
+$=\left(-\dfrac{1}","首先看题目，给出的递推式设计到二阶递推，即存在三个数列变量，所以我们必须先求出对应的数列表达式。因为这个表达式涉及三个变量，所以尝试对其进行变型：
+
+$a_{n+1}-a_n=\dfrac{a_{n-1}-a_n}{2}=\left(-\dfrac{1}{2}\right)(a_n-a_{n-1})=\left(-\dfrac{1}{2}\right)^2(a_{n-1}-a_{n-2})$
+
+$"
+e0273,高等数学,极限,极限,$x_0=0$，$x_n=\\dfrac{1+2x_{n-1}}{1+x_{n-1}}(n\\in N*)$，求$\\lim\\limits_{n\\to\\infty}x_n$。\\medskip,"根据单调有界定理，$x_n$的极限存在。
+
+对于关系式两边取极限：
+
+$\lim\limits_{n\to\infty}x_n=\lim\limits_{n\to\infty}\dfrac{1+2x_","首先应该知道数列的趋向都是趋向正无穷。
+
+然后对关系式进行变形：$x_n=\dfrac{1+2x_{n-1}}{1+x_{n-1}}=1+\dfrac{x_{n-1}}{1+x_{n-1}}=2-\dfrac{1}{1+x_{n-1}}$。
+
+首先证明单调性，令$f(x)=2-\dfrac{1}{1+x}$。
+
+$\therefore f'(x)=\dfrac{1}{(x+1)^2}>0$，则$f"
+e0274,高等数学,极限,极限,求出数列$\\sqrt{2}$，$\\sqrt{2+\\sqrt{2}}$，$\\sqrt{2+\\sqrt{2+\\sqrt{2}}}$$\\cdots$的极限。,"根据单调有界定理，数列$x_{n+1}=\sqrt{2+x_n}$一定存在极限，令其极限值$\lim\limits_{n\to\infty}x_n=a$。
+
+将递推式两边平方并取极限：$\lim\li","根据数列样式，无法通过普通的通项公式来表达，所以需要考虑使用递推式来表示：$x_{n+1}=\sqrt{2+x_n}$。
+
+首先证明有界性：
+
+给定一个任意的正整数$k$，再根据递推式，假定$x_k<2$，所以$x_{k+1}=\sqrt{2+x_k}<\sqrt{2+2}=2$。且$x_1=\sqrt{2}$满足假定，所以$x_k<2$对于任意的正整数$k$都成立，所以$x_n$存在上界2。
+
+"
+e0275,高等数学,极限,极限,已知数列$\\{a_n\\}$满足$a_1=a$（$a>0$），$a_{n+1}=\\dfrac{1}{2}\\left(a_n+\\dfrac{2}{a_n}\\right)$，证明极限$\\lim\\limits_{n\\to\\infty}a_n$存在，并求其值。 证明：由于$a>0$，根据$a_{n+1}$表达式所以$a_n>0$，看到递推表达式的乘积为常数的形式可以想到使用不等式$\\dfrac{a+b}{2}\\geqslant\\sqrt{ab}$来转换：$a_{n+1}=\\dfrac{1}{2}\\left(a_n+\\dfrac{2}{a_n}\\right)\\geqslant\\sqrt{2}$。 即$\\{a_n\\}$有下界$\\sqrt{2}$。 又将通项相减得到相邻两项关系：$a_{n+1}-a_n=\\dfrac{1}{a_n}-\\dfrac{a_n}{2}=\\dfrac{2-a_n^2}{2a_n}\\leqslant0$（$n\\geqslant2$）。 所$\\{a_n\\}$单调递减。 由单调有界准则，${a_n}$存在极限$A$，且$A\\geqslant\\sqrt{2}$。 对于关系式两边取极限$a_{n+1}=\\dfrac{1}{2}\\left(a_n+\\dfrac{2}{a_n}\\right)$，则$A=\\dfrac{1}{2}\\left(A+\\dfrac{2}{A}\\right)$。 解得$A=\\sqrt{2}$，即$\\lim\\limits_{n\\to\\infty}a_n=\\sqrt{2}$。,,
+e0276,高等数学,极限,极限,设$x_1=\\sqrt{a}$（$a>0$），$x_{n+1}=\\sqrt{a+x_n}$，求极限。,"可得单调递增。
+
+$x_{n+1}=\sqrt{a+x_n}$，$x_{n+1}^2=a+x_n$，$x_{n+1}=\dfrac{a}{x_{n+1}}+\dfrac{x_n}{x_{n+1}}$。","$x_1=\sqrt{a}$，$x_2=\sqrt{a+\sqrt{a}}$，$a_n=\sqrt{a+\cdots\sqrt{a+\sqrt{a}}}$所以可得单调递增。
+
+$x_{n+1}=\sqrt{a+x_n}$，$x_{n+1}^2=a+x_n$，$x_{n+1}=\dfrac{a}{x_{n+1}}+\dfrac{x_n}{x_{n+1}}$。
+
+由单调性$x_{n+1}\geqsla"
+e0277,高等数学,极限,极限,"$x_1=a\\geqslant0$，$y_1=b\\geqslant0$，$a\\leqslant b$，$x_{n+1}=\\sqrt{x_ny_n}$，$y_{n+1}=\\dfrac{x_n+y_n}{2}$（$n=1,2,\\cdots$），证明$\\lim\\limits_{n\\to\\infty}x_n=\\lim\\limits_{n\\to\\infty}y_n$。","根据单调有界准则，都有极限，令$\lim\limits_{n\to\infty}x_n=A$，$\lim\limits_{n\to\infty}y_n=B$。
+
+代入第二个式子，$B=\dfrac{A","$x_1=a$，$x_2=\sqrt{a\cdot a}\geqslant\sqrt{a^2}=a$，$\therefore x_n$单调递增。
+
+$y_1=b$，$y_2=\dfrac{a+b}{2}\leqslant\dfrac{2b}{2}=b$，$\therefore y_n$单调递减。
+
+$x_{n+1}^2=x_ny_n$，$x_{n+1}=\dfrac{x_n}{x_{n+1}}y_"
+e0278,高等数学,极限,极限,计算$\\lim\\limits_{n\\to\\infty}\\left(\\dfrac{n+1}{n^2+1}+\\cdots+\\dfrac{n+n}{n^2+n^2}\\right)$。 \\end{document},,
+e0279,高等数学,函数,函数,"设$z=e^{xy}+f(x+y,xy)$，$f(u,v)$有二阶连续偏导数，求$\\dfrac{\\partial^2z}{\\partial x\\partial y}$。","$f_{12}''=f_{21}''$。
+
+即$=e^{xy}+xye^{xy}+f_{11}''+(x+y)f_{12}''+xyf_{22}''+f_2'$。
+
+\subsubsection{复合","令$x+y$为$u$，$xy$为$v$，$f(u,v)$对$u$求导就是$f_1'$，对$v$求导就是$f_2'$，求$uv$依次求导就是$f_{12}''$，以此类推。
+
+首先求一次偏导：$\dfrac{\partial z}{\partial x}=ye^{xy}+\dfrac{\partial f(u,v)}{\partial u}\dfrac{\partial u}{\partial x}"
+e0280,高等数学,函数,函数,设$u=u(\\sqrt{x^2+y^2})$（$r=\\sqrt{x^2+y^2}>0$）有二阶连续的偏导数，且满足$\\dfrac{\\partial^2u}{\\partial x^2}+\\dfrac{\\partial^2u}{\\partial y^2}-\\dfrac{1}{x}\\dfrac{\\partial u}{\\partial x}+u=x^2+y^2$，则求$u(\\sqrt{x^2+y^2})$。,=u(r)$和$r,"这个函数是复合函数$u=u(r)$和$r=\sqrt{x^2+y^2}$而成。根据复合函数求导法则：
+
+$\dfrac{\partial u}{\partial x}=\dfrac{\textrm{d}u}{\textrm{d}r}\dfrac{\partial r}{\partial x}=\dfrac{\textrm{d}u}{\textrm{d}r}\dfrac{x}{\sqrt{x^2+y"
+e0281,高等数学,函数,函数,设$z=e^x+y^2+f(x+y)$，且当$y=0$时，$z=x^3$，则求$\\dfrac{\\partial z}{\\partial x}$。,=0$时,"已知$y=0$时，$z=e^x+f(x)=x^3$，$\therefore f(x)=x^3-e^x$，$f(x+y)=(x+y)^3-e^{x+y}$，$z=e^x+y^2+(x+y)^3-e^{x+y}$。
+
+$\therefore\dfrac{\partial z}{\partial x}=e^x+3(x+y)^2-e^{x+y}$。
+
+\subsubsection{积分}
+
+\paragr"
+e0282,高等数学,函数,函数,"设$z=\\int_0^1\\vert xy-t\\vert f(t)\\,\\textrm{d}t$，$0\\leqslant x\\leqslant1$，$0\\leqslant y\\leqslant1$，其中$f(x)$为连续函数，求$z_{xx}''+z_{yy}''$。","根据积分的性质可以拆开积分区间去掉绝对值：$z=\int_0^{xy}(xy-t)f(t)\,\textrm{d}t+\int_{xy}^1(t-xy)f(t)\,\textrm{d}t=xy\int","首先因为$z$是一个绝对值的形式，所以根据积分的性质可以拆开积分区间去掉绝对值：$z=\int_0^{xy}(xy-t)f(t)\,\textrm{d}t+\int_{xy}^1(t-xy)f(t)\,\textrm{d}t=xy\int_0^{xy}f(t)\,\textrm{d}t-\int_0^{xy}tf(t)\,\textrm{d}t+\int_{xy}^1tf(t)\,\textrm{"
+e0283,高等数学,函数,函数,"设$z=f(x,y)$满足$\\dfrac{\\partial^2z}{\\partial x\\partial y}=x+y$，且$f(x,0)=x$，$f(0,y)=y^2$，求$f(x,y)$。",=xy+,"根据$\partial x\partial y$的求导顺序反向积分：
+
+$\dfrac{\partial z}{\partial x}=\int(x+y)\,\textrm{d}y=xy+\dfrac{1}{2}y^2+C_1(x)$。（$x$看作常数）
+
+再次积分$z=\displaystyle{\int\left(xy+\dfrac{1}{2}y^2+C_1(x)\right)\,\textr"
+e0284,高等数学,函数,函数,"求函数$f(x,y)=\\sqrt{\\vert xy\\vert}$在点$(0,0)$处偏导数是否存在，是否可微。","此点不可微。
+
+\paragraph{连续性} \leavevmode \medskip
+
+即偏导数的连续性。也会考察原函数的连续性。
+
+通过微分定义和极限即可证明。
+
+\subsubsection{","对其求偏导：$f_x'(0,0)=\lim\limits_{\Delta x\to0}\dfrac{f(0+\Delta x,0)-f(0,0)}{\Delta x}=\lim\limits_{\Delta x\to0}\dfrac{\sqrt{\vert\Delta x\cdot0\vert}-0}{\Delta x}\\=0=A$，同理$f_y'(0,0)=0=B$，所以$f(x,y)$在$("
+e0285,高等数学,函数,函数,"已知方程$xy-z\\ln y+e^{xz}=1$，若存在点$(0,1,1)$的一个邻域，求该邻域内该方程能确定哪些隐函数。","根据隐函数存在定理$x$、$y$的隐函数存在。
+
+%","对于$F=xy-z\ln y+e^{xz}-1$，则$F(0,1,1)=0$。
+
+分别求偏导：$F_x'=y+ze^{xz}$，$F_y'=x-\dfrac{z}{y}$，$F_z'=-\ln y+xe^{xz}$。
+
+代入点：$F_x'=1+1=2\neq0$，$F_y'=-1\neq0$，$F_z'=0$。
+
+所以根据隐函数存在定理$x$、$y$的隐函数存在。
+
+%"
+e0286,高等数学,函数,函数,"判断$f(x,y)=\\sqrt{\\vert xy\\vert}$在$(0,0)$是否可微。","该点不可微。
+
+\paragraph{多元函数连续性} \leavevmode \medskip
+
+若函数$f(x,y)$在$(x_0,y_0)$存在，则函数在该点连续，$\lim\limits_{\","判断可微性首先要判断偏导存在性。
+
+$f_x'(0,0)=\lim\limits_{\Delta x\to0}\dfrac{f(0+\Delta x,0)-f(0,0)}{\Delta x}=\lim\limits_{\Delta x\to0}\dfrac{\sqrt{\vert\Delta x\cdot 0}-0}{\Delta x}=0=A$，同理$f_y'(0,0)=\lim\limits_"
+e0287,高等数学,函数,函数,"计算$\\lim\\limits_{(x,y)\\to(0,1)}\\dfrac{1-xy}{x^2+y^2}$。 由于$(x,y)\\to(0,1)$时$x^2+y^2=1$，所以该点有意义，直接代入得1。 \\paragraph{转换一元函数极限} \\leavevmode \\medskip 即换元法，要求式子十分特殊，$xy$是以同一种表达式出现，则可以作为因子，能够转换为一元函数极限。",,
+e0288,高等数学,函数,函数,"计算$\\lim\\limits_{(x,y)\\to(0,1)}\\dfrac{\\arcsin xy}{e^{xy}-1}$。","$(x,y)\to(0,1)$时$u\to0$，$=\lim\limits_{u\to0}\dfrac{\arcsin u}{e^u-1}=\lim\limits_{u\to0}\dfrac{u}{u","令$u=xy$，所以$(x,y)\to(0,1)$时$u\to0$，$=\lim\limits_{u\to0}\dfrac{\arcsin u}{e^u-1}=\lim\limits_{u\to0}\dfrac{u}{u}=1$。
+
+\paragraph{不等式放缩} \leavevmode \medskip
+
+使用不等式，如$x^2+y^2\geqslant2xy$、$\tan x\geqsla"
+e0289,高等数学,函数,函数,$\\lim\\limits_{\\substack{x\\to+\\infty\\\\y\\to+\\infty}}\\left(\\dfrac{xy}{x^2+y^2}\\right)$。,"不满足$\theta$可以取任意值的条件。
+
+%","由于$xy$都是趋于正无穷，所以不用加绝对值，$0\leqslant\left(\dfrac{xy}{x^2+y^2}\right)^x\leqslant\left(\dfrac{xy}{2xy}\right)^x=\left(\dfrac{1}{2}\right)^x\to0$。
+
+所以极限值为0。
+
+\paragraph{极坐标替换} \leavevmode \medskip
+
+要求极限过程$"
+e0290,高等数学,函数,函数,"计算$\\lim\\limits_{(x,y)\\to(0,0)}\\dfrac{xy}{x^2+y^2}$。 %",极限不存在。,"由于极限都逼近0，所以比较分子分母幂次，都是2，所以这个极限很可能不存在。
+
+% 找两条不同的路径，让$xy$在这个固定约束下逼近0，$y=x$，$y=2x$：
+
+% $\lim\limits_{\substack{(x,y)\to(0,0)\\y=x}}\dfrac{xy}{x^2+y^2}=\dfrac{1}{2}$，$\lim\limits_{\substack{(x,y)\to(0,0)\"
+e0291,高等数学,函数,函数,"计算$\\lim\\limits_{(x,y)\\to(0,0)}\\dfrac{xy^2}{x^2+y^2}$。",=0$,"分子的幂次大于分母的幂次，则极限可能存在。
+
+令$x=\rho\cos\theta$，$y=\rho\sin\theta$，则$\lim\limits_{(x,y)\to(0,0)}\dfrac{xy^2}{x^2+y^2}=\lim\limits_{\rho\to0}\dfrac{\rho^3\cos\theta\sin^2\theta}{\rho^2}=\lim\limits_{\rho\to"
+e0292,高等数学,函数,函数,"计算$\\lim\\limits_{(x,y)\\to(0,1)}\\dfrac{}{}$。 % 在使用洛必达法则时与一元函数不同的是结束后必须判断式子是否还是$\\dfrac{0}{0}$型或$\\dfrac{\\infty}{\\infty}$型，否则洛必达失效。 \\subsubsection{微分值} \\paragraph{偏导法} \\leavevmode \\medskip \\paragraph{全微分法} \\leavevmode \\medskip \\paragraph{公式法} \\leavevmode \\medskip \\subsubsection{全微分} \\paragraph{积分法} \\leavevmode \\medskip 即根据全微分计算出原函数。对偏导求积分还原$f(x)$。 求原函数或求微分参数可以使用。",,
+e0293,高等数学,函数,函数,"已知函数$z=f(x,y)$的全微分$\\textrm{d}z=2x\\textrm{d}x+\\sin y\\textrm{d}y$，$f(1,0)=2$，求$f(x,y)$。","$C=2$，即$f(x,y)=x^2-\cos y+2$。","由全微分定义，可得$\dfrac{\partial f}{\partial x}=2x$，$\dfrac{\partial f}{\partial y}=\sin y$。
+
+各自积分得到$f(x,y)=x^2-\cos y+C$，代入$f(1,0)=1-1+C=2$，所以$C=2$，即$f(x,y)=x^2-\cos y+2$。"
+e0294,高等数学,函数,函数,"设$(ax^2y^2-2xy^2)\\textrm{d}x+(2x^3y+bx^2y+1)\\textrm{d}y$是函数$f(x,y)$的全微分，求参数。","$a=3$，$b=-2$，$f(x)=x^3y^2-x^2y^2+y$。
+
+\paragraph{偏导法} \leavevmode \medskip
+
+当原偏导很难求积分，就再次偏导。
+
+若函数连续，","由全微分定义可知，$f_x'=ax^2y^2-2xy^2$，$f_y'=2x^3y+bx^2y+1$。
+
+分别对其积分：$f(x,y)=\int(ax^2y^2-2xy^2)\textrm{d}x=\int(2x^3y+bx^2y+1)\textrm{d}y$。
+
+从而$\dfrac{a}{3}x^3y^2-x^2y^2+C(y)=x^3y^2+\dfrac{b}{2}x^2y^2+y+C(x)$"
+e0295,高等数学,函数,函数,已知$\\dfrac{(x+ay)\\textrm{d}x+y\\textrm{d}y}{(x+y)^2}$为全微分，求$a$。,"$a=2$。
+
+\paragraph{极限定义} \leavevmode \medskip
+
+全微分形式：$\lim\limits_{\substack{\Delta x\to0\\\Delta y\","如果使用上面的积分法很难求出参数，采用积分法。
+
+设原函数$u(x,y)$，则$\dfrac{\partial u}{\partial x}=\dfrac{x+ay}{(x+y)^2}$，$\dfrac{\partial u}{\partial y}=\dfrac{y}{(x+y)^2}$。
+
+分别对其求偏导：$\dfrac{\partial^2u}{\partial x\partial y}=\"
+e0296,高等数学,函数,函数,"连续函数$z=f(x,y)$满足$\\lim\\limits_{\\substack{x\\to0\\\\ y\\to1}}\\dfrac{f(x,y)-2x+y-2}{\\sqrt{x^2+(y-1)^2}}=0$，求$\\textrm{d}z|_{(0,1)}$。",=0$,"当$x\to0$，$y\to1$时$\sqrt{x^2+(y-1)^2}\to0$，又$\lim\limits_{\substack{x\to0\\ y\to1}}\dfrac{f(x,y)-2x+y-2}{\sqrt{x^2+(y-1)^2}}=0$，$\therefore\lim\limits_{\substack{x\to0\\ y\to1}}f(x,y)-2x+y-2=0$。
+
+又$f(x"
+e0297,高等数学,函数,函数,"设$f(x,y)$在$(0,0)$处连续，且$\\lim\\limits_{(x,y)\\to(0,0)}\\dfrac{f(x,y)-a-bx-cy}{\\ln(1+x^2+y^2)}=1$，其中$a,b,c$为常数，求$\\textrm{d}f(x,y)|_{(0,0)}$。",直接对表达式进行偏导。,"根据全微分的定义，分母应该是根号的形式，所以对于极限使用等价无穷小替换$\ln(x+1)\sim x$，$\ln(1+x^2+y^2)=x^2+y^2$，$\lim\limits_{(x,y)\to(0,0)}\dfrac{f(x,y)-a-bx-cy}{x^2+y^2}=1$。
+
+又$(x,y)\to0$时$x^2+y^2\to0$，$\therefore f(x,y)-a-bx-cy\to0$"
+e0298,高等数学,函数,函数,"设$f(x,y,z)=e^x+y^2z$，其中$z=z(x,y)$由$x+y+z+xyz=0$确定，求$f_x'(0,1,-1)$。","一般$f(u,v)$对$u$求一阶导记为$f'_1$，$v$求一阶导记为$f'_2$，对$uv$各求导记为$f''_{12}$，$vu$各求导记为$f''_{21}$，对$u$求二阶导记为$f''_{","$f_x'(x,y,z)=e^x+y^2z_x'$。
+
+又$x+y+z+xyz=0$对$x$求导：$1+z_x'+yz+xyz_x'=0$，代入$(0,1,-1)$，$1+z_x'-1=0$，$z_x'=0$。代入$f_x'(x,y,z)=e^0=1$。
+
+\subparagraph{未定表达式} \leavevmode \medskip
+
+表达式未直接给出，而是以$f(u,v)$的形式，此时求导"
+e0299,高等数学,函数,函数,"已知$f\\left(\\dfrac{y}{x},\\dfrac{z}{x}\\right)=0$确定函数$z=z(x,y)$，$f(u,v)$可微，求$x\\dfrac{\\partial z}{\\partial x}+y\\dfrac{\\partial z}{\\partial y}$。",=-,"如果$uv$中不含有$z$则直接使用链式法则，但是此时$v=\dfrac{z}{x}$就不能直接使用链式法则了。
+
+$\dfrac{\partial z}{\partial x}=-\dfrac{F_x'}{F_z'}=-\dfrac{-\dfrac{y}{x^2}f_1'-\dfrac{z}{x^2}f_2'}{\dfrac{1}{x}f_2'}=\dfrac{\dfrac{y}{x}f_1'+"
+e0300,高等数学,函数,函数,"已知对于$z=z(x,y)>0$由$x^2+y^2+z^2-2x-2y-4z-10=0$确定，求其极值。","得到极大值6。
+
+\subsubsection{极限形式}
+
+在求解选择题时常可利用满足全部题设条件的特例来确定正确的选项，是利用极限的充分必要条件来给出函数的一般表达式，然后进行分析极值情况。","由于$x,y$具有对称性，所以分别求偏导得到：$\dfrac{\partial z}{\partial x}=\dfrac{1-x}{z-2}$，$\dfrac{\partial z}{\partial y}=\dfrac{1-y}{z-2}$。
+
+令偏导数等于0，则得到唯一驻点$(1,1)$。
+
+带入方程解的$(z-6)(z+2)=0$，解得$z(1,1)=6$（$z>0$）。
+
+为判断极值点，"
+e0301,高等数学,函数,函数,"已知$f(x,y)$在$(0,0)$某领域内连续，且$\\lim\\limits_{(x,y)\\to(0,0)}\\dfrac{f(x,y)+4x^2-y^2}{x^4+x^2y^2+y^4}=1$，判断$(0,0)$是否未为函数极值点。","不是极值点。
+
+\subsection{有条件极值}
+
+与无条件极值一样，在边界就是显函数可以直接求，在区域内就是隐函数需要求出可疑点再计算可疑点的二阶导数值判断。
+
+\subsubsection{闭","即取$f(x,y)=-4x^2+y^2+x^4+x^2y^2+y^4$，求$f_x'(0,0)=f_y'(0,0)=0$，$f_{xx}''(0,0)=-8$，$f_{xy}''(0,0)=0$，$f_{yy}''(0,0)=2$，从而$(0,0)$是驻点，且$A=-8$、$B=0$、$C=2$，$\Delta=-16<0$，所以不是极值点。
+
+\subsection{有条件极值}
+
+与无条件极值"
+e0302,高等数学,函数,函数,"设直线$L\\left\\{\\begin{array}{l} x+y+b=0 \\\\ x+ay-z-3=0 \\end{array}\\right.$在平面$\\pi$上，而平面$\\pi$与曲面$z=x^2+y^2$相切于$(1,-2,5)$，求$ab$的值。","$a=-5,b=-2$。
+
+\end{document}","$L$在$\pi$上且与曲面相切，则$\pi$为$L$的切平面。设曲面方程$F(x,y,z)=x^2+y^2-z$。
+
+曲面法向量为$\vec{n}=\{F_x',F_y',F_z'\}=\{2x,2y,-1\}$，代入$(1,-2,5)$，则法向量为$\{2,-4,-1\}$。
+
+又点法式：$\pi:2(x-1)-4(y+2)-(z-5)=0$，即$2x-4y-z-5=0$。
+
+联立直线方程，得"
+e0303,线性代数,线性方程组,线性方程组,已知$\\alpha_1$、$\\alpha_2$是非齐次线性方程组$Ax=b$的两个不同解，则判断$3\\alpha_1-2\\alpha_2$是否为原方程的特解。,"成立。
+
+% \subsection{线性表出}","已知$\alpha_1$、$\alpha_2$是非齐次线性方程组$Ax=b$的两个不同解，即$A\alpha_1=b$，$A\alpha_2=b$。
+
+代入$Ax=b$：$A(3\alpha_1-2\alpha_2)=3A\alpha_1-2A\alpha_2=3b-2b=b$，所以成立。
+
+% \subsection{线性表出}"
+e0304,线性代数,线性方程组,线性方程组,已知齐次线性方程组$\\left\\{\\begin{array}{l} ax_1-3x_2+3x_3=0 \\\\ x_1+(a+2)x_2+3x_3=0 \\\\ 2x_1+x_2-x_3=0 \\end{array}\\right.$有无穷多解，求参数$a$。,$a=-5$或$a=-6$。,"使用矩阵比较麻烦，三阶的系数矩阵可以使用行列式。
+
+$\vert A\vert=\left\vert\begin{array}{ccc}
+    a & -3 & 3 \\
+    1 & a+2 & 3 \\
+    2 & 1 & -1 \\
+\end{array}\right\vert=\left\vert\begin{array}{ccc}
+    a & 0 & 3 \\
+    1 &"
+e0305,线性代数,线性方程组,线性方程组,"设$A$为三阶方阵，$A=(a_{ij})_{3\\times3}$，且$a_{ij}=A_{ij}$（$i,j=1,2,3$），其中$A_{ij}$为$a_{ij}$的代数余子式，$a_{33}\\neq0$，$b=(a_{13},a_{23},a_{33})^T$，求非齐次线性方程组$Ax=b$的解。","必须要充分利用方程和矩阵的性质。题目中给出的主要是代数余子式，由行列式的一行或一列的元素乘上对应的代数余子式可得行列式值的性质：
+
+$b$为第三列元素，乘上对应的代数余子式得行列式值：$b(A_{13","由于是抽象线性方程，所以必须要充分利用方程和矩阵的性质。题目中给出的主要是代数余子式，由行列式的一行或一列的元素乘上对应的代数余子式可得行列式值的性质：
+
+$b$为第三列元素，乘上对应的代数余子式得行列式值：$b(A_{13},A_{23},A_{33})=a_{13}A_{13}+a_{23}A_{23}=a_{13}^2+a_{23}^2+a_{33}^2\geqslant0$。
+
+又$a_{"
+e0306,线性代数,线性方程组,线性方程组,"已知四阶方阵$A=(\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4)$，$\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$为四维列向量，且$\\alpha_2,\\alpha_3,\\alpha_4$线性无关，若$\\alpha_1=2\\alpha_2-\\alpha_3$，$\\beta=\\alpha_1+\\alpha_2+\\alpha_3+\\alpha_4$，求$Ax=\\beta$的通解。","基础解系为$k[1,-2,1,0]^T+[1,1,1,1]$。","由于$\alpha_2,\alpha_3,\alpha_4$线性无关，$r(A)\geqslant3$，由$\alpha_1=2\alpha_2-\alpha_3$，$r(A)\leqslant3$，所以$r(A)=3$。$s=n-r=4-3=1$，所以解向量为一个。
+
+且$\alpha_1=2\alpha_2-\alpha_3$，整理得$\alpha_1-2\alpha_2+\alpha_3+0"
+e0307,线性代数,线性方程组,线性方程组,"已知$4\\times3$矩阵$A=(\\alpha_1,\\alpha_2,\\alpha_3)$，非齐次线性方程组$Ax=\\beta$的通解为$(1,2,-1)^T+k(1,-2,3)^T$，$k$为任意常数，令$B=(\\alpha_1,\\alpha_2,\\alpha_3,\\beta+\\alpha_3)$，求方程组$By=\\alpha_1-\\alpha_2$的通解。","最后通解为$k_1(1,-2,3,0)^T+k_2(-1,-2,0,1)^T+(1,-1,0,0)^T$（$k_1k_2$为任意常数）。","首先求对应$A$和$B$的秩。由于$A$的通解的自由变量为一个，即$r(A)=3-1=2$。
+
+由于$Ax=\beta$的通解为$(1,2,-1)^T+k(1,-2,3)^T$，所以根据解的结构，前面为$Ax=0$的通解，后面为$Ax=\beta$的一个特解。
+
+即$\alpha_1+2\alpha_2-\alpha_3=\beta$，$\alpha_1-2\alpha_2+3\alpha_3=0"
+e0308,线性代数,二次型,二次型,"将二次型$f(x_1,x_2,x_3)=2x_1^2+2x_2^2+2x_3^2-2x_1x_2-2x_2x_3+2x_1x_3$化为矩阵。",=2x_1,"$f(x_1,x_2,x_3)=2x_1^2+2x_2^2+2x_3^2-2x_1x_2-2x_2x_3+2x_1x_3=2x_1^2-2x_1x_2+2x_1x_3+2x_2^2-2x_2x_3+2x_3^2=2x_1^2-x_1x_2+x_1x_3+2x_2^2-x_1x_2-x_2x_3+2x_3^2+x_1x_3-x_2x_3=x_1(2x_1-x_2+x_3)+x_2(-x_1+2x_2"
+e0309,线性代数,二次型,二次型,"将$f(x_1,x_2,x_3)=x_1^2+2x_1x_2+2x_1x_3-x_2^2-2x_2x_3-x_3^2$化为标准形并求出作的可逆线性变换。",$x_2=y_2-x_3=y_2-y_3$，$x_1=y_1-x_2-x_3=y_1-y_2+y_3-y_3=y_1-y_2$，综上$x_1=y_1-y_2$，$x_2=y_2-y_3$，$x_3=y,"首先对$x_1$进行配方，因为有$x_1$因子的式子有$x_1^2+2x_1x_2+2x_1x_3$。
+
+所以将$x_1,x_2,x_3$全部配在一起：$(x_1+x_2+x_3)^2=x_1^2+x_2^2+x_3^2+2x_1x_2+2x_1x_3+2x_2x_3$。
+
+所以$f(x)=(x_1+x_2+x_3)^2-2x_2^2-4x_2x_3-2x_3^2$，然后继续配$x_2$。
+
+因为"
+e0310,线性代数,二次型,二次型,"将二次型$f(x_1,x_2,x_3)=x_1x_2+x_1x_3-x_2x_3$化为规范形，并求所用的可逆线性变换。","就能进行配方。
+
+$=y_1^2-(y_2-y_3)^2+y_3^2$，继续之前的步骤，进行换元：
+
+令$z_1=y_1$，$z_2=y_2-y_3$，$z_3=y_3$，$f=z_1^2-z_2^2","因为二次型中没有平方项式子，而如果进行配方一定会出现平方，就会产生冲突，所以希望把$x$代换称有平方的式子。
+
+令$x_1=y_1+y_2$，$x_2=y_1-y_2$，$x_3=y_3$，代入二次型中。
+
+$f=y_1^2-y_2^2+y_1y_3+y_2y_3-y_1y_3-+y_2y_3=y_1^2-y_2^2+2y_2y_3=y_1^2-y_2^2+2y_2y_3$。
+
+此时由没有平方项就"
+e0311,线性代数,二次型,二次型,"将二次型$f(x_1,x_2,x_3)=2x_1^2+5x_2^2+5x_3^2+4x_1x_2-4x_1x_3-8x_2x_3$使用正交变换法化为标准形，并求所作的正交变换。 已知将二次型通过矩阵表示：$=(x_1,x_2,x_3)\\left(\\begin{array}{ccc} 2 & 2 & -2 \\\\ 2 & 5 & -4 \\\\ -2 & -4 & 5 \\end{array}\\right)(x_1,x_2,x_3)^T$。\\medskip 这个矩阵跟第五章相似的实对称矩阵相似对角化的例题的矩阵一样。 所以直接结果：$\\lambda_1=\\lambda_2=1$，$\\lambda_3=10$，$\\eta_1'=\\dfrac{\\sqrt{5}}{5}(-2,1,0)^T$，$\\eta_2'=\\dfrac{\\sqrt{5}}{15}(2,4,5)^T$，$\\eta_3'=\\dfrac{1}{3}(1,2,-2)^T$。 第五步：$f(x)=g(y)=y^T\\Lambda y=(y_1,y_2,y_3)\\left(\\begin{array}{ccc} 1 \\\\ & 1 \\\\ & & 10 \\end{array}\\right)(y_1,y_2,y_3)^T=y_1^2+y_2^2+10y_3^2$",,
+e0312,线性代数,二次型,二次型,"二次型$f(x_1,x_2,x_3)=x_1^2+4x_2^2+4x_3^2-4x_1x_2+4x_1x_3-8x_2x_3$的规范形为()。 $A.f=z_1^2\\qquad B.f=z_1^2-z_2^2\\qquad C.f=z_1^2+z_2^2+z_3^2\\qquad D.f=z_1^2+z_2^2-z_3^2$",选择$A$。,"已知$f$的二次型矩阵表示$A=\left[\begin{array}{ccc}
+    1 & -1 & 2 \\
+    -2 & 4 & -4 \\
+    2 & -4 & 4
+\end{array}\right]$，根据特征方程$\vert\lambda E-A\vert=\lambda^2(\lambda-9)=0$，$\lambda_1=9$，$\lambda_2=\lambda_3"
+e0313,线性代数,二次型,二次型,设$A=\\left[\\begin{array}{ccc} 1 & 2 & 0 \\\\ 2 & 1 & 0 \\\\ 0 & 0 & 1 \\end{array}\\right]$，与$A$合同的是()。 $A.\\left[\\begin{array}{ccc} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{array}\\right]$\\;$B.\\left[\\begin{array}{ccc} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{array}\\right]$\\;$C.\\left[\\begin{array}{ccc} 1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & -1 \\end{array}\\right]$\\;$D.\\left[\\begin{array}{ccc} -1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & -1 \\end{array}\\right]$ \\medskip,正交变换后标准形为$y_1^2+3y_2^2-y_3^2$，惯性系数与$B$相同。,"从四个选项，由于是常量矩阵，所以由对角线元素的正负号可以得出这四个的惯性系数分别为$(3,0)$、$(2,1)$、$(1,2)$、$(0,3)$（前面为正惯性系数，后面为负惯性系数）。
+
+且每个选项的秩都是3。
+
+\subsubsection{配方法}
+
+即将二次型配方为标准型，然后求该矩阵的秩和惯性系数。
+
+解：经过配方$f=(x_1+2x_2)^2-3x_2^2+x_3^2$，由于有三个平方项"
+e0314,线性代数,二次型,二次型,已知$A=\\left[\\begin{array}{ccc} 1 & 0 & 0 \\\\ 0 & -4 & 0 \\\\ 0 & 0 & \\dfrac{1}{9} \\end{array}\\right]$合同于$\\Lambda=\\left[\\begin{array}{ccc} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{array}\\right]$，求$C^TAC=\\Lambda$中的$C$。,"$x=Cy$，解得$C=\left[\begin{array}{ccc}
+    1 \\
+    & & \dfrac{1}{2} \\
+    & 3
+\end{array}\right]$，此时","已知$A$，则可得二次型$f=x^TAx=[x_1,x_2,x_3]A[x_1,x_2,x_3]^T=x_1^2-4x_2^2+\dfrac{1}{9}x_3^2$，规范化让这个二次型与$\Lambda$转换的二次型相等，由于正负惯性系数相同，平方必然是正数，所以符号对齐，令$x_1^2=y_1^2$、$4x_2^2=y_3^2$、$\dfrac{1}{9}x_3^2=y_2^2$。
+
+解得$x_"
+e0315,线性代数,向量,向量,已知$n$维向量$\\alpha_1$，$\\alpha_2$，$\\alpha_3$线性无关，则判断线性相关性：$\\alpha_1+\\alpha_2$，$\\alpha_2-\\alpha_3$，$\\alpha_3+\\alpha_1$。,直接一减得到0，表示线性相关。,$\alpha_1+\alpha_2$与$\alpha_2-\alpha_3$，共同出现了$\alpha_2$，首先要消掉$\alpha_2$，所以相减得到$\alpha_1+\alpha_3$，然后发现跟后面的$\alpha_3+\alpha_1$一样，所以直接一减得到0，表示线性相关。
+e0316,线性代数,向量,向量,"设$\\alpha_1$，$\\alpha_2$，$\\beta_1$，$\\beta_2$，$\\beta_3$都是$n$维向量，$n\\geqslant3$，且$\\beta_1=\\alpha_1+\\alpha_2$，$\\beta_2=\\alpha_1-2\\alpha_2$，$\\beta_3=3\\alpha+1+2\\alpha_2$，证明向量组$\\beta_1$，$\\beta_2$，$\\beta_3$线性相关。 证明：若存在$k_1,k_2,k_3$使得$k_1\\beta_1+k_2\\beta_2+k_3\\beta_3=0$。 代入$\\alpha$表示$\\beta$的式子：$k_1(\\alpha_1+\\alpha_2)+k_2(\\alpha_1-2\\alpha_2)+k_3(3\\alpha_1+2\\alpha_2)=0$。 $\\therefore(k_1+k_2+3k_3)\\alpha_1+(k_1-2k_2+2k_3)\\alpha_2=0$。 $\\therefore k_1+k_2+3k_3=0$，且$k_1-2k_2+2k_3=0$即可。 而未知数的个数大于方程个数，所以有无穷多解，从而必然有非零解，从而$\\beta_1$，$\\beta_2$，$\\beta_3$线性相关。 \\subsubsection{同乘} 若要求线性相关的式子存在一定的乘积关系，则可以用同乘一步步消去系数。",,
+e0317,线性代数,向量,向量,"设$A$是$n$阶矩阵，若存在正整数$k$，使得线性方程组$A^kx=0$有解向量$\\alpha$，且$A^{k-1}\\alpha\\neq0$，证明向量组$\\alpha,A\\alpha,\\cdots,A^{k-1}\\alpha$线性无关。 证明：假设$\\alpha,A\\alpha,\\cdots,A^{k-1}\\alpha$线性相关，则设存在系数$\\lambda_1,\\lambda_2,\\cdots,\\lambda_k$使得$\\lambda_1\\alpha+\\lambda_2A\\alpha+\\cdots+\\lambda_kA^{k-1}\\alpha=0$。 $\\because A^kx=0$的解为$\\alpha$，$\\therefore A^k\\alpha=0$，$\\therefore\\cdots=A^{k+2}\\alpha=A^{k+1}\\alpha=A^k\\alpha=0$。 左乘$A^{k-1}$，得到$\\lambda_1A^{k-1}\\alpha+\\lambda_2A^k\\alpha+\\cdots+\\lambda_kA^{2k-2}\\alpha=\\lambda_1A^{k-1}\\alpha=0$。 $\\because A^{k-1}\\alpha\\neq0$，$\\therefore\\lambda_1=0$，消去$\\lambda_1$：$\\lambda_2A\\alpha+\\lambda_3A^2\\alpha+\\cdots+\\lambda_kA^{k-1}\\alpha=0$。 左乘$A^{k-2}$，得到$\\lambda_2A^{k-1}\\alpha+\\lambda_3A^k\\alpha+\\cdots+\\lambda_kA^{2k-3}\\alpha=\\lambda_2A^{k-1}\\alpha=0$。 $\\because A^{k-1}\\alpha\\neq0$，$\\therefore\\lambda_2=0$，消去$\\lambda_2$：$\\lambda_3A^2\\alpha+\\lambda_4A^3\\alpha+\\cdots+\\lambda_kA^{k-1}\\alpha=0$。 同理依次左乘$A^n$，所以$\\lambda_1=\\lambda_2=\\cdots=\\lambda_k=0$，所以$\\alpha,A\\alpha,\\cdots,A^{k-1}\\alpha$线性无关。",,
+e0318,线性代数,向量,向量,"设$a_1,a_2,\\cdots,a_s$是$s$个互不相同的数，探究$s$个$n$维列向量$\\alpha_i=[1,a_i,a_i^a,\\cdots,a_i^{n-1}]^T$（$i=1,2,\\cdots,s$）的线性相关性。","整个方程都线性无关。
+
+综上当$s>n$时线性相关，$s\leqslant n$时线性无关。","当$s>n$时，有$n$个方程$s$个未知数，所以必然存在自由变量，从而必然线性相关性。
+
+当$s=n$时，$\vert\alpha_1 \alpha_2 \cdots \alpha_n\vert=\left|\begin{array}{cccc}
+    1 & 1 & \cdots & 1 \\
+    a_1 & a_2 & \cdots & a_n \\
+    \vdots & \vdo"
+e0319,线性代数,向量,向量,"已知$\\alpha_1=(1,2,1)^T$，$\\alpha_2(2,3,a)^T$，$\\alpha_3=(1,a+2,-2)^T$，$\\beta=(1,3,0)^T$，若$\\beta$可以由$\\alpha_1$、$\\alpha_2$，$\\alpha_3$线性表示，且表示法不唯一，求$a$。",=r(A,"设$x_1\alpha_1+x_2\alpha_2+x_2\alpha_3=\beta$，由$\beta$可以由$\alpha_1$、$\alpha_2$，$\alpha_3$线性表示，且表示法不唯一可知$Ax=\beta$有无穷解，即$r(A)=r(A|B)<3$。
+
+$=[\alpha_1,\alpha_2,\alpha_3|\beta]=\left[\begin{array}{cccc}
+ "
+e0320,线性代数,向量,向量,"设向量组$\\alpha_1=(1,0,1)^T$、$\\alpha_2=(0,1,1)^T$、$\\alpha_3=(1,3,5)^T$不能由向量组$\\beta_1=(1,1,1)^T$、$\\beta_2=(1,2,3)^T$、$\\beta_3=(3,4,a)^T$线性表示，求$a$。",$a=5$。,"已知题目，则$(\beta_1,\beta_2,\beta_3)$线性相关。
+
+对其行变换，解得$a=5$。"
+e0321,线性代数,向量,向量,"用$\\alpha_1=(1,1,1)^T$、$\\alpha_2=(1,2,4)^T$、$\\alpha_3=(1,3,9)^T$表示$\\beta=(1,1,3)^T$。",$\beta=2\alpha_1-2\alpha_2+\alpha_3$。,"组成矩阵$\left[\begin{array}{cccc}
+    1 & 1 & 1 & 1 \\
+    1 & 2 & 3 & 1 \\
+    1 & 4 & 9 & 3
+\end{array}\right]=\left[\begin{array}{cccc}
+    1 & 0 & 0 & 2 \\
+    0 & 1 & 0 & -2 \\
+    0 & 0 & 1 & 1
+\en"
+e0322,线性代数,向量,向量,"设向量组$\\alpha$：$\\alpha_1=[1,0,2]^T$，$\\alpha_2=[0,1,1]^T$，$\\alpha_3=[2,-1,a+4]^T$，向量组$\\beta$：$\\beta_1=[1,2,4]^T$，$\\beta_2=[1,-1,a+2]^T$，$\\beta_3=[3,3,10]^T$。 矩阵$A=\\left(\\begin{array}{ccc} 1 & 0 & 2 \\\\ 0 & 1 & -1 \\\\ 2 & 1 & a+4 \\end{array}\\right)$，$B=\\left(\\begin{array}{ccc} 1 & 1 & 3 \\\\ 2 & -1 & 3 \\\\ 4 & a+2 & 10 \\end{array}\\right)$。\\medskip (1)$AB$是否等价。 (2)向量组$AB$是否等价。 (1)",不等价。,"化简$A=\left(\begin{array}{ccc}
+    1 & 0 & 2 \\
+    0 & 1 & -1 \\
+    0 & 0 & a+1
+\end{array}\right)$，$B=\left(\begin{array}{ccc}
+    1 & 3 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & a
+\end{array}\right)$
+
+若$"
+e0323,线性代数,向量,向量,"设$R^3$中有两个基$A$：$\\alpha_1=[1,1,0]^T$，$\\alpha_2=[0,1,1]^T$，$\\alpha_3=[1,0,1]^T$，基$B$：$\\beta_1=[1,0,0]^T$，$\\beta_2=[1,1,0]^T$，$\\beta_3=[1,1,1]^T$。 % (1)求基$B$到基$A$的过渡矩阵。 % (2)已知$\\xi$在基$B$下的坐标为$[1,0,2]^T$，求$\\xi$在基$A$下的坐标。 % (1)",=BC$,"过渡矩阵为$A=BC$，即$B^{-1}A=C$。
+
+% (2)解：令在基$A$下的坐标为$(x_1,x_2,x_3)^T$。
+
+% $\therefore\xi=A(x_1,x_2,x_3)^T=B(1,0,2)^T$，$(x_1,x_2,x_3)^T=A^{-1}B(1,0,2)^T$。"
+e0324,线性代数,矩阵,矩阵,$A=\\left(\\begin{array}{ccc} 1 & 2 & 3 \\\\ -2 & -4 & -6 \\\\ 3 & 6 & 9 \\end{array}\\right)$，求$A^n$。\\medskip,"$A^n=((1,2,3)(1,-2,3)^T)^n(1,-2,3)^T(1,2,3)$
+
+$=6^{n-1}A$。
+
+若矩阵$A$的行与列都成比例，则$A^n=[tr(A)]^{n-1}A$，$[t","$A=(1,-2,3)^T(1,2,3)$，所以$A^n=((1,2,3)(1,-2,3)^T)^n(1,-2,3)^T(1,2,3)$
+
+$=6^{n-1}A$。
+
+若矩阵$A$的行与列都成比例，则$A^n=[tr(A)]^{n-1}A$，$[tr(A)]=\sum a_{ii}$，即矩阵迹为对角线元素值之和。"
+e0325,线性代数,矩阵,矩阵,$A=\\left(\\begin{array}{cccc} 1 & -1 & -1 & -1 \\\\ -1 & 1 & -1 & -1 \\\\ -1 & -1 & 1 & -1 \\\\ -1 & -1 & -1 & 1 \\\\ \\end{array}\\right)$，求$A^n$（$n\\geqslant2$）。\\medskip,"知$A^2=4E$，这是一个数量阵。\medskip
+
+$\therefore A^n=\left\{\begin{array}{lcl}
+    4^kE, & & n=2k \\
+    4^kA","通过计算得知$A^2=4E$，这是一个数量阵。\medskip
+
+$\therefore A^n=\left\{\begin{array}{lcl}
+    4^kE, & & n=2k \\
+    4^kA, & & n=2k+1
+\end{array}\right.$。"
+e0326,线性代数,矩阵,矩阵,"设$\\alpha=(1,3,-2)^T$，$\\beta=(2,0,0)^T$，$A=\\alpha\\beta^T$，求$A^3$。",=[2,"$\because\beta^T\alpha=[2,0,0][1,3,-2]^T=2$，$\therefore A^3=(\alpha\beta^T)(\alpha\beta^T)(\alpha\beta^T)=\alpha(\beta^T\alpha)$\\$(\beta^T\alpha)\beta^T=4\alpha\beta^T=4A$。"
+e0327,线性代数,矩阵,矩阵,$A=\\left(\\begin{array}{ccc} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 1 \\end{array}\\right)$，求$A^n$。\\medskip,=E+B,"$A=E+B=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{array}\right)+\left(\begin{array}{ccc}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{array}\right)$。\medskip"
+e0328,线性代数,矩阵,矩阵,$A=\\left(\\begin{array}{ccc} 1 & 0 & 1 \\\\ -1 & -1 & 1 \\\\ 0 & 2 & -4 \\end{array}\\right)$，$B=\\left(\\begin{array}{ccc} 1 & 0 & 1 \\\\ 0 & -1 & 2 \\\\ 0 & 0 & 0 \\end{array}\\right)$，当$A\\sim B$时，求$P$使得$PA=B$。.,"第一步将第一列的第二行的-1变为0。即将第一行加到第二行。
+
+左乘$E_{21}(1)A=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    1 & 1 & 0","目标是将$A$变为$B$，所以第一步将第一列的第二行的-1变为0。即将第一行加到第二行。
+
+左乘$E_{21}(1)A=\left(\begin{array}{ccc}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 1
+\end{array}\right)\left(\begin{array}{ccc}
+    1 & 0 & 1 \\
+    -1 "
+e0329,线性代数,矩阵,矩阵,$A$，$B$均是$n$阶方阵，且$AB=A+B$，证明$A-E$可逆，并求$(A-E)^{-1}$。,$A-E$的逆矩阵就是$B-E$。,"要证明$A-E$，就要从$AB=A+B$中尽量凑出。
+
+$AB=A+B$变为$AB-B=A$，从而提取$(A-E)B=A$，$(A-E)BA^{-1}=E$。
+
+但是$A^{-1}$是未知的，所以$A-E$的逆矩阵不能用$BA^{-1}$来表示。
+
+$AB-A=B$，所以提出$A(B-E)=B$，即$A(B-E)=B-E+E$，$(A-E)(B-E)=E$，所以$A-E$的逆矩阵就是$B-E$。"
+e0330,线性代数,矩阵,矩阵,设$A$，$B$为同阶可逆方阵，且$A^{-1}+B^{-1}$可逆，求$(A+B)^{-1}$。,=A(E+A,"已知$A^{-1}+B^{-1}$可以用来表示其他式子，需要求$A+B$的逆，则需要将$A+B$转为其逆。
+
+$\because A+B=A(E+A^{-1}B)=A(B^{-1}+A^{-1})B$。
+
+$\therefore (A+B)^{-1}=B^{-1}(B^{-1}+A^{-1})^{-1}A^{-1}$。"
+e0331,线性代数,矩阵,矩阵,已知$A=\\left(\\begin{array}{cc} B & O \\\\ D & C \\end{array}\\right)$，其中$B$为$r\\times r$可逆矩阵，$C$为$s\\times s$可逆矩阵，求$A^{-1}$。,"$A$可逆，设$A^{-1}=\left(\begin{array}{cc}
+    X & Y \\
+    Z & W
+\end{array}\right)$。
+
+$AA^{-1}=\left(\","$\because\vert A\vert=\left|\begin{array}{cc}
+    B & O \\
+    D & C
+\end{array}\right|=\vert B\vert\vert C\vert\neq0$，所以$A$可逆，设$A^{-1}=\left(\begin{array}{cc}
+    X & Y \\
+    Z & W
+\end{array}\right"
+e0332,线性代数,矩阵,矩阵,已知矩阵$A$的伴随矩阵$A^*=\\left[\\begin{array}{cccc} 4 & -2 & 0 & 0 \\\\ -3 & 1 & 0 & 0 \\\\ 0 & 0 & -4 & 0 \\\\ 0 & 0 & 0 & -1 \\end{array}\\right]$，求$A$。,"$A=\left[\begin{array}{cccc}
+    1 & 2 & 0 & 0 \\
+    3 & 4 & 0 & 0 \\
+    0 & 0 & \dfrac{1}{2} & 0 ","由于$A^{-1}=\dfrac{A^*}{\vert A\vert}$，所以$A=\vert A\vert(A^*)^{-1}$。已知$A^*$可知$(A^*)^{-1}$，所以重点就是求$\vert A\vert$。
+
+又$\vert A^*\vert=\vert A\vert^{n-1}$，$\vert A^*\vert=-8$，$\vert A\vert=-2$。
+
+所以根据分块矩阵的逆运"
+e0333,线性代数,矩阵,矩阵,"设四阶方阵$A=[\\alpha,\\gamma_2,\\gamma_3,\\gamma_4]$，$B=[\\beta,\\gamma_2,\\gamma_3,\\gamma_4]$，其中$\\alpha$、$\\beta$、$\\gamma_i$均为四维向量，且$\\vert A\\vert=5$，$\\vert B\\vert=-\\dfrac{1}{2}$，求$\\vert A+2B\\vert$。",=27,"$=\vert[\alpha,\gamma_2,\gamma_3,\gamma_4]+2[\beta,\gamma_2,\gamma_3,\gamma_4]\vert=\vert[\alpha+2\beta,3\gamma_2,3\gamma_3,3\gamma_4]\vert=27\vert[\alpha+2\beta,\gamma_2,\gamma_3,\gamma_4]\vert=27\ve"
+e0334,线性代数,矩阵,矩阵,设3阶方阵$A$，$B$满足$A^{-1}BA=6A+BA$，且$A=\\left(\\begin{array}{ccc} \\dfrac{1}{3} & 0 & 0 \\\\ 0 & \\dfrac{1}{4} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{array}\\right)$，求$B$。,=(6E+B)A$,"$A^{-1}BA=(6E+B)A$，$A^{-1}B=6E+B$，$A^{-1}B-B=6E$，$(A^{-1}-E)B=6E$。
+
+$\therefore B=6(A^{-1}-E)^{-1}$。"
+e0335,线性代数,矩阵,矩阵,已知$AB=A+B$，其中$B=\\left[\\begin{array}{ccc} 1 & 1 & 0 \\\\ 1 & 1 & 0 \\\\ 0 & 0 & 2 \\end{array}\\right]$，求$(A-E)^{-1}$。,"要消去$A$。
+
+根据$AB=A+B$，得到$AB-A=B$，即$A(B-E)=B$，$A^{-1}=(B-E)B^{-1}$。
+
+$(A-E)^{-1}=BA^{-1}=B(B-E)B^{-1}$，","已知$AB=A+B$，求$A-E$，则向目标计算。
+
+$AB-B=A$，即$(A-E)B=A$，$(A-E)^{-1}=BA^{-1}$。因为$A$未知，所以要消去$A$。
+
+根据$AB=A+B$，得到$AB-A=B$，即$A(B-E)=B$，$A^{-1}=(B-E)B^{-1}$。
+
+$(A-E)^{-1}=BA^{-1}=B(B-E)B^{-1}$，然后就不知道接下来怎么办了。
+
+我们很希望"
+e0336,线性代数,矩阵,矩阵,已知$A=\\left[\\begin{array}{cccc} 1 & 1 & a & 4 \\\\ 1 & 0 & 2 & a \\\\ -1 & a & 1 & 0 \\end{array}\\right]$，$r(A)=3$，求$A$。,$a\neq3$。,"首先对$A$化简：$A=\left[\begin{array}{cccc}
+    1 & 1 & a & 4 \\
+    0 & 1 & a-2 & 4-a \\
+    0 & 0 & (a+1)(3-a) & a(a-3)
+\end{array}\right]$，若$r(A)=3$，则$(a+1)(3-a)$与$a(a-3)$不全为0，所以$a\neq3$。"
+e0337,线性代数,矩阵,矩阵,已知$A=\\left[\\begin{array}{cccc} 1 & 2 & 3 & 4 \\\\ 2 & 3 & 4 & 5 \\\\ 3 & 4 & 5 & 6 \\\\ 4 & 5 & 6 & 7 \\end{array}\\right]$，$B=\\left[\\begin{array}{cccc} 0 & 1 & -1 & 2 \\\\ 0 & -1 & 2 & 3 \\\\ 0 & 0 & 1 & 4 \\\\ 0 & 0 & 0 & 2 \\end{array}\\right]$，求$r(AB+2A)$。,"$r(A)=2$，$r(AB+2A)=\min\{r(A),r(B+2E)\}=2$。","$r(AB+2A)=r(A(B+2E))$。又$B+2E=\left[\begin{array}{cccc}
+    2 & 1 & -1 & 2 \\
+    0 & 1 & 2 & 3 \\
+    0 & 0 & 3 & 4 \\
+    0 & 0 & 0 & 4
+\end{array}\right]$，$r(B+2E)=4$。
+
+又$A=\left[\begin{array}{cccc}"
+e0338,线性代数,行列式,行列式,求2413的逆序数。,一共逆序数为3。,2的逆序有21一个。4的逆序与41、43两个。1无逆序数，所以一共逆序数为3。
+e0339,线性代数,行列式,行列式,求$13\\cdots(2n-1)(2n)(2n-2)\\cdots2$的逆序数。,最后一共加起来与$n(n-1)$个逆序。,"这个序列分为两个部分，第一个是前面的$13\cdots(2n-1)$部分，这个部分无逆序。
+
+第二个部分是后面的$(2n)(2n-2)\cdots2$，这个序列是全部逆序的，所以考虑其第二个内部一共有$n$个数，从前往后依次有$n,(n-1),\cdots,1$个逆序，所以逆序数为$\dfrac{n(n-1)}{2}$。
+
+然后是考虑第二个部分对于第一个部分的逆序。$2n-2$对$2n-1$产生一"
+e0340,线性代数,行列式,行列式,写出四阶行列式中含有$a_{11}a_{23}$的因式项。,"该项为$a_{11}a_{23}a_{34}a_{42}$。
+
+$\therefore\,-a_{11}a_{23}a_{32}a_{44}+a_{11}a_{23}a_{34}a_{42}$。","因为是四阶行列式，且含有$a_{11}a_{23}$，所以余下来的$a_{3?}$和$a_{4?}$中的$?$只有2和4可选。
+
+若是$a_{11}a_{23}a_{32}a_{44}$，则列坐标序列为$1324$，从而逆序数为1，所以该项为$-a_{11}a_{23}a_{32}a_{44}$。
+
+若是$a_{11}a_{23}a_{34}a_{42}$，则列坐标序列为$1342$，从而逆序数为"
+e0341,线性代数,行列式,行列式,求$\\left|\\begin{array}{cccc} 1 & 2 & 3 & 4 \\\\ 1 & 2^2 & 3^2 & 4^2 \\\\ 1 & 2^3 & 3^3 & 4^3 \\\\ 9 & 8 & 7 & 6 \\end{array}\\right|$。,"$=\left|\begin{array}{cccc} 
+    1 & 2 & 3 & 4 \\
+    1 & 2^2  & 3^2 & 4^2 \\
+    1 & 2^3  & 3^3 & 4","这个式子非常像范德蒙德行列式，但是差一行1。所以我们要把最后一行变为同样值。可以观察得到第四行加最后一行为10，所以
+
+$=\left|\begin{array}{cccc} 
+    1 & 2 & 3 & 4 \\
+    1 & 2^2  & 3^2 & 4^2 \\
+    1 & 2^3  & 3^3 & 4^3 \\
+    10 & 10 & 10 & 10
+\end{array}\"
+e0342,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\ 1 & 2 & 0 & 0 \\\\ 1 & 0 & 3 & 0 \\\\ 1 & 0 & 0 & 4 \\end{array}\\right|$。,=2,"各行提取斜对角线数$=2\times3\times4\left|\begin{array}{cccc} 
+    1 & 1 & 1 & 1 \\
+    \dfrac{1}{2} & 0 & 0 & 0 \\
+    \dfrac{1}{3} & 0 & 1 & 0 \\
+    \dfrac{1}{4} & 0 & 0 & 1
+\end{array}\right|=\left|\begin{a"
+e0343,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccccc} a & b & 0 & \\cdots & 0 & 0 \\\\ 0 & a & b & \\cdots & 0 & 0 \\\\ 0 & 0 & a & \\cdots & 0 & 0 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\ 0 & 0 & 0 & \\cdots & a & b \\\\ b & 0 & 0 & \\cdots & 0 & a \\end{array}\\right|$。,=a(-1),"直接按第一列展开：
+
+$=a(-1)^{1+1}\left|\begin{array}{ccccc} 
+    a & b & \cdots & 0 & 0 \\
+    0 & a & \cdots & 0 & 0 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \cdots & a & b \\
+    0 & "
+e0344,线性代数,行列式,行列式,证明$\\left|\\begin{array}{ccc} a^2 & ab & b^2 \\\\ 2a & a+b & 2b \\\\ 1 & 1 & 1 \\end{array}\\right|=(a-b)^3$。 证明：因为是证明题，而结果是$(a-b)$的变形，所以我们需要不断提取出$a-b$的形式。 $=-\\left|\\begin{array}{ccc} 1 & 1 & 1 \\\\ 2a & a+b & 2b \\\\ a^2 & ab & b^2 \\end{array}\\right| =-\\left|\\begin{array}{ccc} 0 & 0 & 1 \\\\ a-b & a-b & 2b \\\\ a(a-b) & b(a-b) & b^2 \\end{array}\\right| =-(a-b)^2\\left|\\begin{array}{ccc} 0 & 0 & 1 \\\\ 1 & 1 & 2b \\\\ a & b & b^2 \\end{array}\\right|$ $=-(a-b)^2\\cdot1\\cdot(-1)^{1+3}\\left|\\begin{array}{cc} 1 & 1 \\\\ a & b \\end{array}\\right|=-(a-b)^2(b-a)=(a-b)^3$。,,
+e0345,线性代数,行列式,行列式,证明$\\left|\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\ a & b & c & d \\\\ a^2 & b^2 & c^2 & d^2 \\\\ a^4 & b^4 & c^4 & d^4 \\end{array}\\right|=(a-b)(a-c)(a-d)(b-c)(b-d)(c-d)(a+b+c+d)$。 证明：这个形式看起来像范德蒙德行列式，但是根据后面的结果，发现这无法通过范德蒙德行列式的公式来计算，所以按照一般方法相减得到因子： $=\\left|\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\ 0 & b-a & c-a & d-a \\\\ a^2-a^2 & b^2-ab & c^2-ac & d^2-ad \\\\ a^4-a^4 & b^4-a^2b^2 & c^4-a^2c^2 & d^4-a^2d^2 \\end{array}\\right|$ $=\\left|\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\ 0 & b-a & c-a & d-a \\\\ 0 & b(b-a) & c(c-a) & d(d-a) \\\\ 0 & b^2(b+a)(b-a) & c^2(c+a)(c-a) & d^2(d+a)(d-a) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)\\left|\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\ 0 & 1 & 1 & 1 \\\\ 0 & b & c & d \\\\ 0 & b^2(b+a) & c^2(c+a) & d^2(d+a) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)\\cdot 1\\cdot(-1)^{1+1}\\left|\\begin{array}{ccc} 1 & 1 & 1 \\\\ b & c & d \\\\ b^2(b+a) & c^2(c+a) & d^2(d+a) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)\\left|\\begin{array}{ccc} 1 & 1 & 1 \\\\ 0 & c-b & d-b \\\\ 0 & c(c^2+ac-ab-b^2) & d(d^2+ad-ab-b^2) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)\\left|\\begin{array}{ccc} 1 & 1 & 1 \\\\ 0 & c-b & d-b \\\\ 0 & c(a+b+c)(c-b) & d(a+b+d)(d-b) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)\\left|\\begin{array}{cc} c-b & d-b \\\\ c(a+b+c)(c-b) & d(a+b+d)(d-b) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)(c-b)(d-b)\\left|\\begin{array}{cc} 1 & 1 \\\\ c(a+b+c) & d(a+b+d) \\end{array}\\right|$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(c(a+b+c)-d(a+b+d))$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(ca+cb+c^2-da-db-d^2)$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(a(c-d)+b(c-d)+(c+d)(c-d))$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(c-d)(a+b+c+d)$。,,
+e0346,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccc} 1 & 2 & 3 & 4 \\\\ 1 & 3 & 4 & 1 \\\\ 1 & 4 & 1 & 2 \\\\ 1 & 1 & 2 & 3 \\end{array}\\right|$。,=16$,"$=\left|\begin{array}{cccc} 
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 1 & -3 \\
+    0 & 1 & -3 & 1 \\
+    0 & -1 & -1 & -1
+\end{array}\right|
+=\left|\begin{array}{cccc} 
+    1 & 2 & 3 & 4 \\
+    0 & 1 & 1 & -"
+e0347,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccc} 2 & 1 & 4 & 1 \\\\ 3 & -1 & 2 & 1 \\\\ 1 & 2 & 3 & 2 \\\\ 5 & 0 & 6 & 2 \\\\ \\end{array}\\right|$。,=3,"$=\left|\begin{array}{cccc} 
+    0 & -3 & -2 & -3 \\
+    0 & -7  & -7 & -5 \\
+    1 & 2 & 3 & 2 \\
+    0 & -10 & -9 & -8 \\
+\end{array}\right|=\left|\begin{array}{cccc} 
+    1 & 2 & 3 & 2 \\
+    0 & -"
+e0348,线性代数,行列式,行列式,证明$\\left|\\begin{array}{ccc} ax+by & ay+bz & az+bx \\\\ ay+bz & az+bx & ax+by \\\\ az+bx & ax+by & ay+bz \\end{array}\\right|=(a^3+b^3)\\left|\\begin{array}{ccc} x & y & z \\\\ y & z & x \\\\ z & x & y \\end{array}\\right|$。 证明：首先因为上下因式的系数是$ab$，所以无论怎么样减都无法消去多余的$xy$或$z$得到结果的行列式中只有单个因子的情况，所以只能拆项，从第一个项开始拆： $=a\\left|\\begin{array}{ccc} x & ay+bz & az+bx \\\\ y & az+bx & ax+by \\\\ z & ax+by & ay+bz \\end{array}\\right|+b\\left|\\begin{array}{ccc} y & ay+bz & az+bx \\\\ z & az+bx & ax+by \\\\ x & ax+by & ay+bz \\end{array}\\right|$ $=a^2\\left|\\begin{array}{ccc} x & ay+bz & z \\\\ y & az+bx & x \\\\ z & ax+by & y \\end{array}\\right|+b^2\\left|\\begin{array}{ccc} y & z & az+bx \\\\ z & x & ax+by \\\\ x & y & ay+bz \\end{array}\\right|=a^3\\left|\\begin{array}{ccc} x & y & z \\\\ y & z & x \\\\ z & x & y \\end{array}\\right|+b^3\\left|\\begin{array}{ccc} y & z & x \\\\ z & x & y \\\\ x & y & z \\end{array}\\right|$ $=a^3\\left|\\begin{array}{ccc} x & y & z \\\\ y & z & x \\\\ z & x & y \\end{array}\\right|+b^3\\left|\\begin{array}{ccc} x & y & z \\\\ y & z & x \\\\ z & x & y \\end{array}\\right|=(a^3+b^3)\\left|\\begin{array}{ccc} x & y & z \\\\ y & z & x \\\\ z & x & y \\end{array}\\right| $,,
+e0349,线性代数,行列式,行列式,计算$\\left|\\begin{array}{ccc} -ab & ac & ae \\\\ bd & -cd & de \\\\ bf & cf & -ef \\end{array}\\right|$。,=adf,"$=adf\left|\begin{array}{ccc} 
+    -b & c & e \\
+    b & -c & e \\
+    b & c & -e
+\end{array}\right|
+=abcdef\left|\begin{array}{ccc} 
+    -1 & 1 & 1 \\
+    1 & -1 & 1 \\
+    1 & 1 & -1
+\end{array}\rig"
+e0350,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccc} x & a & \\cdots & a \\\\ a & x & \\cdots & a \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ a & a & \\cdots & x \\\\ \\end{array}\\right|$。,=(x+(n-1)a),"$=\left|\begin{array}{cccc} 
+    x+(n-1)a & x+(n-1)a & \cdots & x+(n-1)a \\
+    a & x & \cdots & a \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a & a & \cdots & x \\
+\end{array}\right|$
+
+$=(x+(n-1)"
+e0351,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccc} 1+a_1 & a_1 & \\cdots & a_1 \\\\ a_2 & 1+a_2 & \\cdots & a_2 \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ a_n & a_n & \\cdots & 1+a_n \\\\ \\end{array}\\right|$。,=(1+a_1+a_2+,"$=(1+a_1+a_2+\cdots+a_n)\left|\begin{array}{cccc} 
+    1 & 1 & \cdots & 1 \\
+    a_2 & 1+a_2 & \cdots & a_2 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_n & a_n & \cdots & 1+a_n \\
+\end{array}\ri"
+e0352,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccc} a_1 & 0 & 0 & b_1 \\\\ 0 & a_2 & b_2 & 0 \\\\ 0 & b_3 & a_3 & 0 \\\\ b_4 & 0 & 0 & a_4 \\end{array}\\right|$。 $=-\\left|\\begin{array}{cccc} a_1 & b_1 & 0 & 0 \\\\ 0 & 0 & a_2 & b_2 \\\\ 0 & 0 & b_3 & a_3 \\\\ b_4 & a_4 & 0 & 0 \\end{array}\\right|=\\left|\\begin{array}{cccc} a_1 & b_1 & 0 & 0 \\\\ b_4 & a_4 & 0 & 0 \\\\ 0 & 0 & b_3 & a_3 \\\\ 0 & 0 & a_2 & b_2 \\end{array}\\right|=\\left|\\begin{array}{cc} a_1 & b_1 \\\\ b_4 & a_4 \\end{array}\\right|\\left|\\begin{array}{cc} b_3 & a_3 \\\\ a_2 & b_2 \\end{array}\\right|=(a_1a_4-b_1b_4)(a_2a_3-b_2b_3)$。,,
+e0353,线性代数,行列式,行列式,计算$\\left|\\begin{array}{cccccc} 2 & -1 & 0 & \\cdots & 0 & 0 \\\\ -1 & 2 & -1 & \\cdots & 0 & 0 \\\\ 0 & -1 & 2 & \\cdots & 0 & 0 \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\ 0 & 0 & 0 & \\cdots & 2 & -1 \\\\ 0 & 0 & 0 & \\cdots & -1 & 2 \\end{array}\\right|_{n\\times n}$,=1,"这是一个爪形行列式，然而无法通过斜的数数据来消去平的数据，考虑将所有列都加到第一列：
+
+$D_n=\left|\begin{array}{cccccc} 
+    1 & -1 & 0 & \cdots & 0 & 0  \\
+    0 & 2 & -1 & \cdots & 0 & 0 \\
+    0 & -1 & 2 & \cdots & 0 & 0 \\
+    \vdots & \vd"
+e0354,线性代数,行列式,行列式,计算$\\left|\\begin{array}{ccccccc} a & & & & & b \\\\ & \\ddots & & & \\begin{turn}{80}$\\ddots$\\end{turn} & \\\\ & & a & b \\\\ & & c & d \\\\ & \\begin{turn}{80}$\\ddots$\\end{turn} & & & \\ddots \\\\ c & & & & & d \\end{array}\\right|_{2n\\times 2n}$。,"不断递推可以得到结果为$(ad-bc)^n$。
+
+\subsection{矩阵乘积}","将其$2n$行不断与$2n-1\cdots2$行对换，再将其$2n$列不断与$2n-1\cdots2$列对换，一共对换$2(2n-2)$次，一定是一个偶数：
+
+$=\left|\begin{array}{cccccccc} 
+    a & b & 0 & & & \cdots & & 0 \\
+    c & d & 0 & & & \cdots & & 0 \\
+    0 & 0 & a &"
+e0355,线性代数,行列式,行列式,"设$D=\\left|\\begin{array}{cccc} 3 & 1 & -1 & 2 \\\\ -5 & 1 & 3 & -4 \\\\ 2 & 0 & 1 & -1 \\\\ 1 & -5 & 3 &-3 \\end{array}\\right|$，$D$的$(i,j)$元的代数余子式设为$A_{ij}$，求$A_{31}+3A_{32}-2A_{33}+2A_{34}$。",=24$,"$A_{31}+3A_{32}-2A_{33}+2A_{34}=\left|\begin{array}{cccc} 
+    3 & 1 & -1 & 2 \\
+    -5 & 1 & 3 & -4 \\
+    1 & 3 & -2 & 2 \\
+    1 & -5 & 3 &-3
+\end{array}\right|
+=\left|\begin{array}{cccc} 
+    1 & "
+e0356,线性代数,相似矩阵,相似矩阵,"已知$A$是3阶方阵，特征值为1，2，3，求$\\vert A\\vert$的元素$a_{11},a_{22},a_{33}$的代数余子式$A_{11},A_{22},A_{33}$的和$\\sum\\limits_{i=1}^3A_{ii}$。","$tr(A^*)=A_{11}+A_{22}+A_{33}=\lambda_1^*+\lambda_2^*+\lambda_3^*$
+
+$=\sum\limits_{i=1}^3\dfrac{\ver","首先代数余子式的和$A_{11},A_{22},A_{33}$一般在行列式展开定理中使用，但是这里给出的不是一行或一列的代数余子式，而是主对角线上的代数余子式，这就无法使用代数余子式来表达行列式的值了。
+
+而另一个提到代数余子式的地方就是伴随矩阵$A^*$，所求的正好是伴随矩阵的迹$tr(A^*)=A_{11}+A_{22}+A_{33}$。
+
+又根据特征值性质，特征值的和为矩阵的迹，特征值的积为"
+e0357,线性代数,相似矩阵,相似矩阵,"已知$\\overrightarrow{\\alpha}=(a,1,1)^T$是矩阵$A=\\left[\\begin{array}{ccc} -1 & 2 & 2 \\\\ 2 & a & -2 \\\\ 2 & -2 & -1 \\end{array}\\right]$的逆矩阵的特征向量，则求$\\overrightarrow{\\alpha}$在矩阵$A$中对应的特征值。","矩阵$A$对应的特征值为$-5$。
+
+\subsubsection{矩阵关系式}","由于$\overrightarrow{\alpha}$是$A^{-1}$的特征向量，所以令此时的特征值为$\lambda_0$，则定义$\lambda_0\overrightarrow{\alpha}=A^{-1}\overrightarrow{\alpha}$，$\lambda_0A\overrightarrow{\alpha}=\overrightarrow{\alpha}$。
+
+即$\lam"
+e0358,线性代数,相似矩阵,相似矩阵,已知$A$为3阶矩阵，$A^2+A-2E=0$，$\\vert A\\vert=-2$，求其特征值。,$\lambda_1=-2$，$\lambda_2=\lambda_3=1$。,"需要求$A$特征值，但是$A$未知，特征向量也未知，如何求？
+
+首先要求特征值，就要首先设出特征方程：$A\xi=\lambda\xi$，$\xi\neq0$。
+
+又$A^2+A-2E=0$，所以代入方程：$(A^2+A-2E)\xi=(\lambda^2+\lambda-2)\xi=0$。
+
+$\because\xi\neq0$，$\lambda^2+\lambda-2=0$，解得$\lambd"
+e0359,线性代数,相似矩阵,相似矩阵,"已知$A$为三阶实对称矩阵，特征值为$1,3，-2$，其中$\\alpha_1=(1,2,-2)^T$，$\\alpha_2=(4,-1,a)^T$分别属于特征值$\\lambda=1$，$\\lambda=3$的特征向量。求$A$属于特征值$\\lambda=-2$的特征向量。","基础解系$(0,1,1)^T$,$\alpha_3=(0,k,k)^T$（$k\neq0$）。
+
+\subsubsection{可逆矩阵关系}
+
+使用可逆矩阵相似对角化的性质。若$A\sim B$，则","令$A$属于特征值$\lambda=-2$的特征向量为$(x_1,x_2,x_3)^T$。
+
+根据实对称矩阵的正交性质。
+
+$\alpha_1^T\alpha_2=4-2-2a=0$，$\alpha_2^T\alpha_3=4x_1-x_2+ax_3=0$，$\alpha_3^T\alpha_1=x_1+2x_2-2x_3=0$。
+
+$a=1$，$4x_1-x_2+x_3=0$，$x_1+2x_2"
+e0360,线性代数,相似矩阵,相似矩阵,"已知$P^{-1}AP=\\left[\\begin{array}{ccc} 1 \\\\ & 1 \\\\ & & -1 \\end{array}\\right]$，$P=(\\alpha_1,\\alpha_2,\\alpha_3)$可逆，求$A$关于特征值$\\lambda=1$的特征向量。","$\lambda=1$的特征向量为$k_1\alpha_1+k_2\alpha_2$。
+
+\subsubsection{抽象型}
+
+题目只会给对应的式子，来求对应的特征向量。需要记住特征值的关系式然后","根据$P^{-1}AP=\Lambda$，所以$P$为特征向量，$1,1,-1$为特征值。
+
+所以$A$关于$\lambda=1$的特征向量为$\alpha_1$或$\alpha_2$。而某一特征值的全部特征向量构成特征向量子空间，所以$\lambda=1$的特征向量为$k_1\alpha_1+k_2\alpha_2$。
+
+\subsubsection{抽象型}
+
+题目只会给对应的式子，来求对应的"
+e0361,线性代数,相似矩阵,相似矩阵,已知$A$为三阶矩阵，且矩阵$A$各行元素之和均为5，则求$A$必然存在的特征向量。,"转换为方程组：\medskip
+
+$\left\{\begin{array}{l}
+    A_{11}+A_{12}+A_{13}=5 \\
+    A_{21}+A_{22}+A_{23}=5 \","由于是抽象型，所以没有实际的数据，就不能求出固定的特征值，$\lambda\xi=A\xi$。
+
+又矩阵$A$各行元素之和均为5，所以转换为方程组：\medskip
+
+$\left\{\begin{array}{l}
+    A_{11}+A_{12}+A_{13}=5 \\
+    A_{21}+A_{22}+A_{23}=5 \\
+    A_{31}+A_{32}+A_{33}=5
+\end"
+e0362,线性代数,相似矩阵,相似矩阵,设$A$为三阶矩阵，已知$-3E+A$不可逆，$\\vert2E+A\\vert=0$，$(E-A)x=0$有非零解，求$\\vert A^*-E\\vert$。,"最后的行列式值为$42$。
+
+\subsubsection{矩阵函数}
+
+题目要求$\vert f(A)\vert$的形式，即求$f(A)$的特征值，然后求其乘积就是矩阵方程的行列式值。","前三个条件都是为了指明$\vert-3E+A\vert=\vert3E-A\vert=0$，$\vert-2E-A\vert=0$，$\vert E-A\vert=0$，即得到$A$的三个特征值$\lambda_1=3$、$\lambda_2=-2$、$\lambda_3=1$。
+
+求$\vert A^*-E\vert$即求$A^*$的特征值，然后再乘起来，即得到行列式的值。
+
+又$A^{-1}="
+e0363,线性代数,相似矩阵,相似矩阵,已知$A=\\left(\\begin{array}{ccc} 2 & 0 & 0 \\\\ 0 & 0 & 1 \\\\ 0 & 1 & x \\end{array}\\right)$，$B=\\left(\\begin{array}{ccc} 2 \\\\ & y \\\\ & & -1 \\end{array}\\right)$，且$A\\sim B$，求参数。\\medskip 首先可以利用迹相等，则$2+0+x=2+y-1$，行列式值相等，则$-2=-2y$，解得$x=0$，$y=1$。 \\subsubsection{单矩阵} % \\begin{itemize} %,,
+e0364,线性代数,相似矩阵,相似矩阵,已知矩阵$A=\\left[\\begin{array}{ccc} 3 & 1 & 2 \\\\ 0 & 2 & a \\\\ 0 & 0 & 3 \\end{array}\\right]$和对角矩阵相似，求$a$。\\medskip,"特征值为其迹$\lambda=(3,2,3)$。特征值有二重根。
+
+已知$A\sim\Lambda$，$\lambda=3$有两个线性无关的特征向量。即$(3E-A)x=0$有两个线性无关的解（自由变","由于$A$是对角矩阵，所以特征值为其迹$\lambda=(3,2,3)$。特征值有二重根。
+
+已知$A\sim\Lambda$，$\lambda=3$有两个线性无关的特征向量。即$(3E-A)x=0$有两个线性无关的解（自由变量）。即$r(3E-A)=1$。
+
+$3E-A=\left[\begin{array}{ccc}
+    0 & -1 & -2 \\
+    0 & 1 & -a \\
+ "
+e0365,线性代数,相似矩阵,相似矩阵,已知$A=\\left(\\begin{array}{ccc} 0 & 0 & 1 \\\\ x & 1 & y \\\\ 1 & 0 & 0 \\end{array}\\right)$相似于对角矩阵，求$xy$关系式。,当$r(E-A)=1$时$x+y=0$。,"已知相似，即$P^{-1}AP=\Lambda$，则需要求$A$的特征值和特征向量。
+
+根据特征关系式$\vert E\lambda-A\vert=0$，即$\left\vert\begin{array}{ccc}
+    \lambda & 0 & -1 \\
+    -x & \lambda-1 & -y \\
+    -1 & 0 & \lambda
+\end{array}\right\ve"
+e0366,线性代数,相似矩阵,相似矩阵,"设$A$是三阶矩阵，$\\alpha_1,\\alpha_2,\\alpha_3$是三维线性无关的列向量，且$A\\alpha_1=\\alpha_2+\\alpha_3$，$A\\alpha_2=\\alpha_1+\\alpha_3$，$A\\alpha_3=\\alpha_1+\\alpha_2$，求$A$相似的矩阵。","$P$可逆。
+
+$\therefore AP=PB$，$P^{-1}AP=B$，$A\sim B$。","$A\sim\Lambda$，则$P^{-1}AP=\Lambda$。
+
+$A(\alpha_1,\alpha_2,\alpha_3)=(\alpha_2+\alpha_3,\alpha_1+\alpha_3,\alpha_1+\alpha_2)=(\alpha_1,\alpha_2,\alpha_3)\left[\begin{array}{ccc}
+    0 & 1 & 1 \\
+    1 "
+e0367,线性代数,相似矩阵,相似矩阵,"已知$A$是三阶实对称矩阵，若正交矩阵$Q$使得$Q^{-1}AQ=\\left[\\begin{array}{ccc} 3 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 6 \\end{array}\\right]$，如果$\\alpha_1=(1,0,-1)^T$和$\\alpha_2=(0,1,1)^T$是矩阵$A$属于特征值$\\lambda=3$的特征向量，求$Q$。",就需要把常数项提出来。,"首先由正交矩阵就可以知道各特征值正交。令$\alpha_3=(x_1,x_2,x_3)^T$。对应的$\lambda_3=6$。
+
+$\alpha_3^T\alpha_1=x_1-x_3=0$，$\alpha_3^T\alpha_2=x_2+x_3=0$，求$\lambda_3$的特征值，则不如令$x_3=1$，则解得$\alpha_3=(1,-1,1)^T$。
+
+这样$Q=\left[\begi"
+e0368,线性代数,相似矩阵,相似矩阵,设$n$（$n\\geqslant2$）阶矩阵$A=\\left[\\begin{array}{ccccc} a & 1 & 1 & \\cdots & 1 \\\\ 1 & a & 1 & \\cdots & 1 \\\\ 1 & 1 & a & \\cdots & 1 \\\\ \\vdots & \\vdots & \\vdots & & \\vdots \\\\ 1 & 1 & 1 & \\cdots & a \\end{array}\\right]$。求可逆矩阵$P$与对角矩阵$\\Lambda$，使得$P^{-1}AP=\\Lambda$，并求$r(A^*)$。,"$r(A^*)=\left\{\begin{array}{ll}
+    n, & a\neq1-n,a\neq1 \\
+    1, & a=1-n \\
+    0, & a=1
+\end{arr","矩阵$A$是个爪形，直接使用$\vert\lambda E-A\vert=0$计算特征值非常复杂，所以对其化简：
+
+$A=\left[\begin{array}{cccc}
+    a-1 \\
+    & a-1 \\
+    & & \cdots \\
+    & & & a-1
+\end{array}\right]+\left[\begin{array}{cccc}
+    1 & 1 & "
+e0369,线性代数,相似矩阵,相似矩阵,已知$A=\\left(\\begin{array}{ccc} 2 & x & 1 \\\\ 0 & 3 & 0 \\\\ 3 & -6 & 0 \\end{array}\\right)$相似于对角矩阵，求$A^{100}$。\\medskip,"$A=P\Lambda P^{-1}$，$A^{100}=P\Lambda^{100}P^{-1}$。
+
+\end{document}","首先$A\sim\Lambda$，所以$A$能相似对角化。
+
+$\vert\lambda E-A\vert=\left|\begin{array}{ccc}
+    \lambda-2 & -x & -1 \\
+    0 & \lambda-3 & 0 \\
+    -3 & 6 & \lambda
+\end{array}\right|=(\lambda-3)^2(\lambda+1)=0$。$"

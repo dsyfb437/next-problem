@@ -43,3 +43,12 @@ main.py
 
 # Render (not using anymore)
 render.yaml
+
+# Math-master source files (used for extraction only)
+Math-master/
+
+# Extracted questions for review
+extracted_questions.json
+review_questions.csv
+review_questions.html
+extract_questions.py
