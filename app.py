@@ -50,7 +50,7 @@ def load_questions(subject: str) -> List[Dict]:
     Returns:
         List of question dictionaries
     """
-    filename = SUBJECT_FILES.get(subject, 'math1.json')
+    filename = 'questions/' + SUBJECT_FILES.get(subject, 'math1.json')
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             return json.load(f)

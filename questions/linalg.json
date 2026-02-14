@@ -1,0 +1,983 @@
+[
+  {
+    "id": "l001",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "knowledge_tags": [
+      "行列式计算"
+    ],
+    "difficulty": 0.4,
+    "question_text": "$$\\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}$$",
+    "answer": "-2",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "l002",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "knowledge_tags": [
+      "行列式计算",
+      "展开定理"
+    ],
+    "difficulty": 0.5,
+    "question_text": "$$\\begin{vmatrix} 1 & 2 & 3 \\\\ 0 & 4 & 5 \\\\ 0 & 0 & 6 \\end{vmatrix}$$",
+    "answer": "24",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "l003",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "knowledge_tags": [
+      "矩阵运算",
+      "逆矩阵"
+    ],
+    "difficulty": 0.6,
+    "question_text": "求矩阵 $\\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\end{pmatrix}$ 的逆矩阵",
+    "answer": "\\begin{pmatrix} 2 & -1 \\\\ -1 & 1 \\end{pmatrix}",
+    "answer_type": "formula"
+  },
+  {
+    "id": "l004",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "knowledge_tags": [
+      "线性相关性"
+    ],
+    "difficulty": 0.6,
+    "question_text": "判断向量组 $\\alpha_1=(1,0,0), \\alpha_2=(0,1,0), \\alpha_3=(1,1,0)$ 的线性相关性",
+    "answer": "线性相关",
+    "answer_type": "string"
+  },
+  {
+    "id": "l005",
+    "subject": "线性代数",
+    "chapter": "线性方程组",
+    "knowledge_tags": [
+      "齐次方程组"
+    ],
+    "difficulty": 0.5,
+    "question_text": "求齐次方程组 $\\begin{cases} x_1 + x_2 = 0 \\\\ x_1 - x_2 = 0 \\end{cases}$ 的解空间维度",
+    "answer": "0",
+    "answer_type": "numeric"
+  },
+  {
+    "id": "l006",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "knowledge_tags": [
+      "逆矩阵"
+    ],
+    "difficulty": 0.7,
+    "question_text": "设 $A, B$ 均为 $n$ 阶可逆矩阵，则 $(AB)^{-1} = ?$ ",
+    "answer": "B^{-1}A^{-1}",
+    "answer_type": "formula"
+  },
+  {
+    "id": "l007",
+    "subject": "线性代数",
+    "chapter": "向量组",
+    "knowledge_tags": [
+      "线性相关"
+    ],
+    "difficulty": 0.65,
+    "question_text": "若向量组 $(\\alpha_1, \\alpha_2, \\alpha_3)$ 线性相关，则它们的秩满足？",
+    "answer": "r<3",
+    "answer_type": "string"
+  },
+  {
+    "id": "l008",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "knowledge_tags": [
+      "矩阵乘法"
+    ],
+    "difficulty": 0.5,
+    "question_text": "计算 $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$",
+    "answer": "\\begin{pmatrix}2&1\\\\4&3\\end{pmatrix}",
+    "answer_type": "formula"
+  },
+  {
+    "id": "l009",
+    "subject": "线性代数",
+    "chapter": "相似理论",
+    "knowledge_tags": [
+      "特征值"
+    ],
+    "difficulty": 0.7,
+    "question_text": "求矩阵 $\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ 的特征值",
+    "answer": "1, 3",
+    "answer_type": "formula"
+  },
+  {
+    "id": "e0303",
+    "subject": "线性代数",
+    "chapter": "线性方程组",
+    "question_text": "已知$\\\\alpha_1$、$\\\\alpha_2$是非齐次线性方程组$Ax=b$的两个不同解，则判断$3\\\\alpha_1-2\\\\alpha_2$是否为原方程的特解。",
+    "answer": "成立。\n\n% \\subsection{线性表出}",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "线性方程组"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$\\alpha_1$、$\\alpha_2$是非齐次线性方程组$Ax=b$的两个不同解，即$A\\alpha_1=b$，$A\\alpha_2=b$。\n\n代入$Ax=b$：$A(3\\alpha_1-2\\alpha_2)=3A\\alpha_1-2A\\alpha_2=3b-2b=b$，所以成立。\n\n% \\subsection{线性表出}"
+  },
+  {
+    "id": "e0304",
+    "subject": "线性代数",
+    "chapter": "线性方程组",
+    "question_text": "已知齐次线性方程组$\\\\left\\\\{\\\\begin{array}{l} ax_1-3x_2+3x_3=0 \\\\\\\\ x_1+(a+2)x_2+3x_3=0 \\\\\\\\ 2x_1+x_2-x_3=0 \\\\end{array}\\\\right.$有无穷多解，求参数$a$。",
+    "answer": "$a=-5$或$a=-6$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "线性方程组"
+    ],
+    "difficulty": 0.5,
+    "solution": "使用矩阵比较麻烦，三阶的系数矩阵可以使用行列式。\n\n$\\vert A\\vert=\\left\\vert\\begin{array}{ccc}\n    a & -3 & 3 \\\\\n    1 & a+2 & 3 \\\\\n    2 & 1 & -1 \\\\\n\\end{array}\\right\\vert=\\left\\vert\\begin{array}{ccc}\n    a & 0 & 3 \\\\\n    1 & a+5 & 3 \\\\\n    2 & 0 & -1 \\\\\n\\end{array}\\right\\vert=(a+5)(a+6)=0$。\n\n解得$a=-5$或$a=-6$。"
+  },
+  {
+    "id": "e0305",
+    "subject": "线性代数",
+    "chapter": "线性方程组",
+    "question_text": "设$A$为三阶方阵，$A=(a_{ij})_{3\\\\times3}$，且$a_{ij}=A_{ij}$（$i,j=1,2,3$），其中$A_{ij}$为$a_{ij}$的代数余子式，$a_{33}\\\\neq0$，$b=(a_{13},a_{23},a_{33})^T$，求非齐次线性方程组$Ax=b$的解。",
+    "answer": "必须要充分利用方程和矩阵的性质。题目中给出的主要是代数余子式，由行列式的一行或一列的元素乘上对应的代数余子式可得行列式值的性质：\n\n$b$为第三列元素，乘上对应的代数余子式得行列式值：$b(A_{13",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "线性方程组"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于是抽象线性方程，所以必须要充分利用方程和矩阵的性质。题目中给出的主要是代数余子式，由行列式的一行或一列的元素乘上对应的代数余子式可得行列式值的性质：\n\n$b$为第三列元素，乘上对应的代数余子式得行列式值：$b(A_{13},A_{23},A_{33})=a_{13}A_{13}+a_{23}A_{23}=a_{13}^2+a_{23}^2+a_{33}^2\\geqslant0$。\n\n又$a_{33}\\neq0$，$\\therefore b(A_{13},A_{23},A_{33})=\\vert A\\vert>0$，$r(A)=3$，$Ax=b$解唯一$x=A^{-1}b$。\n\n根据逆矩阵公式$x=A^{-1}b=\\dfrac{A^*b}{\\vert A\\vert}$，且代数余子式乘上非对应元素值都为0。\n\n$=\\dfrac{1}{\\vert A\\vert}\\left[\\begin{array}{ccc}\n    A_{11} & A_{21} & A_{31} \\\\\n    A_{12} & A_{22} & A_{32} \\\\\n    A_{13} & A_{23} & A_{33} \n\\end{array}\\right]\\left[\\begin{array}{c}\n    a_{13} \\\\\n    a_{23} \\\\\n    a_{33}\n\\end{array}\\right]=\\dfrac{1}{\\vert A\\vert}\\left[\\begin{array}{c}\n    0 \\\\\n    0 \\\\\n    \\vert A\\vert\n\\end{array}\\right]=\\left[\\begin{array}{c}\n    0 \\\\\n    0 \\\\\n    1\n\\end{array}\\right]$。"
+  },
+  {
+    "id": "e0306",
+    "subject": "线性代数",
+    "chapter": "线性方程组",
+    "question_text": "已知四阶方阵$A=(\\\\alpha_1,\\\\alpha_2,\\\\alpha_3,\\\\alpha_4)$，$\\\\alpha_1,\\\\alpha_2,\\\\alpha_3,\\\\alpha_4$为四维列向量，且$\\\\alpha_2,\\\\alpha_3,\\\\alpha_4$线性无关，若$\\\\alpha_1=2\\\\alpha_2-\\\\alpha_3$，$\\\\beta=\\\\alpha_1+\\\\alpha_2+\\\\alpha_3+\\\\alpha_4$，求$Ax=\\\\beta$的通解。",
+    "answer": "基础解系为$k[1,-2,1,0]^T+[1,1,1,1]$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "线性方程组"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$\\alpha_2,\\alpha_3,\\alpha_4$线性无关，$r(A)\\geqslant3$，由$\\alpha_1=2\\alpha_2-\\alpha_3$，$r(A)\\leqslant3$，所以$r(A)=3$。$s=n-r=4-3=1$，所以解向量为一个。\n\n且$\\alpha_1=2\\alpha_2-\\alpha_3$，整理得$\\alpha_1-2\\alpha_2+\\alpha_3+0\\alpha_4=0$，即$[\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4][1,-2,1,0]^T\\\\=0$，即$[1,-2,1,0]^T$为$Ax=0$的一个通解。\n\n$\\beta=\\alpha_1+\\alpha_2+\\alpha_3+\\alpha_4$，即$\\beta=[\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4][1,1,1,1]^T$，即$[1,1,1,1]^T$为$Ax=\\beta$的一个特解。\n\n所以基础解系为$k[1,-2,1,0]^T+[1,1,1,1]$。"
+  },
+  {
+    "id": "e0307",
+    "subject": "线性代数",
+    "chapter": "线性方程组",
+    "question_text": "已知$4\\\\times3$矩阵$A=(\\\\alpha_1,\\\\alpha_2,\\\\alpha_3)$，非齐次线性方程组$Ax=\\\\beta$的通解为$(1,2,-1)^T+k(1,-2,3)^T$，$k$为任意常数，令$B=(\\\\alpha_1,\\\\alpha_2,\\\\alpha_3,\\\\beta+\\\\alpha_3)$，求方程组$By=\\\\alpha_1-\\\\alpha_2$的通解。",
+    "answer": "最后通解为$k_1(1,-2,3,0)^T+k_2(-1,-2,0,1)^T+(1,-1,0,0)^T$（$k_1k_2$为任意常数）。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "线性方程组"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先求对应$A$和$B$的秩。由于$A$的通解的自由变量为一个，即$r(A)=3-1=2$。\n\n由于$Ax=\\beta$的通解为$(1,2,-1)^T+k(1,-2,3)^T$，所以根据解的结构，前面为$Ax=0$的通解，后面为$Ax=\\beta$的一个特解。\n\n即$\\alpha_1+2\\alpha_2-\\alpha_3=\\beta$，$\\alpha_1-2\\alpha_2+3\\alpha_3=0$。\n\n然后求$B=(\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_1+2\\alpha_2)$，通过线性变换可得$B=(\\alpha_1,\\alpha_2,\\alpha_3,0)$，即$r(B)=r(A)=2$。$s=n-r=2$，即$By=\\alpha_1-\\alpha_2$有两个自由变量。\n\n由于$A$的一个通解为$(1,-2,3)^T$，即$\\alpha_1-2\\alpha_2+3\\alpha_3=0$，$B$的前三行跟$A$一样，所以令最后一行为0，即得到一个通解$(1,-2,3,0)^T$。\n\n然后根据$B=(\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_1+2\\alpha_2)$，令最后一行不为0，即计算得到另一个通解$(-1,-2,0,1)^T$。\n\n由于$\\alpha_1-\\alpha_2$很简单就能看出特解为$(1,-1,0,0)^T$。\n\n所以最后通解为$k_1(1,-2,3,0)^T+k_2(-1,-2,0,1)^T+(1,-1,0,0)^T$（$k_1k_2$为任意常数）。"
+  },
+  {
+    "id": "e0308",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "将二次型$f(x_1,x_2,x_3)=2x_1^2+2x_2^2+2x_3^2-2x_1x_2-2x_2x_3+2x_1x_3$化为矩阵。",
+    "answer": "=2x_1",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": "$f(x_1,x_2,x_3)=2x_1^2+2x_2^2+2x_3^2-2x_1x_2-2x_2x_3+2x_1x_3=2x_1^2-2x_1x_2+2x_1x_3+2x_2^2-2x_2x_3+2x_3^2=2x_1^2-x_1x_2+x_1x_3+2x_2^2-x_1x_2-x_2x_3+2x_3^2+x_1x_3-x_2x_3=x_1(2x_1-x_2+x_3)+x_2(-x_1+2x_2-x_3)+x_3(x_1-x_2+2x_3)$\n\n$=\\left[x_1,x_2,x_3\\right]\\left[\\begin{array}{c}\n    2x_1-x_2+x_3 \\\\\n    -x_1+2x_2-x_3 \\\\\\\n    x_1-x_2+2x_3\n\\end{array}\\right]=[x_1,x_2,x_3]\\left[\\begin{array}{ccc}\n    2 & -1 & 1\\\\\n    -1 & 2 & -1\\\\\n    1 & -1 & 2\n\\end{array}\\right]\\left[\\begin{array}{c}\n    x_1 \\\\\n    x_2 \\\\\n    x_3\n\\end{array}\\right]$。\n\n即$A=\\left[\\begin{array}{ccc}\n    2 & -1 & 1\\\\\n    -1 & 2 & -1\\\\\n    1 & -1 & 2\n\\end{array}\\right]$。"
+  },
+  {
+    "id": "e0309",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "将$f(x_1,x_2,x_3)=x_1^2+2x_1x_2+2x_1x_3-x_2^2-2x_2x_3-x_3^2$化为标准形并求出作的可逆线性变换。",
+    "answer": "$x_2=y_2-x_3=y_2-y_3$，$x_1=y_1-x_2-x_3=y_1-y_2+y_3-y_3=y_1-y_2$，综上$x_1=y_1-y_2$，$x_2=y_2-y_3$，$x_3=y",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先对$x_1$进行配方，因为有$x_1$因子的式子有$x_1^2+2x_1x_2+2x_1x_3$。\n\n所以将$x_1,x_2,x_3$全部配在一起：$(x_1+x_2+x_3)^2=x_1^2+x_2^2+x_3^2+2x_1x_2+2x_1x_3+2x_2x_3$。\n\n所以$f(x)=(x_1+x_2+x_3)^2-2x_2^2-4x_2x_3-2x_3^2$，然后继续配$x_2$。\n\n因为还有$-2x_2^2-4x_2x_3$，所以配成$-2(x_2+x_3)^2$，正好全部配完了。\n\n$\\therefore f(x)=(x_1+x_2+x_3)^2-2(x_2+x_3)^2$。\n\n令$y_1=x_1+x_2+x_3$，$y_2=x_2+x_3$，补$y_3=x_3$，$\\therefore f=y_1^2-2y_2^2$。\n\n$(y_1,y_2,y_3)^T=\\left(\\begin{array}{ccc}\n    1 & 1 & 1 \\\\\n    0 & 1 & 1 \\\\\n    0 & 0 & 1\n\\end{array}\\right)(x_1,x_2,x_3)^T$，此时是$y=Dx$，但是我们要求的是$x=Cy$，所以$C=D^{-1}$，所以$D^{-1}$才是作出的可逆线性变换。\n\n所以得到的线性变换为$\\left(\\begin{array}{ccc}\n    1 & -1 & 0 \\\\\n    0 & 1 & -1 \\\\\n    0 & 0 & 1\n\\end{array}\\right)$。\n\n这样方法还要重新求逆，比较麻烦。实际上我们要求的是$x=Cy$，即用$y$来表示$x$，从而直接将$y$来表示$x$就可以了。\n\n首先$y_3=x_3$，所以$x_2=y_2-x_3=y_2-y_3$，$x_1=y_1-x_2-x_3=y_1-y_2+y_3-y_3=y_1-y_2$，综上$x_1=y_1-y_2$，$x_2=y_2-y_3$，$x_3=y_3$，也得到同样结果。\n\n\\subsubsection{无平方项}"
+  },
+  {
+    "id": "e0310",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "将二次型$f(x_1,x_2,x_3)=x_1x_2+x_1x_3-x_2x_3$化为规范形，并求所用的可逆线性变换。",
+    "answer": "就能进行配方。\n\n$=y_1^2-(y_2-y_3)^2+y_3^2$，继续之前的步骤，进行换元：\n\n令$z_1=y_1$，$z_2=y_2-y_3$，$z_3=y_3$，$f=z_1^2-z_2^2",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": "因为二次型中没有平方项式子，而如果进行配方一定会出现平方，就会产生冲突，所以希望把$x$代换称有平方的式子。\n\n令$x_1=y_1+y_2$，$x_2=y_1-y_2$，$x_3=y_3$，代入二次型中。\n\n$f=y_1^2-y_2^2+y_1y_3+y_2y_3-y_1y_3-+y_2y_3=y_1^2-y_2^2+2y_2y_3=y_1^2-y_2^2+2y_2y_3$。\n\n此时由没有平方项就变成了有平方项，所以就能进行配方。\n\n$=y_1^2-(y_2-y_3)^2+y_3^2$，继续之前的步骤，进行换元：\n\n令$z_1=y_1$，$z_2=y_2-y_3$，$z_3=y_3$，$f=z_1^2-z_2^2+z_3^2$得到标准形。\n\n对于$x$与$y$：$(x_1,x_2,x_3)^T=\\left(\\begin{array}{ccc}\n    1 & 1 & 0 \\\\\n    1 & -1 & 0 \\\\\n    0 & 0 & 1\n\\end{array}\\right)(y_1,y_2,y_3)^T$。$y$作为过渡变量。\n\n将$y$转换为$z$：$(z_1,z_2,z_3)^T=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    0 & 1 & -1 \\\\\n    0 & 0 & 1\n\\end{array}\\right)(y_1,y_2,y_3)^T$，我们需要$x=Cz$。\n\n$(x_1,x_2,x_3)^T=\\left(\\begin{array}{ccc}\n    1 & 1 & 0 \\\\\n    1 & -1 & 0 \\\\\n    0 & 0 & 1\n\\end{array}\\right)\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    0 & 1 & -1 \\\\\n    0 & 0 & 1\n\\end{array}\\right)^{-1}(z_1,z_2,z_3)^T$，从而得到$C=\\left(\\begin{array}{ccc}\n    1 & 1 & 1 \\\\\n    1 & -1 & -1 \\\\\n    0 & 0 & 1\n\\end{array}\\right)$。"
+  },
+  {
+    "id": "e0311",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "将二次型$f(x_1,x_2,x_3)=2x_1^2+5x_2^2+5x_3^2+4x_1x_2-4x_1x_3-8x_2x_3$使用正交变换法化为标准形，并求所作的正交变换。 已知将二次型通过矩阵表示：$=(x_1,x_2,x_3)\\\\left(\\\\begin{array}{ccc} 2 & 2 & -2 \\\\\\\\ 2 & 5 & -4 \\\\\\\\ -2 & -4 & 5 \\\\end{array}\\\\right)(x_1,x_2,x_3)^T$。\\\\medskip 这个矩阵跟第五章相似的实对称矩阵相似对角化的例题的矩阵一样。 所以直接结果：$\\\\lambda_1=\\\\lambda_2=1$，$\\\\lambda_3=10$，$\\\\eta_1'=\\\\dfrac{\\\\sqrt{5}}{5}(-2,1,0)^T$，$\\\\eta_2'=\\\\dfrac{\\\\sqrt{5}}{15}(2,4,5)^T$，$\\\\eta_3'=\\\\dfrac{1}{3}(1,2,-2)^T$。 第五步：$f(x)=g(y)=y^T\\\\Lambda y=(y_1,y_2,y_3)\\\\left(\\\\begin{array}{ccc} 1 \\\\\\\\ & 1 \\\\\\\\ & & 10 \\\\end{array}\\\\right)(y_1,y_2,y_3)^T=y_1^2+y_2^2+10y_3^2$",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0312",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "二次型$f(x_1,x_2,x_3)=x_1^2+4x_2^2+4x_3^2-4x_1x_2+4x_1x_3-8x_2x_3$的规范形为()。 $A.f=z_1^2\\\\qquad B.f=z_1^2-z_2^2\\\\qquad C.f=z_1^2+z_2^2+z_3^2\\\\qquad D.f=z_1^2+z_2^2-z_3^2$",
+    "answer": "选择$A$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$f$的二次型矩阵表示$A=\\left[\\begin{array}{ccc}\n    1 & -1 & 2 \\\\\n    -2 & 4 & -4 \\\\\n    2 & -4 & 4\n\\end{array}\\right]$，根据特征方程$\\vert\\lambda E-A\\vert=\\lambda^2(\\lambda-9)=0$，$\\lambda_1=9$，$\\lambda_2=\\lambda_3=0$，所以根据特征值符号，正惯性系数$p=1$，负惯性系数$q=0$，所以选择$A$。"
+  },
+  {
+    "id": "e0313",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "设$A=\\\\left[\\\\begin{array}{ccc} 1 & 2 & 0 \\\\\\\\ 2 & 1 & 0 \\\\\\\\ 0 & 0 & 1 \\\\end{array}\\\\right]$，与$A$合同的是()。 $A.\\\\left[\\\\begin{array}{ccc} 1 & 0 & 0 \\\\\\\\ 0 & 1 & 0 \\\\\\\\ 0 & 0 & 1 \\\\end{array}\\\\right]$\\\\;$B.\\\\left[\\\\begin{array}{ccc} 1 & 0 & 0 \\\\\\\\ 0 & 1 & 0 \\\\\\\\ 0 & 0 & -1 \\\\end{array}\\\\right]$\\\\;$C.\\\\left[\\\\begin{array}{ccc} 1 & 0 & 0 \\\\\\\\ 0 & -1 & 0 \\\\\\\\ 0 & 0 & -1 \\\\end{array}\\\\right]$\\\\;$D.\\\\left[\\\\begin{array}{ccc} -1 & 0 & 0 \\\\\\\\ 0 & -1 & 0 \\\\\\\\ 0 & 0 & -1 \\\\end{array}\\\\right]$ \\\\medskip",
+    "answer": "正交变换后标准形为$y_1^2+3y_2^2-y_3^2$，惯性系数与$B$相同。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": "从四个选项，由于是常量矩阵，所以由对角线元素的正负号可以得出这四个的惯性系数分别为$(3,0)$、$(2,1)$、$(1,2)$、$(0,3)$（前面为正惯性系数，后面为负惯性系数）。\n\n且每个选项的秩都是3。\n\n\\subsubsection{配方法}\n\n即将二次型配方为标准型，然后求该矩阵的秩和惯性系数。\n\n解：经过配方$f=(x_1+2x_2)^2-3x_2^2+x_3^2$，由于有三个平方项，所以矩阵秩为3，正惯性系数为2，与$B$相同。\n\n\\subsubsection{特征值法}\n\n即根据特征方程进行正交变换得到正负惯性系数。\n\n解：求$A$的特征值，得到$\\lambda_1=1$、$\\lambda_2=3$、$\\lambda_3=-1$，所以正交变换后标准形为$y_1^2+3y_2^2-y_3^2$，惯性系数与$B$相同。"
+  },
+  {
+    "id": "e0314",
+    "subject": "线性代数",
+    "chapter": "二次型",
+    "question_text": "已知$A=\\\\left[\\\\begin{array}{ccc} 1 & 0 & 0 \\\\\\\\ 0 & -4 & 0 \\\\\\\\ 0 & 0 & \\\\dfrac{1}{9} \\\\end{array}\\\\right]$合同于$\\\\Lambda=\\\\left[\\\\begin{array}{ccc} 1 & 0 & 0 \\\\\\\\ 0 & 1 & 0 \\\\\\\\ 0 & 0 & -1 \\\\end{array}\\\\right]$，求$C^TAC=\\\\Lambda$中的$C$。",
+    "answer": "$x=Cy$，解得$C=\\left[\\begin{array}{ccc}\n    1 \\\\\n    & & \\dfrac{1}{2} \\\\\n    & 3\n\\end{array}\\right]$，此时",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "二次型"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$A$，则可得二次型$f=x^TAx=[x_1,x_2,x_3]A[x_1,x_2,x_3]^T=x_1^2-4x_2^2+\\dfrac{1}{9}x_3^2$，规范化让这个二次型与$\\Lambda$转换的二次型相等，由于正负惯性系数相同，平方必然是正数，所以符号对齐，令$x_1^2=y_1^2$、$4x_2^2=y_3^2$、$\\dfrac{1}{9}x_3^2=y_2^2$。\n\n解得$x_1=y_1$，$x_2=\\dfrac{1}{2}y_3$，$x_3=3y_2$，即$\\left[\\begin{array}{c}\n    x_1 \\\\\n    x_2 \\\\\n    x_3\n\\end{array}\\right]=\\left[\\begin{array}{ccc}\n    1 \\\\\n    & & \\dfrac{1}{2} \\\\\n    & 3\n\\end{array}\\right]\\left[\\begin{array}{c}\n    y_1 \\\\\n    y_2 \\\\\n    y_3\n\\end{array}\\right]$。\n\n所以$x=Cy$，解得$C=\\left[\\begin{array}{ccc}\n    1 \\\\\n    & & \\dfrac{1}{2} \\\\\n    & 3\n\\end{array}\\right]$，此时$f=x^TAx=y^TC^TACy=y^T\\Lambda y$。"
+  },
+  {
+    "id": "e0315",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "已知$n$维向量$\\\\alpha_1$，$\\\\alpha_2$，$\\\\alpha_3$线性无关，则判断线性相关性：$\\\\alpha_1+\\\\alpha_2$，$\\\\alpha_2-\\\\alpha_3$，$\\\\alpha_3+\\\\alpha_1$。",
+    "answer": "直接一减得到0，表示线性相关。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\alpha_1+\\alpha_2$与$\\alpha_2-\\alpha_3$，共同出现了$\\alpha_2$，首先要消掉$\\alpha_2$，所以相减得到$\\alpha_1+\\alpha_3$，然后发现跟后面的$\\alpha_3+\\alpha_1$一样，所以直接一减得到0，表示线性相关。"
+  },
+  {
+    "id": "e0316",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "设$\\\\alpha_1$，$\\\\alpha_2$，$\\\\beta_1$，$\\\\beta_2$，$\\\\beta_3$都是$n$维向量，$n\\\\geqslant3$，且$\\\\beta_1=\\\\alpha_1+\\\\alpha_2$，$\\\\beta_2=\\\\alpha_1-2\\\\alpha_2$，$\\\\beta_3=3\\\\alpha+1+2\\\\alpha_2$，证明向量组$\\\\beta_1$，$\\\\beta_2$，$\\\\beta_3$线性相关。 证明：若存在$k_1,k_2,k_3$使得$k_1\\\\beta_1+k_2\\\\beta_2+k_3\\\\beta_3=0$。 代入$\\\\alpha$表示$\\\\beta$的式子：$k_1(\\\\alpha_1+\\\\alpha_2)+k_2(\\\\alpha_1-2\\\\alpha_2)+k_3(3\\\\alpha_1+2\\\\alpha_2)=0$。 $\\\\therefore(k_1+k_2+3k_3)\\\\alpha_1+(k_1-2k_2+2k_3)\\\\alpha_2=0$。 $\\\\therefore k_1+k_2+3k_3=0$，且$k_1-2k_2+2k_3=0$即可。 而未知数的个数大于方程个数，所以有无穷多解，从而必然有非零解，从而$\\\\beta_1$，$\\\\beta_2$，$\\\\beta_3$线性相关。 \\\\subsubsection{同乘} 若要求线性相关的式子存在一定的乘积关系，则可以用同乘一步步消去系数。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0317",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "设$A$是$n$阶矩阵，若存在正整数$k$，使得线性方程组$A^kx=0$有解向量$\\\\alpha$，且$A^{k-1}\\\\alpha\\\\neq0$，证明向量组$\\\\alpha,A\\\\alpha,\\\\cdots,A^{k-1}\\\\alpha$线性无关。 证明：假设$\\\\alpha,A\\\\alpha,\\\\cdots,A^{k-1}\\\\alpha$线性相关，则设存在系数$\\\\lambda_1,\\\\lambda_2,\\\\cdots,\\\\lambda_k$使得$\\\\lambda_1\\\\alpha+\\\\lambda_2A\\\\alpha+\\\\cdots+\\\\lambda_kA^{k-1}\\\\alpha=0$。 $\\\\because A^kx=0$的解为$\\\\alpha$，$\\\\therefore A^k\\\\alpha=0$，$\\\\therefore\\\\cdots=A^{k+2}\\\\alpha=A^{k+1}\\\\alpha=A^k\\\\alpha=0$。 左乘$A^{k-1}$，得到$\\\\lambda_1A^{k-1}\\\\alpha+\\\\lambda_2A^k\\\\alpha+\\\\cdots+\\\\lambda_kA^{2k-2}\\\\alpha=\\\\lambda_1A^{k-1}\\\\alpha=0$。 $\\\\because A^{k-1}\\\\alpha\\\\neq0$，$\\\\therefore\\\\lambda_1=0$，消去$\\\\lambda_1$：$\\\\lambda_2A\\\\alpha+\\\\lambda_3A^2\\\\alpha+\\\\cdots+\\\\lambda_kA^{k-1}\\\\alpha=0$。 左乘$A^{k-2}$，得到$\\\\lambda_2A^{k-1}\\\\alpha+\\\\lambda_3A^k\\\\alpha+\\\\cdots+\\\\lambda_kA^{2k-3}\\\\alpha=\\\\lambda_2A^{k-1}\\\\alpha=0$。 $\\\\because A^{k-1}\\\\alpha\\\\neq0$，$\\\\therefore\\\\lambda_2=0$，消去$\\\\lambda_2$：$\\\\lambda_3A^2\\\\alpha+\\\\lambda_4A^3\\\\alpha+\\\\cdots+\\\\lambda_kA^{k-1}\\\\alpha=0$。 同理依次左乘$A^n$，所以$\\\\lambda_1=\\\\lambda_2=\\\\cdots=\\\\lambda_k=0$，所以$\\\\alpha,A\\\\alpha,\\\\cdots,A^{k-1}\\\\alpha$线性无关。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0318",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "设$a_1,a_2,\\\\cdots,a_s$是$s$个互不相同的数，探究$s$个$n$维列向量$\\\\alpha_i=[1,a_i,a_i^a,\\\\cdots,a_i^{n-1}]^T$（$i=1,2,\\\\cdots,s$）的线性相关性。",
+    "answer": "整个方程都线性无关。\n\n综上当$s>n$时线性相关，$s\\leqslant n$时线性无关。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "当$s>n$时，有$n$个方程$s$个未知数，所以必然存在自由变量，从而必然线性相关性。\n\n当$s=n$时，$\\vert\\alpha_1 \\alpha_2 \\cdots \\alpha_n\\vert=\\left|\\begin{array}{cccc}\n    1 & 1 & \\cdots & 1 \\\\\n    a_1 & a_2 & \\cdots & a_n \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    a_1^{n-1} & a_2^{n-1} & \\cdots & a_n^{n-1}\n\\end{array}\\right|=\\prod\\limits_{1\\leqslant j\\leqslant i\\leqslant n}(a_i-a_j)\\neq0$。所以线性无关。\n\n当$s<n$时，对方程矩阵切割保留方形的$s$个$=\\left|\\begin{array}{cccc}\n    1 & 1 & \\cdots & 1 \\\\\n    a_1 & a_2 & \\cdots & a_n \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    a_1^{n-1} & a_2^{n-1} & \\cdots & a_n^{n-1} \\\\\n    \\vdots & \\vdots & \\vdots & \\vdots\n\\end{array}\\right|$，上面因为范德蒙德行列式已经不等于0，即上面的方阵线性无关，原来无关延长无关，所以整个方程都线性无关。\n\n综上当$s>n$时线性相关，$s\\leqslant n$时线性无关。"
+  },
+  {
+    "id": "e0319",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "已知$\\\\alpha_1=(1,2,1)^T$，$\\\\alpha_2(2,3,a)^T$，$\\\\alpha_3=(1,a+2,-2)^T$，$\\\\beta=(1,3,0)^T$，若$\\\\beta$可以由$\\\\alpha_1$、$\\\\alpha_2$，$\\\\alpha_3$线性表示，且表示法不唯一，求$a$。",
+    "answer": "=r(A",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "设$x_1\\alpha_1+x_2\\alpha_2+x_2\\alpha_3=\\beta$，由$\\beta$可以由$\\alpha_1$、$\\alpha_2$，$\\alpha_3$线性表示，且表示法不唯一可知$Ax=\\beta$有无穷解，即$r(A)=r(A|B)<3$。\n\n$=[\\alpha_1,\\alpha_2,\\alpha_3|\\beta]=\\left[\\begin{array}{cccc}\n    1 & 2 & 1 & 1 \\\\\n    2 & 3 & a+2 & 3 \\\\\n    1 & a & -2 & 0\n\\end{array}\\right]=\\left[\\begin{array}{cccc}\n    1 & 2 & 1 & 1 \\\\\n    0 & -1 & a & 1 \\\\\n    0 & 0 & a^2-2a-3 & a-3\n\\end{array}\\right]$。\n\n$\\therefore a=3$。"
+  },
+  {
+    "id": "e0320",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "设向量组$\\\\alpha_1=(1,0,1)^T$、$\\\\alpha_2=(0,1,1)^T$、$\\\\alpha_3=(1,3,5)^T$不能由向量组$\\\\beta_1=(1,1,1)^T$、$\\\\beta_2=(1,2,3)^T$、$\\\\beta_3=(3,4,a)^T$线性表示，求$a$。",
+    "answer": "$a=5$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知题目，则$(\\beta_1,\\beta_2,\\beta_3)$线性相关。\n\n对其行变换，解得$a=5$。"
+  },
+  {
+    "id": "e0321",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "用$\\\\alpha_1=(1,1,1)^T$、$\\\\alpha_2=(1,2,4)^T$、$\\\\alpha_3=(1,3,9)^T$表示$\\\\beta=(1,1,3)^T$。",
+    "answer": "$\\beta=2\\alpha_1-2\\alpha_2+\\alpha_3$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "组成矩阵$\\left[\\begin{array}{cccc}\n    1 & 1 & 1 & 1 \\\\\n    1 & 2 & 3 & 1 \\\\\n    1 & 4 & 9 & 3\n\\end{array}\\right]=\\left[\\begin{array}{cccc}\n    1 & 0 & 0 & 2 \\\\\n    0 & 1 & 0 & -2 \\\\\n    0 & 0 & 1 & 1\n\\end{array}\\right]$，所以$\\beta=2\\alpha_1-2\\alpha_2+\\alpha_3$。"
+  },
+  {
+    "id": "e0322",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "设向量组$\\\\alpha$：$\\\\alpha_1=[1,0,2]^T$，$\\\\alpha_2=[0,1,1]^T$，$\\\\alpha_3=[2,-1,a+4]^T$，向量组$\\\\beta$：$\\\\beta_1=[1,2,4]^T$，$\\\\beta_2=[1,-1,a+2]^T$，$\\\\beta_3=[3,3,10]^T$。 矩阵$A=\\\\left(\\\\begin{array}{ccc} 1 & 0 & 2 \\\\\\\\ 0 & 1 & -1 \\\\\\\\ 2 & 1 & a+4 \\\\end{array}\\\\right)$，$B=\\\\left(\\\\begin{array}{ccc} 1 & 1 & 3 \\\\\\\\ 2 & -1 & 3 \\\\\\\\ 4 & a+2 & 10 \\\\end{array}\\\\right)$。\\\\medskip (1)$AB$是否等价。 (2)向量组$AB$是否等价。 (1)",
+    "answer": "不等价。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "化简$A=\\left(\\begin{array}{ccc}\n    1 & 0 & 2 \\\\\n    0 & 1 & -1 \\\\\n    0 & 0 & a+1\n\\end{array}\\right)$，$B=\\left(\\begin{array}{ccc}\n    1 & 3 & 1 \\\\\n    0 & 1 & 1 \\\\\n    0 & 0 & a\n\\end{array}\\right)$\n\n若$a\\neq-1$，则$r(A)=3$，且$a\\neq0$，则$r(B)=3$，此时$AB$等价。\n\n若$a=-1$，则$r(A)=2$，$r(B)=3$，$AB$不等价。\n\n若$a=0$，则$r(B)=2$，$r(A)=2$，$AB$不等价。\n\n(2)解：因为向量组$\\alpha$拼接在一起就是$A$，$\\beta$拼接在一起就是$B$，所以$r(\\alpha)=r(A)$，$r(\\beta)=r(B)$，$r(\\alpha|\\beta)=r(A|B)$。\n\n将$AB$拼在一起做行变换，得到$(A|B)=\\left(\\begin{array}{c:c}\n    \\begin{matrix}\n        1 & 0 & 2 \\\\\n        0 & 1 & -1 \\\\\n        0 & 0 & a+1\n    \\end{matrix}&\n    \\begin{matrix}\n        1 & 1 & 3 \\\\\n        2 & -1 & 3 \\\\\n        0 & a+1 & 1\n    \\end{matrix}\n\\end{array}\\right)$。\\medskip\n\n若$a\\neq-1\\neq0$，则$r(A)=r(B)=r(A|B)$。向量组等价。\n\n若$a=-1$或$a=0$，则$r(A)\\neq r(B)$，所以不等价。"
+  },
+  {
+    "id": "e0323",
+    "subject": "线性代数",
+    "chapter": "向量",
+    "question_text": "设$R^3$中有两个基$A$：$\\\\alpha_1=[1,1,0]^T$，$\\\\alpha_2=[0,1,1]^T$，$\\\\alpha_3=[1,0,1]^T$，基$B$：$\\\\beta_1=[1,0,0]^T$，$\\\\beta_2=[1,1,0]^T$，$\\\\beta_3=[1,1,1]^T$。 % (1)求基$B$到基$A$的过渡矩阵。 % (2)已知$\\\\xi$在基$B$下的坐标为$[1,0,2]^T$，求$\\\\xi$在基$A$下的坐标。 % (1)",
+    "answer": "=BC$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "向量"
+    ],
+    "difficulty": 0.5,
+    "solution": "过渡矩阵为$A=BC$，即$B^{-1}A=C$。\n\n% (2)解：令在基$A$下的坐标为$(x_1,x_2,x_3)^T$。\n\n% $\\therefore\\xi=A(x_1,x_2,x_3)^T=B(1,0,2)^T$，$(x_1,x_2,x_3)^T=A^{-1}B(1,0,2)^T$。"
+  },
+  {
+    "id": "e0324",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "$A=\\\\left(\\\\begin{array}{ccc} 1 & 2 & 3 \\\\\\\\ -2 & -4 & -6 \\\\\\\\ 3 & 6 & 9 \\\\end{array}\\\\right)$，求$A^n$。\\\\medskip",
+    "answer": "$A^n=((1,2,3)(1,-2,3)^T)^n(1,-2,3)^T(1,2,3)$\n\n$=6^{n-1}A$。\n\n若矩阵$A$的行与列都成比例，则$A^n=[tr(A)]^{n-1}A$，$[t",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$A=(1,-2,3)^T(1,2,3)$，所以$A^n=((1,2,3)(1,-2,3)^T)^n(1,-2,3)^T(1,2,3)$\n\n$=6^{n-1}A$。\n\n若矩阵$A$的行与列都成比例，则$A^n=[tr(A)]^{n-1}A$，$[tr(A)]=\\sum a_{ii}$，即矩阵迹为对角线元素值之和。"
+  },
+  {
+    "id": "e0325",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "$A=\\\\left(\\\\begin{array}{cccc} 1 & -1 & -1 & -1 \\\\\\\\ -1 & 1 & -1 & -1 \\\\\\\\ -1 & -1 & 1 & -1 \\\\\\\\ -1 & -1 & -1 & 1 \\\\\\\\ \\\\end{array}\\\\right)$，求$A^n$（$n\\\\geqslant2$）。\\\\medskip",
+    "answer": "知$A^2=4E$，这是一个数量阵。\\medskip\n\n$\\therefore A^n=\\left\\{\\begin{array}{lcl}\n    4^kE, & & n=2k \\\\\n    4^kA",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "通过计算得知$A^2=4E$，这是一个数量阵。\\medskip\n\n$\\therefore A^n=\\left\\{\\begin{array}{lcl}\n    4^kE, & & n=2k \\\\\n    4^kA, & & n=2k+1\n\\end{array}\\right.$。"
+  },
+  {
+    "id": "e0326",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "设$\\\\alpha=(1,3,-2)^T$，$\\\\beta=(2,0,0)^T$，$A=\\\\alpha\\\\beta^T$，求$A^3$。",
+    "answer": "=[2",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because\\beta^T\\alpha=[2,0,0][1,3,-2]^T=2$，$\\therefore A^3=(\\alpha\\beta^T)(\\alpha\\beta^T)(\\alpha\\beta^T)=\\alpha(\\beta^T\\alpha)$\\\\$(\\beta^T\\alpha)\\beta^T=4\\alpha\\beta^T=4A$。"
+  },
+  {
+    "id": "e0327",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "$A=\\\\left(\\\\begin{array}{ccc} 1 & 1 & 0 \\\\\\\\ 0 & 1 & 1 \\\\\\\\ 0 & 0 & 1 \\\\end{array}\\\\right)$，求$A^n$。\\\\medskip",
+    "answer": "=E+B",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$A=E+B=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    0 & 1 & 0 \\\\\n    0 & 0 & 1\n\\end{array}\\right)+\\left(\\begin{array}{ccc}\n    0 & 1 & 0 \\\\\n    0 & 0 & 1 \\\\\n    0 & 0 & 0\n\\end{array}\\right)$。\\medskip\n\n$\\therefore A^n=(E+B)^n=C_n^0E^n+C_n^1E^{n-1}B+C_n^2E^{n-2}B^2+\\cdots$。\n\n又$B^2=\\left(\\begin{array}{ccc}\n    0 & 1 & 0 \\\\\n    0 & 0 & 1 \\\\\n    0 & 0 & 0\n\\end{array}\\right)\\left(\\begin{array}{ccc}\n    0 & 1 & 0 \\\\\n    0 & 0 & 1 \\\\\n    0 & 0 & 0\n\\end{array}\\right)=\\left(\\begin{array}{ccc}\n    0 & 0 & 1 \\\\\n    0 & 0 & 0 \\\\\n    0 & 0 & 0\n\\end{array}\\right)$。\n\n$B^3=B^2B=\\left(\\begin{array}{ccc}\n    0 & 0 & 1 \\\\\n    0 & 0 & 0 \\\\\n    0 & 0 & 0\n\\end{array}\\right)\\left(\\begin{array}{ccc}\n    0 & 1 & 0 \\\\\n    0 & 0 & 1 \\\\\n    0 & 0 & 0\n\\end{array}\\right)=\\left(\\begin{array}{ccc}\n    0 & 0 & 0 \\\\\n    0 & 0 & 0 \\\\\n    0 & 0 & 0\n\\end{array}\\right)=O$。\n\n$\\therefore B^4=B^5=\\cdots=O$。\n\n$\\therefore A^n=(E+B)^n=C_n^0E^n+C_n^1E^{n-1}B+C_n^2E^{n-2}B^2$。\\medskip\n\n$=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n "
+  },
+  {
+    "id": "e0328",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "$A=\\\\left(\\\\begin{array}{ccc} 1 & 0 & 1 \\\\\\\\ -1 & -1 & 1 \\\\\\\\ 0 & 2 & -4 \\\\end{array}\\\\right)$，$B=\\\\left(\\\\begin{array}{ccc} 1 & 0 & 1 \\\\\\\\ 0 & -1 & 2 \\\\\\\\ 0 & 0 & 0 \\\\end{array}\\\\right)$，当$A\\\\sim B$时，求$P$使得$PA=B$。.",
+    "answer": "第一步将第一列的第二行的-1变为0。即将第一行加到第二行。\n\n左乘$E_{21}(1)A=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    1 & 1 & 0",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "目标是将$A$变为$B$，所以第一步将第一列的第二行的-1变为0。即将第一行加到第二行。\n\n左乘$E_{21}(1)A=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    1 & 1 & 0 \\\\\n    0 & 0 & 1\n\\end{array}\\right)\\left(\\begin{array}{ccc}\n    1 & 0 & 1 \\\\\n    -1 & -1 & 1 \\\\\n    0 & 2 & -4\n\\end{array}\\right)=\\left(\\begin{array}{ccc}\n    1 & 0 & 1 \\\\\n    0 & -1 & 2 \\\\\n    0 & 2 & -4\n\\end{array}\\right)=C$。\\medskip\n\n然后对第二列进行消，首先将第三行加上第二行的两倍。\n\n$E_{32}(2)C=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    1 & 1 & 0 \\\\\n    0 & 2 & 1\n\\end{array}\\right)\\left(\\begin{array}{ccc}\n    1 & 0 & 1 \\\\\n    0 & -1 & 2 \\\\\n    0 & 2 & -4\n\\end{array}\\right)=\\left(\\begin{array}{ccc}\n    1 & 0 & 1 \\\\\n    1 & -1 & 2 \\\\\n    0 & 0 & 0\n\\end{array}\\right)=B$。\\medskip\n\n$\\therefore E_{32}(2)E_{21}(1)A=B$。\n\n$P=E_{32}(2)E_{21}(1)=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    0 & 1 & 0 \\\\\n    0 & 2 & 1\n\\end{array}\\right)\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    1 & 1 & 0 \\\\\n    0 & 0 & 1\n\\end{array}\\right)=\\left(\\begin{array}{ccc}\n    1 & 0 & 0 \\\\\n    1 & 1 & 0 \\\\\n    2 & 2 & 1\n\\e"
+  },
+  {
+    "id": "e0329",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "$A$，$B$均是$n$阶方阵，且$AB=A+B$，证明$A-E$可逆，并求$(A-E)^{-1}$。",
+    "answer": "$A-E$的逆矩阵就是$B-E$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "要证明$A-E$，就要从$AB=A+B$中尽量凑出。\n\n$AB=A+B$变为$AB-B=A$，从而提取$(A-E)B=A$，$(A-E)BA^{-1}=E$。\n\n但是$A^{-1}$是未知的，所以$A-E$的逆矩阵不能用$BA^{-1}$来表示。\n\n$AB-A=B$，所以提出$A(B-E)=B$，即$A(B-E)=B-E+E$，$(A-E)(B-E)=E$，所以$A-E$的逆矩阵就是$B-E$。"
+  },
+  {
+    "id": "e0330",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "设$A$，$B$为同阶可逆方阵，且$A^{-1}+B^{-1}$可逆，求$(A+B)^{-1}$。",
+    "answer": "=A(E+A",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$A^{-1}+B^{-1}$可以用来表示其他式子，需要求$A+B$的逆，则需要将$A+B$转为其逆。\n\n$\\because A+B=A(E+A^{-1}B)=A(B^{-1}+A^{-1})B$。\n\n$\\therefore (A+B)^{-1}=B^{-1}(B^{-1}+A^{-1})^{-1}A^{-1}$。"
+  },
+  {
+    "id": "e0331",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "已知$A=\\\\left(\\\\begin{array}{cc} B & O \\\\\\\\ D & C \\\\end{array}\\\\right)$，其中$B$为$r\\\\times r$可逆矩阵，$C$为$s\\\\times s$可逆矩阵，求$A^{-1}$。",
+    "answer": "$A$可逆，设$A^{-1}=\\left(\\begin{array}{cc}\n    X & Y \\\\\n    Z & W\n\\end{array}\\right)$。\n\n$AA^{-1}=\\left(\\",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$\\because\\vert A\\vert=\\left|\\begin{array}{cc}\n    B & O \\\\\n    D & C\n\\end{array}\\right|=\\vert B\\vert\\vert C\\vert\\neq0$，所以$A$可逆，设$A^{-1}=\\left(\\begin{array}{cc}\n    X & Y \\\\\n    Z & W\n\\end{array}\\right)$。\n\n$AA^{-1}=\\left(\\begin{array}{cc}\n    E_r & O \\\\\n    O & E_s\n\\end{array}\\right)=E_{r+s}$。即$\\left(\\begin{array}{cc}\n    BX & BY \\\\\n    DX+CZ & DY+CW\n\\end{array}\\right)=E_{r+s}$。\n\n$\\therefore\\left\\{\\begin{array}{l}\n    BX=E \\\\\n    BY=O \\\\\n    DX+CZ=O \\\\\n    DY+CW=E\n\\end{array}\\right.$，$\\left\\{\\begin{array}{ll}\n    B^{-1}BX=B^{-1}, & X=B^{-1}\\\\\n    B^{-1}BY=O, & Y=O \\\\\n    CZ=-DX=-DB^{-1}, & Z=-C^{-1}DB^{-1} \\\\\n    CW=E, & W=C^{-1}\n\\end{array}\\right.$。\n\n$\\therefore A^{-1}=\\left(\\begin{array}{cc}\n    B^{-1} & O \\\\\n    -C^{-1}DB^{-1} & C^{-1}\n\\end{array}\\right)$。\\medskip\n\n当分块矩阵为三角矩阵时，对角线为原方块矩阵的逆矩阵，非0的一角为原矩阵，再左乘同行的逆矩阵，右乘同列的逆矩阵。\\medskip\n\n$\\therefore A=\\left(\\begin{array}{cc}\n    B & D \\\\\n    O & C\n\\end{array}\\right)$，$A^{-1}=\\left(\\begin{array}{cc}\n    B^{-1} & -B^{-1}DC^{-1} \\\\\n    O & C^{-1"
+  },
+  {
+    "id": "e0332",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "已知矩阵$A$的伴随矩阵$A^*=\\\\left[\\\\begin{array}{cccc} 4 & -2 & 0 & 0 \\\\\\\\ -3 & 1 & 0 & 0 \\\\\\\\ 0 & 0 & -4 & 0 \\\\\\\\ 0 & 0 & 0 & -1 \\\\end{array}\\\\right]$，求$A$。",
+    "answer": "$A=\\left[\\begin{array}{cccc}\n    1 & 2 & 0 & 0 \\\\\n    3 & 4 & 0 & 0 \\\\\n    0 & 0 & \\dfrac{1}{2} & 0 ",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$A^{-1}=\\dfrac{A^*}{\\vert A\\vert}$，所以$A=\\vert A\\vert(A^*)^{-1}$。已知$A^*$可知$(A^*)^{-1}$，所以重点就是求$\\vert A\\vert$。\n\n又$\\vert A^*\\vert=\\vert A\\vert^{n-1}$，$\\vert A^*\\vert=-8$，$\\vert A\\vert=-2$。\n\n所以根据分块矩阵的逆运算，可以得到$(A^*)^{-1}=\\left[\\begin{array}{cccc}\n    -\\dfrac{1}{2} & -1 & 0 & 0 \\\\\n    -\\dfrac{3}{2} & -2 & 0 & 0 \\\\\n    0 & 0 & -\\dfrac{1}{4} & 0 \\\\\n    0 & 0 & 0 & -1\n\\end{array}\\right]$。\n\n所以$A=\\left[\\begin{array}{cccc}\n    1 & 2 & 0 & 0 \\\\\n    3 & 4 & 0 & 0 \\\\\n    0 & 0 & \\dfrac{1}{2} & 0 \\\\\n    0 & 0 & 0 & 2\n\\end{array}\\right]$。"
+  },
+  {
+    "id": "e0333",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "设四阶方阵$A=[\\\\alpha,\\\\gamma_2,\\\\gamma_3,\\\\gamma_4]$，$B=[\\\\beta,\\\\gamma_2,\\\\gamma_3,\\\\gamma_4]$，其中$\\\\alpha$、$\\\\beta$、$\\\\gamma_i$均为四维向量，且$\\\\vert A\\\\vert=5$，$\\\\vert B\\\\vert=-\\\\dfrac{1}{2}$，求$\\\\vert A+2B\\\\vert$。",
+    "answer": "=27",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$=\\vert[\\alpha,\\gamma_2,\\gamma_3,\\gamma_4]+2[\\beta,\\gamma_2,\\gamma_3,\\gamma_4]\\vert=\\vert[\\alpha+2\\beta,3\\gamma_2,3\\gamma_3,3\\gamma_4]\\vert=27\\vert[\\alpha+2\\beta,\\gamma_2,\\gamma_3,\\gamma_4]\\vert=27\\vert[\\alpha,\\gamma_2,\\gamma_3,\\gamma_4]\\vert+54\\vert[\\beta,\\gamma_2,\\gamma_3,\\gamma_4]\\vert=27(\\vert A\\vert+2\\vert B\\vert)=108$。"
+  },
+  {
+    "id": "e0334",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "设3阶方阵$A$，$B$满足$A^{-1}BA=6A+BA$，且$A=\\\\left(\\\\begin{array}{ccc} \\\\dfrac{1}{3} & 0 & 0 \\\\\\\\ 0 & \\\\dfrac{1}{4} & 0 \\\\\\\\ 0 & 0 & \\\\dfrac{1}{5} \\\\end{array}\\\\right)$，求$B$。",
+    "answer": "=(6E+B)A$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$A^{-1}BA=(6E+B)A$，$A^{-1}B=6E+B$，$A^{-1}B-B=6E$，$(A^{-1}-E)B=6E$。\n\n$\\therefore B=6(A^{-1}-E)^{-1}$。"
+  },
+  {
+    "id": "e0335",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "已知$AB=A+B$，其中$B=\\\\left[\\\\begin{array}{ccc} 1 & 1 & 0 \\\\\\\\ 1 & 1 & 0 \\\\\\\\ 0 & 0 & 2 \\\\end{array}\\\\right]$，求$(A-E)^{-1}$。",
+    "answer": "要消去$A$。\n\n根据$AB=A+B$，得到$AB-A=B$，即$A(B-E)=B$，$A^{-1}=(B-E)B^{-1}$。\n\n$(A-E)^{-1}=BA^{-1}=B(B-E)B^{-1}$，",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知$AB=A+B$，求$A-E$，则向目标计算。\n\n$AB-B=A$，即$(A-E)B=A$，$(A-E)^{-1}=BA^{-1}$。因为$A$未知，所以要消去$A$。\n\n根据$AB=A+B$，得到$AB-A=B$，即$A(B-E)=B$，$A^{-1}=(B-E)B^{-1}$。\n\n$(A-E)^{-1}=BA^{-1}=B(B-E)B^{-1}$，然后就不知道接下来怎么办了。\n\n我们很希望$BB^{-1}$在一起消掉，但是无论如何操作都无法完成。但是也可以通过此得到解题的启示，按$(A-E)(B-E)$去凑。\n\n回到$(A-E)B=A$，去凑$B-E$，先尝试两边减去$E$，得到$(A-E)B-E=A-E$，正好左移右项$(A-E)(B-E)=E$，解得$(A-E)^{-1}=B-E$。\n\n即$=\\left[\\begin{array}{ccc}\n    0 & 1 & 0 \\\\\n    1 & 0 & 0 \\\\\n    0 & 0 & 1\n\\end{array}\\right]$。"
+  },
+  {
+    "id": "e0336",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "已知$A=\\\\left[\\\\begin{array}{cccc} 1 & 1 & a & 4 \\\\\\\\ 1 & 0 & 2 & a \\\\\\\\ -1 & a & 1 & 0 \\\\end{array}\\\\right]$，$r(A)=3$，求$A$。",
+    "answer": "$a\\neq3$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先对$A$化简：$A=\\left[\\begin{array}{cccc}\n    1 & 1 & a & 4 \\\\\n    0 & 1 & a-2 & 4-a \\\\\n    0 & 0 & (a+1)(3-a) & a(a-3)\n\\end{array}\\right]$，若$r(A)=3$，则$(a+1)(3-a)$与$a(a-3)$不全为0，所以$a\\neq3$。"
+  },
+  {
+    "id": "e0337",
+    "subject": "线性代数",
+    "chapter": "矩阵",
+    "question_text": "已知$A=\\\\left[\\\\begin{array}{cccc} 1 & 2 & 3 & 4 \\\\\\\\ 2 & 3 & 4 & 5 \\\\\\\\ 3 & 4 & 5 & 6 \\\\\\\\ 4 & 5 & 6 & 7 \\\\end{array}\\\\right]$，$B=\\\\left[\\\\begin{array}{cccc} 0 & 1 & -1 & 2 \\\\\\\\ 0 & -1 & 2 & 3 \\\\\\\\ 0 & 0 & 1 & 4 \\\\\\\\ 0 & 0 & 0 & 2 \\\\end{array}\\\\right]$，求$r(AB+2A)$。",
+    "answer": "$r(A)=2$，$r(AB+2A)=\\min\\{r(A),r(B+2E)\\}=2$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$r(AB+2A)=r(A(B+2E))$。又$B+2E=\\left[\\begin{array}{cccc}\n    2 & 1 & -1 & 2 \\\\\n    0 & 1 & 2 & 3 \\\\\n    0 & 0 & 3 & 4 \\\\\n    0 & 0 & 0 & 4\n\\end{array}\\right]$，$r(B+2E)=4$。\n\n又$A=\\left[\\begin{array}{cccc}\n    1 & 2 & 3 & 4 \\\\\n    2 & 3 & 4 & 5 \\\\\n    3 & 4 & 5 & 6 \\\\\n    4 & 5 & 6 & 7\n\\end{array}\\right]=\\left[\\begin{array}{cccc}\n    1 & 2 & 3 & 4 \\\\\n    1 & 1 & 1 & 1 \\\\\n    1 & 1 & 1 & 1 \\\\\n    1 & 1 & 1 & 1\n\\end{array}\\right]=\\left[\\begin{array}{cccc}\n    1 & 2 & 3 & 4 \\\\\n    0 & -1 & -2 & -3 \\\\\n    0 & 0 & 0 & 0 \\\\\n    0 & 0 & 0 & 0\n\\end{array}\\right]$。\\medskip\n\n所以$r(A)=2$，$r(AB+2A)=\\min\\{r(A),r(B+2E)\\}=2$。"
+  },
+  {
+    "id": "e0338",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "求2413的逆序数。",
+    "answer": "一共逆序数为3。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "2的逆序有21一个。4的逆序与41、43两个。1无逆序数，所以一共逆序数为3。"
+  },
+  {
+    "id": "e0339",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "求$13\\\\cdots(2n-1)(2n)(2n-2)\\\\cdots2$的逆序数。",
+    "answer": "最后一共加起来与$n(n-1)$个逆序。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "这个序列分为两个部分，第一个是前面的$13\\cdots(2n-1)$部分，这个部分无逆序。\n\n第二个部分是后面的$(2n)(2n-2)\\cdots2$，这个序列是全部逆序的，所以考虑其第二个内部一共有$n$个数，从前往后依次有$n,(n-1),\\cdots,1$个逆序，所以逆序数为$\\dfrac{n(n-1)}{2}$。\n\n然后是考虑第二个部分对于第一个部分的逆序。$2n-2$对$2n-1$产生一个逆序，到最后的2对前面的$3\\cdots(2n-1)$都产生了逆序一共$n-1$个，所以一共$\\dfrac{n(n-1)}{2}$个逆序。\n\n所以最后一共加起来与$n(n-1)$个逆序。"
+  },
+  {
+    "id": "e0340",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "写出四阶行列式中含有$a_{11}a_{23}$的因式项。",
+    "answer": "该项为$a_{11}a_{23}a_{34}a_{42}$。\n\n$\\therefore\\,-a_{11}a_{23}a_{32}a_{44}+a_{11}a_{23}a_{34}a_{42}$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "因为是四阶行列式，且含有$a_{11}a_{23}$，所以余下来的$a_{3?}$和$a_{4?}$中的$?$只有2和4可选。\n\n若是$a_{11}a_{23}a_{32}a_{44}$，则列坐标序列为$1324$，从而逆序数为1，所以该项为$-a_{11}a_{23}a_{32}a_{44}$。\n\n若是$a_{11}a_{23}a_{34}a_{42}$，则列坐标序列为$1342$，从而逆序数为2，所以该项为$a_{11}a_{23}a_{34}a_{42}$。\n\n$\\therefore\\,-a_{11}a_{23}a_{32}a_{44}+a_{11}a_{23}a_{34}a_{42}$。"
+  },
+  {
+    "id": "e0341",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "求$\\\\left|\\\\begin{array}{cccc} 1 & 2 & 3 & 4 \\\\\\\\ 1 & 2^2 & 3^2 & 4^2 \\\\\\\\ 1 & 2^3 & 3^3 & 4^3 \\\\\\\\ 9 & 8 & 7 & 6 \\\\end{array}\\\\right|$。",
+    "answer": "$=\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 4 \\\\\n    1 & 2^2  & 3^2 & 4^2 \\\\\n    1 & 2^3  & 3^3 & 4",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "这个式子非常像范德蒙德行列式，但是差一行1。所以我们要把最后一行变为同样值。可以观察得到第四行加最后一行为10，所以\n\n$=\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 4 \\\\\n    1 & 2^2  & 3^2 & 4^2 \\\\\n    1 & 2^3  & 3^3 & 4^3 \\\\\n    10 & 10 & 10 & 10\n\\end{array}\\right|=10\\times(-1)^3\\left|\\begin{array}{cccc} \n    1 & 1 & 1 & 1 \\\\\n    1 & 2 & 3 & 4 \\\\\n    1 & 2^2  & 3^2 & 4^2 \\\\\n    1 & 2^3  & 3^3 & 4^3\n\\end{array}\\right|=-10\\times2\\times3\\times2=-120$。\n\n\\subsubsection{分块行列式}\n\n也称为拉普拉斯展开式，设$A$为$m$阶矩阵，$B$为$n$阶矩阵：\\medskip\n\n$\\left|\\begin{array}{cc}\n    A & O \\\\\n    O & B\n\\end{array}\\right|=\n\\left|\\begin{array}{cc}\n    A & * \\\\\n    O & B\n\\end{array}\\right|=\n\\left|\\begin{array}{cc}\n    A & O \\\\\n    * & B\n\\end{array}\\right|=\\vert A\\vert\\cdot\\vert B\\vert$。\n\n$\\left|\\begin{array}{cc}\n    O & A \\\\\n    B & O\n\\end{array}\\right|=\n\\left|\\begin{array}{cc}\n    * & A \\\\\n    B & O\n\\end{array}\\right|=\n\\left|\\begin{array}{cc}\n    O & A \\\\\n    B & *\n\\end{array}\\right|=(-1)^{mn}\\vert A\\vert\\cdot\\vert B\\vert$。\n\n\\subsubsection{爪形行列式}\n\n$\\left|\\begin{array}{cccc} \n    a_{11}"
+  },
+  {
+    "id": "e0342",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\\\\\ 1 & 2 & 0 & 0 \\\\\\\\ 1 & 0 & 3 & 0 \\\\\\\\ 1 & 0 & 0 & 4 \\\\end{array}\\\\right|$。",
+    "answer": "=2",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "各行提取斜对角线数$=2\\times3\\times4\\left|\\begin{array}{cccc} \n    1 & 1 & 1 & 1 \\\\\n    \\dfrac{1}{2} & 0 & 0 & 0 \\\\\n    \\dfrac{1}{3} & 0 & 1 & 0 \\\\\n    \\dfrac{1}{4} & 0 & 0 & 1\n\\end{array}\\right|=\\left|\\begin{array}{cccc} \n    -\\dfrac{1}{12} & 0 & 0 & 0 \\\\\n    \\dfrac{1}{2} & 0 & 0 & 0 \\\\\n    \\dfrac{1}{3} & 0 & 1 & 0 \\\\\n    \\dfrac{1}{4} & 0 & 0 & 1\n\\end{array}\\right|=-2$。\n\n\\subsubsection{基本行列式计算}\n\n基本的计算方式是对角线法则计算与行列式展开两种方法。若符合基本特殊行列式的可以按照公式。\n\n但是对于一般的高阶行列式而言计算方式如下：\n\n\\begin{itemize}"
+  },
+  {
+    "id": "e0343",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccccc} a & b & 0 & \\\\cdots & 0 & 0 \\\\\\\\ 0 & a & b & \\\\cdots & 0 & 0 \\\\\\\\ 0 & 0 & a & \\\\cdots & 0 & 0 \\\\\\\\ \\\\vdots & \\\\vdots & \\\\vdots & \\\\ddots & \\\\vdots & \\\\vdots \\\\\\\\ 0 & 0 & 0 & \\\\cdots & a & b \\\\\\\\ b & 0 & 0 & \\\\cdots & 0 & a \\\\end{array}\\\\right|$。",
+    "answer": "=a(-1)",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "直接按第一列展开：\n\n$=a(-1)^{1+1}\\left|\\begin{array}{ccccc} \n    a & b & \\cdots & 0 & 0 \\\\\n    0 & a & \\cdots & 0 & 0 \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n    0 & 0 & \\cdots & a & b \\\\\n    0 & 0 & \\cdots & 0 & a\n\\end{array}\\right|+b\\cdot(-1)^{n+1}\\left|\\begin{array}{ccccc} \n    b & 0 & \\cdots & 0 & 0 \\\\\n    a & b & \\cdots & 0 & 0 \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n    0 & 0 & \\cdots & b & 0 \\\\\n    0 & 0 & \\cdots & a & b \\\\\n\\end{array}\\right|$\n\n$=a\\cdot a^{n-1}+(-1)^{n+1}b\\cdot b^{n-1}=a^n+(-1)^{n+1}b^n$。"
+  },
+  {
+    "id": "e0344",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "证明$\\\\left|\\\\begin{array}{ccc} a^2 & ab & b^2 \\\\\\\\ 2a & a+b & 2b \\\\\\\\ 1 & 1 & 1 \\\\end{array}\\\\right|=(a-b)^3$。 证明：因为是证明题，而结果是$(a-b)$的变形，所以我们需要不断提取出$a-b$的形式。 $=-\\\\left|\\\\begin{array}{ccc} 1 & 1 & 1 \\\\\\\\ 2a & a+b & 2b \\\\\\\\ a^2 & ab & b^2 \\\\end{array}\\\\right| =-\\\\left|\\\\begin{array}{ccc} 0 & 0 & 1 \\\\\\\\ a-b & a-b & 2b \\\\\\\\ a(a-b) & b(a-b) & b^2 \\\\end{array}\\\\right| =-(a-b)^2\\\\left|\\\\begin{array}{ccc} 0 & 0 & 1 \\\\\\\\ 1 & 1 & 2b \\\\\\\\ a & b & b^2 \\\\end{array}\\\\right|$ $=-(a-b)^2\\\\cdot1\\\\cdot(-1)^{1+3}\\\\left|\\\\begin{array}{cc} 1 & 1 \\\\\\\\ a & b \\\\end{array}\\\\right|=-(a-b)^2(b-a)=(a-b)^3$。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0345",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "证明$\\\\left|\\\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\\\\\ a & b & c & d \\\\\\\\ a^2 & b^2 & c^2 & d^2 \\\\\\\\ a^4 & b^4 & c^4 & d^4 \\\\end{array}\\\\right|=(a-b)(a-c)(a-d)(b-c)(b-d)(c-d)(a+b+c+d)$。 证明：这个形式看起来像范德蒙德行列式，但是根据后面的结果，发现这无法通过范德蒙德行列式的公式来计算，所以按照一般方法相减得到因子： $=\\\\left|\\\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\\\\\ 0 & b-a & c-a & d-a \\\\\\\\ a^2-a^2 & b^2-ab & c^2-ac & d^2-ad \\\\\\\\ a^4-a^4 & b^4-a^2b^2 & c^4-a^2c^2 & d^4-a^2d^2 \\\\end{array}\\\\right|$ $=\\\\left|\\\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\\\\\ 0 & b-a & c-a & d-a \\\\\\\\ 0 & b(b-a) & c(c-a) & d(d-a) \\\\\\\\ 0 & b^2(b+a)(b-a) & c^2(c+a)(c-a) & d^2(d+a)(d-a) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)\\\\left|\\\\begin{array}{cccc} 1 & 1 & 1 & 1 \\\\\\\\ 0 & 1 & 1 & 1 \\\\\\\\ 0 & b & c & d \\\\\\\\ 0 & b^2(b+a) & c^2(c+a) & d^2(d+a) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)\\\\cdot 1\\\\cdot(-1)^{1+1}\\\\left|\\\\begin{array}{ccc} 1 & 1 & 1 \\\\\\\\ b & c & d \\\\\\\\ b^2(b+a) & c^2(c+a) & d^2(d+a) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)\\\\left|\\\\begin{array}{ccc} 1 & 1 & 1 \\\\\\\\ 0 & c-b & d-b \\\\\\\\ 0 & c(c^2+ac-ab-b^2) & d(d^2+ad-ab-b^2) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)\\\\left|\\\\begin{array}{ccc} 1 & 1 & 1 \\\\\\\\ 0 & c-b & d-b \\\\\\\\ 0 & c(a+b+c)(c-b) & d(a+b+d)(d-b) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)\\\\left|\\\\begin{array}{cc} c-b & d-b \\\\\\\\ c(a+b+c)(c-b) & d(a+b+d)(d-b) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)(c-b)(d-b)\\\\left|\\\\begin{array}{cc} 1 & 1 \\\\\\\\ c(a+b+c) & d(a+b+d) \\\\end{array}\\\\right|$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(c(a+b+c)-d(a+b+d))$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(ca+cb+c^2-da-db-d^2)$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(a(c-d)+b(c-d)+(c+d)(c-d))$ $=(b-a)(c-a)(d-a)(c-b)(d-b)(c-d)(a+b+c+d)$。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0346",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccc} 1 & 2 & 3 & 4 \\\\\\\\ 1 & 3 & 4 & 1 \\\\\\\\ 1 & 4 & 1 & 2 \\\\\\\\ 1 & 1 & 2 & 3 \\\\end{array}\\\\right|$。",
+    "answer": "=16$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "$=\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 4 \\\\\n    0 & 1 & 1 & -3 \\\\\n    0 & 1 & -3 & 1 \\\\\n    0 & -1 & -1 & -1\n\\end{array}\\right|\n=\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 4 \\\\\n    0 & 1 & 1 & -3 \\\\\n    0 & 0 & -4 & 4 \\\\\n    0 & 0 & 0 & -4\n\\end{array}\\right|=16$。"
+  },
+  {
+    "id": "e0347",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccc} 2 & 1 & 4 & 1 \\\\\\\\ 3 & -1 & 2 & 1 \\\\\\\\ 1 & 2 & 3 & 2 \\\\\\\\ 5 & 0 & 6 & 2 \\\\\\\\ \\\\end{array}\\\\right|$。",
+    "answer": "=3",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "$=\\left|\\begin{array}{cccc} \n    0 & -3 & -2 & -3 \\\\\n    0 & -7  & -7 & -5 \\\\\n    1 & 2 & 3 & 2 \\\\\n    0 & -10 & -9 & -8 \\\\\n\\end{array}\\right|=\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 2 \\\\\n    0 & -3 & -2 & -3 \\\\\n    0 & -7  & -7 & -5 \\\\\n    0 & -10 & -9 & -8 \\\\\n\\end{array}\\right|=\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 2 \\\\\n    0 & 3 & 2 & 3 \\\\\n    0 & 7  & 7 & 5 \\\\\n    0 & -10 & -9 & -8 \\\\\n\\end{array}\\right|$\n\n$=3\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 2 \\\\\n    0 & 1 & \\dfrac{2}{3} & 1 \\\\\n    0 & 7  & 7 & 5 \\\\\n    0 & -10 & -9 & -8 \\\\\n\\end{array}\\right|\n=3\\left|\\begin{array}{cccc} \n    1 & 2 & 3 & 2 \\\\\n    0 & 1 & \\dfrac{2}{3} & 1 \\\\\n    0 & 0  & \\dfrac{7}{3} & -2 \\\\\n    0 & 0  & -\\dfrac{7}{3} & 2 \\\\\n\\end{array}\\right|=0$。"
+  },
+  {
+    "id": "e0348",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "证明$\\\\left|\\\\begin{array}{ccc} ax+by & ay+bz & az+bx \\\\\\\\ ay+bz & az+bx & ax+by \\\\\\\\ az+bx & ax+by & ay+bz \\\\end{array}\\\\right|=(a^3+b^3)\\\\left|\\\\begin{array}{ccc} x & y & z \\\\\\\\ y & z & x \\\\\\\\ z & x & y \\\\end{array}\\\\right|$。 证明：首先因为上下因式的系数是$ab$，所以无论怎么样减都无法消去多余的$xy$或$z$得到结果的行列式中只有单个因子的情况，所以只能拆项，从第一个项开始拆： $=a\\\\left|\\\\begin{array}{ccc} x & ay+bz & az+bx \\\\\\\\ y & az+bx & ax+by \\\\\\\\ z & ax+by & ay+bz \\\\end{array}\\\\right|+b\\\\left|\\\\begin{array}{ccc} y & ay+bz & az+bx \\\\\\\\ z & az+bx & ax+by \\\\\\\\ x & ax+by & ay+bz \\\\end{array}\\\\right|$ $=a^2\\\\left|\\\\begin{array}{ccc} x & ay+bz & z \\\\\\\\ y & az+bx & x \\\\\\\\ z & ax+by & y \\\\end{array}\\\\right|+b^2\\\\left|\\\\begin{array}{ccc} y & z & az+bx \\\\\\\\ z & x & ax+by \\\\\\\\ x & y & ay+bz \\\\end{array}\\\\right|=a^3\\\\left|\\\\begin{array}{ccc} x & y & z \\\\\\\\ y & z & x \\\\\\\\ z & x & y \\\\end{array}\\\\right|+b^3\\\\left|\\\\begin{array}{ccc} y & z & x \\\\\\\\ z & x & y \\\\\\\\ x & y & z \\\\end{array}\\\\right|$ $=a^3\\\\left|\\\\begin{array}{ccc} x & y & z \\\\\\\\ y & z & x \\\\\\\\ z & x & y \\\\end{array}\\\\right|+b^3\\\\left|\\\\begin{array}{ccc} x & y & z \\\\\\\\ y & z & x \\\\\\\\ z & x & y \\\\end{array}\\\\right|=(a^3+b^3)\\\\left|\\\\begin{array}{ccc} x & y & z \\\\\\\\ y & z & x \\\\\\\\ z & x & y \\\\end{array}\\\\right| $",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0349",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{ccc} -ab & ac & ae \\\\\\\\ bd & -cd & de \\\\\\\\ bf & cf & -ef \\\\end{array}\\\\right|$。",
+    "answer": "=adf",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "$=adf\\left|\\begin{array}{ccc} \n    -b & c & e \\\\\n    b & -c & e \\\\\n    b & c & -e\n\\end{array}\\right|\n=abcdef\\left|\\begin{array}{ccc} \n    -1 & 1 & 1 \\\\\n    1 & -1 & 1 \\\\\n    1 & 1 & -1\n\\end{array}\\right|=4abcdef$。"
+  },
+  {
+    "id": "e0350",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccc} x & a & \\\\cdots & a \\\\\\\\ a & x & \\\\cdots & a \\\\\\\\ \\\\vdots & \\\\vdots & \\\\ddots & \\\\vdots \\\\\\\\ a & a & \\\\cdots & x \\\\\\\\ \\\\end{array}\\\\right|$。",
+    "answer": "=(x+(n-1)a)",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "$=\\left|\\begin{array}{cccc} \n    x+(n-1)a & x+(n-1)a & \\cdots & x+(n-1)a \\\\\n    a & x & \\cdots & a \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    a & a & \\cdots & x \\\\\n\\end{array}\\right|$\n\n$=(x+(n-1)a)\\left|\\begin{array}{cccc} \n    1 & 1 & \\cdots & 1 \\\\\n    a & x & \\cdots & a \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    a & a & \\cdots & x \\\\\n\\end{array}\\right|=(x+(n-1)a)\\left|\\begin{array}{cccc} \n    1 & 1 & \\cdots & 1 \\\\\n     & x-a & &  \\\\\n     & & \\ddots & \\\\\n     & & & x-a \\\\\n\\end{array}\\right|$\n\n$=(x+(n-1)a)(x-a)^{n-1}$。"
+  },
+  {
+    "id": "e0351",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccc} 1+a_1 & a_1 & \\\\cdots & a_1 \\\\\\\\ a_2 & 1+a_2 & \\\\cdots & a_2 \\\\\\\\ \\\\vdots & \\\\vdots & \\\\ddots & \\\\vdots \\\\\\\\ a_n & a_n & \\\\cdots & 1+a_n \\\\\\\\ \\\\end{array}\\\\right|$。",
+    "answer": "=(1+a_1+a_2+",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "$=(1+a_1+a_2+\\cdots+a_n)\\left|\\begin{array}{cccc} \n    1 & 1 & \\cdots & 1 \\\\\n    a_2 & 1+a_2 & \\cdots & a_2 \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    a_n & a_n & \\cdots & 1+a_n \\\\\n\\end{array}\\right|$\n\n$=(1+a_1+a_2+\\cdots+a_n)\\left|\\begin{array}{cccc} \n    1 & 0 & \\cdots & 0 \\\\\n    a_2 & 1 & \\cdots & 0 \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    a_n & 0 & \\cdots & 1 \\\\\n\\end{array}\\right|=(1+a_1+a_2+\\cdots+a_n)$。"
+  },
+  {
+    "id": "e0352",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccc} a_1 & 0 & 0 & b_1 \\\\\\\\ 0 & a_2 & b_2 & 0 \\\\\\\\ 0 & b_3 & a_3 & 0 \\\\\\\\ b_4 & 0 & 0 & a_4 \\\\end{array}\\\\right|$。 $=-\\\\left|\\\\begin{array}{cccc} a_1 & b_1 & 0 & 0 \\\\\\\\ 0 & 0 & a_2 & b_2 \\\\\\\\ 0 & 0 & b_3 & a_3 \\\\\\\\ b_4 & a_4 & 0 & 0 \\\\end{array}\\\\right|=\\\\left|\\\\begin{array}{cccc} a_1 & b_1 & 0 & 0 \\\\\\\\ b_4 & a_4 & 0 & 0 \\\\\\\\ 0 & 0 & b_3 & a_3 \\\\\\\\ 0 & 0 & a_2 & b_2 \\\\end{array}\\\\right|=\\\\left|\\\\begin{array}{cc} a_1 & b_1 \\\\\\\\ b_4 & a_4 \\\\end{array}\\\\right|\\\\left|\\\\begin{array}{cc} b_3 & a_3 \\\\\\\\ a_2 & b_2 \\\\end{array}\\\\right|=(a_1a_4-b_1b_4)(a_2a_3-b_2b_3)$。",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0353",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{cccccc} 2 & -1 & 0 & \\\\cdots & 0 & 0 \\\\\\\\ -1 & 2 & -1 & \\\\cdots & 0 & 0 \\\\\\\\ 0 & -1 & 2 & \\\\cdots & 0 & 0 \\\\\\\\ \\\\vdots & \\\\vdots & \\\\vdots & \\\\ddots & \\\\vdots & \\\\vdots \\\\\\\\ 0 & 0 & 0 & \\\\cdots & 2 & -1 \\\\\\\\ 0 & 0 & 0 & \\\\cdots & -1 & 2 \\\\end{array}\\\\right|_{n\\\\times n}$",
+    "answer": "=1",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "这是一个爪形行列式，然而无法通过斜的数数据来消去平的数据，考虑将所有列都加到第一列：\n\n$D_n=\\left|\\begin{array}{cccccc} \n    1 & -1 & 0 & \\cdots & 0 & 0  \\\\\n    0 & 2 & -1 & \\cdots & 0 & 0 \\\\\n    0 & -1 & 2 & \\cdots & 0 & 0 \\\\\n    \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n    0 & 0 & 0 & \\cdots & 2 & -1 \\\\\n    1 & 0 & 0 & \\cdots & -1 & 2\n\\end{array}\\right|=1\\cdot(-1)^{1+1}\\left|\\begin{array}{ccccc} \n    2 & -1 & \\cdots & 0 & 0 \\\\\n    -1 & 2 & \\cdots & 0 & 0 \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n    0 & 0 & \\cdots & 2 & -1 \\\\\n    0 & 0 & \\cdots & -1 & 2\n\\end{array}\\right|$\n\n$+1\\cdot(-1)^{n+1}\\left|\\begin{array}{cccccc} \n    -1 & 0 & \\cdots & 0 & 0  \\\\\n    2 & -1 & \\cdots & 0 & 0 \\\\\n    -1 & 2 & \\ddots & 0 & 0 \\\\\n    \\vdots & \\vdots & \\cdots & \\ddots & \\vdots \\\\\n    0 & 0 & \\cdots & 2 & -1\n\\end{array}\\right|=D_{n-1}+1\\cdot(-1)^{n+1}(-1)^{n-1}$\n\n$\\therefore D_n=D_{n-1}+1$。这就是本题目的递推式。$D_n=D_1+n-1=2+n-1=1+n$。\n\n\\textcolor{orange}{注意：}对于爪形和异爪形行列式的递推时，只能从爪尖开始消（行列式展开），不能从爪根部消，否则就不能保证爪的形状。"
+  },
+  {
+    "id": "e0354",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "计算$\\\\left|\\\\begin{array}{ccccccc} a & & & & & b \\\\\\\\ & \\\\ddots & & & \\\\begin{turn}{80}$\\\\ddots$\\\\end{turn} & \\\\\\\\ & & a & b \\\\\\\\ & & c & d \\\\\\\\ & \\\\begin{turn}{80}$\\\\ddots$\\\\end{turn} & & & \\\\ddots \\\\\\\\ c & & & & & d \\\\end{array}\\\\right|_{2n\\\\times 2n}$。",
+    "answer": "不断递推可以得到结果为$(ad-bc)^n$。\n\n\\subsection{矩阵乘积}",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "将其$2n$行不断与$2n-1\\cdots2$行对换，再将其$2n$列不断与$2n-1\\cdots2$列对换，一共对换$2(2n-2)$次，一定是一个偶数：\n\n$=\\left|\\begin{array}{cccccccc} \n    a & b & 0 & & & \\cdots & & 0 \\\\\n    c & d & 0 & & & \\cdots & & 0 \\\\\n    0 & 0 & a & & & & & b \\\\\n    \\vdots & \\vdots & \\vdots & \\ddots & & & \\begin{turn}{80}$\\ddots$\\end{turn} & \\\\\n    \\vdots & \\vdots & \\vdots & & a & b \\\\\n    \\vdots & \\vdots & \\vdots & & c & d \\\\\n    \\vdots & \\vdots & \\vdots & \\begin{turn}{80}$\\ddots$\\end{turn} & & & \\ddots \\\\\n    0 & 0 & c & & & & & d\n\\end{array}\\right|_{2n\\times 2n}$，根据分块行列式的计算方式：\n\n$D_{2n}=D_2D_{2(n-1)}=(ad-bc)D_{2(n-1)}$，所以不断递推可以得到结果为$(ad-bc)^n$。\n\n\\subsection{矩阵乘积}"
+  },
+  {
+    "id": "e0355",
+    "subject": "线性代数",
+    "chapter": "行列式",
+    "question_text": "设$D=\\\\left|\\\\begin{array}{cccc} 3 & 1 & -1 & 2 \\\\\\\\ -5 & 1 & 3 & -4 \\\\\\\\ 2 & 0 & 1 & -1 \\\\\\\\ 1 & -5 & 3 &-3 \\\\end{array}\\\\right|$，$D$的$(i,j)$元的代数余子式设为$A_{ij}$，求$A_{31}+3A_{32}-2A_{33}+2A_{34}$。",
+    "answer": "=24$",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "行列式"
+    ],
+    "difficulty": 0.5,
+    "solution": "$A_{31}+3A_{32}-2A_{33}+2A_{34}=\\left|\\begin{array}{cccc} \n    3 & 1 & -1 & 2 \\\\\n    -5 & 1 & 3 & -4 \\\\\n    1 & 3 & -2 & 2 \\\\\n    1 & -5 & 3 &-3\n\\end{array}\\right|\n=\\left|\\begin{array}{cccc} \n    1 & 3 & -2 & 2 \\\\\n    0 & 8 & -5 & 5 \\\\\n    0 & 0 & 3 & -4 \\\\\n    0 & 0 & 0 & 1\n\\end{array}\\right|=24$。\n\n\\end{document}"
+  },
+  {
+    "id": "e0356",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A$是3阶方阵，特征值为1，2，3，求$\\\\vert A\\\\vert$的元素$a_{11},a_{22},a_{33}$的代数余子式$A_{11},A_{22},A_{33}$的和$\\\\sum\\\\limits_{i=1}^3A_{ii}$。",
+    "answer": "$tr(A^*)=A_{11}+A_{22}+A_{33}=\\lambda_1^*+\\lambda_2^*+\\lambda_3^*$\n\n$=\\sum\\limits_{i=1}^3\\dfrac{\\ver",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先代数余子式的和$A_{11},A_{22},A_{33}$一般在行列式展开定理中使用，但是这里给出的不是一行或一列的代数余子式，而是主对角线上的代数余子式，这就无法使用代数余子式来表达行列式的值了。\n\n而另一个提到代数余子式的地方就是伴随矩阵$A^*$，所求的正好是伴随矩阵的迹$tr(A^*)=A_{11}+A_{22}+A_{33}$。\n\n又根据特征值性质，特征值的和为矩阵的迹，特征值的积为矩阵行列式的值，所以$tr(A^*)=A_{11}+A_{22}+A_{33}=\\lambda_1^*+\\lambda_2^*+\\lambda_3^*$\n\n$=\\sum\\limits_{i=1}^3\\dfrac{\\vert A\\vert}{\\lambda_i}=\\sum\\limits_{i=1}^3\\dfrac{\\lambda_1\\lambda_2\\lambda_3}{\\lambda_i}=\\lambda_2\\lambda_3+\\lambda_1\\lambda_3+\\lambda_1\\lambda_2=2+3+6=11$。"
+  },
+  {
+    "id": "e0357",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$\\\\overrightarrow{\\\\alpha}=(a,1,1)^T$是矩阵$A=\\\\left[\\\\begin{array}{ccc} -1 & 2 & 2 \\\\\\\\ 2 & a & -2 \\\\\\\\ 2 & -2 & -1 \\\\end{array}\\\\right]$的逆矩阵的特征向量，则求$\\\\overrightarrow{\\\\alpha}$在矩阵$A$中对应的特征值。",
+    "answer": "矩阵$A$对应的特征值为$-5$。\n\n\\subsubsection{矩阵关系式}",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$\\overrightarrow{\\alpha}$是$A^{-1}$的特征向量，所以令此时的特征值为$\\lambda_0$，则定义$\\lambda_0\\overrightarrow{\\alpha}=A^{-1}\\overrightarrow{\\alpha}$，$\\lambda_0A\\overrightarrow{\\alpha}=\\overrightarrow{\\alpha}$。\n\n即$\\lambda_0\\left[\\begin{array}{ccc}\n    -1 & 2 & 2 \\\\\n    2 & a & -2 \\\\\n    2 & -2 & -1\n\\end{array}\\right]\\left[\\begin{array}{c}\n    a \\\\\n    1 \\\\\n    1 \\\\\n\\end{array}\\right]=\\left[\\begin{array}{c}\n    a \\\\\n    1 \\\\\n    1 \\\\\n\\end{array}\\right]$，即$\\lambda_0\\left[\\begin{array}{ccc}\n    -a & 2 & 2 \\\\\n    2a & a & -2 \\\\\n    2a & -2 & -1\n\\end{array}\\right]=\\left[\\begin{array}{c}\n    a \\\\\n    1 \\\\\n    1 \\\\\n\\end{array}\\right]$。\\medskip\n\n即根据矩阵代表的是方程组，得到$\\lambda_0(4-a)=a$，$\\lambda_0(3a-2)=1$，$\\lambda_0(2a-3)=1$。\n\n又$\\lambda_0\\neq0$，$3a-2=2a-3$，$a=-1$，则$\\lambda_0=-\\dfrac{1}{5}$。\n\n所以矩阵$A$对应的特征值为$-5$。\n\n\\subsubsection{矩阵关系式}"
+  },
+  {
+    "id": "e0358",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A$为3阶矩阵，$A^2+A-2E=0$，$\\\\vert A\\\\vert=-2$，求其特征值。",
+    "answer": "$\\lambda_1=-2$，$\\lambda_2=\\lambda_3=1$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "需要求$A$特征值，但是$A$未知，特征向量也未知，如何求？\n\n首先要求特征值，就要首先设出特征方程：$A\\xi=\\lambda\\xi$，$\\xi\\neq0$。\n\n又$A^2+A-2E=0$，所以代入方程：$(A^2+A-2E)\\xi=(\\lambda^2+\\lambda-2)\\xi=0$。\n\n$\\because\\xi\\neq0$，$\\lambda^2+\\lambda-2=0$，解得$\\lambda=-2$或$\\lambda=1$。\n\n但是不知道这个特征值各是几重，只知道存在这两种特征值。\n\n又$\\vert A\\vert=\\lambda_1\\lambda_2\\lambda_3=-2$，所以$\\lambda_1=-2$，$\\lambda_2=\\lambda_3=1$。"
+  },
+  {
+    "id": "e0359",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A$为三阶实对称矩阵，特征值为$1,3，-2$，其中$\\\\alpha_1=(1,2,-2)^T$，$\\\\alpha_2=(4,-1,a)^T$分别属于特征值$\\\\lambda=1$，$\\\\lambda=3$的特征向量。求$A$属于特征值$\\\\lambda=-2$的特征向量。",
+    "answer": "基础解系$(0,1,1)^T$,$\\alpha_3=(0,k,k)^T$（$k\\neq0$）。\n\n\\subsubsection{可逆矩阵关系}\n\n使用可逆矩阵相似对角化的性质。若$A\\sim B$，则",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "令$A$属于特征值$\\lambda=-2$的特征向量为$(x_1,x_2,x_3)^T$。\n\n根据实对称矩阵的正交性质。\n\n$\\alpha_1^T\\alpha_2=4-2-2a=0$，$\\alpha_2^T\\alpha_3=4x_1-x_2+ax_3=0$，$\\alpha_3^T\\alpha_1=x_1+2x_2-2x_3=0$。\n\n$a=1$，$4x_1-x_2+x_3=0$，$x_1+2x_2-2x_3=0$，解得基础解系$(0,1,1)^T$,$\\alpha_3=(0,k,k)^T$（$k\\neq0$）。\n\n\\subsubsection{可逆矩阵关系}\n\n使用可逆矩阵相似对角化的性质。若$A\\sim B$，则$P^{-1}AP=B$。$B$为纯量阵。且$B$的迹为$A$的特征值。$P$为特征向量。\\medskip"
+  },
+  {
+    "id": "e0360",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$P^{-1}AP=\\\\left[\\\\begin{array}{ccc} 1 \\\\\\\\ & 1 \\\\\\\\ & & -1 \\\\end{array}\\\\right]$，$P=(\\\\alpha_1,\\\\alpha_2,\\\\alpha_3)$可逆，求$A$关于特征值$\\\\lambda=1$的特征向量。",
+    "answer": "$\\lambda=1$的特征向量为$k_1\\alpha_1+k_2\\alpha_2$。\n\n\\subsubsection{抽象型}\n\n题目只会给对应的式子，来求对应的特征向量。需要记住特征值的关系式然后",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "根据$P^{-1}AP=\\Lambda$，所以$P$为特征向量，$1,1,-1$为特征值。\n\n所以$A$关于$\\lambda=1$的特征向量为$\\alpha_1$或$\\alpha_2$。而某一特征值的全部特征向量构成特征向量子空间，所以$\\lambda=1$的特征向量为$k_1\\alpha_1+k_2\\alpha_2$。\n\n\\subsubsection{抽象型}\n\n题目只会给对应的式子，来求对应的特征向量。需要记住特征值的关系式然后与给出的式子上靠拢，不会很复杂。"
+  },
+  {
+    "id": "e0361",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A$为三阶矩阵，且矩阵$A$各行元素之和均为5，则求$A$必然存在的特征向量。",
+    "answer": "转换为方程组：\\medskip\n\n$\\left\\{\\begin{array}{l}\n    A_{11}+A_{12}+A_{13}=5 \\\\\n    A_{21}+A_{22}+A_{23}=5 \\",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于是抽象型，所以没有实际的数据，就不能求出固定的特征值，$\\lambda\\xi=A\\xi$。\n\n又矩阵$A$各行元素之和均为5，所以转换为方程组：\\medskip\n\n$\\left\\{\\begin{array}{l}\n    A_{11}+A_{12}+A_{13}=5 \\\\\n    A_{21}+A_{22}+A_{23}=5 \\\\\n    A_{31}+A_{32}+A_{33}=5\n\\end{array}\\right.$，转为矩阵：$\\left[\\begin{array}{ccc}\n    A_{11} & A_{12} & A_{13} \\\\\n    A_{21} & A_{22} & A_{23} \\\\\n    A_{31} & A_{32} & A_{33}\n\\end{array}\\right]\\left[\\begin{array}{c}\n    1 \\\\\n    1 \\\\\n    1 \\\\\n\\end{array}\\right]=5\\left[\\begin{array}{c}\n    1 \\\\\n    1 \\\\\n    1 \\\\\n\\end{array}\\right]$。\\medskip\n\n即$\\xi=(1,1,1)^T$。"
+  },
+  {
+    "id": "e0362",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "设$A$为三阶矩阵，已知$-3E+A$不可逆，$\\\\vert2E+A\\\\vert=0$，$(E-A)x=0$有非零解，求$\\\\vert A^*-E\\\\vert$。",
+    "answer": "最后的行列式值为$42$。\n\n\\subsubsection{矩阵函数}\n\n题目要求$\\vert f(A)\\vert$的形式，即求$f(A)$的特征值，然后求其乘积就是矩阵方程的行列式值。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "前三个条件都是为了指明$\\vert-3E+A\\vert=\\vert3E-A\\vert=0$，$\\vert-2E-A\\vert=0$，$\\vert E-A\\vert=0$，即得到$A$的三个特征值$\\lambda_1=3$、$\\lambda_2=-2$、$\\lambda_3=1$。\n\n求$\\vert A^*-E\\vert$即求$A^*$的特征值，然后再乘起来，即得到行列式的值。\n\n又$A^{-1}=\\dfrac{A^*}{\\vert A\\vert}$，所以$A^*=\\dfrac{\\vert A\\vert}{A}$。\n\n$\\vert A\\vert$等于特征值的乘积$-6$，对应的特征值即为$\\mu_1=\\dfrac{-6}{3}=-2$，$\\mu_2=\\dfrac{-6}{-2}=3$，$\\mu_3=\\dfrac{-6}{1}=-6$。\n\n对应$A^*-E$的特征值为$-3$，$2$，$-6$，所以最后的行列式值为$42$。\n\n\\subsubsection{矩阵函数}\n\n题目要求$\\vert f(A)\\vert$的形式，即求$f(A)$的特征值，然后求其乘积就是矩阵方程的行列式值。"
+  },
+  {
+    "id": "e0363",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A=\\\\left(\\\\begin{array}{ccc} 2 & 0 & 0 \\\\\\\\ 0 & 0 & 1 \\\\\\\\ 0 & 1 & x \\\\end{array}\\\\right)$，$B=\\\\left(\\\\begin{array}{ccc} 2 \\\\\\\\ & y \\\\\\\\ & & -1 \\\\end{array}\\\\right)$，且$A\\\\sim B$，求参数。\\\\medskip 首先可以利用迹相等，则$2+0+x=2+y-1$，行列式值相等，则$-2=-2y$，解得$x=0$，$y=1$。 \\\\subsubsection{单矩阵} % \\\\begin{itemize} %",
+    "answer": "",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": ""
+  },
+  {
+    "id": "e0364",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知矩阵$A=\\\\left[\\\\begin{array}{ccc} 3 & 1 & 2 \\\\\\\\ 0 & 2 & a \\\\\\\\ 0 & 0 & 3 \\\\end{array}\\\\right]$和对角矩阵相似，求$a$。\\\\medskip",
+    "answer": "特征值为其迹$\\lambda=(3,2,3)$。特征值有二重根。\n\n已知$A\\sim\\Lambda$，$\\lambda=3$有两个线性无关的特征向量。即$(3E-A)x=0$有两个线性无关的解（自由变",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "由于$A$是对角矩阵，所以特征值为其迹$\\lambda=(3,2,3)$。特征值有二重根。\n\n已知$A\\sim\\Lambda$，$\\lambda=3$有两个线性无关的特征向量。即$(3E-A)x=0$有两个线性无关的解（自由变量）。即$r(3E-A)=1$。\n\n$3E-A=\\left[\\begin{array}{ccc}\n    0 & -1 & -2 \\\\\n    0 & 1 & -a \\\\\n    0 & 0 & 0\n\\end{array}\\right]=\\left[\\begin{array}{ccc}\n    0 & -1 & -2 \\\\\n    0 & 0 & -a-2 \\\\\n    0 & 0 & 0\n\\end{array}\\right]$，$\\therefore a=-2$。\n\n\\subsubsection{抽象型}\n\n首先要计算其特征值，再根据特征值反代特征方程，根据向量的构成判定秩的大小。"
+  },
+  {
+    "id": "e0365",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A=\\\\left(\\\\begin{array}{ccc} 0 & 0 & 1 \\\\\\\\ x & 1 & y \\\\\\\\ 1 & 0 & 0 \\\\end{array}\\\\right)$相似于对角矩阵，求$xy$关系式。",
+    "answer": "当$r(E-A)=1$时$x+y=0$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "已知相似，即$P^{-1}AP=\\Lambda$，则需要求$A$的特征值和特征向量。\n\n根据特征关系式$\\vert E\\lambda-A\\vert=0$，即$\\left\\vert\\begin{array}{ccc}\n    \\lambda & 0 & -1 \\\\\n    -x & \\lambda-1 & -y \\\\\n    -1 & 0 & \\lambda\n\\end{array}\\right\\vert=(\\lambda-1)(\\lambda^2-1)=(\\lambda-1)^2(\\lambda+1)=0$，即有特征值$\\lambda_1=\\lambda_2=1$，$\\lambda_3=1$。\n\n此时有二重特征值，所以应该有两个线性无关的特征向量，即对于$(E-A)x=0$有两个线性无关的解向量，所以该矩阵的秩为$3-2=1$。\n\n$E-A=\\left(\\begin{array}{ccc}\n    1 & 0 & -1 \\\\\n    -x & 1 & -y \\\\\n    -1 & 0 & 1\n\\end{array}\\right)=\\left(\\begin{array}{ccc}\n    1 & 0 & -1 \\\\\n    0 & 0 & -x-y \\\\\n    0 & 0 & 0\n\\end{array}\\right)$。\n\n所以当$r(E-A)=1$时$x+y=0$。"
+  },
+  {
+    "id": "e0366",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "设$A$是三阶矩阵，$\\\\alpha_1,\\\\alpha_2,\\\\alpha_3$是三维线性无关的列向量，且$A\\\\alpha_1=\\\\alpha_2+\\\\alpha_3$，$A\\\\alpha_2=\\\\alpha_1+\\\\alpha_3$，$A\\\\alpha_3=\\\\alpha_1+\\\\alpha_2$，求$A$相似的矩阵。",
+    "answer": "$P$可逆。\n\n$\\therefore AP=PB$，$P^{-1}AP=B$，$A\\sim B$。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "$A\\sim\\Lambda$，则$P^{-1}AP=\\Lambda$。\n\n$A(\\alpha_1,\\alpha_2,\\alpha_3)=(\\alpha_2+\\alpha_3,\\alpha_1+\\alpha_3,\\alpha_1+\\alpha_2)=(\\alpha_1,\\alpha_2,\\alpha_3)\\left[\\begin{array}{ccc}\n    0 & 1 & 1 \\\\\n    1 & 0 & 1 \\\\\n    1 & 1 & 0\n\\end{array}\\right]$。\n\n记$P=(\\alpha_1,\\alpha_2,\\alpha_3)$，$B=\\left[\\begin{array}{ccc}\n    0 & 1 & 1 \\\\\n    1 & 0 & 1 \\\\\n    1 & 1 & 0\n\\end{array}\\right]$。\\medskip\n\n又$\\alpha_1,\\alpha_2,\\alpha_3$是三维线性无关的列向量，$\\therefore\\vert\\alpha_1,\\alpha_2,\\alpha_3\\vert\\neq0$，所以$P$可逆。\n\n$\\therefore AP=PB$，$P^{-1}AP=B$，$A\\sim B$。"
+  },
+  {
+    "id": "e0367",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A$是三阶实对称矩阵，若正交矩阵$Q$使得$Q^{-1}AQ=\\\\left[\\\\begin{array}{ccc} 3 & 0 & 0 \\\\\\\\ 0 & 3 & 0 \\\\\\\\ 0 & 0 & 6 \\\\end{array}\\\\right]$，如果$\\\\alpha_1=(1,0,-1)^T$和$\\\\alpha_2=(0,1,1)^T$是矩阵$A$属于特征值$\\\\lambda=3$的特征向量，求$Q$。",
+    "answer": "就需要把常数项提出来。",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先由正交矩阵就可以知道各特征值正交。令$\\alpha_3=(x_1,x_2,x_3)^T$。对应的$\\lambda_3=6$。\n\n$\\alpha_3^T\\alpha_1=x_1-x_3=0$，$\\alpha_3^T\\alpha_2=x_2+x_3=0$，求$\\lambda_3$的特征值，则不如令$x_3=1$，则解得$\\alpha_3=(1,-1,1)^T$。\n\n这样$Q=\\left[\\begin{array}{ccc}\n    1 & 0 & 1 \\\\\n    0 & 1 & -1 \\\\\n    -1 & 1 & 1\n\\end{array}\\right]$，还需要将$Q$正交单位化。可知$\\alpha_3$根据正交规律求出来，一定是正交的，而$\\alpha_1^T\\alpha_2=-1\\neq0$所以需要正交。\n\n令$\\beta_1=\\alpha_1=(1,0,-1)^T$，$\\beta_2=\\alpha_2-\\dfrac{<\\alpha_2,\\beta_1>}{<\\beta_1,\\beta_1>}\\beta_1=(0,1,1)^T+\\dfrac{1}{2}(1,0,-1)^T=(\\dfrac{1}{2},1,\\dfrac{1}{2})^T$。\n\n最后对整个$Q$进行单位化：$\\gamma_1=\\dfrac{1}{\\sqrt{2}}(1,0,-1)^T$，$\\gamma_2=\\dfrac{1}{\\sqrt{6}}(1,2,1)^T$，$\\gamma_3=\\dfrac{1}{\\sqrt{3}}(1,-1,1)^T$。\n\n\\subsubsection{爪型矩阵}\n\n即类似于爪形行列式，且列数较大，不可能直接计算，所以就需要把常数项提出来。"
+  },
+  {
+    "id": "e0368",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "设$n$（$n\\\\geqslant2$）阶矩阵$A=\\\\left[\\\\begin{array}{ccccc} a & 1 & 1 & \\\\cdots & 1 \\\\\\\\ 1 & a & 1 & \\\\cdots & 1 \\\\\\\\ 1 & 1 & a & \\\\cdots & 1 \\\\\\\\ \\\\vdots & \\\\vdots & \\\\vdots & & \\\\vdots \\\\\\\\ 1 & 1 & 1 & \\\\cdots & a \\\\end{array}\\\\right]$。求可逆矩阵$P$与对角矩阵$\\\\Lambda$，使得$P^{-1}AP=\\\\Lambda$，并求$r(A^*)$。",
+    "answer": "$r(A^*)=\\left\\{\\begin{array}{ll}\n    n, & a\\neq1-n,a\\neq1 \\\\\n    1, & a=1-n \\\\\n    0, & a=1\n\\end{arr",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "矩阵$A$是个爪形，直接使用$\\vert\\lambda E-A\\vert=0$计算特征值非常复杂，所以对其化简：\n\n$A=\\left[\\begin{array}{cccc}\n    a-1 \\\\\n    & a-1 \\\\\n    & & \\cdots \\\\\n    & & & a-1\n\\end{array}\\right]+\\left[\\begin{array}{cccc}\n    1 & 1 & \\cdots & 1 \\\\\n    1 & 1 & \\cdots & 1 \\\\\n    \\vdots & \\vdots & & \\vdots \\\\\n    1 & 1 & \\cdots & 1 \\\\\n\\end{array}\\right]=(a-1)E+B$。\n\n$\\vert\\lambda E-B\\vert=\\left\\vert\\begin{array}{cccc}\n    \\lambda-1 & -1 & \\cdots & -1 \\\\\n    -1 & \\lambda-1 & \\cdots & -1 \\\\\n    \\vdots & \\vdots & & \\vdots \\\\\n    -1 & -1 & \\cdots & \\lambda-1\n\\end{array}\\right\\vert=\\left\\vert\\begin{array}{cccc}\n    \\lambda-n & \\lambda-n & \\cdots & \\lambda-n \\\\\n    -1 & \\lambda-1 & \\cdots & -1 \\\\\n    \\vdots & \\vdots & & \\vdots \\\\\n    -1 & -1 & \\cdots & \\lambda-1\n\\end{array}\\right\\vert=\\left\\vert\\begin{array}{cccc}\n    \\lambda-n & 0 & \\cdots & 0 \\\\\n    -1 & \\lambda & \\cdots & 0 \\\\\n    \\vdots & \\vdots & & \\vdots \\\\\n    -1 & 0 & \\cdots & \\lambda\n\\end{array}\\right\\vert=0$，所以$\\lambda_1=n$，$\\lambda_2=\\cdots=\\lambda_n=0$。\n\n从而$A$的特征值为$n"
+  },
+  {
+    "id": "e0369",
+    "subject": "线性代数",
+    "chapter": "相似矩阵",
+    "question_text": "已知$A=\\\\left(\\\\begin{array}{ccc} 2 & x & 1 \\\\\\\\ 0 & 3 & 0 \\\\\\\\ 3 & -6 & 0 \\\\end{array}\\\\right)$相似于对角矩阵，求$A^{100}$。\\\\medskip",
+    "answer": "$A=P\\Lambda P^{-1}$，$A^{100}=P\\Lambda^{100}P^{-1}$。\n\n\\end{document}",
+    "answer_type": "numeric",
+    "knowledge_tags": [
+      "相似矩阵"
+    ],
+    "difficulty": 0.5,
+    "solution": "首先$A\\sim\\Lambda$，所以$A$能相似对角化。\n\n$\\vert\\lambda E-A\\vert=\\left|\\begin{array}{ccc}\n    \\lambda-2 & -x & -1 \\\\\n    0 & \\lambda-3 & 0 \\\\\n    -3 & 6 & \\lambda\n\\end{array}\\right|=(\\lambda-3)^2(\\lambda+1)=0$。$\\lambda_1=\\lambda_2=3$，$\\lambda_3=-1$。\n\n所以对于$\\lambda_1=\\lambda_2=3$时，需要$s=2$，从而$r(A)=1$，对应成比例。\n\n代入3：$(3E-A)x=0$，$\\left(\\begin{array}{ccc}\n    1 & -x & -1 \\\\\n    0 & 0 & 0 \\\\\n    -3 & 6 & 3\n\\end{array}\\right)=0$，所以$\\dfrac{-1}{3}=\\dfrac{-x}{6}$，$x=2$。\n\n解得$\\xi_1=(1,0,1)^T$，$\\xi_2=(2,1,0)^T$，$\\xi_3=(1,0,-3)^T$。\n\n令$P=(\\xi_1,\\xi_2,\\xi_3)$，所以$A=P\\Lambda P^{-1}$，$A^{100}=P\\Lambda^{100}P^{-1}$。\n\n\\end{document}"
+  }
+]
