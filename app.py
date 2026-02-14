@@ -73,6 +73,7 @@ INDEX_HTML = '''
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智能刷题·考研数学</title>
+    <!-- KaTeX for LaTeX rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
           integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww"
           crossorigin="anonymous">
@@ -82,6 +83,9 @@ INDEX_HTML = '''
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
             integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk"
             crossorigin="anonymous"></script>
+    <!-- MathLive for formula input -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathlive@0.99.2/dist/mathlive-static.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/mathlive@0.99.2/dist/mathlive.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
                max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
@@ -96,6 +100,25 @@ INDEX_HTML = '''
                                background: #007bff; color: white; border: none;
                                border-radius: 4px; cursor: pointer; }
         button[type="submit"]:hover { background: #0056b3; }
+        /* MathLive styling */
+        math-field {
+            font-size: 1.2rem;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            min-width: 200px;
+            margin-right: 10px;
+        }
+        math-field:focus-within {
+            outline: 2px solid #007bff;
+            border-color: #007bff;
+        }
+        .input-hint {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -125,10 +148,19 @@ INDEX_HTML = '''
             <p><strong>【{{ question.subject }}】{{ question.chapter }}</strong> · 难度 {{ question.difficulty }}</p>
             <p style="font-size: 1.2rem;">{{ question.question_text | safe }}</p>
 
-            <form method="post" action="/answer" style="margin-top: 20px;">
+            <form method="post" action="/answer" style="margin-top: 20px;" id="answerForm">
                 <input type="hidden" name="qid" value="{{ question.id }}">
-                <input type="text" name="answer" placeholder="输入你的答案"
-                       style="width: 70%; padding: 8px; font-size: 1rem;" autofocus>
+                {% if question.answer_type == 'formula' %}
+                    <!-- MathLive for formula input -->
+                    <math-field name="answer" virtual-keyboard-mode="auto"
+                               smart-fence="true" tex-all-commands="false"
+                               style="width: 70%;"></math-field>
+                    <p class="input-hint">💡 使用上方键盘输入数学公式，如分数请输入 \frac{1}{2}</p>
+                {% else %}
+                    <!-- Regular text input for numeric/string answers -->
+                    <input type="text" name="answer" placeholder="输入你的答案"
+                           style="width: 70%; padding: 8px; font-size: 1rem;" autofocus>
+                {% endif %}
                 <button type="submit" style="padding: 8px 20px; font-size: 1rem;">提交</button>
             </form>
         </div>

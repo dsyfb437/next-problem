@@ -9,7 +9,7 @@ import os
 import random
 from datetime import datetime
 from typing import Dict, List, Set, Optional
-from sympy import sympify, SympifyError
+from sympy import sympify, SympifyError, simplify
 
 # Import database functions
 from db import record_interaction
@@ -188,15 +188,90 @@ def recommend_question(user: BKTUser, all_questions: List[Dict],
     return random.choice(best_questions)
 
 
+def latex_to_sympy(latex_str: str) -> str:
+    """
+    Convert LaTeX string to SymPy-compatible format.
+
+    Handles common LaTeX patterns:
+    - \\frac{a}{b} -> a/b
+    - \\sqrt{x} -> sqrt(x)
+    - \\sin, \\cos, \\tan -> sin, cos, tan
+    - \\ln, \\log -> ln, log
+    - x^2 -> x**2
+    - Variables and numbers
+
+    Args:
+        latex_str: LaTeX string from MathLive input
+
+    Returns:
+        SymPy-compatible string
+    """
+    import re
+
+    s = latex_str.strip()
+
+    # Remove common LaTeX commands that MathLive might include
+    s = re.sub(r'\\mathrm\{([^}]*)\}', r'\1', s)
+    s = re.sub(r'\\text\{([^}]*)\}', r'\1', s)
+
+    # Handle fractions: \frac{num}{den} -> (num)/(den)
+    while r'\frac' in s:
+        s = re.sub(r'\\frac\{([^{}]*)\}\{([^{}]*)\}', r'((\1)/(\2))', s)
+
+    # Handle square roots: \sqrt{x} -> sqrt(x), \sqrt{2} -> sqrt(2)
+    s = re.sub(r'\\sqrt\{([^{}]*)\}', r'sqrt(\1)', s)
+
+    # Handle nth roots: \sqrt[n]{x} -> x**(1/n)
+    s = re.sub(r'\\sqrt\[([^{}]*)\]\{([^{}]*)\}', r'((\2)**(1/(\1)))', s)
+
+    # Handle powers: x^{n} -> x**n
+    s = re.sub(r'\^\{([^}]*)\}', r'**(\1)', s)
+    s = re.sub(r'\^(\d)', r'**\1', s)
+
+    # Handle implicit multiplication: 2x -> 2*x
+    s = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', s)
+    s = re.sub(r'([a-zA-Z])(\d)', r'\1*\2', s)
+
+    # Handle Greek letters
+    greek_map = {
+        r'\\alpha': 'alpha', r'\\beta': 'beta', r'\\gamma': 'gamma',
+        r'\\delta': 'delta', r'\\epsilon': 'epsilon', r'\\theta': 'theta',
+        r'\\lambda': 'lambda', r'\\mu': 'mu', r'\\pi': 'pi', r'\\sigma': 'sigma',
+        r'\\tau': 'tau', r'\\phi': 'phi', r'\\omega': 'omega'
+    }
+    for greek, sympy_name in greek_map.items():
+        s = s.replace(greek, sympy_name)
+
+    # Handle functions: \sin, \cos, etc.
+    functions = ['sin', 'cos', 'tan', 'log', 'ln', 'exp', 'sqrt', 'abs', 'max', 'min']
+    for func in functions:
+        s = s.replace(f'\\{func}', func)
+
+    # Handle exp separately (both \exp and e^)
+    s = s.replace('\\exp', 'exp')
+
+    # Clean up remaining braces
+    s = s.replace('{', '(').replace('}', ')')
+
+    # Handle implicit multiplication with parentheses: (x)(y) -> (x)*(y)
+    s = re.sub(r'\)\(', r')*(', s)
+
+    # Handle edge cases: remove extra spaces
+    s = s.replace(' ', '')
+
+    return s
+
+
 def check_answer(question: Dict, user_answer: str) -> bool:
     """
     Check if user answer is correct.
 
     Supports numeric comparison, formula equivalence (using SymPy), and exact string match.
+    For formula type, accepts LaTeX input from MathLive and converts to SymPy for comparison.
 
     Args:
         question: Question dictionary with answer info
-        user_answer: User's answer string
+        user_answer: User's answer string (may be LaTeX for formula type)
 
     Returns:
         True if answer is correct, False otherwise
@@ -215,18 +290,49 @@ def check_answer(question: Dict, user_answer: str) -> bool:
             return False
 
     elif answer_type == 'formula':
+        # First try direct SymPy comparison (in case answer is already in SymPy format)
         try:
             expr_user = sympify(user_answer)
             expr_correct = sympify(correct_answer)
-            return expr_user.equals(expr_correct)
-        except (SympifyError, TypeError, AttributeError):
-            # Fallback to normalized string comparison
-            def normalize(s: str) -> str:
-                return (s.replace(' ', '')
-                        .replace('^', '**')
-                        .replace('²', '**2')
-                        .replace('x²', 'x**2'))
-            return normalize(user_answer) == normalize(correct_answer)
+            if expr_user.equals(expr_correct):
+                return True
+        except (SympifyError, TypeError, AttributeError, Exception):
+            pass
+
+        # Try converting LaTeX to SymPy format
+        try:
+            user_sympy = latex_to_sympy(user_answer)
+            correct_sympy = latex_to_sympy(correct_answer)
+
+            expr_user = sympify(user_sympy)
+            expr_correct = sympify(correct_sympy)
+
+            # Check symbolic equality
+            if expr_user.equals(expr_correct):
+                return True
+
+            # Check if difference simplifies to zero
+            diff = expr_user - expr_correct
+            if simplify(diff) == 0:
+                return True
+
+        except (SympifyError, TypeError, AttributeError, Exception) as e:
+            pass
+
+        # Final fallback: normalized string comparison
+        def normalize(s: str) -> str:
+            s = s.strip()
+            s = s.replace(' ', '')
+            s = s.replace('\\', '')
+            s = s.replace('{', '').replace('}', '')
+            s = s.replace('^', '**')
+            s = s.replace('²', '**2')
+            s = s.replace('×', '*')
+            s = s.replace('÷', '/')
+            return s.lower()
+
+        return normalize(user_answer) == normalize(correct_answer)
 
     else:
-        return user_answer == correct_answer
+        # String type - exact match (case-insensitive for convenience)
+        return user_answer.lower() == correct_answer.lower()
