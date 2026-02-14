@@ -31,8 +31,15 @@ data/
 *.db-shm
 *.db-wal
 
+# Test and temporary files
+test_*.py
+*.pyc
+
 # Old files (not needed for deployment)
 main.py
 
 # Claude Code
 .claude/
+
+# Render (not using anymore)
+render.yaml
