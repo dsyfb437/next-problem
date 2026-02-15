@@ -30,7 +30,7 @@
         "subject": "概率论",
         "chapter": "随机事件与概率",
         "question_text": "将8个完全相同的球放入三个不同的盒子，要求每个盒子至少有一个球，求一共有多少种放法。",
-        "answer": "=21$",
+        "answer": "21",
         "answer_type": "numeric",
         "knowledge_tags": [
             "随机事件与概率"
@@ -43,8 +43,8 @@
         "subject": "概率论",
         "chapter": "随机事件与概率",
         "question_text": "已知事件$A$和$B$相互独立，$P(A)=a$，$P(B)=b$，如果事件$C$必然导致$AB$同时发生，则求$ABC$都不发生的概率。",
-        "answer": "=P(",
-        "answer_type": "numeric",
+        "answer": "$(1−a)(1−b)$",
+        "answer_type": "formula",
         "knowledge_tags": [
             "随机事件与概率"
         ],
@@ -56,8 +56,8 @@
         "subject": "概率论",
         "chapter": "随机事件与概率",
         "question_text": "设袋中黑白球各一个，有放回取球，每次取一个，直到两种颜色的球都取到为止。求取球次数恰为3的概率。 %",
-        "answer": "概率为$\\dfrac{2}{8}=\\dfrac{1}{4}$。",
-        "answer_type": "numeric",
+        "answer": "$\\dfrac{1}{4}$。",
+        "answer_type": "formula",
         "knowledge_tags": [
             "随机事件与概率"
         ],
@@ -69,8 +69,8 @@
         "subject": "概率论",
         "chapter": "随机事件与概率",
         "question_text": "射手对同一目标独立地进行4次射击。若至少命中一次的概率为$\\\\dfrac{15}{16}$，则求该射手对同一目标独立地进行4次射击中至少没命中一次的概率。",
-        "answer": "到每次命中概率$p=\\dfrac{1}{2}$。\n\n求该射手对同一目标独立地进行4次射击中至少没命中一次的概率，则其对立事件为每次命中，其概率为$\\left(\\dfrac{1}{2}\\right)^4",
-        "answer_type": "numeric",
+        "answer": "$\\dfrac{15}{16}$",
+        "answer_type": "formula",
         "knowledge_tags": [
             "随机事件与概率"
         ],
@@ -82,7 +82,7 @@
         "subject": "概率论",
         "chapter": "数理统计",
         "question_text": "已知总体$X$的期望为$EX=0$，方差$DX=\\\\sigma^2$。从总体抽取容量为$n$的简单随机样本，其均值和方差分别为$\\\\overline{X}$，$S^2$。记$S_k^2=\\\\dfrac{n}{k}\\\\overline{X}^2+\\\\dfrac{1}{k}S^2$（$k=1,2,3,4$），则()。 $A.E(S_1^2)=\\\\sigma^2$\\\\qquad$B.E(S_2^2)=\\\\sigma^2$ $C.E(S_3^2)=\\\\sigma^2$\\\\qquad$D.E(S_4^2)=\\\\sigma^2$",
-        "answer": "=E",
+        "answer": "B",
         "answer_type": "numeric",
         "knowledge_tags": [
             "数理统计"
@@ -95,8 +95,8 @@
         "subject": "概率论",
         "chapter": "数理统计",
         "question_text": "设$X_i$为来自总体$E(\\\\lambda)$（$\\\\lambda>0$）的简单随机样本，记统计量$T=\\\\dfrac{1}{n}\\\\sum\\\\limits_{i=1}^nX_i^2$，求$ET$。",
-        "answer": "=E",
-        "answer_type": "numeric",
+        "answer": "$\\dfrac{2}{\\lambda^2}$",
+        "answer_type": "formula",
         "knowledge_tags": [
             "数理统计"
         ],
@@ -108,8 +108,8 @@
         "subject": "概率论",
         "chapter": "数理统计",
         "question_text": "设$X_i$为来自总体$X$的简单随机样本，而$X\\\\sim B\\\\left(1,\\\\dfrac{1}{2}\\\\right)$。记$\\\\overline{X}=\\\\dfrac{1}{n}\\\\sum\\\\limits_{i=1}^nX_i$，求$P\\\\left\\\\{\\\\overline{X}=\\\\dfrac{k}{n}\\\\right\\\\}$。（$0\\\\leqslant k\\\\leqslant n$）",
-        "answer": "=1",
-        "answer_type": "numeric",
+        "answer": "$C_n^k\\cdot\\left(\\dfrac{1}{2}\right)^n$",
+        "answer_type": "formula",
         "knowledge_tags": [
             "数理统计"
         ],
@@ -122,7 +122,7 @@
         "chapter": "数理统计",
         "question_text": "设$X_1,X_2,X_3,X_4$是来自正态总体$N(0,4)$的简单随机样本，记$X=a(X_1-2X_2)^2+b(3X_3-4X_4)^2$。求$X$服从$\\\\chi^2$分布下的参数与自由度。",
         "answer": "$a=\\dfrac{1}{20}$，$b=\\dfrac{1}{100}$。",
-        "answer_type": "numeric",
+        "answer_type": "formula",
         "knowledge_tags": [
             "数理统计"
         ],
@@ -134,8 +134,8 @@
         "subject": "概率论",
         "chapter": "数理统计",
         "question_text": "设$X_1,X_2,\\\\cdots,X_8$是来自正态总体$N(0,3^2)$的简单随机样本，则统计量$Y=\\\\dfrac{X_1+X_2+X_3+X_4}{\\\\sqrt{X_5^2+X_6^2+X_7^2+X_8^2}}$服从什么分布？",
-        "answer": "",
-        "answer_type": "numeric",
+        "answer": "t(4)",
+        "answer_type": "string",
         "knowledge_tags": [
             "数理统计"
         ],
