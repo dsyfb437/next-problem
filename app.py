@@ -62,15 +62,11 @@ def load_questions(subject: str) -> List[Dict]:
             filename = fp
             break
     if filename is None:
-        filename = possible_paths[0]  # fallback
-    print(f"[DEBUG] Loading questions from: {filename}")
+        filename = possible_paths[0]
     try:
         with open(filename, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            print(f"[DEBUG] Loaded {len(data)} questions")
-            return data
+            return json.load(f)
     except FileNotFoundError:
-        print(f"[DEBUG] File not found: {filename}")
         return []
 
 
