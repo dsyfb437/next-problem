@@ -50,14 +50,27 @@ def load_questions(subject: str) -> List[Dict]:
     Returns:
         List of question dictionaries
     """
-    # Get absolute path relative to app.py directory
     import os
-    app_dir = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(app_dir, 'questions', SUBJECT_FILES.get(subject, 'math1.json'))
+    # Try multiple paths for compatibility
+    possible_paths = [
+        os.path.join('questions', SUBJECT_FILES.get(subject, 'math1.json')),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'questions', SUBJECT_FILES.get(subject, 'math1.json')),
+    ]
+    filename = None
+    for fp in possible_paths:
+        if os.path.exists(fp):
+            filename = fp
+            break
+    if filename is None:
+        filename = possible_paths[0]  # fallback
+    print(f"[DEBUG] Loading questions from: {filename}")
     try:
         with open(filename, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            data = json.load(f)
+            print(f"[DEBUG] Loaded {len(data)} questions")
+            return data
     except FileNotFoundError:
+        print(f"[DEBUG] File not found: {filename}")
         return []
 
 
