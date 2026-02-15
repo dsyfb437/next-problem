@@ -50,7 +50,10 @@ def load_questions(subject: str) -> List[Dict]:
     Returns:
         List of question dictionaries
     """
-    filename = 'questions/' + SUBJECT_FILES.get(subject, 'math1.json')
+    # Get absolute path relative to app.py directory
+    import os
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(app_dir, 'questions', SUBJECT_FILES.get(subject, 'math1.json'))
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             return json.load(f)
