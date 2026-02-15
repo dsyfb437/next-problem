@@ -169,8 +169,8 @@ INDEX_HTML = '''
                         </label>
                         {% endfor %}
                     </div>
-                {% elif question.answer_type == 'formula' %}
-                    <!-- MathLive formula input with preview -->
+                {% else %}
+                    <!-- MathLive formula input for all fill-in questions -->
                     <div style="border: 1px solid #ddd; border-radius: 4px; padding: 10px; background: white;">
                         <math-field id="formulaInput"
                                    virtual-keyboard-mode="onfocus"
@@ -179,10 +179,6 @@ INDEX_HTML = '''
                         <p class="input-hint">预览：<span id="formulaPreview" style="display: inline-block; vertical-align: middle;"></span></p>
                         <p class="input-hint">💡 点击输入框使用虚拟键盘，或直接输入 LaTeX 语法如 \\frac{1}{2}, \\sqrt{x}</p>
                     </div>
-                {% else %}
-                    <!-- Regular text input for numeric/string answers -->
-                    <input type="text" name="answer" placeholder="输入你的答案"
-                           style="width: 70%; padding: 8px; font-size: 1rem;" autofocus>
                 {% endif %}
                 <button type="submit" style="padding: 8px 20px; font-size: 1rem;">提交</button>
             </form>
