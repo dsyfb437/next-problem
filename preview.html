@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能刷题·考研数学</title>
+    <link rel="stylesheet" href="https://unpkg.com/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://unpkg.com/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://unpkg.com/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+    <script defer src="https://unpkg.com/mathlive@0.100.0/dist/mathlive.js"></script>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            color: white;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .navbar .user-info a {
+            color: white;
+            text-decoration: underline;
+            opacity: 0.85;
+        }
+
+        .navbar .user-info a:hover {
+            opacity: 1;
+        }
+
+        /* 题库切换 */
+        .subject-selector {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .subject-selector label {
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .subject-selector select {
+            flex: 1;
+            max-width: 200px;
+            padding: 10px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .subject-selector select:hover,
+        .subject-selector select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* 题目卡片 */
+        .question-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+
+        .question-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .question-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 16px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question-header .meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .question-header .subject-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .question-header .difficulty {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .question-header .fav-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .question-header .fav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .question-header .fav-btn.active {
+            background: var(--warning);
+        }
+
+        .question-body {
+            padding: 24px;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .question-text .katex {
+            font-size: 1.4rem;
+        }
+
+        /* 答题区域 */
+        .answer-section {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .answer-section h4 {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 选择题选项 */
+        .option-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            border-color: var(--primary);
+            background: #f0f7ff;
+            transform: translateX(4px);
+        }
+
+        .option-item input {
+            margin-right: 14px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+ .option-text {
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        /* 公式输入 */
+        .formula-input-wrapper {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .formula-input-wrapper math-field {
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .formula-input-wrapper math-field:focus-within {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-preview {
+            margin-top: 12px;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .input-hint {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* 提交按钮 */
+        .submit-btn {
+            margin-top: 20px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 统计信息区域 */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-card .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .stat-card.blue { border-top: 4px solid var(--primary); }
+        .stat-card.blue .value { color: var(--primary); }
+
+        .stat-card.green { border-top: 4px solid var(--success); }
+        .stat-card.green .value { color: var(--success); }
+
+        .stat-card.red { border-top: 4px solid var(--danger); }
+        .stat-card.red .value { color: var(--danger); }
+
+        .stat-card.yellow { border-top: 4px solid var(--warning); }
+        .stat-card.yellow .value { color: var(--warning); }
+
+        /* 知识点 */
+        .knowledge-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .knowledge-section h3 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .knowledge-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .knowledge-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .knowledge-item .name {
+            min-width: 80px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .knowledge-item .bar {
+            flex: 1;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .knowledge-item .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .knowledge-item .bar-fill.low { background: var(--danger); }
+        .knowledge-item .bar-fill.medium { background: var(--warning); }
+        .knowledge-item .bar-fill.high { background: var(--success); }
+
+        .knowledge-item .value {
+            min-width: 45px;
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* 快捷入口 */
+        .quick-links {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .quick-link {
+            padding: 16px 32px;
+            font-size: 1rem;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .quick-link:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .quick-link.warning { color: var(--danger); }
+        .quick-link.warning:hover { background: #fef2f2; }
+
+        .quick-link.info { color: var(--info); }
+        .quick-link.info:hover { background: #f0f9ff; }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .question-header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <nav class="navbar">
+            <h1>🎓 考研数学·智能刷题</h1>
+            <div class="user-info">
+                <span>欢迎，测试用户</span>
+                <a href="/logout">退出</a>
+            </div>
+        </nav>
+
+        <!-- 题库切换 -->
+        <div class="subject-selector">
+            <label>当前题库：</label>
+            <select>
+                <option value="math1" selected>高等数学</option>
+                <option value="linalg">线性代数</option>
+                <option value="prob">概率论</option>
+            </select>
+        </div>
+
+        <!-- 统计卡片 -->
+        <div class="stats-section">
+            <div class="stat-card blue">
+                <div class="icon">📚</div>
+                <div class="value">150</div>
+                <div class="label">已做题数</div>
+            </div>
+            <div class="stat-card green">
+                <div class="icon">✅</div>
+                <div class="value">85%</div>
+                <div class="label">正确率</div>
+            </div>
+            <div class="stat-card red">
+                <div class="icon">❌</div>
+                <div class="value">20</div>
+                <div class="label">错题数</div>
+            </div>
+            <div class="stat-card yellow">
+                <div class="icon">⭐</div>
+                <div class="value">8</div>
+                <div class="label">收藏数</div>
+            </div>
+        </div>
+
+        <!-- 题目卡片 -->
+        <div class="question-card">
+            <div class="question-header">
+                <div class="meta">
+                    <span class="subject-tag">高等数学</span>
+                    <span>第一章：极限</span>
+                    <span class="difficulty">难度 0.8</span>
+                </div>
+                <button class="fav-btn">☆ 收藏</button>
+            </div>
+            <div class="question-body">
+                <p class="question-text">
+                    计算下列极限：
+                    $$\lim_{x \to 0} \frac{\sin 2x}{x}$$
+                </p>
+
+                <div class="answer-section">
+                    <h4>请输入答案</h4>
+                    <div class="formula-input-wrapper">
+                        <math-field virtual-keyboard-mode="onfocus"></math-field>
+                        <p class="input-preview">预览：<span id="preview"></span></p>
+                        <p class="input-hint">💡 点击输入框使用虚拟键盘，或直接输入 LaTeX 语法如 \frac{1}{2}</p>
+                    </div>
+                    <button class="submit-btn">提交答案</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 选择题示例 -->
+        <div class="question-card">
+            <div class="question-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                <div class="meta">
+                    <span class="subject-tag">高等数学</span>
+                    <span>第一章：极限</span>
+                    <span class="difficulty">难度 0.5</span>
+                </div>
+                <button class="fav-btn active" style="background: var(--warning);">★ 已收藏</button>
+            </div>
+            <div class="question-body">
+                <p class="question-text">
+                    当 $x \to 0$ 时，下列哪个不是无穷小量？
+                </p>
+
+                <div class="answer-section">
+                    <h4>请选择答案</h4>
+                    <div class="option-list">
+                        <label class="option-item">
+                            <input type="radio" name="mc1" value="0">
+                            <span class="option-text">$x^2$</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="mc1" value="1">
+                            <span class="option-text">$\sin x$</span>
+                        </label>
+                        <label class="option-item" style="border-color: var(--danger); background: #fef2f2;">
+                            <input type="radio" name="mc1" value="2">
+                            <span class="option-text">$\frac{1}{x}$</span>
+                            <span style="color: var(--danger); font-weight: bold; margin-left: auto;">✗</span>
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="mc1" value="3">
+                            <span class="option-text">$\tan x$</span>
+                        </label>
+                    </div>
+                    <button class="submit-btn">提交答案</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 知识点掌握度 -->
+        <div class="knowledge-section">
+            <h3>📊 当前知识点掌握度</h3>
+            <div class="knowledge-list">
+                <div class="knowledge-item">
+                    <span class="name">极限</span>
+                    <div class="bar">
+                        <div class="bar-fill high" style="width: 85%;"></div>
+                    </div>
+                    <span class="value">0.85</span>
+                </div>
+                <div class="knowledge-item">
+                    <span class="name">连续</span>
+                    <div class="bar">
+                        <div class="bar-fill medium" style="width: 60%;"></div>
+                    </div>
+                    <span class="value">0.60</span>
+                </div>
+                <div class="knowledge-item">
+                    <span class="name">导数</span>
+                    <div class="bar">
+                        <div class="bar-fill low" style="width: 30%;"></div>
+                    </div>
+                    <span class="value">0.30</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快捷入口 -->
+        <div class="quick-links">
+            <a href="/review_wrong" class="quick-link warning">❌ 复习错题</a>
+            <a href="/review_due" class="quick-link info">📅 今日复习</a>
+            <a href="/favorites" class="quick-link">⭐ 查看收藏</a>
+            <a href="/stats" class="quick-link">📈 学习统计</a>
+        </div>
+    </div>
+
+    <script>
+        function initMathLive() {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initMathLive);
+        initMathLive();
+
+        // 收藏按钮交互
+        const favBtn = document.querySelector('.fav-btn');
+        favBtn.addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                this.textContent = '☆ 收藏';
+            } else {
+                this.classList.add('active');
+                this.textContent = '★ 已收藏';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -24,6 +24,7 @@ Thumbs.db
 # Environment variables
 .env
 .env.local
+.flaskenv
 
 # Data files (SQLite - development only, production uses PostgreSQL)
 data/
@@ -34,6 +35,7 @@ data/
 # Test and temporary files
 test_*.py
 *.pyc
+*.log
 
 # Old files (not needed for deployment)
 main.py
