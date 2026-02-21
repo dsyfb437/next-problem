@@ -877,20 +877,6 @@
     "type": "fill_in"
   },
   {
-    "id": "e0059",
-    "subject": "概率论",
-    "chapter": "数字特征",
-    "question_text": "已知随机变量$XY$，$EX=EY=2$、$DX=1$、$DY=4$，$\\rho_{XY}=0.5$，估计概率$P\\{\\vert X-Y\\vert\\geqslant6\\}$。",
-    "answer": "P\\{\\vert X-Y\\vert\\geqslant6\\}=P\\{\\vert Z-0\\vert\\geqslant6\\}\\leqslant\\dfrac{DZ}{\\epsilon^2}=\\dfrac{3}{6^2}=\\dfrac{1}{12}",
-    "answer_type": "string",
-    "knowledge_tags": [
-      "数字特征"
-    ],
-    "difficulty": 0.5,
-    "solution": "已知$\\rho_{XY}=0.5=\\dfrac{Cov(X,Y)}{\\sqrt{DX}\\sqrt{DY}}=\\dfrac{Cov(X,Y)}{2}$，$Cov(X,Y)=1=E(XY)-EXEY$，$E(XY)=5$。\n\n令$X-Y=Z$，$EZ=EX-EY=0$，$DZ=DX+DY-2Cov(X,Y)=1+4-2=3$。\n\n取$\\epsilon=6$，由切比雪夫不等式得$P\\{\\vert X-Y\\vert\\geqslant6\\}=P\\{\\vert Z-0\\vert\\geqslant6\\}\\leqslant\\dfrac{DZ}{\\epsilon^2}=\\dfrac{3}{6^2}=\\dfrac{1}{12}$。\n\n\\end{document}",
-    "type": "fill_in"
-  },
-  {
     "id": "p006",
     "subject": "概率论",
     "chapter": "随机事件与概率",
