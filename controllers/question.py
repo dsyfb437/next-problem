@@ -155,6 +155,7 @@ def create_question_controller(user_service, question_repo, subject_files):
         user.answered_questions.add(qid)
 
         # 更新知识点
+        from services.recommend import get_current_engine
         engine = get_current_engine()
         engine.update(
             {"knowledge_state": user.knowledge_state, "answered_questions": user.answered_questions},

@@ -56,9 +56,13 @@ class UserRepository:
         if not file_path.exists():
             return None
 
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return User.from_dict(data)
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            return User.from_dict(data)
+        except (json.JSONDecodeError, KeyError):
+            # 文件损坏，返回None
+            return None
 
     def create_user(self, username: str, password_hash: str, user_id: str) -> User:
         """创建新用户"""

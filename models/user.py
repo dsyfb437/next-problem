@@ -44,6 +44,10 @@ class AnswerHistory:
             "reviewed": self.reviewed
         }
 
+    def get(self, key: str, default=None):
+        """支持dict风格的访问"""
+        return getattr(self, key, default)
+
     @classmethod
     def from_dict(cls, data: dict) -> 'AnswerHistory':
         return cls(
@@ -114,6 +118,11 @@ class User:
 
     def to_dict(self) -> dict:
         """转换为字典用于持久化"""
+        def serialize_history(h):
+            if isinstance(h, dict):
+                return h
+            return h.to_dict() if hasattr(h, 'to_dict') else h
+
         return {
             "user_id": self.user_id,
             "username": self.username,
@@ -122,7 +131,7 @@ class User:
             "knowledge_state": self.knowledge_state,
             "answered_questions": list(self.answered_questions),
             "correct_in_round": list(self.correct_in_round),
-            "history": [h.to_dict() for h in self.history],
+            "history": [serialize_history(h) for h in self.history],
             "favorites": self.favorites,
             "favorite_notes": self.favorite_notes,
             "daily_stats": self.daily_stats,
@@ -145,9 +154,14 @@ class User:
             daily_stats=data.get("daily_stats", {}),
             total_stats=data.get("total_stats", {})
         )
-        # 历史记录
+        # 历史记录 - 支持dict和AnswerHistory两种格式
         history_list = data.get("history", [])
-        user.history = [AnswerHistory.from_dict(h) for h in history_list]
+        user.history = []
+        for h in history_list:
+            if isinstance(h, dict):
+                user.history.append(AnswerHistory.from_dict(h))
+            else:
+                user.history.append(h)
         return user
 
 

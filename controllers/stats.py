@@ -69,7 +69,7 @@ def create_stats_controller(user_service, question_repo, subject_files):
             "username": user.username,
             "exported_at": datetime.now().isoformat(),
             "total_records": len(user.history),
-            "records": [h.to_dict() for h in user.history] if hasattr(user.history[0], "to_dict") else user.history
+            "records": [h.to_dict() for h in user.history] if user.history and hasattr(user.history[0], "to_dict") else user.history
         }
 
         response = make_response(json.dumps(training_data, ensure_ascii=False, indent=2))

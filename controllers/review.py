@@ -22,7 +22,7 @@ def create_review_controller(user_service, question_repo, subject_files):
 
         # 获取错题
         wrong_qids = {
-            h["qid"] for h in user.history
+            h.get("qid") for h in user.history
             if not h.get("correct", False) and not h.get("reviewed", False)
         }
         wrong_questions = [q for q in coll.questions if q.id in wrong_qids]
@@ -87,9 +87,9 @@ def create_review_controller(user_service, question_repo, subject_files):
         for h in user.history:
             if h.get("correct") and h.get("next_review"):
                 try:
-                    next_review = datetime.fromisoformat(h["next_review"])
+                    next_review = datetime.fromisoformat(h.get("next_review"))
                     if next_review <= now:
-                        due_qids.add(h["qid"])
+                        due_qids.add(h.get("qid"))
                 except:
                     continue
 
@@ -136,19 +136,19 @@ def create_review_controller(user_service, question_repo, subject_files):
             for h in user.history:
                 if h.get("qid") == qid and h.get("correct"):
                     review_count = h.get("review_count", 0) + 1
-                    h["review_count"] = review_count
-                    h["last_reviewed"] = datetime.now().isoformat()
+                    h.review_count = review_count
+                    h.last_reviewed = datetime.now().isoformat()
                     from services.user_service import calculate_next_review_interval
                     interval = calculate_next_review_interval(review_count)
-                    h["next_review"] = (datetime.now() + timedelta(days=interval)).isoformat()
+                    h.next_review = (datetime.now() + timedelta(days=interval)).isoformat()
                     break
         else:
             flash(f"回答错误。正确答案：{question.get('answer', '')}", "wrong")
             # 重置复习周期
             for h in user.history:
                 if h.get("qid") == qid and h.get("correct"):
-                    h["review_count"] = 0
-                    h["next_review"] = datetime.now().isoformat()
+                    h.review_count = 0
+                    h.next_review = datetime.now().isoformat()
                     break
 
         user_service.save_user(user)
