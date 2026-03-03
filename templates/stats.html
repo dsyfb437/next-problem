@@ -92,7 +92,7 @@
         <tbody>
             {% for h in recent_history %}
             <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 8px; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ h.question_text }}</td>
+                <td style="padding: 8px; max-width: 300px;" class="latex-render">{{ h.question_text|safe }}</td>
                 <td style="text-align: center; padding: 8px;">{{ h.user_answer or '（跳过）' }}</td>
                 <td style="text-align: center; padding: 8px;">
                     {% if h.correct %}
@@ -171,6 +171,19 @@ document.getElementById('confirmModal').addEventListener('click', function(e) {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // 渲染最近做题的LaTeX
+    if (typeof renderMathInElement !== 'undefined') {
+        document.querySelectorAll('.latex-render').forEach(function(el) {
+            renderMathInElement(el, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        });
+    }
+
     const ctx = document.getElementById('memoryCurveChart');
     if (ctx) {
         new Chart(ctx, {
