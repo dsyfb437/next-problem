@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}学习统计 - 智能刷题{% endblock %}
+{% block title %}学习统计 - NextProblem{% endblock %}
 
 {% block content %}
 <h2 style="margin-bottom: 20px;">学习统计</h2>
@@ -38,6 +38,24 @@
 </div>
 
 <div class="card" style="margin-bottom: 24px;">
+    <h3 style="margin-bottom: 16px;">艾宾浩斯记忆曲线</h3>
+    <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px;">
+        理论记忆保持率随时间变化曲线（根据艾宾浩斯遗忘规律）
+    </p>
+    <canvas id="memoryCurveChart" style="max-height: 200px;"></canvas>
+    <div style="margin-top: 16px; padding: 12px; background: var(--bg); border-radius: 8px; display: flex; justify-content: space-around; text-align: center;">
+        <div>
+            <div style="font-size: 24px; font-weight: 600; color: var(--primary);">{{ due_count }}</div>
+            <div style="color: var(--text-light); font-size: 12px;">待复习题数</div>
+        </div>
+        <div>
+            <div style="font-size: 24px; font-weight: 600; color: var(--success);">{{ user.history|length if user.history else 0 }}</div>
+            <div style="color: var(--text-light); font-size: 12px;">总记录</div>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-bottom: 24px;">
     <h3 style="margin-bottom: 16px;">近7日答题情况</h3>
     <table style="width: 100%; border-collapse: collapse;">
         <thead>
@@ -66,4 +84,41 @@
         <a href="{{ url_for('stats.restart') }}" class="btn" style="border: 1px solid var(--border);">重置进度</a>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('memoryCurveChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ memory_curve_labels|tojson }},
+                datasets: [{
+                    label: '记忆保持率 (%)',
+                    data: {{ memory_curve_values|tojson }},
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) { return value + '%'; }
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

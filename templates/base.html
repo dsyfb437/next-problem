@@ -13,9 +13,23 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
             integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk"
             crossorigin="anonymous"></script>
+    <!-- Chart.js for statistics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- MathLive for formula input -->
     <script defer src="https://cdn.jsdelivr.net/npm/mathlive@0.100.0/dist/mathlive.js"></script>
     <script>
+        function toggleDropdown(btn) {
+            const dropdown = btn.nextElementSibling;
+            dropdown.classList.toggle('show');
+        }
+
+        // 点击其他地方关闭下拉菜单
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.user-menu')) {
+                document.querySelectorAll('.user-dropdown').forEach(d => d.classList.remove('show'));
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", function() {
             renderMathInElement(document.body, {
                 delimiters: [
@@ -115,6 +129,45 @@
             border-radius: 6px;
             font-size: 14px;
         }
+        .user-menu { position: relative; display: inline-block; }
+        .user-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 14px;
+            border: 1px solid var(--border);
+            background: var(--card);
+        }
+        .user-menu-btn:hover { border-color: var(--primary); }
+        .user-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 140px;
+            z-index: 1000;
+        }
+        .user-dropdown.show { display: block; }
+        .user-dropdown a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .user-dropdown a:hover { background: var(--bg); color: var(--primary); }
+        .user-dropdown a:first-child { border-radius: 8px 8px 0 0; }
+        .user-dropdown a:last-child { border-radius: 0 0 8px 8px; }
+        .user-dropdown .logout { color: var(--error); border-top: 1px solid var(--border); }
     </style>
     {% block extra_css %}{% endblock %}
 </head>
@@ -125,11 +178,18 @@
             <nav>
                 {% if current_user.is_authenticated %}
                     <a href="{{ url_for('question.index') }}">刷题</a>
-                    <a href="{{ url_for('review.review_wrong') }}">错题</a>
-                    <a href="{{ url_for('review.review_due') }}">复习</a>
-                    <a href="{{ url_for('review.favorites') }}">收藏</a>
-                    <a href="{{ url_for('stats.show_stats') }}">统计</a>
-                    <a href="{{ url_for('auth.logout') }}">退出</a>
+                    <div class="user-menu">
+                        <div class="user-menu-btn" onclick="toggleDropdown(this)">
+                            <span>{{ current_user.username }}</span>
+                            <span style="font-size: 10px;">▼</span>
+                        </div>
+                        <div class="user-dropdown">
+                            <a href="{{ url_for('review.review_wrong') }}">复习错题</a>
+                            <a href="{{ url_for('review.favorites') }}">收藏</a>
+                            <a href="{{ url_for('stats.show_stats') }}">统计</a>
+                            <a href="{{ url_for('auth.logout') }}" class="logout">退出</a>
+                        </div>
+                    </div>
                 {% else %}
                     <a href="{{ url_for('auth.login') }}">登录</a>
                     <a href="{{ url_for('auth.register') }}">注册</a>

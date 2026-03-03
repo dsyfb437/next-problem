@@ -44,6 +44,31 @@ def create_stats_controller(user_service, question_repo, subject_files):
             })
         daily_data.reverse()
 
+        # 艾宾浩斯记忆曲线数据
+        # 计算基于复习间隔的记忆保持率
+        memory_curve_labels = ["立即", "1天后", "2天后", "4天后", "7天后", "15天后", "30天后"]
+        memory_curve_values = []
+
+        # 理论艾宾浩斯曲线: R = e^(-t/S), S=1 (标准稳定性)
+        for days_passed in [0, 1, 2, 4, 7, 15, 30]:
+            if days_passed == 0:
+                memory_curve_values.append(100)
+            else:
+                # 使用艾宾浩斯公式计算保持率
+                retention = 100 * (2.718 ** (-days_passed / 3))
+                memory_curve_values.append(round(retention, 1))
+
+        # 获取用户当前需要复习的题目数量
+        due_count = 0
+        for h in user.history:
+            if h.get("next_review"):
+                try:
+                    next_review = datetime.fromisoformat(h.get("next_review"))
+                    if next_review <= datetime.now():
+                        due_count += 1
+                except:
+                    pass
+
         return render_template(
             "stats.html",
             user=user,
@@ -54,7 +79,10 @@ def create_stats_controller(user_service, question_repo, subject_files):
             wrong=wrong,
             correct_rate=correct_rate,
             daily_data=daily_data,
-            knowledge=user.knowledge_state
+            knowledge=user.knowledge_state,
+            memory_curve_labels=memory_curve_labels,
+            memory_curve_values=memory_curve_values,
+            due_count=due_count
         )
 
     @stats_bp.route("/export_training_data")
