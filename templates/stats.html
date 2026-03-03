@@ -93,7 +93,7 @@
         <tbody>
             {% for h in recent_history %}
             <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 8px; max-width: 300px;" class="latex-render">{{ h.question_text|safe }}</td>
+                <td style="padding: 8px; max-width: 300px;" class="latex-render">{{ h.question_text }}</td>
                 <td style="padding: 8px;">
                     {% if h.knowledge_tags %}
                         {% for tag in h.knowledge_tags %}
