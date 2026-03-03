@@ -31,13 +31,21 @@
             }
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false}
-                ]
-            });
+        window.addEventListener("load", function() {
+            // 确保 KaTeX 加载完成后再渲染
+            function renderAll() {
+                if (typeof renderMathInElement !== 'undefined') {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                }
+            }
+            renderAll();
+            setTimeout(renderAll, 100);
         });
     </script>
     <style>
