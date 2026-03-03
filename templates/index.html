@@ -3,6 +3,16 @@
 {% block title %}刷题 - 智能刷题{% endblock %}
 
 {% block content %}
+{% if need_login %}
+<div class="card" style="text-align: center; padding: 48px;">
+    <h3 style="margin-bottom: 16px;">请先登录</h3>
+    <p style="color: var(--text-light); margin-bottom: 24px;">登录后即可开始刷题</p>
+    <div style="display: flex; gap: 12px; justify-content: center;">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary">登录</a>
+        <a href="{{ url_for('auth.register') }}" class="btn" style="border: 1px solid var(--border);">注册</a>
+    </div>
+</div>
+{% else %}
 <!-- 科目切换 -->
 <div class="card" style="margin-bottom: 16px; padding: 16px;">
     <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
@@ -30,7 +40,7 @@
             {{ question.chapter }} · {{ question.knowledge_tags|join(', ') if question.knowledge_tags else '通用' }}
         </span>
         <a href="javascript:void(0)" onclick="toggleFavorite('{{ question.id }}', this)"
-           style="color: {% if user.favorites and question.id in user.favorites %}var(--error){% else %}var(--text-light){% endif %}; text-decoration: none; font-size: 20px;">
+           style="color: {% if user.favorites and question.id in user.favorites %}var(--error){% else %}var(--text-light){% endif %}; text-decoration: none; font-size: 28px; cursor: pointer;">
             {% if user.favorites and question.id in user.favorites %}★{% else %}☆{% endif %}
         </a>
     </div>
@@ -127,5 +137,6 @@
         <a href="{{ url_for('stats.restart') }}" class="btn btn-primary">重新开始</a>
     </div>
 </div>
+{% endif %}
 {% endif %}
 {% endblock %}
