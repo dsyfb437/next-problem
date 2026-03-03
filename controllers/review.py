@@ -175,19 +175,21 @@ def create_review_controller(user_service, question_repo, subject_files):
 
     @review_bp.route("/favorite/toggle/<qid>")
     def favorite_toggle(qid):
-        """切换收藏状态"""
+        """切换收藏状态 - 返回JSON"""
+        from flask import jsonify
+
         user = user_service.get_user(session.get("user_id"))
         if not user:
-            return redirect(url_for("auth.login"))
+            return jsonify({"status": "error", "message": "请先登录"})
 
+        favorited = False
         if qid in user.favorites:
             user.favorites.remove(qid)
-            flash("已取消收藏", "correct")
         else:
             user.favorites.append(qid)
-            flash("已添加收藏", "correct")
+            favorited = True
 
         user_service.save_user(user)
-        return redirect(url_for("question.index"))
+        return jsonify({"status": "ok", "favorited": favorited})
 
     return review_bp

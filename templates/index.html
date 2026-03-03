@@ -29,10 +29,24 @@
         <span style="color: var(--text-light); font-size: 14px;">
             {{ question.chapter }} · {{ question.knowledge_tags|join(', ') if question.knowledge_tags else '通用' }}
         </span>
-        <a href="{{ url_for('review.favorite_toggle', qid=question.id) }}" style="color: {% if user.favorites and question.id in user.favorites %}var(--error){% else %}var(--text-light){% endif %};">
-            {{ '★' if user.favorites and question.id in user.favorites else '☆' }}
+        <a href="javascript:void(0)" onclick="toggleFavorite('{{ question.id }}', this)"
+           style="color: {% if user.favorites and question.id in user.favorites %}var(--error){% else %}var(--text-light){% endif %}; text-decoration: none; font-size: 20px;">
+            {% if user.favorites and question.id in user.favorites %}★{% else %}☆{% endif %}
         </a>
     </div>
+
+    <script>
+    function toggleFavorite(qid, elem) {
+        fetch('/favorite/toggle/' + qid, {method: 'GET'})
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    elem.textContent = data.favorited ? '★' : '☆';
+                    elem.style.color = data.favorited ? 'var(--error)' : 'var(--text-light)';
+                }
+            });
+    }
+    </script>
 
     <div class="question-text" style="font-size: 18px; margin-bottom: 24px;">
         {{ question.question_text|safe }}
@@ -63,7 +77,7 @@
             <math-field id="formulaInput"
                 style="font-size: 18px; padding: 8px; width: 100%;"
                 virtual-keyboard-mode="manual"
-            >\frac{1}{2}</math-field>
+            ></math-field>
             <input type="hidden" name="answer" id="formulaAnswer" required>
             <div id="formulaPreview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
         </div>
