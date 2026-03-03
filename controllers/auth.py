@@ -13,7 +13,7 @@ def create_auth_controller(user_service, bcrypt):
     @auth_bp.route("/login", methods=["GET", "POST"])
     def login():
         if current_user.is_authenticated:
-            return redirect(url_for("index"))
+            return redirect(url_for("question.index"))
 
         if request.method == "POST":
             username = request.form.get("username", "").strip()
@@ -27,14 +27,14 @@ def create_auth_controller(user_service, bcrypt):
             login_user(user)
             session["user_id"] = user.user_id
             flash(f"欢迎回来，{user.username}！", "correct")
-            return redirect(url_for("index"))
+            return redirect(url_for("question.index"))
 
         return render_template("login.html")
 
     @auth_bp.route("/register", methods=["GET", "POST"])
     def register():
         if current_user.is_authenticated:
-            return redirect(url_for("index"))
+            return redirect(url_for("question.index"))
 
         if request.method == "POST":
             username = request.form.get("username", "").strip()
@@ -54,7 +54,7 @@ def create_auth_controller(user_service, bcrypt):
                 login_user(user)
                 session["user_id"] = user.user_id
                 flash(f"注册成功！欢迎 {user.username}", "correct")
-                return redirect(url_for("index"))
+                return redirect(url_for("question.index"))
             except ValueError as e:
                 flash(str(e), "wrong")
                 return redirect(url_for("auth.register"))

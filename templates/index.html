@@ -43,9 +43,9 @@
         <input type="hidden" name="qid" value="{{ question.id }}">
 
         <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
-            {% for idx, opt in enumerate(question.options) %}
+            {% for opt in question.options %}
                 <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
-                    <input type="radio" name="answer" value="{{ idx }}" required>
+                    <input type="radio" name="answer" value="{{ loop.index0 }}" required>
                     <span>{{ opt|safe }}</span>
                 </label>
             {% endfor %}
