@@ -232,15 +232,19 @@
             modal.style.display = 'flex';
 
             // 渲染 LaTeX
-            if (typeof renderMathInElement !== 'undefined') {
-                renderMathInElement(modal, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false}
-                    ],
-                    throwOnError: false
-                });
+            function renderLatex() {
+                if (typeof renderMathInElement !== 'undefined') {
+                    renderMathInElement(modal, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                }
             }
+            renderLatex();
+            setTimeout(renderLatex, 100);
         }
 
         function closeResultModal() {
