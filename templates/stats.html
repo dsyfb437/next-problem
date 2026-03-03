@@ -77,6 +77,40 @@
     </table>
 </div>
 
+<div class="card" style="margin-bottom: 24px;">
+    <h3 style="margin-bottom: 16px;">最近做题</h3>
+    {% if recent_history %}
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <th style="text-align: left; padding: 8px;">题目</th>
+                <th style="text-align: center; padding: 8px;">你的答案</th>
+                <th style="text-align: center; padding: 8px;">结果</th>
+                <th style="text-align: right; padding: 8px;">日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for h in recent_history %}
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ h.question_text }}</td>
+                <td style="text-align: center; padding: 8px;">{{ h.user_answer or '（跳过）' }}</td>
+                <td style="text-align: center; padding: 8px;">
+                    {% if h.correct %}
+                    <span style="color: var(--success);">✓ 正确</span>
+                    {% else %}
+                    <span style="color: var(--error);">✗ 错误</span>
+                    {% endif %}
+                </td>
+                <td style="text-align: right; padding: 8px;">{{ h.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="color: var(--text-light);">暂无做题记录</p>
+    {% endif %}
+</div>
+
 <div class="card">
     <h3 style="margin-bottom: 16px;">操作</h3>
     <div style="display: flex; gap: 12px; flex-wrap: wrap;">

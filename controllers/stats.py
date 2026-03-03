@@ -69,6 +69,29 @@ def create_stats_controller(user_service, question_repo, subject_files):
                 except:
                     pass
 
+        # 最近做题记录
+        recent_history = []
+        if user.history:
+            # 按时间倒序取最近10条
+            sorted_history = sorted(user.history, key=lambda x: x.get("timestamp", ""), reverse=True)[:10]
+            for h in sorted_history:
+                qid = h.get("qid", "")
+                # 查找题目内容
+                question_text = ""
+                for subject_name in subject_files.keys():
+                    coll = question_repo.get_by_subject(subject_name, subject_files)
+                    q = coll.get_by_id(qid)
+                    if q:
+                        question_text = q.to_dict().get("question_text", "")[:50] + "..."
+                        break
+                recent_history.append({
+                    "qid": qid,
+                    "question_text": question_text,
+                    "correct": h.get("correct", False),
+                    "user_answer": h.get("user_answer", ""),
+                    "timestamp": h.get("timestamp", "")[:10]
+                })
+
         return render_template(
             "stats.html",
             user=user,
@@ -82,7 +105,8 @@ def create_stats_controller(user_service, question_repo, subject_files):
             knowledge=user.knowledge_state,
             memory_curve_labels=memory_curve_labels,
             memory_curve_values=memory_curve_values,
-            due_count=due_count
+            due_count=due_count,
+            recent_history=recent_history
         )
 
     @stats_bp.route("/export_training_data")
