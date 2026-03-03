@@ -79,11 +79,61 @@
 
 <div class="card">
     <h3 style="margin-bottom: 16px;">操作</h3>
-    <div style="display: flex; gap: 12px;">
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
         <a href="{{ url_for('stats.export_training_data') }}" class="btn btn-primary">导出训练数据</a>
-        <a href="{{ url_for('stats.restart') }}" class="btn" style="border: 1px solid var(--border);">重置进度</a>
+        <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="confirmRestart()">重置进度</button>
+        <button type="button" class="btn" style="border: 1px solid var(--error); color: var(--error);" onclick="confirmReset()">注销账号</button>
+    </div>
+    <div style="margin-top: 16px; padding: 12px; background: var(--bg); border-radius: 8px; font-size: 13px; color: var(--text-light);">
+        <div style="margin-bottom: 8px;"><strong>重置进度：</strong>清除做题记录，但保留知识点掌握度，可重新刷题</div>
+        <div><strong>注销账号：</strong>删除所有数据并退出登录，此操作不可恢复！</div>
     </div>
 </div>
+
+<!-- 确认弹窗 -->
+<div id="confirmModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+    <div style="background: var(--card); padding: 24px; border-radius: 12px; max-width: 400px; width: 90%;">
+        <h3 id="modalTitle" style="margin-bottom: 12px;">确认操作</h3>
+        <p id="modalMessage" style="color: var(--text-light); margin-bottom: 20px;"></p>
+        <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="closeModal()">取消</button>
+            <button type="button" id="modalConfirmBtn" class="btn btn-primary">确认</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmRestart() {
+    document.getElementById('modalTitle').textContent = '确认重置进度？';
+    document.getElementById('modalTitle').style.color = 'var(--text)';
+    document.getElementById('modalMessage').textContent = '将清除所有做题记录，但保留知识点掌握度。您可以重新开始刷题。';
+    document.getElementById('modalConfirmBtn').style.background = 'var(--primary)';
+    document.getElementById('modalConfirmBtn').onclick = function() {
+        window.location.href = '{{ url_for("stats.restart") }}';
+    };
+    document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function confirmReset() {
+    document.getElementById('modalTitle').textContent = '警告：注销账号？';
+    document.getElementById('modalTitle').style.color = 'var(--error)';
+    document.getElementById('modalMessage').textContent = '此操作将删除所有数据（做题记录、收藏、学习进度等）且无法恢复！确定要注销吗？';
+    document.getElementById('modalConfirmBtn').style.background = 'var(--error)';
+    document.getElementById('modalConfirmBtn').onclick = function() {
+        window.location.href = '{{ url_for("stats.reset") }}';
+    };
+    document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+}
+
+// 点击遮罩关闭
+document.getElementById('confirmModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
