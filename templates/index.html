@@ -59,13 +59,50 @@
 
         <div class="form-group">
             <label for="answer">请输入答案：</label>
-            <input type="text" name="answer" id="answer" required autofocus
-                   style="font-size: 16px; padding: 12px;"
-                   placeholder="输入答案">
+            <!-- MathLive 公式输入组件 -->
+            <math-field id="formulaInput"
+                style="font-size: 18px; padding: 8px; width: 100%;"
+                virtual-keyboard-mode="manual"
+            >\frac{1}{2}</math-field>
+            <input type="hidden" name="answer" id="formulaAnswer" required>
+            <div id="formulaPreview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
         </div>
 
         <button type="submit" class="btn btn-primary">提交答案</button>
     </form>
+
+    <script>
+        // 设置 MathLive 输入联动
+        document.addEventListener('DOMContentLoaded', function() {
+            const mf = document.getElementById('formulaInput');
+            const hiddenInput = document.getElementById('formulaAnswer');
+            const preview = document.getElementById('formulaPreview');
+
+            if (mf && hiddenInput) {
+                // 初始化隐藏输入框
+                hiddenInput.value = mf.value;
+
+                // 监听输入变化
+                mf.addEventListener('input', function(evt) {
+                    const latex = mf.value;
+                    hiddenInput.value = latex;
+
+                    // 更新预览
+                    if (latex && preview) {
+                        preview.innerHTML = '$$' + latex + '$$';
+                        if (typeof renderMathInElement !== 'undefined') {
+                            renderMathInElement(preview, {
+                                delimiters: [
+                                    {left: '$$', right: '$$', display: true}
+                                ],
+                                throwOnError: false
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    </script>
     {% endif %}
 </div>
 {% else %}
