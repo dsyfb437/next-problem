@@ -102,6 +102,16 @@ class User:
     def get_id(self) -> str:
         return self.user_id
 
+    def set_password(self, password: str, bcrypt) -> None:
+        """设置密码"""
+        self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    def check_password(self, password: str, bcrypt) -> bool:
+        """验证密码"""
+        if not self.password_hash:
+            return False
+        return bcrypt.check_password_hash(self.password_hash, password)
+
     def to_dict(self) -> dict:
         """转换为字典用于持久化"""
         return {
