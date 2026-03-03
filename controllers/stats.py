@@ -78,16 +78,24 @@ def create_stats_controller(user_service, question_repo, subject_files):
                 qid = h.get("qid", "")
                 # 查找题目内容
                 question_text = ""
+                question_full_text = ""
+                question_answer = ""
+                knowledge_tags = []
                 for subject_name in subject_files.keys():
                     coll = question_repo.get_by_subject(subject_name, subject_files)
                     q = coll.get_by_id(qid)
                     if q:
                         question_text = q.to_dict().get("question_text", "")[:50] + "..."
+                        question_full_text = q.to_dict().get("question_text", "")
+                        question_answer = q.to_dict().get("answer", "")
+                        knowledge_tags = q.knowledge_tags if hasattr(q, 'knowledge_tags') else []
                         break
                 recent_history.append({
                     "qid": qid,
                     "question_text": question_text,
-                    "knowledge_tags": q.knowledge_tags if hasattr(q, 'knowledge_tags') else [],
+                    "question_full_text": question_full_text,
+                    "question_answer": question_answer,
+                    "knowledge_tags": knowledge_tags,
                     "correct": h.get("correct", False),
                     "user_answer": h.get("user_answer", ""),
                     "timestamp": h.get("timestamp", "")[:10]
