@@ -27,18 +27,7 @@ def create_question_controller(user_service, question_repo, subject_files):
         """首页"""
         user = user_service.get_user(session.get("user_id"))
         if not user:
-            # 未登录用户，显示登录提示但不强制跳转
-            return render_template(
-                "index.html",
-                question=None,
-                user=None,
-                current_subject=current_subject["name"],
-                total_answered=0,
-                correct_count=0,
-                wrong_count=0,
-                subjects=list(subject_files.keys()),
-                need_login=True
-            )
+            return redirect(url_for("auth.login"))
 
         subject = request.args.get("subject", current_subject["name"])
         collection = load_subject_questions(subject)

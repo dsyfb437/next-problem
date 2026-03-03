@@ -1,27 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}考研数学题库{% endblock %}
+{% block title %}Study{% endblock %}
 
 {% block content %}
 {% if need_login %}
 <div class="card" style="text-align: center; padding: 60px 40px; max-width: 500px; margin: 40px auto;">
-    <h1 style="font-size: 28px; margin-bottom: 16px; color: var(--primary);">考研数学题库</h1>
-    <p style="color: var(--text-light); margin-bottom: 32px; font-size: 16px;">高效刷题，智能推荐</p>
+    <h1 style="font-size: 28px; margin-bottom: 16px; color: var(--primary);">Welcome to Study</h1>
+    <p style="color: var(--text-light); margin-bottom: 32px; font-size: 16px;">高效学习，智能推荐</p>
 
     <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 32px;">
         <a href="{{ url_for('auth.login') }}" class="btn btn-primary" style="padding: 12px 32px; font-size: 16px;">登录</a>
         <a href="{{ url_for('auth.register') }}" class="btn" style="border: 1px solid var(--border); padding: 12px 32px; font-size: 16px;">注册</a>
-    </div>
-
-    <div style="color: var(--text-light); font-size: 14px;">
-        <p>登录后可：</p>
-        <ul style="text-align: left; margin-top: 16px; list-style: none; padding: 0;">
-            <li style="margin: 8px 0;">✓ 智能推荐题目</li>
-            <li style="margin: 8px 0;">✓ 错题复习</li>
-            <li style="margin: 8px 0;">✓ 艾宾浩斯遗忘曲线复习</li>
-            <li style="margin: 8px 0;">✓ 收藏功能</li>
-            <li style="margin: 8px 0;">✓ 学习统计</li>
-        </ul>
     </div>
 </div>
 {% else %}
