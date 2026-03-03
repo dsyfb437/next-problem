@@ -198,9 +198,6 @@ def create_question_controller(user_service, question_repo, subject_files):
         question["correct_option"] = new_correct
         return question
 
-    return question_bp
-
-
     @question_bp.route("/answer_skip", methods=["POST"])
     def answer_skip():
         """我不会 - 跳过此题并记为错误"""
@@ -301,7 +298,6 @@ def create_question_controller(user_service, question_repo, subject_files):
             session.pop(f"q_start_{qid}", None)
 
         # 记录答题
-        from config import REVIEW_INTERVALS
         from services.user_service import calculate_next_review_interval
 
         history_entry = {
@@ -354,4 +350,4 @@ def create_question_controller(user_service, question_repo, subject_files):
             "correct_answer": question.get("answer", "") if not is_correct else None
         })
 
-from datetime import timedelta
+    return question_bp
