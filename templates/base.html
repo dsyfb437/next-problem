@@ -134,29 +134,16 @@
         .user-menu-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 4px 8px 4px 4px;
-            border-radius: 20px;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
             cursor: pointer;
             color: var(--text);
             font-size: 14px;
-            border: 1px solid var(--border);
-            background: var(--bg);
+            background: transparent;
             transition: all 0.2s ease;
         }
-        .user-menu-btn:hover { border-color: var(--primary); background: var(--card); }
-        .user-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
-        }
+        .user-menu-btn:hover { background: var(--bg); }
         .user-name { font-weight: 500; }
         .user-arrow { color: var(--text-light); font-size: 10px; transition: transform 0.2s; }
         .user-menu-btn.show .user-arrow { transform: rotate(180deg); }
@@ -196,7 +183,6 @@
                 {% if current_user.is_authenticated %}
                     <div class="user-menu">
                         <div class="user-menu-btn" onclick="toggleDropdown(this)">
-                            <div class="user-avatar">{{ current_user.username[0]|upper }}</div>
                             <span class="user-name">{{ current_user.username }}</span>
                             <span class="user-arrow">▼</span>
                         </div>
