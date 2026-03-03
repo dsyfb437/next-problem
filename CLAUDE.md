@@ -1,8 +1,8 @@
-# 智能考研数学刷题系统
+# NextProblem 智能刷题系统
 
 ## 技术栈
 - **后端**: Python + Flask
-- **前端**: Flask 模板 + KaTeX (LaTeX渲染)
+- **前端**: Flask 模板 + KaTeX (LaTeX渲染) + MathLive (公式输入) + Chart.js (统计图表)
 - **数据存储**: JSON文件 (用户数据) + 内存缓存 (题库)
 - **部署**: PythonAnywhere + GitHub Actions
 - **用户认证**: Flask-Login + Bcrypt
@@ -41,14 +41,14 @@ next-problem/
 │   └── question.py         # Question, QuestionCollection
 │
 ├── templates/                 # HTML模板 (Jinja2)
-│   ├── base.html            # 基础模板
+│   ├── base.html            # 基础模板（含用户下拉菜单）
 │   ├── login.html           # 登录
 │   ├── register.html        # 注册
-│   ├── index.html           # 首页/刷题
+│   ├── index.html           # 首页/刷题（含MathLive公式输入）
 │   ├── review_wrong.html    # 错题复习
 │   ├── review_due.html      # 艾宾浩斯复习
 │   ├── favorites.html       # 收藏
-│   └── stats.html           # 统计
+│   └── stats.html           # 统计（含记忆曲线图表）
 │
 ├── questions/                 # 题库 (只读)
 │   ├── math1.json          # 高等数学
@@ -275,6 +275,34 @@ set_engine('dl')
 3. 题库加载后缓存在内存中，提升性能
 4. 密码使用 bcrypt 哈希存储
 
+## 页面功能
+
+### 导航栏
+- 未登录：显示登录/注册链接
+- 已登录：右上角用户名，点击展开下拉菜单（复习错题、收藏、统计、退出）
+- 首页Logo点击返回刷题页面
+
+### 首页 (index.html)
+- 科目切换下拉框
+- 进度统计（已答/正确/错误）
+- 题目展示（支持LaTeX渲染）
+- 填空题使用MathLive组件输入公式
+- 选择题显示选项
+- 收藏按钮（AJAX异步）
+
+### 统计页面 (stats.html)
+- 科目切换
+- 答题统计卡片（总数/正确/错误）
+- 正确率进度条
+- 艾宾浩斯记忆曲线图表（Chart.js）
+- 待复习题数/总记录数
+- 近7日答题情况表
+- 操作按钮：导出数据、重置进度（确认弹窗）、注销账号（红色警告弹窗）
+
+### 重置功能
+- **重置进度**：清除做题记录，保留知识点掌握度
+- **注销账号**：删除所有数据，不可恢复
+
 ## 部署
 1. `git push` 触发 GitHub Actions
 2. PythonAnywhere 自动 pull 并重启
@@ -282,3 +310,4 @@ set_engine('dl')
 ## 外部资源
 - KaTeX: https://cdn.jsdelivr.net/npm/katex@0.16.10
 - MathLive: https://cdn.jsdelivr.net/npm/mathlive@0.100.0
+- Chart.js: https://cdn.jsdelivr.net/npm/chart.js
