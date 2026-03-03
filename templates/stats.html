@@ -180,19 +180,25 @@ document.getElementById('confirmModal').addEventListener('click', function(e) {
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+// 使用 load 事件确保 KaTeX 加载完成
+window.addEventListener('load', function() {
     // 渲染最近做题的LaTeX
-    if (typeof renderMathInElement !== 'undefined') {
-        document.querySelectorAll('.latex-render').forEach(function(el) {
-            renderMathInElement(el, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false}
-                ],
-                throwOnError: false
+    function renderLatex() {
+        if (typeof renderMathInElement !== 'undefined') {
+            document.querySelectorAll('.latex-render').forEach(function(el) {
+                renderMathInElement(el, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
             });
-        });
+        }
     }
+    // 立即尝试渲染，如果失败则等待一小段时间后重试
+    renderLatex();
+    setTimeout(renderLatex, 100);
 
     const ctx = document.getElementById('memoryCurveChart');
     if (ctx) {

@@ -42,6 +42,7 @@ main.py
 
 # Claude Code
 .claude/
+CLAUDE.md
 
 # Render (not using anymore)
 render.yaml
