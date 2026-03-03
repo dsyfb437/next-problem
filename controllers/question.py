@@ -201,4 +201,157 @@ def create_question_controller(user_service, question_repo, subject_files):
     return question_bp
 
 
+    @question_bp.route("/answer_skip", methods=["POST"])
+    def answer_skip():
+        """我不会 - 跳过此题并记为错误"""
+        from flask import jsonify
+        user = user_service.get_user(session.get("user_id"))
+        if not user:
+            return jsonify({"status": "error", "message": "请先登录"})
+
+        qid = request.json.get("qid", "") if request.is_json else request.form.get("qid", "")
+
+        if not qid:
+            return jsonify({"status": "error", "message": "题目ID无效"})
+
+        # 获取题目
+        question = None
+        for subject_name in subject_files.keys():
+            coll = question_repo.get_by_subject(subject_name, subject_files)
+            q = coll.get_by_id(qid)
+            if q:
+                question = q.to_dict()
+                break
+
+        if not question:
+            return jsonify({"status": "error", "message": "题目不存在"})
+
+        # 记录为错误
+        history_entry = {
+            "qid": qid,
+            "user_answer": "",
+            "correct": False,
+            "skipped": True,  # 标记为跳过
+            "timestamp": datetime.now().isoformat(),
+            "time_spent": None,
+            "question_difficulty": question.get("difficulty", 0.5),
+            "question_type": question.get("type", "fill_in"),
+            "knowledge_tags": question.get("knowledge_tags", []),
+            "subject": question.get("subject", ""),
+            "chapter": question.get("chapter", ""),
+        }
+
+        user.history.append(history_entry)
+        user.answered_questions.add(qid)
+
+        # 统计
+        today = datetime.now().strftime("%Y-%m-%d")
+        if today not in user.daily_stats:
+            user.daily_stats[today] = {"answered": 0, "correct": 0}
+        user.daily_stats[today]["answered"] += 1
+        user.total_stats["total_answered"] = len(user.answered_questions)
+        user.total_stats["total_correct"] = sum(1 for h in user.history if h.get("correct"))
+        user.total_stats["last_active_date"] = today
+
+        user_service.save_user(user)
+
+        return jsonify({"status": "ok", "message": "已收入错题本"})
+
+    @question_bp.route("/answer_ajax", methods=["POST"])
+    def answer_ajax():
+        """AJAX提交答案"""
+        from flask import jsonify
+        user = user_service.get_user(session.get("user_id"))
+        if not user:
+            return jsonify({"status": "error", "message": "请先登录"})
+
+        qid = request.json.get("qid", "") if request.is_json else request.form.get("qid", "")
+        user_answer = (request.json.get("answer", "") if request.is_json else request.form.get("answer", "")).strip()
+
+        if not qid or not user_answer:
+            return jsonify({"status": "error", "message": "请输入答案"})
+
+        # 获取题目
+        from services.grader_service import get_grader
+        grader = get_grader()
+
+        question = None
+        for subject_name in subject_files.keys():
+            coll = question_repo.get_by_subject(subject_name, subject_files)
+            q = coll.get_by_id(qid)
+            if q:
+                question = q.to_dict()
+                break
+
+        if not question:
+            return jsonify({"status": "error", "message": "题目不存在"})
+
+        # 判题
+        is_correct = grader.check(question, user_answer)
+
+        # 计算答题时间
+        start_time = session.get(f"q_start_{qid}")
+        time_spent = None
+        if start_time:
+            try:
+                start_dt = datetime.fromisoformat(start_time)
+                time_spent = (datetime.now() - start_dt).total_seconds()
+            except:
+                pass
+            session.pop(f"q_start_{qid}", None)
+
+        # 记录答题
+        from config import REVIEW_INTERVALS
+        from services.user_service import calculate_next_review_interval
+
+        history_entry = {
+            "qid": qid,
+            "user_answer": user_answer,
+            "correct": is_correct,
+            "timestamp": datetime.now().isoformat(),
+            "time_spent": time_spent,
+            "question_difficulty": question.get("difficulty", 0.5),
+            "question_type": question.get("type", "fill_in"),
+            "knowledge_tags": question.get("knowledge_tags", []),
+            "subject": question.get("subject", ""),
+            "chapter": question.get("chapter", ""),
+        }
+
+        if is_correct:
+            history_entry["review_count"] = 0
+            history_entry["last_reviewed"] = datetime.now().isoformat()
+            interval = calculate_next_review_interval(0)
+            history_entry["next_review"] = (datetime.now() + timedelta(days=interval)).isoformat()
+
+        user.history.append(history_entry)
+        user.answered_questions.add(qid)
+
+        # 更新知识点
+        from services.recommend import get_current_engine
+        engine = get_current_engine()
+        engine.update(
+            {"knowledge_state": user.knowledge_state, "answered_questions": user.answered_questions},
+            question,
+            is_correct
+        )
+
+        # 统计
+        today = datetime.now().strftime("%Y-%m-%d")
+        if today not in user.daily_stats:
+            user.daily_stats[today] = {"answered": 0, "correct": 0}
+        user.daily_stats[today]["answered"] += 1
+        if is_correct:
+            user.daily_stats[today]["correct"] += 1
+        user.total_stats["total_answered"] = len(user.answered_questions)
+        user.total_stats["total_correct"] = sum(1 for h in user.history if h.get("correct"))
+        user.total_stats["last_active_date"] = today
+
+        user_service.save_user(user)
+
+        return jsonify({
+            "status": "ok",
+            "correct": is_correct,
+            "correct_answer": question.get("answer", "") if not is_correct else None
+        })
+
 from datetime import timedelta

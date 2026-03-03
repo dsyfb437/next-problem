@@ -64,22 +64,27 @@
     </div>
 
     {% if question.type == 'multiple_choice' and question.options %}
-    <form method="post" action="{{ url_for('question.answer') }}">
+    <form id="answerForm" onsubmit="return submitAnswer(event)">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
         <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
             {% for opt in question.options %}
-                <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
-                    <input type="radio" name="answer" value="{{ loop.index0 }}" required>
+                <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;" class="option-label">
+                    <input type="radio" name="answer" value="{{ loop.index0 }}">
                     <span>{{ opt|safe }}</span>
                 </label>
             {% endfor %}
         </div>
 
-        <button type="submit" class="btn btn-primary">提交答案</button>
+        <div id="mcAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请选择一个选项</div>
+
+        <div style="display: flex; gap: 12px;">
+            <button type="submit" class="btn btn-primary">提交答案</button>
+            <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
+        </div>
     </form>
     {% else %}
-    <form method="post" action="{{ url_for('question.answer') }}">
+    <form id="answerForm" onsubmit="return submitAnswer(event)">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
         <div class="form-group">
@@ -89,11 +94,16 @@
                 style="font-size: 18px; padding: 8px; width: 100%;"
                 virtual-keyboard-mode="manual"
             ></math-field>
-            <input type="hidden" name="answer" id="formulaAnswer" required>
+            <input type="hidden" name="answer" id="formulaAnswer">
             <div id="formulaPreview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
         </div>
 
-        <button type="submit" class="btn btn-primary">提交答案</button>
+        <div id="fillAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请输入答案</div>
+
+        <div style="display: flex; gap: 12px;">
+            <button type="submit" class="btn btn-primary">提交答案</button>
+            <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
+        </div>
     </form>
 
     <script>
@@ -127,6 +137,87 @@
                 });
             }
         });
+
+        // 提交答案（AJAX）
+        function submitAnswer(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('answerForm');
+            const qid = form.querySelector('input[name="qid"]').value;
+            const isMultipleChoice = {{ question.type == 'multiple_choice' and question.options|default(false) }};
+
+            let answer = '';
+            if (isMultipleChoice) {
+                const selected = form.querySelector('input[name="answer"]:checked');
+                if (!selected) {
+                    document.getElementById('mcAlert').style.display = 'block';
+                    return false;
+                }
+                document.getElementById('mcAlert').style.display = 'none';
+                answer = selected.value;
+            } else {
+                // 填空题从MathLive获取
+                const mf = document.getElementById('formulaInput');
+                answer = mf ? mf.value.trim() : '';
+
+                if (!answer) {
+                    document.getElementById('fillAlert').style.display = 'block';
+                    return false;
+                }
+                document.getElementById('fillAlert').style.display = 'none';
+            }
+
+            fetch('/answer_ajax', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({qid: qid, answer: answer})
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    if (data.correct) {
+                        alert('回答正确！');
+                    } else {
+                        alert('回答错误。正确答案：' + data.correct_answer);
+                    }
+                    window.location.reload();
+                } else {
+                    alert(data.message || '提交失败');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('提交失败，请重试');
+            });
+
+            return false;
+        }
+
+        // 我不会 - 跳过此题
+        function submitSkip(qid) {
+            if (!confirm('确定跳过此题？此题将被收入错题本。')) {
+                return;
+            }
+
+            fetch('/answer_skip', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({qid: qid})
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    alert('已收入错题本');
+                    window.location.reload();
+                } else {
+                    alert(data.message || '操作失败');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('操作失败，请重试');
+            });
+        }
     </script>
     {% endif %}
 </div>
