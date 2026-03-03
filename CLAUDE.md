@@ -2,30 +2,73 @@
 
 ## 技术栈
 - **后端**: Python + Flask
-- **前端**: Flask 模板 + KaTeX (LaTeX渲染) + MathLive (公式输入) + Chart.js (统计图表)
-- **数据库**: SQLite (开发) / PostgreSQL (生产)
+- **前端**: Flask 模板 + KaTeX (LaTeX渲染)
+- **数据存储**: JSON文件 (用户数据) + 内存缓存 (题库)
 - **部署**: PythonAnywhere + GitHub Actions
 - **用户认证**: Flask-Login + Bcrypt
 
-## 项目结构
+## 项目结构 (分层架构)
+
 ```
 next-problem/
-├── app.py              # Flask 主应用 (路由、视图、模板)
-├── bkt_core.py         # BKT算法核心模块 (用户状态、推荐、判题)
-├── db.py               # 数据库抽象层
-├── questions/          # 题库目录
-│   ├── math1.json     # 高等数学 (260题)
-│   ├── linalg.json    # 线性代数 (76题)
-│   └── prob.json      # 概率论 (64题)
-├── data/              # 用户进度JSON文件
-│   ├── users_index.json  # 用户索引
-│   └── user_*.json    # 用户数据文件
-├── data.db            # SQLite 数据库
-├── .env               # 环境变量
-└── venv/              # Python虚拟环境
+├── app.py                      # 应用入口 (~50行)
+├── config.py                   # 配置管理
+│
+├── controllers/               # 路由层 (HTTP请求处理)
+│   ├── __init__.py
+│   ├── auth.py              # 登录注册
+│   ├── question.py          # 答题相关
+│   ├── review.py            # 错题/艾宾浩斯/收藏
+│   └── stats.py             # 统计
+│
+├── services/                  # 业务逻辑层
+│   ├── __init__.py
+│   ├── recommend/           # 推荐引擎 (可替换)
+│   │   ├── __init__.py
+│   │   ├── base.py         # 抽象基类 RecommendEngine
+│   │   └── bkt_engine.py   # BKT算法实现
+│   ├── user_service.py     # 用户业务逻辑
+│   └── grader_service.py   # 判题服务
+│
+├── repositories/              # 数据访问层
+│   ├── __init__.py
+│   ├── user_repo.py        # 用户数据读写
+│   └── question_repo.py   # 题库加载与缓存
+│
+├── models/                    # 数据模型 (dataclass)
+│   ├── __init__.py
+│   ├── user.py             # User, UserState, AnswerHistory
+│   └── question.py         # Question, QuestionCollection
+│
+├── templates/                 # HTML模板 (Jinja2)
+│   ├── base.html            # 基础模板
+│   ├── login.html           # 登录
+│   ├── register.html        # 注册
+│   ├── index.html           # 首页/刷题
+│   ├── review_wrong.html    # 错题复习
+│   ├── review_due.html      # 艾宾浩斯复习
+│   ├── favorites.html       # 收藏
+│   └── stats.html           # 统计
+│
+├── questions/                 # 题库 (只读)
+│   ├── math1.json          # 高等数学
+│   ├── linalg.json         # 线性代数
+│   ├── prob.json           # 概率论
+│   ├── math_proof.json    # 高等数学证明题
+│   ├── linalg_proof.json  # 线性代数证明题
+│   └── prob_proof.json    # 概率论证明题
+│
+├── data/                      # 用户数据
+│   ├── users_index.json    # 用户索引
+│   └── user_*.json         # 用户进度数据
+│
+├── bkt_core.py               # 遗留: 旧版BKT逻辑 (逐步迁移)
+├── db.py                     # 遗留: 数据库交互 (逐步迁移)
+└── venv/                     # Python虚拟环境
 ```
 
 ## 常用命令
+
 ```bash
 # 激活虚拟环境
 cd /home/dsyfb_437/next-problem
@@ -38,7 +81,26 @@ python app.py
 python -c "from app import app; print(app.url_map)"
 ```
 
+## 架构分层
+
+```
+┌─────────────────────────────────────┐
+│         Controllers (路由层)          │
+│   auth.py, question.py, review.py   │
+├─────────────────────────────────────┤
+│         Services (业务逻辑层)         │
+│  user_service, grader, recommend    │
+├─────────────────────────────────────┤
+│       Repositories (数据访问层)       │
+│      user_repo, question_repo        │
+├─────────────────────────────────────┤
+│         Models (数据模型层)           │
+│         User, Question               │
+└─────────────────────────────────────┘
+```
+
 ## 题库格式
+
 填空题:
 ```json
 {
@@ -71,74 +133,108 @@ python -c "from app import app; print(app.url_map)"
 - `numeric`: 浮点数比较 (误差1e-6)
 - `formula`: SymPy 符号等价判断 (支持LaTeX和数学表达式)
 - `string`: 精确匹配 (文本答案)
-- `multiple_choice`: 选项索引比较
 
-## 核心功能
-
-### 用户认证
-- `/login` - 登录页面 (用户名 + 密码)
-- `/register` - 注册页面
-- `/logout` - 退出登录
-
-### 学习功能
-- `/` - 首页，显示当前题目和进度
-- `/answer` - 处理答题提交
-- `/select_subject` - 切换科目
-
-### 错题本
-- `/review_wrong` - 复习答错的题目
-- `/answer_review` - 错题答题提交
-
-### 艾宾浩斯复习
-- `/review_due` - 复习到期需要复习的题目
-- `/answer_due` - 复习答题提交
-
-### 收藏功能
-- `/favorites` - 收藏列表页面
-- `/favorite/add/<qid>` - 添加收藏
-- `/favorite/remove/<qid>` - 取消收藏
-- `/favorite/toggle/<qid>` - 切换收藏状态
-
-### 学习统计
-- `/stats` - 学习统计页面
-
-### 其他
-- `/reset` - 完全重置进度
-- `/restart` - 重置题目进度（保留知识点掌握度）
-
-## 核心模块
+## 核心模块说明
 
 ### app.py
-- `load_questions(subject)`: 加载题库
-- `load_users_index()`: 加载用户索引
-- 用户认证路由: `/login`, `/register`, `/logout`
-- 错题复习路由: `/review_wrong`, `/answer_review`
-- 艾宾浩斯复习路由: `/review_due`, `/answer_due`
-- 收藏功能路由: `/favorites`, `/favorite/toggle/<qid>`
-- 统计页面: `/stats`
+应用入口，负责初始化和注册蓝图。
 
-### bkt_core.py
-- `BKTUser`: 用户知识状态管理
-  - `knowledge_state`: 知识点掌握度
-  - `answered_questions`: 已答题集
-  - `history`: 答题历史
-  - `username`, `password_hash`: 用户账号信息
-  - `favorites`, `favorite_notes`: 收藏数据
-  - `daily_stats`, `total_stats`: 学习统计
-  - `set_password()`, `check_password()`: 密码管理
-- 收藏功能: `add_favorite()`, `remove_favorite()`, `is_favorite()`, `get_favorite_questions()`
-- 统计功能: `record_daily_stats()`, `update_total_stats()`, `get_daily_stats()`, `get_total_stats()`
-- `SimpleBKTEngine`: BKT算法引擎
-  - `update_mastery()`: 更新知识点掌握度
-- `recommend_question()`: 基于掌握度推荐题目
-- `check_answer()`: 判题逻辑
-- `calculate_next_review_interval()`: 艾宾浩斯复习间隔
-- `get_wrong_questions()`, `get_due_questions()`: 获取复习题目
+```python
+from controllers import create_auth_controller, create_question_controller, ...
 
-### db.py
-- `init_db()`: 初始化数据库表
-- `record_interaction()`: 记录答题交互
-- `get_user_interactions()`: 获取用户交互历史
+app.register_blueprint(auth_bp)
+app.register_blueprint(question_bp)
+```
+
+### config.py
+集中管理配置: 路径、BKT参数、题库映射等。
+
+### controllers/
+处理HTTP请求，返回模板渲染的HTML。
+
+| 模块 | 职责 |
+|------|------|
+| auth.py | 登录、注册、退出 |
+| question.py | 首页、答题、科目切换 |
+| review.py | 错题复习、艾宾浩斯、收藏 |
+| stats.py | 统计、重置、导出数据 |
+
+### services/
+业务逻辑，可被控制器调用。
+
+| 模块 | 职责 |
+|------|------|
+| recommend/ | 推荐引擎 (BKT实现) |
+| user_service.py | 用户注册、登录、答题记录 |
+| grader_service.py | 判题 (numeric/formula/string) |
+
+### repositories/
+数据持久化。
+
+| 模块 | 职责 |
+|------|------|
+| user_repo.py | 用户数据读写 (JSON) |
+| question_repo.py | 题库加载与内存缓存 |
+
+### models/
+数据结构定义，使用dataclass提高性能。
+
+| 类 | 职责 |
+|----|------|
+| User | 用户完整数据模型 |
+| UserState | 用于推荐引擎的用户状态 |
+| AnswerHistory | 答题历史记录 |
+| Question | 题目模型 |
+| QuestionCollection | 题目集合+索引 |
+
+## 推荐引擎扩展
+
+系统使用抽象接口设计，便于后期替换为深度学习模型:
+
+```python
+# services/recommend/base.py
+class RecommendEngine(ABC):
+    @abstractmethod
+    def recommend(self, user_state, questions, available_qids):
+        pass
+
+    @abstractmethod
+    def update(self, user_state, question, is_correct, **extra_data):
+        pass
+
+    @abstractmethod
+    def get_name(self):
+        pass
+```
+
+切换引擎:
+```python
+from services.recommend import register_engine, set_engine
+
+register_engine('dl', MyDeepLearningEngine())
+set_engine('dl')
+```
+
+## AI训练数据
+
+答题历史记录包含丰富的特征:
+
+```json
+{
+  "qid": "m1_001",
+  "user_answer": "2",
+  "correct": true,
+  "timestamp": "2024-01-01T10:00:00",
+  "time_spent": 15.3,
+  "question_difficulty": 0.6,
+  "question_type": "fill_in",
+  "knowledge_tags": ["极限计算"],
+  "subject": "高等数学",
+  "chapter": "极限"
+}
+```
+
+导出训练数据: `/export_training_data`
 
 ## 数据结构
 
@@ -151,7 +247,7 @@ python -c "from app import app; print(app.url_map)"
   "created_at": "2024-01-01T00:00:00",
   "knowledge_state": {"极限": 0.8, "导数": 0.6},
   "answered_questions": ["m1_001", "m1_002"],
-  "favorites": ["m1_005", "m1_010"],
+  "favorites": ["m1_005"],
   "favorite_notes": {"m1_005": "经典题型"},
   "daily_stats": {
     "2024-01-15": {"answered": 20, "correct": 15}
@@ -162,25 +258,7 @@ python -c "from app import app; print(app.url_map)"
     "streak_days": 5,
     "last_active_date": "2024-01-15"
   },
-  "history": [
-    {
-      "qid": "m1_001",
-      "user_answer": "2",
-      "correct": true,
-      "timestamp": "2024-01-01T10:00:00",
-      "review_count": 1,
-      "next_review": "2024-01-04T10:00:00"
-    }
-  ]
-}
-```
-
-### 用户索引 (data/users_index.json)
-```json
-{
-  "users": [
-    {"username": "zhangsan", "user_id": "user_xxx"}
-  ]
+  "history": [...]
 }
 ```
 
@@ -189,11 +267,12 @@ python -c "from app import app; print(app.url_map)"
 - 4空格缩进
 - 类型注解 (Type Hints)
 - 中文注释
+- 分层清晰: 控制器 → 服务 → 仓库 → 模型
 
 ## 注意事项
 1. LaTeX 在 JSON 中需双反斜杠: `\\frac`
-2. 避免控制字符: `\f`, `\t`, `\r` 等
-3. 部署用 GitHub Actions，自动 push 到 PythonAnywhere
+2. 推荐引擎通过 `services/recommend/` 扩展
+3. 题库加载后缓存在内存中，提升性能
 4. 密码使用 bcrypt 哈希存储
 
 ## 部署
@@ -203,4 +282,3 @@ python -c "from app import app; print(app.url_map)"
 ## 外部资源
 - KaTeX: https://cdn.jsdelivr.net/npm/katex@0.16.10
 - MathLive: https://cdn.jsdelivr.net/npm/mathlive@0.100.0
-- Chart.js: https://cdn.jsdelivr.net/npm/chart.js

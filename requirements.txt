@@ -1,12 +1,15 @@
 # Core dependencies
 flask>=3.0.0
+flask-login>=0.6.3
+flask-bcrypt>=1.0.1
 gunicorn>=21.2.0
 
 # Math
 sympy>=1.12
 
 # Database
-psycopg2-binary>=2.9.9
+psycopg2-binary>=2.9.9  # PostgreSQL (生产)
+sqlite3  # 内置 (开发)
 
 # Environment variables
 python-dotenv>=1.0.0

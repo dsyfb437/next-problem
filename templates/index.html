@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}刷题 - 智能刷题{% endblock %}
+
+{% block content %}
+<!-- 科目切换 -->
+<div class="card" style="margin-bottom: 16px; padding: 16px;">
+    <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <span style="font-weight: 500;">当前题库：</span>
+        <form method="get" action="{{ url_for('question.select_subject') }}" style="display: inline;">
+            <select name="subject" onchange="this.form.submit()" style="padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border);">
+                {% for s in subjects %}
+                    <option value="{{ s }}" {% if s == current_subject %}selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <div style="margin-left: auto; display: flex; gap: 24px; color: var(--text-light); font-size: 14px;">
+            <span>已答: {{ total_answered }}</span>
+            <span>正确: {{ correct_count }}</span>
+            <span>错误: {{ wrong_count }}</span>
+        </div>
+    </div>
+</div>
+
+{% if question %}
+<div class="card" style="margin-bottom: 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <span style="color: var(--text-light); font-size: 14px;">
+            {{ question.chapter }} · {{ question.knowledge_tags|join(', ') if question.knowledge_tags else '通用' }}
+        </span>
+        <a href="{{ url_for('review.favorite_toggle', qid=question.id) }}" style="color: {% if user.favorites and question.id in user.favorites %}var(--error){% else %}var(--text-light){% endif %};">
+            {{ '★' if user.favorites and question.id in user.favorites else '☆' }}
+        </a>
+    </div>
+
+    <div class="question-text" style="font-size: 18px; margin-bottom: 24px;">
+        {{ question.question_text|safe }}
+    </div>
+
+    {% if question.type == 'multiple_choice' and question.options %}
+    <form method="post" action="{{ url_for('question.answer') }}">
+        <input type="hidden" name="qid" value="{{ question.id }}">
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+            {% for idx, opt in enumerate(question.options) %}
+                <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+                    <input type="radio" name="answer" value="{{ idx }}" required>
+                    <span>{{ opt|safe }}</span>
+                </label>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">提交答案</button>
+    </form>
+    {% else %}
+    <form method="post" action="{{ url_for('question.answer') }}">
+        <input type="hidden" name="qid" value="{{ question.id }}">
+
+        <div class="form-group">
+            <label for="answer">请输入答案：</label>
+            <input type="text" name="answer" id="answer" required autofocus
+                   style="font-size: 16px; padding: 12px;"
+                   placeholder="输入答案">
+        </div>
+
+        <button type="submit" class="btn btn-primary">提交答案</button>
+    </form>
+    {% endif %}
+</div>
+{% else %}
+<div class="card" style="text-align: center; padding: 48px;">
+    <h3 style="color: var(--success); margin-bottom: 16px;">🎉 恭喜完成！</h3>
+    <p style="color: var(--text-light);">本题库题目已全部完成</p>
+    <div style="margin-top: 24px;">
+        <a href="{{ url_for('stats.restart') }}" class="btn btn-primary">重新开始</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

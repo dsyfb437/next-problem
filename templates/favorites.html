@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}收藏题目 - 智能刷题{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 20px;">收藏题目</h2>
+
+<div style="margin-bottom: 16px;">
+    <form method="get" style="display: inline;">
+        <select name="subject" onchange="this.form.submit()" style="padding: 6px 12px;">
+            {% for s in subjects %}
+                <option value="{{ s }}" {% if s == current_subject %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+{% if questions %}
+    {% for q in questions %}
+    <div class="card" style="margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <span style="color: var(--text-light); font-size: 14px;">{{ q.chapter }}</span>
+            <a href="{{ url_for('review.favorite_toggle', qid=q.id) }}" style="color: var(--error);">★</a>
+        </div>
+        <div class="question-text">
+            {{ q.question_text|safe }}
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+<div class="card" style="text-align: center; padding: 48px;">
+    <p style="color: var(--text-light);">暂无收藏</p>
+</div>
+{% endif %}
+{% endblock %}

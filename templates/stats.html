@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}学习统计 - 智能刷题{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 20px;">学习统计</h2>
+
+<div style="margin-bottom: 16px;">
+    <form method="get" style="display: inline;">
+        <select name="subject" onchange="this.form.submit()" style="padding: 6px 12px;">
+            {% for s in subjects %}
+                <option value="{{ s }}" {% if s == current_subject %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;">
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; font-weight: 600; color: var(--primary);">{{ total }}</div>
+        <div style="color: var(--text-light);">总答题数</div>
+    </div>
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; font-weight: 600; color: var(--success);">{{ correct }}</div>
+        <div style="color: var(--text-light);">正确数</div>
+    </div>
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; font-weight: 600; color: var(--error);">{{ wrong }}</div>
+        <div style="color: var(--text-light);">错误数</div>
+    </div>
+</div>
+
+<div class="card" style="margin-bottom: 24px;">
+    <h3 style="margin-bottom: 16px;">正确率: {{ correct_rate }}%</h3>
+    <div style="height: 20px; background: var(--border); border-radius: 10px; overflow: hidden;">
+        <div style="height: 100%; width: {{ correct_rate }}%; background: var(--success);"></div>
+    </div>
+</div>
+
+<div class="card" style="margin-bottom: 24px;">
+    <h3 style="margin-bottom: 16px;">近7日答题情况</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <th style="text-align: left; padding: 8px;">日期</th>
+                <th style="text-align: right; padding: 8px;">答题数</th>
+                <th style="text-align: right; padding: 8px;">正确数</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for day in daily_data %}
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">{{ day.date }}</td>
+                <td style="text-align: right; padding: 8px;">{{ day.answered }}</td>
+                <td style="text-align: right; padding: 8px;">{{ day.correct }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="card">
+    <h3 style="margin-bottom: 16px;">操作</h3>
+    <div style="display: flex; gap: 12px;">
+        <a href="{{ url_for('stats.export_training_data') }}" class="btn btn-primary">导出训练数据</a>
+        <a href="{{ url_for('stats.restart') }}" class="btn" style="border: 1px solid var(--border);">重置进度</a>
+    </div>
+</div>
+{% endblock %}
