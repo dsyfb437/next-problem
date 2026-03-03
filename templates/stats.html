@@ -114,7 +114,13 @@
                 </td>
                 <td style="text-align: right; padding: 8px;">{{ h.timestamp }}</td>
                 <td style="text-align: center; padding: 8px;">
-                    <button type="button" class="btn" style="font-size: 12px; padding: 4px 10px;" onclick="showQuestionDetail('{{ h.qid }}', '{{ h.question_full_text|escapejs }}', '{{ h.question_answer|escapejs }}', '{{ h.user_answer|escapejs }}', '{{ h.correct }}', '{{ h.timestamp }}')">查看</button>
+                    <button type="button" class="btn view-detail-btn" style="font-size: 12px; padding: 4px 10px;"
+                        data-qid="{{ h.qid }}"
+                        data-question="{{ h.question_full_text|e }}"
+                        data-answer="{{ h.question_answer|e }}"
+                        data-user-answer="{{ h.user_answer|e }}"
+                        data-correct="{{ h.correct }}"
+                        data-timestamp="{{ h.timestamp }}">查看</button>
                 </td>
             </tr>
             {% endfor %}
@@ -175,9 +181,16 @@
 </div>
 
 <script>
-function showQuestionDetail(qid, questionFullText, questionAnswer, userAnswer, correct, timestamp) {
-    document.getElementById('detailQuestion').innerHTML = questionFullText;
-    document.getElementById('detailAnswer').innerHTML = questionAnswer || '无';
+function showQuestionDetail(btn) {
+    const qid = btn.dataset.qid;
+    const questionFullText = btn.dataset.question;
+    const questionAnswer = btn.dataset.answer;
+    const userAnswer = btn.dataset.userAnswer;
+    const correct = btn.dataset.correct;
+    const timestamp = btn.dataset.timestamp;
+
+    document.getElementById('detailQuestion').textContent = questionFullText;
+    document.getElementById('detailAnswer').textContent = questionAnswer || '无';
     document.getElementById('detailUserAnswer').textContent = userAnswer || '（跳过）';
     document.getElementById('detailResult').innerHTML = correct === 'True' ?
         '<span style="color: var(--success);">✓ 正确</span>' :
@@ -197,6 +210,15 @@ function showQuestionDetail(qid, questionFullText, questionAnswer, userAnswer, c
         });
     }
 }
+
+// 绑定点击事件
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.view-detail-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            showQuestionDetail(this);
+        });
+    });
+});
 
 function confirmRestart() {
     document.getElementById('modalTitle').textContent = '确认重置进度？';
