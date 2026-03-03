@@ -24,11 +24,15 @@
         <div class="question-text" style="margin-bottom: 16px;">
             {{ q.question_text|safe }}
         </div>
-        <form method="post" action="{{ url_for('review.answer_review') }}">
+        <form method="post" action="{{ url_for('review.answer_review') }}" onsubmit="return submitReview(this)">
             <input type="hidden" name="qid" value="{{ q.id }}">
             <div class="form-group">
-                <input type="text" name="answer" placeholder="请重新作答" required>
+                <label>请重新作答：</label>
+                <math-field class="review-formula" style="font-size: 18px; padding: 8px; width: 100%;" virtual-keyboard-mode="manual"></math-field>
+                <input type="hidden" name="answer" class="formula-answer">
+                <div class="formula-preview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
             </div>
+            <div class="review-alert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请输入答案</div>
             <button type="submit" class="btn btn-primary">提交</button>
         </form>
     </div>
@@ -38,4 +42,53 @@
     <p style="color: var(--text-light);">暂无错题</p>
 </div>
 {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化所有 MathLive 组件
+    document.querySelectorAll('.review-formula').forEach(function(mf) {
+        const form = mf.closest('form');
+        const hiddenInput = form.querySelector('.formula-answer');
+        const preview = form.querySelector('.formula-preview');
+
+        if (hiddenInput) {
+            hiddenInput.value = mf.value;
+        }
+
+        mf.addEventListener('input', function() {
+            const latex = mf.value;
+            if (hiddenInput) {
+                hiddenInput.value = latex;
+            }
+            if (latex && preview) {
+                preview.innerHTML = '$$' + latex + '$$';
+                if (typeof renderMathInElement !== 'undefined') {
+                    renderMathInElement(preview, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true}
+                        ],
+                        throwOnError: false
+                    });
+                }
+            }
+        });
+    });
+});
+
+function submitReview(form) {
+    const mf = form.querySelector('.review-formula');
+    const hiddenInput = form.querySelector('.formula-answer');
+    const alertDiv = form.querySelector('.review-alert');
+
+    if (mf && hiddenInput) {
+        hiddenInput.value = mf.value;
+        if (!mf.value.trim()) {
+            alertDiv.style.display = 'block';
+            return false;
+        }
+        alertDiv.style.display = 'none';
+    }
+    return true;
+}
+</script>
 {% endblock %}
