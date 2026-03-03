@@ -87,6 +87,7 @@ def create_stats_controller(user_service, question_repo, subject_files):
                 recent_history.append({
                     "qid": qid,
                     "question_text": question_text,
+                    "knowledge_tags": q.knowledge_tags if hasattr(q, 'knowledge_tags') else [],
                     "correct": h.get("correct", False),
                     "user_answer": h.get("user_answer", ""),
                     "timestamp": h.get("timestamp", "")[:10]

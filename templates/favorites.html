@@ -20,22 +20,37 @@
     <div class="card" style="margin-bottom: 16px;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
             <span style="color: var(--text-light); font-size: 14px;">{{ q.chapter }}</span>
-            <a href="{{ url_for('review.favorite_toggle', qid=q.id) }}" style="color: var(--error);">★</a>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <button type="button" class="btn toggle-answer-btn" onclick="toggleAnswer(this)" style="font-size: 12px; padding: 4px 10px;">查看答案</button>
+                <button type="button" class="btn toggle-practice-btn" onclick="togglePractice(this)" style="font-size: 12px; padding: 4px 10px;">做题</button>
+                <a href="{{ url_for('review.favorite_toggle', qid=q.id) }}" style="color: var(--error);">★</a>
+            </div>
         </div>
         <div class="question-text" style="margin-bottom: 16px;">
             {{ q.question_text|safe }}
         </div>
-        <form method="post" action="{{ url_for('review.answer_review') }}" onsubmit="return submitReview(this)">
-            <input type="hidden" name="qid" value="{{ q.id }}">
-            <div class="form-group">
-                <label>请作答：</label>
-                <math-field class="review-formula" style="font-size: 18px; padding: 8px; width: 100%;" virtual-keyboard-mode="manual"></math-field>
-                <input type="hidden" name="answer" class="formula-answer">
-                <div class="formula-preview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
-            </div>
-            <div class="review-alert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请输入答案</div>
-            <button type="submit" class="btn btn-primary">提交</button>
-        </form>
+
+        <!-- 答案区域 -->
+        <div class="answer-section" style="display: none; margin-bottom: 16px; padding: 12px; background: var(--bg); border-radius: 8px;">
+            <div style="color: var(--text-light); font-size: 14px; margin-bottom: 8px;">正确答案：</div>
+            <div class="latex-render" style="font-size: 16px;">{{ q.answer|safe }}</div>
+        </div>
+
+        <!-- 做题区域 -->
+        <div class="practice-section" style="display: none;">
+            <form method="post" action="{{ url_for('review.answer_review') }}" onsubmit="return submitReview(this)">
+                <input type="hidden" name="qid" value="{{ q.id }}">
+                <div class="form-group">
+                    <label>请作答：</label>
+                    <math-field class="review-formula" style="font-size: 18px; padding: 8px; width: 100%;" virtual-keyboard-mode="manual"></math-field>
+                    <input type="hidden" name="answer" class="formula-answer">
+                    <div class="formula-preview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
+                </div>
+                <div class="review-alert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请输入答案</div>
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="button" class="btn" style="margin-left: 8px; border: 1px solid var(--border);" onclick="togglePractice(this)">收起</button>
+            </form>
+        </div>
     </div>
     {% endfor %}
 {% else %}
@@ -45,6 +60,51 @@
 {% endif %}
 
 <script>
+function toggleAnswer(btn) {
+    const card = btn.closest('.card');
+    const answerSection = card.querySelector('.answer-section');
+    if (answerSection.style.display === 'none') {
+        answerSection.style.display = 'block';
+        btn.textContent = '收起答案';
+        // 渲染 LaTeX
+        if (typeof renderMathInElement !== 'undefined') {
+            renderMathInElement(answerSection, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+    } else {
+        answerSection.style.display = 'none';
+        btn.textContent = '查看答案';
+    }
+}
+
+function togglePractice(btn) {
+    const card = btn.closest('.card');
+    const practiceSection = card.querySelector('.practice-section');
+    const answerSection = card.querySelector('.answer-section');
+    if (practiceSection.style.display === 'none') {
+        practiceSection.style.display = 'block';
+        // 隐藏答案区域
+        if (answerSection) answerSection.style.display = 'none';
+        // 更新按钮文字
+        const answerBtn = card.querySelector('.toggle-answer-btn');
+        if (answerBtn) answerBtn.textContent = '查看答案';
+        btn.textContent = '收起';
+        // 聚焦到输入框
+        setTimeout(() => {
+            const mf = card.querySelector('.review-formula');
+            if (mf) mf.focus();
+        }, 100);
+    } else {
+        practiceSection.style.display = 'none';
+        btn.textContent = '做题';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.review-formula').forEach(function(mf) {
         const form = mf.closest('form');
