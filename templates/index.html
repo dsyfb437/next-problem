@@ -144,7 +144,8 @@
 
             const form = document.getElementById('answerForm');
             const qid = form.querySelector('input[name="qid"]').value;
-            const isMultipleChoice = {{ question.type == 'multiple_choice' and question.options|default(false) }};
+            // 通过检查是否存在radio按钮来判断是否为选择题
+            const isMultipleChoice = form.querySelector('input[type="radio"][name="answer"]') !== null;
 
             let answer = '';
             if (isMultipleChoice) {
