@@ -1,6 +1,7 @@
 """
 推荐引擎模块
 """
+from typing import Dict
 from services.recommend.base import RecommendEngine
 from services.recommend.bkt_engine import BKTRecommendEngine
 
