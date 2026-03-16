@@ -11,16 +11,7 @@ question_bp = Blueprint("question", __name__)
 def create_question_controller(user_service, question_repo, subject_files):
     """创建题目控制器"""
 
-    current_subject = {"name": "高等数学", "collection": None}
-
-    def load_subject_questions(subject_name: str):
-        """加载科目题目"""
-        if current_subject["name"] != subject_name or current_subject["collection"] is None:
-            current_subject["name"] = subject_name
-            current_subject["collection"] = question_repo.get_by_subject(
-                subject_name, subject_files
-            )
-        return current_subject["collection"]
+    DEFAULT_SUBJECT = "高等数学"
 
     @question_bp.route("/")
     def index():
@@ -29,8 +20,8 @@ def create_question_controller(user_service, question_repo, subject_files):
         if not user:
             return redirect(url_for("auth.login"))
 
-        subject = request.args.get("subject", current_subject["name"])
-        collection = load_subject_questions(subject)
+        subject = request.args.get("subject", DEFAULT_SUBJECT)
+        collection = question_repo.get_by_subject(subject, subject_files)
 
         # 推荐题目
         from services.recommend import get_current_engine
@@ -70,10 +61,8 @@ def create_question_controller(user_service, question_repo, subject_files):
     @question_bp.route("/select_subject")
     def select_subject():
         """切换科目"""
-        subject = request.args.get("subject", "高等数学")
+        subject = request.args.get("subject", DEFAULT_SUBJECT)
         if subject in subject_files:
-            current_subject["name"] = subject
-            current_subject["collection"] = question_repo.get_by_subject(subject, subject_files)
             flash(f"已切换到《{subject}》题库", "correct")
         return redirect(url_for("question.index", subject=subject))
 
