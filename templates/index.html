@@ -218,8 +218,11 @@
             const form = document.getElementById('answerForm');
             const qid = form.querySelector('input[name="qid"]').value;
             // 通过 questionType 变量判断题型
+            console.log('questionType:', window.questionType);
             const isMultipleChoice = window.questionType === 'multiple_choice';
             const isTrueFalse = window.questionType === 'true_false';
+
+            console.log('isMultipleChoice:', isMultipleChoice, 'isTrueFalse:', isTrueFalse);
 
             let answer = '';
             if (isMultipleChoice) {
