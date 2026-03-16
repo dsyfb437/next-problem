@@ -267,8 +267,12 @@
                 },
                 body: JSON.stringify({qid: qid, answer: answer})
             })
-            .then(r => r.json())
+            .then(r => {
+                console.log('Response status:', r.status);
+                return r.json();
+            })
             .then(data => {
+                console.log('Response data:', data);
                 if (data.status === 'ok') {
                     showAnswerResult(data.correct, data.correct_answer, answer);
                 } else {
@@ -276,7 +280,7 @@
                 }
             })
             .catch(err => {
-                console.error(err);
+                console.error('Fetch error:', err);
                 alert('提交失败，请重试');
             });
 
