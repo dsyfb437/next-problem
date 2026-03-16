@@ -333,10 +333,20 @@ def create_question_controller(user_service, question_repo, subject_files):
 
         user_service.save_user(user)
 
+        # 选择题返回选项内容而非索引
+        correct_answer = None
+        if not is_correct:
+            if question.get("type") == "multiple_choice" and question.get("options"):
+                idx = question.get("correct_option", 0)
+                opts = question.get("options", [])
+                correct_answer = opts[idx] if idx < len(opts) else str(idx)
+            else:
+                correct_answer = question.get("answer", "")
+
         return jsonify({
             "status": "ok",
             "correct": is_correct,
-            "correct_answer": question.get("answer", "") if not is_correct else None
+            "correct_answer": correct_answer
         })
 
     return question_bp
