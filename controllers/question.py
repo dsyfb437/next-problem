@@ -124,7 +124,7 @@ def create_question_controller(user_service, question_repo, subject_files):
             try:
                 start_dt = datetime.fromisoformat(start_time)
                 time_spent = (datetime.now() - start_dt).total_seconds()
-            except:
+            except ValueError:
                 pass
             session.pop(f"q_start_{qid}", None)
 
@@ -293,7 +293,7 @@ def create_question_controller(user_service, question_repo, subject_files):
             try:
                 start_dt = datetime.fromisoformat(start_time)
                 time_spent = (datetime.now() - start_dt).total_seconds()
-            except:
+            except ValueError:
                 pass
             session.pop(f"q_start_{qid}", None)
 

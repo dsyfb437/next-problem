@@ -71,7 +71,7 @@ class GraderService:
             expr_correct = sympify(correct)
             if expr_user.equals(expr_correct):
                 return True
-        except:
+        except (SympifyError, ValueError, TypeError):
             pass
 
         # 转换为SymPy后比较
@@ -88,7 +88,7 @@ class GraderService:
             diff = expr_user - expr_correct
             if simplify(diff) == 0:
                 return True
-        except:
+        except (SympifyError, ValueError, TypeError, AttributeError):
             pass
 
         # 字符串标准化比较

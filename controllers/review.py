@@ -90,7 +90,7 @@ def create_review_controller(user_service, question_repo, subject_files):
                     next_review = datetime.fromisoformat(h.get("next_review"))
                     if next_review <= now:
                         due_qids.add(h.get("qid"))
-                except:
+                except (ValueError, AttributeError):
                     continue
 
         due_questions = [q for q in coll.questions if q.id in due_qids]

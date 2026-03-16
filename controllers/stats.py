@@ -66,7 +66,7 @@ def create_stats_controller(user_service, question_repo, subject_files):
                     next_review = datetime.fromisoformat(h.get("next_review"))
                     if next_review <= datetime.now():
                         due_count += 1
-                except:
+                except (ValueError, AttributeError):
                     pass
 
         # 最近做题记录
