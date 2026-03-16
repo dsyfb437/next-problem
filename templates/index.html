@@ -3,17 +3,6 @@
 {% block title %}NextProblem{% endblock %}
 
 {% block content %}
-{% if need_login %}
-<div class="card" style="text-align: center; padding: 60px 40px; max-width: 500px; margin: 40px auto;">
-    <h1 style="font-size: 28px; margin-bottom: 16px; color: var(--primary);">Welcome to NextProblem</h1>
-    <p style="color: var(--text-light); margin-bottom: 32px; font-size: 16px;">高效学习，智能推荐</p>
-
-    <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 32px;">
-        <a href="{{ url_for('auth.login') }}" class="btn btn-primary" style="padding: 12px 32px; font-size: 16px;">登录</a>
-        <a href="{{ url_for('auth.register') }}" class="btn" style="border: 1px solid var(--border); padding: 12px 32px; font-size: 16px;">注册</a>
-    </div>
-</div>
-{% else %}
 <!-- 科目切换 -->
 <div class="card" style="margin-bottom: 16px; padding: 16px;">
     <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
@@ -197,6 +186,8 @@
                         }
                     }
                 });
+            }
+        });
     </script>
     {% endif %}
 </div>
@@ -217,6 +208,5 @@
         <a href="{{ url_for('stats.restart') }}" class="btn btn-primary">重新开始</a>
     </div>
 </div>
-{% endif %}
 {% endif %}
 {% endblock %}
