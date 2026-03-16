@@ -5,11 +5,12 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# 加载 .env 文件
-load_dotenv()
-
 # 基础路径
 BASE_DIR = Path(__file__).parent
+
+# 加载 .env 文件（指定完整路径）
+load_dotenv(BASE_DIR / ".env")
+
 DATA_DIR = BASE_DIR / "data"
 QUESTION_DIR = BASE_DIR / "questions"
 
