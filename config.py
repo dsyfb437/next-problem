@@ -3,6 +3,10 @@
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# 加载 .env 文件
+load_dotenv()
 
 # 基础路径
 BASE_DIR = Path(__file__).parent
@@ -14,7 +18,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     raise ValueError("错误: SECRET_KEY 环境变量未设置！请复制 .env.example 为 .env 并配置")
 
-DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # 数据库配置
 DATABASE_PATH = DATA_DIR / "app.db"
