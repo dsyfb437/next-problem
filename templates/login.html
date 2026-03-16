@@ -7,6 +7,7 @@
     <h2 style="margin-bottom: 24px; text-align: center;">登录</h2>
 
     <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label for="username">用户名</label>
             <input type="text" name="username" id="username" required>

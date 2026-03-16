@@ -65,6 +65,7 @@
 
     {% if question.type == 'multiple_choice' and question.options %}
     <form id="answerForm" onsubmit="return submitAnswer(event)">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
         <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
@@ -85,6 +86,7 @@
     </form>
     {% else %}
     <form id="answerForm" onsubmit="return submitAnswer(event)">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
         <div class="form-group">

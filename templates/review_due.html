@@ -25,6 +25,7 @@
             {{ q.question_text|safe }}
         </div>
         <form method="post" action="{{ url_for('review.answer_due') }}" onsubmit="return submitReview(this)">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="qid" value="{{ q.id }}">
             <div class="form-group">
                 <label>请作答：</label>

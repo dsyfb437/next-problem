@@ -39,6 +39,7 @@
         <!-- 做题区域 -->
         <div class="practice-section" style="display: none;">
             <form method="post" action="{{ url_for('review.answer_review') }}" onsubmit="return submitReview(this)">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="qid" value="{{ q.id }}">
                 <div class="form-group">
                     <label>请作答：</label>

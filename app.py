@@ -12,6 +12,7 @@ import os
 from flask import Flask
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_wtf.csrf import CSRFProtect
 from dotenv import load_dotenv
 
 import config
@@ -34,6 +35,7 @@ app.config["SECRET_KEY"] = config.SECRET_KEY
 
 # 初始化扩展
 bcrypt = Bcrypt(app)
+csrf = CSRFProtect(app)  # CSRF 保护
 login_manager = LoginManager(app)
 login_manager.login_view = "auth.login"
 
