@@ -140,6 +140,35 @@
             window.location.reload();
         };
 
+        // 跳过此题
+        window.submitSkip = function(qid) {
+            if (!confirm('确定跳过此题？此题将被收入错题本。')) {
+                return;
+            }
+            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch('/answer_skip', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({qid: qid})
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.status === 'ok') {
+                    alert('已收入错题本');
+                    window.location.reload();
+                } else {
+                    alert(data.message || '操作失败');
+                }
+            })
+            .catch(function(err) {
+                console.error(err);
+                alert('操作失败，请重试');
+            });
+        };
+
         window.addEventListener("load", function() {
             // 确保 KaTeX 加载完成后再渲染
             function renderAll() {
