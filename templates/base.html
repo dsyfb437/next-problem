@@ -32,6 +32,114 @@
             }
         });
 
+        // 全局提交答案函数
+        window.submitAnswerDirect = function() {
+            console.log('submitAnswerDirect called');
+            var form = document.getElementById('answerForm');
+            if (!form) {
+                console.error('Form not found');
+                alert('表单未找到');
+                return;
+            }
+            var qid = form.querySelector('input[name="qid"]').value;
+            console.log('questionType:', window.questionType);
+            var isMultipleChoice = window.questionType === 'multiple_choice';
+            var isTrueFalse = window.questionType === 'true_false';
+            console.log('isMultipleChoice:', isMultipleChoice, 'isTrueFalse:', isTrueFalse);
+
+            var answer = '';
+            if (isMultipleChoice) {
+                var selected = form.querySelector('input[name="answer"]:checked');
+                if (!selected) {
+                    document.getElementById('mcAlert').style.display = 'block';
+                    return false;
+                }
+                document.getElementById('mcAlert').style.display = 'none';
+                answer = selected.value;
+            } else if (isTrueFalse) {
+                var selected = form.querySelector('input[name="answer"]:checked');
+                if (!selected) {
+                    document.getElementById('mcAlert').style.display = 'block';
+                    return false;
+                }
+                document.getElementById('mcAlert').style.display = 'none';
+                answer = selected.value;
+            } else {
+                // 填空题
+                var mf = document.getElementById('formulaInput');
+                answer = mf ? mf.value.trim() : '';
+                if (!answer) {
+                    var fillAlert = document.getElementById('fillAlert');
+                    if (fillAlert) fillAlert.style.display = 'block';
+                    return false;
+                }
+                var fillAlert2 = document.getElementById('fillAlert');
+                if (fillAlert2) fillAlert2.style.display = 'none';
+            }
+
+            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch('/answer_ajax', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({qid: qid, answer: answer})
+            })
+            .then(function(r) {
+                console.log('Response status:', r.status);
+                return r.json();
+            })
+            .then(function(data) {
+                console.log('Response data:', data);
+                if (data.status === 'ok') {
+                    showAnswerResult(data.correct, data.correct_answer, answer);
+                } else {
+                    alert(data.message || '提交失败');
+                }
+            })
+            .catch(function(err) {
+                console.error('Fetch error:', err);
+                alert('提交失败，请重试');
+            });
+        };
+
+        // 显示答题结果弹窗
+        window.showAnswerResult = function(correct, correctAnswer, userAnswer) {
+            var modal = document.getElementById('resultModal');
+            var resultDiv = document.getElementById('resultContent');
+            var answerDiv = document.getElementById('resultAnswer');
+
+            if (correct) {
+                resultDiv.innerHTML = '<span style="color: var(--success); font-size: 24px;">✓ 回答正确！</span>';
+                answerDiv.innerHTML = '';
+            } else {
+                resultDiv.innerHTML = '<span style="color: var(--error); font-size: 24px;">✗ 回答错误</span>';
+                answerDiv.innerHTML = '<div style="margin-top: 16px;"><div style="color: var(--text-light); font-size: 14px; margin-bottom: 8px;">正确答案：</div><div class="latex-render" style="font-size: 18px; padding: 12px; background: var(--bg); border-radius: 8px;">' + correctAnswer + '</div></div>';
+            }
+
+            modal.style.display = 'flex';
+
+            function renderLatex() {
+                if (typeof renderMathInElement !== 'undefined') {
+                    renderMathInElement(modal, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                }
+            }
+            renderLatex();
+            setTimeout(renderLatex, 100);
+        };
+
+        window.closeResultModal = function() {
+            document.getElementById('resultModal').style.display = 'none';
+            window.location.reload();
+        };
+
         window.addEventListener("load", function() {
             // 确保 KaTeX 加载完成后再渲染
             function renderAll() {
