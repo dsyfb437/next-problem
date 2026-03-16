@@ -63,6 +63,15 @@
         {{ question.question_text|safe }}
     </div>
 
+    <script>
+        // 计算题目中的空数量 (____ 算一个空)
+        (function() {
+            const text = document.querySelector('.question-text').innerText;
+            const matches = text.match(/_{4,}/g);
+            window.blankCount = matches ? matches.length : 1;
+        })();
+    </script>
+
     {% if question.type == 'multiple_choice' and question.options %}
     <form id="answerForm" onsubmit="return submitAnswer(event)">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -84,20 +93,47 @@
             <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
         </div>
     </form>
+    {% elif question.type == 'true_false' %}
+    <form id="answerForm" onsubmit="return submitAnswer(event)">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="qid" value="{{ question.id }}">
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+            <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;" class="option-label">
+                <input type="radio" name="answer" value="是">
+                <span>是 / 对 / 正确</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;" class="option-label">
+                <input type="radio" name="answer" value="否">
+                <span>否 / 错 / 错误</span>
+            </label>
+        </div>
+
+        <div id="mcAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请选择一个选项</div>
+
+        <div style="display: flex; gap: 12px;">
+            <button type="submit" class="btn btn-primary">提交答案</button>
+            <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
+        </div>
+    </form>
     {% else %}
     <form id="answerForm" onsubmit="return submitAnswer(event)">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
-        <div class="form-group">
-            <label for="answer">请输入答案：</label>
-            <!-- MathLive 公式输入组件 -->
-            <math-field id="formulaInput"
-                style="font-size: 18px; padding: 8px; width: 100%;"
-                virtual-keyboard-mode="manual"
-            ></math-field>
-            <input type="hidden" name="answer" id="formulaAnswer">
-            <div id="formulaPreview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
+        <div class="form-group" id="answerInputs">
+            <label>请输入答案：</label>
+            <!-- 单个输入框 (默认) -->
+            <div id="singleInput">
+                <math-field id="formulaInput"
+                    style="font-size: 18px; padding: 8px; width: 100%;"
+                    virtual-keyboard-mode="manual"
+                ></math-field>
+                <input type="hidden" name="answer" id="formulaAnswer">
+                <div id="formulaPreview" style="margin-top: 8px; min-height: 24px; color: var(--text-light);"></div>
+            </div>
+            <!-- 多个输入框 (多空题) -->
+            <div id="multiInputs" style="display: none;"></div>
         </div>
 
         <div id="fillAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请输入答案</div>
@@ -111,6 +147,28 @@
     <script>
         // 设置 MathLive 输入联动
         document.addEventListener('DOMContentLoaded', function() {
+            // 多空题：渲染多个输入框
+            if (window.blankCount > 1) {
+                const multiInputs = document.getElementById('multiInputs');
+                const singleInput = document.getElementById('singleInput');
+                if (multiInputs && singleInput) {
+                    singleInput.style.display = 'none';
+                    multiInputs.style.display = 'block';
+                    multiInputs.innerHTML = '';
+
+                    for (let i = 1; i <= window.blankCount; i++) {
+                        const div = document.createElement('div');
+                        div.style.marginBottom = '12px';
+                        div.innerHTML = '<span style="color: var(--text-light); margin-right: 8px;">(' + i + ')</span>' +
+                            '<math-field class="multi-answer" data-index="' + i + '"' +
+                            'style="font-size: 18px; padding: 8px; width: 70%;"' +
+                            'virtual-keyboard-mode="manual"' +
+                            '></math-field>';
+                        multiInputs.appendChild(div);
+                    }
+                }
+            }
+
             const mf = document.getElementById('formulaInput');
             const hiddenInput = document.getElementById('formulaAnswer');
             const preview = document.getElementById('formulaPreview');
@@ -160,19 +218,42 @@
                 answer = selected.value;
             } else {
                 // 填空题从MathLive获取
-                const mf = document.getElementById('formulaInput');
-                answer = mf ? mf.value.trim() : '';
+                if (window.blankCount > 1) {
+                    // 多空题：用 ; 分隔多个答案
+                    const inputs = document.querySelectorAll('.multi-answer');
+                    const answers = [];
+                    let allEmpty = true;
+                    inputs.forEach(function(mf) {
+                        const val = mf.value.trim();
+                        if (val) allEmpty = false;
+                        answers.push(val);
+                    });
+                    if (allEmpty) {
+                        document.getElementById('fillAlert').style.display = 'block';
+                        return false;
+                    }
+                    document.getElementById('fillAlert').style.display = 'none';
+                    answer = answers.join(';');
+                } else {
+                    // 单空题
+                    const mf = document.getElementById('formulaInput');
+                    answer = mf ? mf.value.trim() : '';
 
-                if (!answer) {
-                    document.getElementById('fillAlert').style.display = 'block';
-                    return false;
+                    if (!answer) {
+                        document.getElementById('fillAlert').style.display = 'block';
+                        return false;
+                    }
+                    document.getElementById('fillAlert').style.display = 'none';
                 }
-                document.getElementById('fillAlert').style.display = 'none';
             }
 
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             fetch('/answer_ajax', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
                 body: JSON.stringify({qid: qid, answer: answer})
             })
             .then(r => r.json())
@@ -197,9 +278,13 @@
                 return;
             }
 
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             fetch('/answer_skip', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
                 body: JSON.stringify({qid: qid})
             })
             .then(r => r.json())
