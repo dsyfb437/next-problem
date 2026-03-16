@@ -42,9 +42,14 @@ source venv/bin/activate  # Linux/Mac
 # 安装依赖
 pip install -r requirements.txt
 
+# 配置环境变量（复制示例文件并修改）
+cp .env.example .env
+
 # 运行
 python app.py
 ```
+
+> 注意：`.env` 文件包含敏感密钥，请勿提交到 Git。`.env` 已在 `.gitignore` 中忽略。
 
 访问 http://localhost:5000
 
@@ -61,6 +66,21 @@ python app.py
 ## 部署
 
 项目已配置 GitHub Actions，自动部署到 PythonAnywhere。
+
+### 生产环境配置
+
+在 PythonAnywhere 后台设置环境变量：
+
+```
+Web 页面 → 配置 → 环境变量
+- SECRET_KEY: 生成一个强随机密钥
+- DEPLOY_KEY: 部署验证密钥（可选）
+```
+
+生成密钥：
+```bash
+python3 -c "import secrets; print(secrets.token_hex(32))"
+```
 
 ## 后期扩展
 

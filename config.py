@@ -10,7 +10,10 @@ DATA_DIR = BASE_DIR / "data"
 QUESTION_DIR = BASE_DIR / "questions"
 
 # Flask配置
-SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key-change-in-production")
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("错误: SECRET_KEY 环境变量未设置！请复制 .env.example 为 .env 并配置")
+
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
 # 数据库配置
