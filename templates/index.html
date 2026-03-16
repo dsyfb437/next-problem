@@ -91,7 +91,7 @@
         <div id="mcAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请选择一个选项</div>
 
         <div style="display: flex; gap: 12px;">
-            <button type="submit" class="btn btn-primary">提交答案</button>
+            <button type="button" class="btn btn-primary" onclick="submitAnswerDirect()">提交答案</button>
             <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
         </div>
     </form>
@@ -114,7 +114,7 @@
         <div id="mcAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请选择一个选项</div>
 
         <div style="display: flex; gap: 12px;">
-            <button type="submit" class="btn btn-primary">提交答案</button>
+            <button type="button" class="btn btn-primary" onclick="submitAnswerDirect()">提交答案</button>
             <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
         </div>
     </form>
@@ -141,7 +141,7 @@
         <div id="fillAlert" style="display: none; color: var(--error); margin-bottom: 12px; font-size: 14px;">请输入答案</div>
 
         <div style="display: flex; gap: 12px;">
-            <button type="submit" class="btn btn-primary">提交答案</button>
+            <button type="button" class="btn btn-primary" onclick="submitAnswerDirect()">提交答案</button>
             <button type="button" class="btn" style="border: 1px solid var(--border);" onclick="submitSkip('{{ question.id }}')">我不会</button>
         </div>
     </form>
@@ -215,11 +215,14 @@
             }
         });
 
-        // 提交答案（AJAX）
-        function submitAnswer(event) {
-            event.preventDefault();
-
+        // 直接提交答案（供按钮onclick调用）
+        function submitAnswerDirect() {
+            console.log('submitAnswerDirect called');
             const form = document.getElementById('answerForm');
+            if (!form) {
+                console.error('Form not found');
+                return;
+            }
             const qid = form.querySelector('input[name="qid"]').value;
             // 通过 questionType 变量判断题型
             console.log('questionType:', window.questionType);
