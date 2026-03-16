@@ -202,12 +202,16 @@
 
         // 绑定表单提交事件
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, binding form submit');
             const form = document.getElementById('answerForm');
+            console.log('Form found:', !!form);
             if (form) {
                 form.addEventListener('submit', function(event) {
                     event.preventDefault();
+                    console.log('Form submit event triggered');
                     submitAnswer(event);
                 });
+                console.log('Event listener bound');
             }
         });
 
