@@ -116,6 +116,14 @@ class User:
             return False
         return bcrypt.check_password_hash(self.password_hash, password)
 
+    def mark_reviewed(self, qid: str) -> bool:
+        """标记错题为已复习"""
+        for h in self.history:
+            if h.qid == qid and not h.correct:
+                h.reviewed = True
+                return True
+        return False
+
     def to_dict(self) -> dict:
         """转换为字典用于持久化"""
         def serialize_history(h):
