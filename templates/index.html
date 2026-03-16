@@ -75,7 +75,7 @@
     </script>
 
     {% if question.type == 'multiple_choice' and question.options %}
-    <form id="answerForm" onsubmit="return submitAnswer(event)">
+    <form id="answerForm">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
@@ -96,7 +96,7 @@
         </div>
     </form>
     {% elif question.type == 'true_false' %}
-    <form id="answerForm" onsubmit="return submitAnswer(event)">
+    <form id="answerForm">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
@@ -119,7 +119,7 @@
         </div>
     </form>
     {% else %}
-    <form id="answerForm" onsubmit="return submitAnswer(event)">
+    <form id="answerForm">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="qid" value="{{ question.id }}">
 
@@ -196,6 +196,15 @@
                             });
                         }
                     }
+                });
+            }
+
+            // 绑定表单提交事件
+            const form = document.getElementById('answerForm');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    submitAnswer(event);
                 });
             }
         });
