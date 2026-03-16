@@ -215,8 +215,8 @@
             }
         });
 
-        // 直接提交答案（供按钮onclick调用）
-        function submitAnswerDirect() {
+        // 直接提交答案（供按钮onclick调用）- 定义为全局函数
+        window.submitAnswerDirect = function() {
             console.log('submitAnswerDirect called');
             const form = document.getElementById('answerForm');
             if (!form) {
