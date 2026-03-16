@@ -1,10 +1,17 @@
 """
 认证控制器 - 登录注册
 """
+import re
 from flask import Blueprint, request, redirect, url_for, flash, render_template, session
 from flask_login import login_user, logout_user, login_required, current_user
 
 auth_bp = Blueprint("auth", __name__)
+
+# 输入验证规则
+USERNAME_MIN_LEN = 3
+USERNAME_MAX_LEN = 20
+PASSWORD_MIN_LEN = 6
+PASSWORD_MAX_LEN = 20
 
 
 def create_auth_controller(user_service, bcrypt):
@@ -41,8 +48,19 @@ def create_auth_controller(user_service, bcrypt):
             password = request.form.get("password", "")
             confirm = request.form.get("confirm_password", "")
 
-            if not username or not password:
-                flash("请填写所有字段", "wrong")
+            # 验证用户名长度
+            if len(username) < USERNAME_MIN_LEN or len(username) > USERNAME_MAX_LEN:
+                flash(f"用户名长度需在 {USERNAME_MIN_LEN}-{USERNAME_MAX_LEN} 个字符之间", "wrong")
+                return redirect(url_for("auth.register"))
+
+            # 验证用户名格式（只允许字母、数字、下划线）
+            if not re.match(r"^\w+$", username):
+                flash("用户名只能包含字母、数字和下划线", "wrong")
+                return redirect(url_for("auth.register"))
+
+            # 验证密码长度
+            if len(password) < PASSWORD_MIN_LEN or len(password) > PASSWORD_MAX_LEN:
+                flash(f"密码长度需在 {PASSWORD_MIN_LEN}-{PASSWORD_MAX_LEN} 个字符之间", "wrong")
                 return redirect(url_for("auth.register"))
 
             if password != confirm:
