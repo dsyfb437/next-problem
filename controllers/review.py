@@ -134,8 +134,8 @@ def create_review_controller(user_service, question_repo, subject_files):
             flash("回答正确！", "correct")
             # 更新复习状态
             for h in user.history:
-                if h.get("qid") == qid and h.get("correct"):
-                    review_count = h.get("review_count", 0) + 1
+                if h.qid == qid and h.correct:
+                    review_count = h.review_count + 1
                     h.review_count = review_count
                     h.last_reviewed = datetime.now().isoformat()
                     from services.user_service import calculate_next_review_interval
@@ -146,7 +146,7 @@ def create_review_controller(user_service, question_repo, subject_files):
             flash(f"回答错误。正确答案：{question.get('answer', '')}", "wrong")
             # 重置复习周期
             for h in user.history:
-                if h.get("qid") == qid and h.get("correct"):
+                if h.qid == qid and h.correct:
                     h.review_count = 0
                     h.next_review = datetime.now().isoformat()
                     break
