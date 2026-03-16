@@ -64,6 +64,8 @@
     </div>
 
     <script>
+        // 设置题目类型
+        window.questionType = "{{ question.type }}";
         // 计算题目中的空数量 (____ 算一个空)
         (function() {
             const text = document.querySelector('.question-text').innerText;
@@ -204,11 +206,20 @@
 
             const form = document.getElementById('answerForm');
             const qid = form.querySelector('input[name="qid"]').value;
-            // 通过检查是否存在radio按钮来判断是否为选择题
-            const isMultipleChoice = form.querySelector('input[type="radio"][name="answer"]') !== null;
+            // 通过 questionType 变量判断题型
+            const isMultipleChoice = window.questionType === 'multiple_choice';
+            const isTrueFalse = window.questionType === 'true_false';
 
             let answer = '';
             if (isMultipleChoice) {
+                const selected = form.querySelector('input[name="answer"]:checked');
+                if (!selected) {
+                    document.getElementById('mcAlert').style.display = 'block';
+                    return false;
+                }
+                document.getElementById('mcAlert').style.display = 'none';
+                answer = selected.value;
+            } else if (isTrueFalse) {
                 const selected = form.querySelector('input[name="answer"]:checked');
                 if (!selected) {
                     document.getElementById('mcAlert').style.display = 'block';

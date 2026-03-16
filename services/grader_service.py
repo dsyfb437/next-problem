@@ -14,6 +14,7 @@ class GraderService:
 
         支持:
         - multiple_choice: 选项索引比较
+        - true_false: 判断题 (是/否, 对/错, True/False)
         - numeric: 浮点数比较
         - formula: SymPy符号等价
         - string: 精确匹配
@@ -23,6 +24,10 @@ class GraderService:
         # 选择题
         if question_type == "multiple_choice":
             return self._check_multiple_choice(question, user_answer)
+
+        # 判断题
+        if question_type == "true_false":
+            return self._check_true_false(question, user_answer)
 
         # 填空题
         return self._check_fill_in(question, user_answer)
@@ -36,6 +41,36 @@ class GraderService:
         except (ValueError, TypeError):
             return False
 
+    def _check_true_false(self, question: Dict, user_answer: str) -> bool:
+        """检查判断题"""
+        correct = str(question.get("answer", "")).strip().lower()
+        user = user_answer.strip().lower()
+
+        # 正确答案映射
+        true_values = {"是", "对", "正确", "true", "t", "1", "yes", "y"}
+        false_values = {"否", "错", "错误", "false", "f", "0", "no", "n"}
+
+        # 检查用户答案是否有效
+        user_is_true = None
+        if user in true_values:
+            user_is_true = True
+        elif user in false_values:
+            user_is_true = False
+
+        if user_is_true is None:
+            return False
+
+        # 检查正确答案
+        if correct in true_values:
+            correct_is_true = True
+        elif correct in false_values:
+            correct_is_true = False
+        else:
+            # 如果answer字段不是标准值，默认当作False
+            correct_is_true = False
+
+        return user_is_true == correct_is_true
+
     def _check_fill_in(self, question: Dict, user_answer: str) -> bool:
         """检查填空题"""
         answer_type = question.get("answer_type", "string")
@@ -45,12 +80,29 @@ class GraderService:
         if not user_answer:
             return False
 
-        if answer_type == "numeric":
-            return self._check_numeric(correct_answer, user_answer)
-        elif answer_type == "formula":
-            return self._check_formula(correct_answer, user_answer)
+        # 支持多答案：用 || 或 ; 分隔多个正确答案
+        # 例如: "1;2" 表示答案是1或2都对
+        if "||" in correct_answer:
+            answers = correct_answer.split("||")
+        elif ";" in correct_answer:
+            answers = correct_answer.split(";")
         else:
-            return user_answer.lower() == correct_answer.lower()
+            answers = [correct_answer]
+
+        # 尝试匹配任意一个正确答案
+        for ans in answers:
+            ans = ans.strip()
+            if answer_type == "numeric":
+                if self._check_numeric(ans, user_answer):
+                    return True
+            elif answer_type == "formula":
+                if self._check_formula(ans, user_answer):
+                    return True
+            else:
+                if user_answer.lower() == ans.lower():
+                    return True
+
+        return False
 
     def _check_numeric(self, correct: str, user_answer: str) -> bool:
         """检查数值答案"""
@@ -107,7 +159,8 @@ class GraderService:
         s = re.sub(r"\\mathrm\{([^}]*)\}", r"\1", s)
         s = re.sub(r"\\text\{([^}]*)\}", r"\1", s)
 
-        # 分数
+        # 分数（\frac 和 \dfrac 等效）
+        s = re.sub(r"\\dfrac\{([^{}]*)\}\{([^{}]*)\}", r"((\1)/(\2))", s)
         s = re.sub(r"\\frac\{([^{}]*)\}\{([^{}]*)\}", r"((\1)/(\2))", s)
 
         # 根号
