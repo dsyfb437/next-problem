@@ -118,27 +118,27 @@ def create_question_controller(user_service, question_repo, subject_files):
             session.pop(f"q_start_{qid}", None)
 
         # 记录答题
-        from config import REVIEW_INTERVALS
+        from models.user import AnswerHistory
         from services.user_service import calculate_next_review_interval
 
-        history_entry = {
-            "qid": qid,
-            "user_answer": user_answer,
-            "correct": is_correct,
-            "timestamp": datetime.now().isoformat(),
-            "time_spent": time_spent,
-            "question_difficulty": question.get("difficulty", 0.5),
-            "question_type": question.get("type", "fill_in"),
-            "knowledge_tags": question.get("knowledge_tags", []),
-            "subject": question.get("subject", ""),
-            "chapter": question.get("chapter", ""),
-        }
+        history_entry = AnswerHistory(
+            qid=qid,
+            user_answer=user_answer,
+            correct=is_correct,
+            timestamp=datetime.now().isoformat(),
+            time_spent=time_spent,
+            question_difficulty=question.get("difficulty", 0.5),
+            question_type=question.get("type", "fill_in"),
+            knowledge_tags=question.get("knowledge_tags", []),
+            subject=question.get("subject", ""),
+            chapter=question.get("chapter", ""),
+        )
 
         if is_correct:
-            history_entry["review_count"] = 0
-            history_entry["last_reviewed"] = datetime.now().isoformat()
+            history_entry.review_count = 0
+            history_entry.last_reviewed = datetime.now().isoformat()
             interval = calculate_next_review_interval(0)
-            history_entry["next_review"] = (datetime.now() + timedelta(days=interval)).isoformat()
+            history_entry.next_review = (datetime.now() + timedelta(days=interval)).isoformat()
 
         user.history.append(history_entry)
         user.answered_questions.add(qid)
@@ -213,19 +213,20 @@ def create_question_controller(user_service, question_repo, subject_files):
             return jsonify({"status": "error", "message": "题目不存在"})
 
         # 记录为错误
-        history_entry = {
-            "qid": qid,
-            "user_answer": "",
-            "correct": False,
-            "skipped": True,  # 标记为跳过
-            "timestamp": datetime.now().isoformat(),
-            "time_spent": None,
-            "question_difficulty": question.get("difficulty", 0.5),
-            "question_type": question.get("type", "fill_in"),
-            "knowledge_tags": question.get("knowledge_tags", []),
-            "subject": question.get("subject", ""),
-            "chapter": question.get("chapter", ""),
-        }
+        from models.user import AnswerHistory
+        history_entry = AnswerHistory(
+            qid=qid,
+            user_answer="",
+            correct=False,
+            timestamp=datetime.now().isoformat(),
+            time_spent=None,
+            question_difficulty=question.get("difficulty", 0.5),
+            question_type=question.get("type", "fill_in"),
+            knowledge_tags=question.get("knowledge_tags", []),
+            subject=question.get("subject", ""),
+            chapter=question.get("chapter", ""),
+        )
+        # 跳过题目不设置 reviewed，保持其出现在错题本中
 
         user.history.append(history_entry)
         user.answered_questions.add(qid)
@@ -287,26 +288,27 @@ def create_question_controller(user_service, question_repo, subject_files):
             session.pop(f"q_start_{qid}", None)
 
         # 记录答题
+        from models.user import AnswerHistory
         from services.user_service import calculate_next_review_interval
 
-        history_entry = {
-            "qid": qid,
-            "user_answer": user_answer,
-            "correct": is_correct,
-            "timestamp": datetime.now().isoformat(),
-            "time_spent": time_spent,
-            "question_difficulty": question.get("difficulty", 0.5),
-            "question_type": question.get("type", "fill_in"),
-            "knowledge_tags": question.get("knowledge_tags", []),
-            "subject": question.get("subject", ""),
-            "chapter": question.get("chapter", ""),
-        }
+        history_entry = AnswerHistory(
+            qid=qid,
+            user_answer=user_answer,
+            correct=is_correct,
+            timestamp=datetime.now().isoformat(),
+            time_spent=time_spent,
+            question_difficulty=question.get("difficulty", 0.5),
+            question_type=question.get("type", "fill_in"),
+            knowledge_tags=question.get("knowledge_tags", []),
+            subject=question.get("subject", ""),
+            chapter=question.get("chapter", ""),
+        )
 
         if is_correct:
-            history_entry["review_count"] = 0
-            history_entry["last_reviewed"] = datetime.now().isoformat()
+            history_entry.review_count = 0
+            history_entry.last_reviewed = datetime.now().isoformat()
             interval = calculate_next_review_interval(0)
-            history_entry["next_review"] = (datetime.now() + timedelta(days=interval)).isoformat()
+            history_entry.next_review = (datetime.now() + timedelta(days=interval)).isoformat()
 
         user.history.append(history_entry)
         user.answered_questions.add(qid)

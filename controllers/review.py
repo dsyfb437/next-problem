@@ -134,21 +134,37 @@ def create_review_controller(user_service, question_repo, subject_files):
             flash("回答正确！", "correct")
             # 更新复习状态
             for h in user.history:
-                if h.qid == qid and h.correct:
-                    review_count = h.review_count + 1
-                    h.review_count = review_count
-                    h.last_reviewed = datetime.now().isoformat()
+                h_qid = h.get("qid") if isinstance(h, dict) else h.qid
+                h_correct = h.get("correct") if isinstance(h, dict) else h.correct
+                if h_qid == qid and h_correct:
+                    review_count = (h.get("review_count") if isinstance(h, dict) else h.review_count) + 1
+                    if isinstance(h, dict):
+                        h["review_count"] = review_count
+                        h["last_reviewed"] = datetime.now().isoformat()
+                    else:
+                        h.review_count = review_count
+                        h.last_reviewed = datetime.now().isoformat()
                     from services.user_service import calculate_next_review_interval
                     interval = calculate_next_review_interval(review_count)
-                    h.next_review = (datetime.now() + timedelta(days=interval)).isoformat()
+                    next_review = (datetime.now() + timedelta(days=interval)).isoformat()
+                    if isinstance(h, dict):
+                        h["next_review"] = next_review
+                    else:
+                        h.next_review = next_review
                     break
         else:
             flash(f"回答错误。正确答案：{question.get('answer', '')}", "wrong")
             # 重置复习周期
             for h in user.history:
-                if h.qid == qid and h.correct:
-                    h.review_count = 0
-                    h.next_review = datetime.now().isoformat()
+                h_qid = h.get("qid") if isinstance(h, dict) else h.qid
+                h_correct = h.get("correct") if isinstance(h, dict) else h.correct
+                if h_qid == qid and h_correct:
+                    if isinstance(h, dict):
+                        h["review_count"] = 0
+                        h["next_review"] = datetime.now().isoformat()
+                    else:
+                        h.review_count = 0
+                        h.next_review = datetime.now().isoformat()
                     break
 
         user_service.save_user(user)

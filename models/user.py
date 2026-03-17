@@ -119,8 +119,13 @@ class User:
     def mark_reviewed(self, qid: str) -> bool:
         """标记错题为已复习"""
         for h in self.history:
-            if h.qid == qid and not h.correct:
-                h.reviewed = True
+            h_qid = h.get("qid") if isinstance(h, dict) else h.qid
+            h_correct = h.get("correct") if isinstance(h, dict) else h.correct
+            if h_qid == qid and not h_correct:
+                if isinstance(h, dict):
+                    h["reviewed"] = True
+                else:
+                    h.reviewed = True
                 return True
         return False
 

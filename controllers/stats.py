@@ -162,7 +162,10 @@ def create_stats_controller(user_service, question_repo, subject_files):
         user.answered_questions = set()
         user.correct_in_round = set()
         for h in user.history:
-            h.pop("reviewed", None)
+            if hasattr(h, 'reviewed'):
+                h.reviewed = False
+            elif isinstance(h, dict):
+                h['reviewed'] = False
 
         user_service.save_user(user)
         flash("已重置题目进度，知识点保留", "correct")
