@@ -4,6 +4,7 @@
 import json
 from datetime import datetime, timedelta
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template, make_response
+from flask_login import logout_user
 
 stats_bp = Blueprint("stats", __name__)
 
@@ -148,6 +149,7 @@ def create_stats_controller(user_service, question_repo, subject_files):
             file_path = Path("data") / f"user_{user_id}.json"
             if file_path.exists():
                 os.remove(file_path)
+            logout_user()
             session.clear()
             flash("已完全重置进度", "correct")
         return redirect(url_for("auth.login"))
