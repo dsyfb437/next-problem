@@ -56,6 +56,34 @@
 </div>
 
 <div class="card" style="margin-bottom: 24px;">
+    <h3 style="margin-bottom: 16px;">知识点遗忘曲线</h3>
+    <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px;">
+        查看特定知识点随时间的掌握度衰减预测
+    </p>
+    <div style="margin-bottom: 16px;">
+        <select id="knowledgeSelect" onchange="loadKnowledgeCurve()" style="padding: 6px 12px; min-width: 200px;">
+            <option value="">-- 选择知识点 --</option>
+            {% for tag in knowledge.keys() %}
+            <option value="{{ tag }}">{{ tag }} ({{ "%.0f"|format(knowledge[tag] * 100) }}%)</option>
+            {% endfor %}
+        </select>
+    </div>
+    <canvas id="knowledgeCurveChart" style="max-height: 200px;"></canvas>
+    <div id="knowledgeCurveInfo" style="margin-top: 12px; padding: 12px; background: var(--bg); border-radius: 8px; display: none;">
+        <div style="display: flex; justify-content: space-around; text-align: center;">
+            <div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--primary);" id="currentMastery">-</div>
+                <div style="color: var(--text-light); font-size: 12px;">当前掌握度</div>
+            </div>
+            <div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text);" id="lastReviewed">-</div>
+                <div style="color: var(--text-light); font-size: 12px;">上次复习</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-bottom: 24px;">
     <h3 style="margin-bottom: 16px;">近7日答题情况</h3>
     <table style="width: 100%; border-collapse: collapse;">
         <thead>
@@ -305,6 +333,71 @@ window.addEventListener('load', function() {
             }
         });
     }
+
+    // 知识点遗忘曲线
+    let knowledgeChart = null;
+
+    window.loadKnowledgeCurve = function() {
+        const tag = document.getElementById('knowledgeSelect').value;
+        if (!tag) {
+            document.getElementById('knowledgeCurveInfo').style.display = 'none';
+            if (knowledgeChart) {
+                knowledgeChart.destroy();
+                knowledgeChart = null;
+            }
+            return;
+        }
+
+        fetch('/knowledge_curve_data?tag=' + encodeURIComponent(tag))
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+
+                document.getElementById('knowledgeCurveInfo').style.display = 'block';
+                document.getElementById('currentMastery').textContent = Math.round(data.mastery * 100) + '%';
+                document.getElementById('lastReviewed').textContent = data.last_reviewed ? data.last_reviewed.substring(0, 10) : '新知识点';
+
+                const kcCtx = document.getElementById('knowledgeCurveChart');
+                if (knowledgeChart) {
+                    knowledgeChart.destroy();
+                }
+                knowledgeChart = new Chart(kcCtx, {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: '预测掌握度 (%)',
+                            data: data.values,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) { return value + '%'; }
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(function(err) {
+                console.error('加载知识点曲线失败:', err);
+            });
+    };
 });
 </script>
 {% endblock %}

@@ -1,8 +1,9 @@
 """
-复习控制器 - 错题复习、艾宾浩斯复习、收藏
+复习控制器 - 错题复习、收藏
 """
-from datetime import datetime, timedelta
+from datetime import datetime
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template
+from utils import logger
 
 review_bp = Blueprint("review", __name__)
 
@@ -65,6 +66,17 @@ def create_review_controller(user_service, question_repo, subject_files):
         if is_correct:
             flash("回答正确！", "correct")
             user.mark_reviewed(qid)
+            # 更新知识点掌握度（调用BKT引擎）
+            from services.recommend import get_current_engine
+            engine = get_current_engine()
+            user_state = {
+                "knowledge_state": user.knowledge_state,
+                "last_reviewed": user.last_reviewed,
+                "answered_questions": user.answered_questions
+            }
+            engine.update(user_state, question, True)
+            user.knowledge_state = user_state["knowledge_state"]
+            user.last_reviewed = user_state.get("last_reviewed", user.last_reviewed)
         else:
             flash(f"回答错误。正确答案：{question.get('answer', '')}", "wrong")
 
@@ -73,102 +85,34 @@ def create_review_controller(user_service, question_repo, subject_files):
 
     @review_bp.route("/review_due")
     def review_due():
-        """艾宾浩斯复习"""
+        """知识点掌握度统计（基于遗忘曲线）"""
         user = user_service.get_user(session.get("user_id"))
         if not user:
             return redirect(url_for("auth.login"))
 
-        subject = request.args.get("subject", "高等数学")
-        coll = question_repo.get_by_subject(subject, subject_files)
+        from services.recommend import apply_forgetting_curve
 
-        now = datetime.now()
-        due_qids = set()
+        # 计算每个知识点的有效掌握度
+        effective_mastery = {}
+        for tag, mastery in user.knowledge_state.items():
+            last = user.get_tag_last_reviewed(tag)
+            effective = apply_forgetting_curve(mastery, last)
+            effective_mastery[tag] = effective
 
-        for h in user.history:
-            if h.get("correct") and h.get("next_review"):
-                try:
-                    next_review = datetime.fromisoformat(h.get("next_review"))
-                    if next_review <= now:
-                        due_qids.add(h.get("qid"))
-                except (ValueError, AttributeError):
-                    continue
+        # 按有效掌握度排序，低于0.5的为需要加强的知识点
+        weak_tags = [(tag, eff) for tag, eff in effective_mastery.items() if eff < 0.5]
+        weak_tags.sort(key=lambda x: x[1])
 
-        due_questions = [q for q in coll.questions if q.id in due_qids]
+        # 知识点列表（用于显示）
+        all_tags = sorted(effective_mastery.items(), key=lambda x: x[1])
 
         return render_template(
             "review_due.html",
-            questions=due_questions,
-            current_subject=subject,
+            weak_tags=weak_tags[:10],
+            all_tags=all_tags,
+            current_subject=request.args.get("subject", "高等数学"),
             subjects=list(subject_files.keys())
         )
-
-    @review_bp.route("/answer_due", methods=["POST"])
-    def answer_due():
-        """艾宾浩斯答题提交"""
-        user = user_service.get_user(session.get("user_id"))
-        if not user:
-            return redirect(url_for("auth.login"))
-
-        qid = request.form.get("qid", "")
-        user_answer = request.form.get("answer", "").strip()
-
-        from services.grader_service import get_grader
-        grader = get_grader()
-
-        # 获取题目
-        question = None
-        for subject_name in subject_files.keys():
-            coll = question_repo.get_by_subject(subject_name, subject_files)
-            q = coll.get_by_id(qid)
-            if q:
-                question = q.to_dict()
-                break
-
-        if not question:
-            flash("题目不存在", "wrong")
-            return redirect(url_for("review.review_due"))
-
-        is_correct = grader.check(question, user_answer)
-
-        if is_correct:
-            flash("回答正确！", "correct")
-            # 更新复习状态
-            for h in user.history:
-                h_qid = h.get("qid") if isinstance(h, dict) else h.qid
-                h_correct = h.get("correct") if isinstance(h, dict) else h.correct
-                if h_qid == qid and h_correct:
-                    review_count = (h.get("review_count") if isinstance(h, dict) else h.review_count) + 1
-                    if isinstance(h, dict):
-                        h["review_count"] = review_count
-                        h["last_reviewed"] = datetime.now().isoformat()
-                    else:
-                        h.review_count = review_count
-                        h.last_reviewed = datetime.now().isoformat()
-                    from services.user_service import calculate_next_review_interval
-                    interval = calculate_next_review_interval(review_count)
-                    next_review = (datetime.now() + timedelta(days=interval)).isoformat()
-                    if isinstance(h, dict):
-                        h["next_review"] = next_review
-                    else:
-                        h.next_review = next_review
-                    break
-        else:
-            flash(f"回答错误。正确答案：{question.get('answer', '')}", "wrong")
-            # 重置复习周期
-            for h in user.history:
-                h_qid = h.get("qid") if isinstance(h, dict) else h.qid
-                h_correct = h.get("correct") if isinstance(h, dict) else h.correct
-                if h_qid == qid and h_correct:
-                    if isinstance(h, dict):
-                        h["review_count"] = 0
-                        h["next_review"] = datetime.now().isoformat()
-                    else:
-                        h.review_count = 0
-                        h.next_review = datetime.now().isoformat()
-                    break
-
-        user_service.save_user(user)
-        return redirect(url_for("review.review_due"))
 
     @review_bp.route("/favorites")
     def favorites():

@@ -3,8 +3,9 @@
 """
 import json
 from datetime import datetime, timedelta
-from flask import Blueprint, request, redirect, url_for, flash, session, render_template, make_response
+from flask import Blueprint, request, redirect, url_for, flash, session, render_template, make_response, jsonify
 from flask_login import logout_user
+from utils import logger
 
 stats_bp = Blueprint("stats", __name__)
 
@@ -68,7 +69,8 @@ def create_stats_controller(user_service, question_repo, subject_files):
                     if next_review <= datetime.now():
                         due_count += 1
                 except (ValueError, AttributeError):
-                    pass
+                    logger.warning(f"复习日期解析失败: qid={h.get('qid')}, next_review={h.get('next_review')}")
+                    continue
 
         # 最近做题记录
         recent_history = []
@@ -118,6 +120,35 @@ def create_stats_controller(user_service, question_repo, subject_files):
             due_count=due_count,
             recent_history=recent_history
         )
+
+    @stats_bp.route("/knowledge_curve_data")
+    def knowledge_curve_data():
+        """获取知识点遗忘曲线数据（JSON API）"""
+        user = user_service.get_user(session.get("user_id"))
+        if not user:
+            return jsonify({"error": "请先登录"})
+
+        tag = request.args.get("tag")
+        if not tag:
+            return jsonify({"error": "需要指定知识点"})
+
+        mastery = user.knowledge_state.get(tag, 0.3)
+        last_reviewed = user.last_reviewed.get(tag)
+
+        if not last_reviewed:
+            # 新知识点没有复习记录，返回默认曲线
+            last_reviewed = datetime.now().isoformat()
+
+        from services.recommend import predict_mastery_curve
+        labels, values = predict_mastery_curve(mastery, last_reviewed)
+
+        return jsonify({
+            "tag": tag,
+            "mastery": mastery,
+            "last_reviewed": last_reviewed,
+            "labels": labels,
+            "values": values
+        })
 
     @stats_bp.route("/export_training_data")
     def export_training_data():

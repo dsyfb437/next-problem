@@ -3,7 +3,7 @@
 """
 from typing import Dict
 from services.recommend.base import RecommendEngine
-from services.recommend.bkt_engine import BKTRecommendEngine
+from services.recommend.bkt_engine import BKTRecommendEngine, apply_forgetting_curve, predict_mastery_curve, FORGETTING_CURVE_TAU
 
 # 引擎注册表
 _ENGINE_REGISTRY: Dict[str, RecommendEngine] = {}
@@ -45,6 +45,9 @@ register_engine("bkt", BKTRecommendEngine())
 __all__ = [
     "RecommendEngine",
     "BKTRecommendEngine",
+    "apply_forgetting_curve",
+    "predict_mastery_curve",
+    "FORGETTING_CURVE_TAU",
     "register_engine",
     "get_engine",
     "set_engine",
